@@ -218,10 +218,61 @@ Since $f \geq g$ on $[a,b]$, the total area is
 \end{align*}
 \end{hint}
 
-%BADBAD should we have an example where it is better to integrate with respect to y?  How about one with a piecewise defined function, or bounded by three curves?
-
-
 \end{explanation}
 \end{example}
+
+
+\begin{example}
+	Consider the region bounded by the function $f(x) = \sqrt{x-1}$, $g(x) = x-3$, and the horizontal axis.
+\begin{image}
+
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:7, ymax=5,xmax=7, ymin=0, xmin=0,
+            axis lines =center, xlabel=$x$, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            axis on top,
+          ]
+          \addplot [draw=none,fill=fillp,domain= 1:5] {(x-1)^0.5};
+          %\addplot [draw=none,fill=fillp,domain=0:5] {x-3} \closedcycle;
+          %\addplot [draw=none,fill=background,domain=4:5] {-x^2+4*x} \closedcycle;
+          %\addplot [draw=none,fill=background,domain=0:1] {x^2-6*x+5} \closedcycle;
+          %\addplot [draw=none,fill=fillp,domain=.56:4] {-x^2+4*x} \closedcycle;       
+          \addplot [draw=penColor,very thick,smooth] {(x-1)^0.5};
+          \addplot [draw=penColor2,very thick,smooth] {x-3};
+          
+          \node at (axis cs:2,4.4) [penColor] {$f$};
+          \node at (axis cs:1,-1) [penColor2] {$g$};
+	 \node at (axis cs:4.43649,0.3) [textColor] {b};
+	 \addplot [textColor,dashed] plot coordinates {(0.5635,0) (0.5635,1.9364)};
+          \addplot [textColor,dashed] plot coordinates {(4.43649,0) (4.43649,-1.9364)};
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+
+While we could find the area of this region by breaking the computation up into the two regions $[1,3]$ and $[3,5]$ (check that $5$ is the intersection point!), there is another approach.  If you look at this picture with your head tilted $90^\circ$ to the right, you will notice that the region looks like it is bounded by a normally oriented parabola, and a line, and needs only one region of integration.  This leads us to think that integration with respect to $y$ may be more fruitful than integration with respect to $x$.
+
+We can rewrite $y = \sqrt{x-1}$ as $x = y^2+1$, and we can rewrite $y = x-3$ as $x = y+3$.  
+
+So the region in question can be thought of as the area between the curves $ x = y^2+1$ and $x=y+3$ from $y=0$ to $y=2$.
+
+Thus we have that the area is 
+
+\[
+\int_0^2 (y+3) - (y^2+1) \d y = \answer{\frac{10}{3}}
+\]
+
+\begin{hint}
+\begin{align*}
+	\int_0^2 (y+3) - (y^2+1) \d y &= \int_0^2 -y^2+y+2 \d y\\
+	&=\eval{-\frac{y^3}{3} + \frac{y^2}{2}+2y}_0^2\\
+	&=\frac{10}{3}
+\end{align*}
+\end{hint}
+
+	
+\end{example}
+
 
 \end{document}

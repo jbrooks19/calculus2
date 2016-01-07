@@ -62,6 +62,13 @@
 \colorlet{fill5}{penColor5!20} % Fill
 \colorlet{gridColor}{gray!50} % Color of grid in a plot
 
+\newcommand{\surfaceColor}{violet}
+\newcommand{\surfaceColorTwo}{redyellow}
+\newcommand{\sliceColor}{greenyellow}
+
+
+
+
 \pgfmathdeclarefunction{gauss}{2}{% gives gaussian
   \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
 }

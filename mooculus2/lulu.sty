@@ -38,10 +38,10 @@
 \onecolumn
 \begin{flushright}
   \begin{tikzpicture}[opacity=1]
-  \node at (1,0) {\scalebox{4}{\Huge\textsf{\textbf{\textcolor{black}{calculus}}}}};
-  \node at (8,1.19) {\scalebox{10}{\Huge\textsf{\textbf{\textcolor{gray}{1}}}}};  %% Aligned with subtitle
+  \node at (-.8,0) {\scalebox{4}{\Huge\textsf{\textbf{\textcolor{black}{calculus}}}}};
+  \node at (8,1.19) {\scalebox{10}{\Huge\textsf{\textbf{\textcolor{gray}{2}}}}};  %% Aligned with subtitle
   %\node at (8,1.85) {\scalebox{10}{\Huge\textsf{\textbf{\textcolor{gray}{1}}}}}; %% Aligned with title
-  \node at (1.1,-1.6) {\resizebox{4.8in}{.2in}{\Huge\textsf{\textcolor{gray}
+  \node at (-.7,-1.6) {\resizebox{4.8in}{.2in}{\Huge\textsf{\textcolor{gray}
           {with free online interactive materials}
     }}};
     %\draw[yellow] (-9,-1.2)--(9,-1.2); %guide line
@@ -229,12 +229,11 @@ Copyright \copyright\ \the\year\ Jim Fowler and Bart Snapp
 This work is licensed under the Creative Commons
 Attribution-NonCommercial-ShareAlike License. To view a copy of this
 license, visit \url{http://creativecommons.org/licenses/by-nc-sa/4.0/}
-If you distribute this work or a derivative, include the history of
-the document.
 
-\noindent
-The source code is available
-at: \url{http://github.com/mooculus/mooculus}
+If you distribute this work or a derivative, include the history of
+the document.  The source code is available at:
+
+\url{http://github.com/mooculus/mooculus}
 
 \noindent
 This text contains source material from several other open-source
@@ -438,4 +437,9 @@ improvement at: \texttt{ximera@math.osu.edu}
    \end{description}\normalsize%
 }
 
+
+%% Fix weird index issue.
+\makeatletter
+\gdef\ttl@savemark{\sectionmark{}}
+\makeatother
 \endinput

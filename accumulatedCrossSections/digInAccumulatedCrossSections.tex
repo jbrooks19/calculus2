@@ -228,8 +228,6 @@ solid.
 
 We want to find the volume of the triangular slab at $x$. We know its width is $\d x$.  What is the area,  $A(x)$, of the triangular face of this slab?
 
-
-
 \begin{question}
 	$A(x) = \answer{\sqrt{3}(1-x^2)^2}$
 	
@@ -239,12 +237,31 @@ We want to find the volume of the triangular slab at $x$. We know its width is $
 \end{question}
 
 
+We want to ``sum'' (integrate) all of the infinitesmal volumes $\d V = A(x) \d x$ from $x=-1$ to $x=1$.
 Thus the total volume is
+
+\begin{question}
 \[
-\int_{-1}^1 \sqrt3(1-x^2)^2\d x={16\over15}\sqrt3.
+\textrm{Volume} = \int_{-1}^1 A(x) \d x=\answer{\frac{16\sqrt{3}}{15}}
 \]
+
+\begin{hint}
+	\begin{align*}
+	\int_{-1}^1 A(x) \d x  &= \sqrt{3} \int_{-1}^1 (1-x^2)^2 \d x\\
+		&=\sqrt{3} \int_{-1}^1 1-2x^2+x^4 \d x \\
+		&=\sqrt{3} \eval{x-\frac{2}{3}x^3+\frac{1}{5}}_{-1}^1\\
+		&=2\sqrt{3}(1-\frac{2}{3}+\frac{1}{5})\\
+		&=\frac{16\sqrt{3}}{15} 
+	\end{align*}
+\end{hint}
+
+\end{question}
+
+
 \end{explanation}
 \end{example}
+
+
 
 One easy way to get ``nice'' cross-sections is by rotating a plane
 figure around a line. Below we see $f$ bounded by two vertical lines:
@@ -268,7 +285,8 @@ figure around a line. Below we see $f$ bounded by two vertical lines:
 
 Rotating $f$ around the $x$-axis will generate a figure whose
 volume we can compute.
-%disk
+
+
 \begin{image}
 \begin{tikzpicture}
  \begin{axis}[view={30}{30},colormap/\surfaceColor,
@@ -311,16 +329,11 @@ volume we can compute.
 \end{tikzpicture}
 \end{image}
 
-The volume of each disk will have the form $\pi r^2 h$. As long as we
-can write $r$ in terms of $x$ we can compute the volume by an
-integral.
-
-
-
+The volume of each disk will have the form $\pi \left( f(x)\right)^2 \d x$, and so we only have to accumulate these infinitesmal volumes to obtain the total volume.
 
 \begin{example}
-Find the volume of a right circular cone with base radius 10 and
-height 20. Here, a right circular cone is one with a circular base and
+Find the volume of a right circular cone with base radius $10$ and
+height $20$. Here, a right circular cone is one with a circular base and
 with the tip of the cone directly over the center of the base.
 
 \begin{image}
@@ -370,25 +383,44 @@ with the tip of the cone directly over the center of the base.
 \end{image}
 
 We can view this cone as produced by the rotation of the line
-$y=x/2$ rotated about the $x$-axis, as indicated in
-Figure~\ref{fig:line to cone}.
+$y=x/2$ rotated about the $x$-axis.
 
 At a particular point on the $x$-axis, the radius of the resulting
 cone is the $y$-coordinate of the corresponding point on the line
 $y=x/2$. The area of the cross section is given by
+
+\begin{question}
 \[
-\pi \cdot \text{radius}^2 = \pi \left(\frac{x}{2}\right)^2
+A(x) = \answer{\pi \left(\frac{x}{2}\right)^2}
 \]
-so the volume is given by
-$$
-  \int_0^{20} \pi
-  {x^2\over4}\d x={\pi\over4}{20^3\over3}={2000\pi\over3}.
-$$ 
+
+\begin{hint}
+	The radius is $\frac{x}{2}$, so the area is $\pi \frac{x^2}{4}$
+\end{hint}
+\end{question}
+
+The infinitesmal volume of each disc is then $A(x) \d x$, so the total volume is the integral of these infinitesmal volumes from $x = 0$ to $x = 20$.
+
+\begin{question}
+\[
+\textrm{Volume} = 
+  \int_0^{20} A(x) \d x=\answer{\frac{2000\pi}{3}}.
+\]
+
+\begin{hint}
+	\begin{align*}
+		\int_0^{20} A(x) \d x &= \int_0^{20} \pi \frac{x^2}{4} \d x\\ 
+			&= \pi
+	\end{align*}
+\end{hint}
+\end{question}
+
 Note that we can instead do the calculation with a generic height and
 radius: 
+
 \[
-  \int_0^{h} \pi{r^2\over h^2}x^2\d x
-  ={\pi r^2\over h^2}{h^3\over3}={\pi r^2h\over3},
+  \int_0^{h} \pi\frac{r^2}{h^2}x^2\d x
+  = \frac{\pi r^2 h}{3},
 \]
 giving us the usual formula for the volume of a cone.
 \end{example}

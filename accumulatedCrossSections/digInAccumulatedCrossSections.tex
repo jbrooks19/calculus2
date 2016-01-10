@@ -165,32 +165,18 @@ solid.
     ] 
     \addplot [penColor2,very thick] {x^2-1};
     \addplot [penColor,very thick] {-x^2+1};
+    \node at (axis cs:1,0.8) [penColor] {$y = -x^2+1$};
+    \node at (axis cs:1,-0.8) [penColor2] {$y = x^2-1$};
   \end{axis}
 \end{tikzpicture}
-%% \caption{A plot of $f(x) = x^2-1$ and $g(x) = -x^2+1$.}
-%% \label{figure:regionApI}
+
 \end{image}
 
 \begin{explanation}
 
-We want to find the volume of the triangular slab at $x$. We know its width is $\d x$.  What is the area,  $A(x)$, of the triangular face of this slab?
 
 
 
-\begin{question}
-	$A(x) = \answer{}$
-	
-	\begin{hint}
-		The base of the slab has length $$
-	\end{hint}	
-\end{question}
-
-
-
-
-
-
-%$2(1-x^2)$ and height $\sqrt3(1-x^2)$:
 \begin{image}
 % triangleRegion
 \begin{tikzpicture}
@@ -239,11 +225,20 @@ We want to find the volume of the triangular slab at $x$. We know its width is $
 %%   the region between $f(x)=x^2-1$ and $g(x)=-x^2+1$.}
 %% \label{fig:triangular cross-sections}
 \end{image}
-The area of the cross-section is
-\[
-  {1\over2}(\hbox{base})(\hbox{height})=
-  (1-x^2)\sqrt3(1-x^2),
-\]
+
+We want to find the volume of the triangular slab at $x$. We know its width is $\d x$.  What is the area,  $A(x)$, of the triangular face of this slab?
+
+
+
+\begin{question}
+	$A(x) = \answer{\sqrt{3}(1-x^2)^2}$
+	
+	\begin{hint}
+		The base of the slab has length $2(1-x^2)$ since $(1-x^2)- (x^2-1) = 2(1-x^2)$. By geometry, the height is $\sqrt{3}(1-x^2)$.  So the area of this triangle is $\frac{1}{2} \textrm{base} \cdot \textrm{height} = \sqrt{3}(1-x^2)^2$.
+	\end{hint}	
+\end{question}
+
+
 Thus the total volume is
 \[
 \int_{-1}^1 \sqrt3(1-x^2)^2\d x={16\over15}\sqrt3.

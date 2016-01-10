@@ -14,15 +14,17 @@ We have seen how integration can be used to find signed area between a
 curve and the $x$-axis. With very little change we can find some areas
 between curves. Let's see an example:
 
-\begin{example} Find the area below $f(x)= -x^2+4x+3$ and above
-$g(x)=-x^3+7x^2-10x+5$ over the interval $1 \le x \le 2$. 
 
+\begin{explanation}
+Suppose $f>g$ on an interval $[a,b]$,
 
 \begin{image}
 \begin{tikzpicture}
 	\begin{axis}[
             domain=0:3, ymax=14,xmax=3,ymin=0, xmin=0,
             axis lines =left, xlabel=$x$, ylabel=$y$,
+            xtick={1,2},
+            xticklabels={$a$, $b$},
             every axis y label/.style={at=(current axis.above origin),anchor=south},
             every axis x label/.style={at=(current axis.right of origin),anchor=west},
             axis on top,
@@ -37,15 +39,70 @@ $g(x)=-x^3+7x^2-10x+5$ over the interval $1 \le x \le 2$.
 \end{tikzpicture}
 \end{image}
 
-\begin{explanation}
+
 Above, we show the two curves together, with the desired area shaded.
 
 It is clear from the figure that the area we want is the area under
 $f(x)$ minus the area under $g(x)$, which is to say
 
 \[
-\int_1^2 f(x)\d x-\int_1^2 g(x)\d x = \int_1^2 \left(f(x)-g(x)\right)\d x.
+\textrm{Area} = \int_1^2 f(x)\d x-\int_1^2 g(x)\d x = \int_1^2 \left(f(x)-g(x)\right)\d x.
 \]
+
+It will also be useful to adopt the following intuitive way of thinking about this problem. In a nonrigorous way, we can think of an integral as ``summing up" an infinite number of infinitesmal quantities.  In this case, we want to find an area $A$, so we can think of \textcolor{red}{summing} up $\textcolor{blue}{\d A} = \textcolor{purple!50!blue!90!black}{(f(x) - g(x))} \textcolor{green!70!black!70!blue}{ \d x}$, where $\textcolor{green!70!black!70!blue}{ \d x}$ is the width of an infinitesmal rectangle, and $\textcolor{purple!50!blue!90!black}{(f(x) - g(x))}$ is its height.
+
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:3, ymax=14,xmax=3,ymin=0, xmin=0,
+            axis lines =left, xlabel=$x$, ylabel=$y$,
+            xtick={1,2},
+            xticklabels={$a$, $b$},
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            axis on top,
+          ]
+          \addplot [draw=none,fill=fillp,domain=1:2] {-x^2+4*x+3} \closedcycle;
+          \addplot [draw=none,fill=background,domain=1:2] {-x^3 + 7*x^2-10*x+5} \closedcycle;
+          \addplot [draw=penColor,very thick] {-x^2+4*x+3};
+          \addplot [draw=penColor2,very thick] {-x^3 + 7*x^2-10*x+5};
+          \node at (axis cs:1,6.7) [penColor] {$f$};
+          \node at (axis cs:2,4) [penColor2] {$g$};
+          \addplot [textColor, fill = blue] plot coordinates {(1.5,2.375) (1.6,2.375) (1.6, 6.84) (1.5,6.84) (1.5, 2.375)};
+\addplot [color= purple!50!blue!90!black] plot coordinates {(1.6,2.375) (1.6, 6.84)};
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+
+
+ \begin{image}
+  \begin{tikzpicture}[scale=2,every node/.style={transform shape}]
+      \draw[background, fill=background] (0,-0.5) rectangle (3.5,2.5);
+
+      \draw[textColor, fill=blue] (1.5,0) rectangle (2,3);
+    
+      \node at (3,1.5) {$\color{purple!50!blue!90!black} f(x) - g(x) $};
+
+      \node at (1.75,-0.25) {$\color{green!70!black!70!blue}{\d x} $};
+    \end{tikzpicture}
+  \end{image}
+
+
+\begin{image}
+  \begin{tikzpicture}[scale=2,every node/.style={transform shape}]
+    \node at (0,0) {
+      $\color{red} \int_{a}^{b}\color{purple!50!blue!90!black}{f(x) - g(x)} \color{green!70!black!70!blue}{\d x}\color{black}$
+      };
+  \end{tikzpicture}
+\end{image}
+
+We think of the integral as $\textcolor{red}{summing}$ the areas of infinitely many rectangles with infinitesmal area.  This way of thinking about integrals will be very useful to us in later, more complex, applications.
+
+\end{explanation}
+
+\begin{example}
+If  $f(x)= -x^2+4x+3$ and 
+$g(x)=-x^3+7x^2-10x+5$, and we wanted to find the area between them over the interval $1 \le x \le 2$, then we can compute
 
 \[ 
 \int_1^2 f(x)-g(x)\d x = \answer[given]{\frac{49}{12}} 
@@ -65,11 +122,9 @@ $f(x)$ minus the area under $g(x)$, which is to say
 \end{align*}
 \end{hint}
 
-\end{explanation}
+
 
 \end{example}
-
-
 
 
 In our first example, one curve was higher than the other over the
@@ -247,17 +302,66 @@ Since $f \geq g$ on $[a,b]$, the total area is
 \end{tikzpicture}
 \end{image}
 
-While we could find the area of this region by breaking the computation up into the two regions $[1,3]$ and $[3,5]$ (check that $5$ is the intersection point!), there is another approach.  If you look at this picture with your head tilted $90^\circ$ to the right, you will notice that the region looks like it is bounded by a normally oriented parabola, and a line, and needs only one region of integration.  This leads us to think that integration with respect to $y$ may be more fruitful than integration with respect to $x$.
+While we could find the area of this region by breaking the computation up into the two regions $[1,3]$ and $[3,5]$ (check that $5$ is the intersection point!), there is another approach.  We can think of splitting the region up into \textbf{horizontal} rectangles.  
 
-We can rewrite $y = \sqrt{x-1}$ as $x = y^2+1$, and we can rewrite $y = x-3$ as $x = y+3$.  
+We can rewrite $y = \sqrt{x-1}$ as $x = y^2+1$, and we can rewrite $y = x-3$ as $x = y+3$, so we have the following picture:
+s
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:5.5, ymax=2.5,xmax=5.5, ymin=0, xmin=0,
+            axis lines =center, xlabel=$x$, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            axis on top,
+          ]
+          \addplot [ fill = fillp, smooth, samples=100, domain=(0:2)] ({1+x^2},{x}) \closedcycle;
+          \addplot [draw=none,fill=background,domain=0:5.2] {x-3} \closedcycle;   
+          \addplot [very thick, penColor, smooth, samples=100, domain=(0:3)] ({1+x^2},{x});
+          \addplot [draw=penColor2,very thick,smooth] {x-3};
+          
+          \node at (axis cs:2,1.3) [penColor] {$f$};
+          \node at (axis cs:4,0.7) [penColor2] {$g$};
 
-So the region in question can be thought of as the area between the curves $ x = y^2+1$ and $x=y+3$ from $y=0$ to $y=2$.
+	 \addplot [textColor, fill = blue] plot coordinates {(2,1) (2,1.1) (4, 1.1) (4,1) (2, 1)};
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+ 
+ \begin{image}
+  \begin{tikzpicture}[scale=2,every node/.style={transform shape}]
+      \draw[background, fill=background] (0,-0.5) rectangle (3.5,2.5);
+
+      \draw[textColor, fill=blue] (0,0) rectangle (4,0.5);
+    
+      \node at (2,1) {$\color{purple!50!blue!90!black} (y+3) - (y^2+1)$};
+
+      \node at (4.3,0.25) {$\color{green!70!black!70!blue}{\d y} $};
+    \end{tikzpicture}
+  \end{image}
+
+
+
+
+
+We can think of the area of the region as the \textcolor{red}{sum} of the \textcolor{blue}{areas} of these infinitesmal rectangles from $\textcolor{red}{y=0}$ to $\textcolor{red}{y=2}$
 
 Thus we have that the area is 
 
+\begin{image}
+  \begin{tikzpicture}[scale=2,every node/.style={transform shape}]
+    \node at (0,0) {
+      $\color{red} \int_{0}^{2}\color{purple!50!blue!90!black}{(y+3) - (y^2+1)} \color{green!70!black!70!blue}{\d y}\color{black}$
+      };
+  \end{tikzpicture}
+\end{image}
+
+Computing this we have that the area of this region is
+
 \[
-\int_0^2 (y+3) - (y^2+1) \d y = \answer{\frac{10}{3}}
+\textrm{Area} = \answer{\frac{10}{3}}
 \]
+
 
 \begin{hint}
 \begin{align*}
@@ -266,7 +370,6 @@ Thus we have that the area is
 	&=\frac{10}{3}
 \end{align*}
 \end{hint}
-
 	
 \end{example}
 

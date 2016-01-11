@@ -85,3 +85,14 @@
 
 %%This is to help with formatting on future title pages.
 \newenvironment{sectionOutcomes}{}{} 
+
+
+
+\usepackage{array}
+\setlength{\extrarowheight}{+.1cm}   
+\newdimen\digitwidth
+\settowidth\digitwidth{9}
+\def~{\hspace{\digitwidth}}
+\def\divrule#1#2{
+\noalign{\moveright#1\digitwidth
+\vbox{\hrule width#2\digitwidth}}}

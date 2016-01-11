@@ -4,12 +4,12 @@
 
 \begin{document}
 \begin{abstract}
-  This course is built on this platform, Ximera.
+  This course is built in Ximera.
 \end{abstract}\maketitle
 
 Mathematics cannot be learned passively: it must be actively
 \href{http://en.wikipedia.org/wiki/Constructivism_(philosophy_of_education)}{constructed}
-by the mind of the person learning it.  With this in mind, this course
+by the person learning it.  With this in mind, this course
 is built around solving problems!
 
 Here is an example problem.  Play around with it, get it wrong, try
@@ -17,7 +17,8 @@ the hints out.  Don't be afraid to fail: getting an answer wrong never
 hurts you.
 
 \begin{question}
-  \begin{solution}
+    $3\times 2 = $ \answer{6}
+   
     \begin{hint}
       $3 \times 2$ is the number of objects in $3$ groups of $2$ objects
     \end{hint}
@@ -34,15 +35,13 @@ hurts you.
     \begin{hint}
       $3\times 2=6$
     \end{hint}
-    $3\times 2 = $ \answer{6}
-  \end{solution}
 \end{question}
 
 For this course, you should always have a paper and pencil near at hand to make notes, doodle pictures, or solve complicated equations.
 We \textbf{strongly} recommend that you really \textbf{grapple} with a problem before getting a hint, or moving on.  
 The difference between what you learn by struggling with a problem on your own versus perusing someone else's solution is astonishing.
 
-With that said, even if you get an answer right you should \textit{always} try the
+With that said, even if you get an answer right you should \textbf{always} try the
 hints out afterwards.  They might explain the concept from a new point
 of view, or challenge you to think in a different way than you solved
 the problem.
@@ -54,85 +53,97 @@ the different answer types we support:
 \\
 \\
 \begin{question}
+
   \textbf{An expression answer type}
-  \begin{solution}
+
+Try writing the expression $x^2+y$ = \answer{x^2+y}.  Try failing first, to see what happens.
+
     \begin{hint}
       Great!  You looked at this hint.  That is totally what you were supposed to do.
     \end{hint}
+
     \begin{hint}
-      Sometimes hints have problems in them.  Usually these problems would be a simpler version of the question you are trying to answer,
-      or a crucial part of the solution.  In this case, it is just a demo of problems within hints:
-      \begin{question}
+      Sometimes hints have problems in them.  Usually these problems would be a simpler version of the question you are trying to answer, or a crucial part of the solution.  In this case, it is just a demo of problems within hints:
+      
+
+	\begin{question}
+
         The last sultan of the Ottoman Empire was:
-        \begin{solution}
-          \begin{hint}
-            Check Wikipedia!
-          \end{hint}
-          \begin{hint}
-            The correct answer is Abdülmecid II.
-          \end{hint}
-          \begin{multiple-choice}
+	
+	\begin{multipleChoice}
             \choice[correct]{Abdülmecid II}
             \choice{Abdülhamid II}
             \choice{Suleiman II}
-          \end{multiple-choice}
-        \end{solution}
-      \end{question}
+	\end{multipleChoice}
+
+          \begin{hint}
+            Check Wikipedia!
+          \end{hint}
+
+          \begin{hint}
+            The correct answer is Abdülmecid II.
+          \end{hint}
+
+ 	\end{question}
+
     \end{hint}
-    Try writing the expression $x^2+y$ = \answer{x^2+y}.  Remember to try failing as well, to see what happens.
-  \end{solution}
+
 \end{question}
 
 \begin{question}
-  \textbf{A matrix answer type}
-  \begin{solution}
-    \begin{hint}
-      Just making sure you are still clicking on these!
-    \end{hint}
-    Try inputing the matrix $\begin{bmatrix}  0&1\\2&3\\0&0\end{bmatrix}$ here
-    \begin{matrix-answer}[name=M]
-      correctMatrix = [['0','1'],['2','3'],['0','0']]
-    \end{matrix-answer}
-  \end{solution}
+  \textbf{Multiple choice and multiple select}
+
+
+	\begin{question}
+	Which single answer is correct?
+	\begin{multipleChoice}
+		\choice[correct]{This one!}
+		\choice{Not this}
+		\choice{Not this either}
+		\choice{Also not this}
+	\end{multipleChoice}
+	\end{question}
+
+	\begin{question}
+	Which of the following answers are correct?
+	\begin{selectAll}
+		\choice[correct]{This one!}
+		\choice{Not this}
+		\choice[correct]{This one too!}
+		\choice{Also not this}
+	\end{selectAll}
+	\end{question}
+	
 \end{question}
 
 A free response answer type:
 
 Tell us who you are and why you are taking this course!
-\begin{free-response}
-  We are Steven Gubkin and Jim Fowler, and we are writing this course because we love sharing mathematics with others!
-\end{free-response}
 
-You may have noticed that as you complete activities you get more ``Xudos'' (at the top of the page).  These are points, and people love points.
-There is another kind of points called ``Xarma'' which you get for engaging with the community by making forum posts, reviewing someone elses work, or 
-helping to make the course better by contributing to our \href{https://github.com/kisonecat/m2o2c2}{github page}.
+\begin{freeResponse}
+We are the mysterious authors...
+\end{freeResponse}
 
-As you complete activities the green ``completion bar'' also moves at
+
+As you complete activities the green ``completion bar''  moves at
 the top of the page.  This lets you know how close you are to being
-done.
-
-You can comment on this page at the very bottom: try it out!
+done with an activity.
 
 You advance through pages either by completing them and clicking the
-``next activity'' button, or by navigating on the little side panel to
-the right.  Every time you complete an activity you get a green check
-mark on the side panel, to let you know you have already done it.
+``next activity'' button, or by navigating on the little scroll bar at the top of the page.
  
 Only one more question left:
 \begin{question}
-  \begin{solution}
-  
     Are you ready to start learning some Calculus!?!
-    \begin{hint}
+    
+    \begin{multipleChoice}
+      \choice[correct]{Yes I am!}
+    \end{multipleChoice}
+
+      \begin{hint}
         We promise the real course will not be this corny.
       \end{hint}
-    \begin{multiple-choice}
-      \choice[correct]{Yes I am!}
-    \end{multiple-choice}
-  \end{solution}
-\end{question}
 
-%Oh ya, we also embed videos
-%\youtube{http://www.youtube.com/watch?v=K7yICPCEOFw}
+\end{question}
 
 \end{document}

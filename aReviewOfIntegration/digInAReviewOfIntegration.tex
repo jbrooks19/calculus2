@@ -1,0 +1,127 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{A review of integration}
+
+\begin{document}
+\begin{abstract}
+  We review differentiation and integration.
+\end{abstract}
+\maketitle
+
+Let's get started. Recall the derivative rules:
+
+\begin{theorem}[Basic Derivative Rules]\index{derivative rules}\hfil
+\begin{itemize}
+\item $\ddx k =0$
+\item $\ddx x^n  = n x^{n-1}$
+\item $\ddx e^x = e^x$
+\item $\ddx a^x = a^x\ln(a)$
+\item $\ddx \ln(x) = \frac{1}{x}$
+\item $\ddx \sin(x) = \cos(x)$
+\item $\ddx \cos(x) = -\sin(x)$  
+\item $\ddx \tan(x) = \sec^2(x)$  
+\item $\ddx \sec(x) = \sec(x)\tan(x)$ 
+\item $\ddx \csc(x) = -\csc(x)\cot(x)$
+\item $\ddx \cot(x) = -\csc^2(x)$
+\item $\ddx \arcsin(x) = \frac{1}{\sqrt{1-x^2}}$
+\item $\ddx \arccos(x) = \frac{-1}{\sqrt{1-x^2}}$
+\item $\ddx \arctan(x) =\frac{1}{1+x^2}$
+\item $\ddx \arcsec(x) = \frac{1}{|x|\sqrt{x^2-1}}$ for $|x|>1$
+\item $\ddx \arccsc(x) = \frac{-1}{|x|\sqrt{x^2-1}}$ for $|x|>1$
+\item $\ddx \arccot(x) = \frac{-1}{1+x^2}$
+\item $\ddx \left( f(x) + g(x) \right) = f'(x) + g'(x)$
+\item $\ddx \left( f(x) \cdot g(x) \right) = f(x)g'(x) + f'(x)g(x)$
+\item $\ddx\frac{f(x)}{g(x)} = \frac{f'(x)g(x) - f(x)g'(x)}{g(x)^2}$
+\item $\ddx f(g(x)) = f'(g(x)) \cdot g'(x)$
+\end{itemize}
+%\end{multicols}
+\end{theorem}
+
+\begin{question}
+  What is the derivative of $\arcsin\left(\frac{x}{a}\right)$ with respect to $x$?
+  \begin{prompt}
+    \[
+    \ddx \arcsin\left(\frac{x}{a}\right) = \answer{1/\sqrt{a^2 - x^2}}
+    \]
+  \end{prompt}
+\end{question}
+
+When computing definite integrals, the Fundamental Theorem of Calculus
+says:
+
+\begin{theorem}[Fundamental Theorem of Calculus]\index{Fundamental Theorem of Calculus}
+  Let $f$ be continuous on $[a,b]$. If $F$ is \textbf{any}
+  antiderivative of $f$, then
+  \[
+  \int_a^b f(x)\d x = F(b)-F(a).
+  \]
+\end{theorem}
+
+The Fundamental Theorem of Calculus allows us to compute
+integrals by ``undoing'' the derivative.
+
+
+
+ADD MORE --- ALSO HOW TO DO IN XIMERA???
+
+\begin{theorem}[Basic Integrals]\index{antiderivatives}\index{indefinite integral}\hfil
+\begin{itemize}
+\item $\int k \d x= kx+C$.
+\item $\int x^n \d x= \frac{x^{n+1}}{n+1}+C\qquad(n\ne-1)$.
+\item $\int e^x \d x= e^x + C$.
+\item $\int a^x \d x= \frac{a^x}{\ln(a)}+C$.
+\item $\int \frac{1}{x} \d x= \ln|x|+C$.
+\item $\int \cos(x) \d x = \sin(x) + C$.
+\item $\int \sin(x) \d x = -\cos(x) + C$.  
+\item $\int \tan(x) \d x = -\ln|\cos(x)| + C$.  
+\item $\int \sec^2(x) \d x = \tan(x) + C$. 
+\item $\int \csc^2(x) \d x = -\cot(x) + C$.
+\item $\int \sec(x)\tan(x) \d x = \sec(x) + C$.
+\item $\int \csc(x)\cot(x) \d x = -\csc(x) + C$.
+\item $\int \frac{1}{x^2+1}\d x = \arctan(x) + C$.
+\item $\int \frac{1}{\sqrt{1-x^2}}\d x= \arcsin(x)+C$.
+\end{itemize}
+\end{theorem}
+
+Whenever you compute an indefinite integral, you can always check your
+work by taking the derivative. In particular, this means that if you
+are given choices for the antiderivative, you can check simply by taking the derivative.
+
+\begin{question}
+  A question
+  \begin{selectAll}
+    \choice[correct]{hello} DO SOMETHING WITH LOG AND CONSTANTS HIDDEN IN THE +C
+  \end{selectAll}
+\end{question}
+
+The substitution formula is a tool that can help compute some integrals.
+
+\begin{theorem}[Integral Substitution Formula] 
+If $g$ is differentiable on the interval $[a,b]$ and $f$ is
+differentiable on the interval $[g(a),g(b)]$, then
+\[
+\int_a^b f'(g(x)) g'(x) \d x =\int_{g(a)}^{g(b)} f'(g) \d g.
+\]
+\end{theorem}
+
+
+In the substitution formula allows us to change the form of a novel
+integral, so that we can evaluate it using forms we know.
+
+\begin{question}
+  Letting $a$ be a constant, what is the antiderivative of
+  $\frac{1}{a^2 + x^2}$?
+  \begin{prompt}
+  \[
+  \int \frac{\d x}{a^2 + x^2}
+  \]
+  \end{prompt}
+\end{question}
+
+As we saw above, ... 
+
+
+
+\end{document}

@@ -79,40 +79,40 @@ around the $y$-axis, we get a thin ``shell'' instead of a thin
 volume of such thin shells we will get an approximation to the true
 volume.
 
-\begin{image}
-\begin{tikzpicture}
- \begin{axis}[
-     view={30}{30},colormap/\surfaceColor,
-     xlabel=$x$, ylabel=$z$, zlabel=$y$,
-   ]
+%% \begin{image}
+%% \begin{tikzpicture}
+%%  \begin{axis}[
+%%      view={30}{30},colormap/\surfaceColor,
+%%      xlabel=$x$, ylabel=$z$, zlabel=$y$,
+%%    ]
 
-  \addplot3[surf,colormap/\surfaceColorTwo,shader=faceted,opacity=.7, %inside
-  samples=10,
-  samples y =20,
-  domain=0:3,y domain=0:2*pi,
-  z buffer=sort]
-  (x* cos(deg(y)), {(x) * sin(deg(y))},{x+1});
+%%   \addplot3[surf,colormap/\surfaceColorTwo,shader=faceted,opacity=.7, %inside
+%%   samples=10,
+%%   samples y =20,
+%%   domain=0:3,y domain=0:2*pi,
+%%   z buffer=sort]
+%%   (x* cos(deg(y)), {(x) * sin(deg(y))},{x+1});
 
-  \addplot3[surf,colormap/\sliceColor,shader=interp,%shell
-  samples=5,
-  samples y = 20,
-  domain=.25:2.5,y domain=0:2*pi,
-  z buffer=sort
-]
-  ({1.5*cos(deg(y))}, {1.5*sin(deg(y))},x);
-
-
-  \addplot3[surf,shader=faceted,opacity=.3, %outside
-  samples=10,
-  samples y =20,
-  domain=0:3,y domain=0:2*pi,
-  z buffer=sort]
-  (x*cos(deg(y)), {(x) * sin(deg(y))},{(x-1)^2});
+%%   \addplot3[surf,colormap/\sliceColor,shader=interp,%shell
+%%   samples=5,
+%%   samples y = 20,
+%%   domain=.25:2.5,y domain=0:2*pi,
+%%   z buffer=sort
+%% ]
+%%   ({1.5*cos(deg(y))}, {1.5*sin(deg(y))},x);
 
 
- \end{axis}
-\end{tikzpicture}
-\end{image}
+%%   \addplot3[surf,shader=faceted,opacity=.3, %outside
+%%   samples=10,
+%%   samples y =20,
+%%   domain=0:3,y domain=0:2*pi,
+%%   z buffer=sort]
+%%   (x*cos(deg(y)), {(x) * sin(deg(y))},{(x-1)^2});
+
+
+%%  \end{axis}
+%% \end{tikzpicture}
+%% \end{image}
 
 
 

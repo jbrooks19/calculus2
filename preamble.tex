@@ -14,6 +14,17 @@
 %\usepackage{mathtools} %% for pretty underbrace % Breaks Ximera
 \usepackage{multicol}
 
+\usepackage{array}
+\setlength{\extrarowheight}{+.1cm}   
+\newdimen\digitwidth
+\settowidth\digitwidth{9}
+\def\divrule#1#2{
+\noalign{\moveright#1\digitwidth
+\vbox{\hrule width#2\digitwidth}}}
+
+
+
+
 
 \newcommand{\RR}{\mathbb R}
 %\renewcommand{\d}{\,d\!}
@@ -88,11 +99,3 @@
 
 
 
-\usepackage{array}
-\setlength{\extrarowheight}{+.1cm}   
-\newdimen\digitwidth
-\settowidth\digitwidth{9}
-\def~{\hspace{\digitwidth}}
-\def\divrule#1#2{
-\noalign{\moveright#1\digitwidth
-\vbox{\hrule width#2\digitwidth}}}

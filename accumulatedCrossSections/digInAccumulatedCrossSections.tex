@@ -4,10 +4,11 @@
 
 \title[Dig-In:]{Accumulated cross-sections}
 
-\outcome{}
+\outcome{hello}
 
 \begin{document}
 \begin{abstract}
+  Is this needed?
 \end{abstract}
 \maketitle
 
@@ -23,82 +24,82 @@ create a volume.
 \begin{example}
 Find the volume of a pyramid with a square base that is $20$ meters tall
 and $20$ meters on a side at the base. 
-\begin{image}
-%pyramid
-\begin{tikzpicture}
- \begin{axis}[view={30}{30},colormap/\surfaceColor,
-   xlabel=$x$, ylabel=$y$, zlabel=$z$,]
+%% \begin{image}
+%% %pyramid
+%% \begin{tikzpicture}
+%%  \begin{axis}[view={30}{30},colormap/\surfaceColor,
+%%    xlabel=$x$, ylabel=$y$, zlabel=$z$,]
 
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=0:.5,
-  z buffer=sort]
-  ({10*(1-y)},{(1-y)*(x)}, {y*20});
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=0:.5,
+%%   z buffer=sort]
+%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
 
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=0:.5,
-  z buffer=sort]
-  ({x*(1-y)},{(1-y)*(10)}, {y*20}); 
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=0:.5,
+%%   z buffer=sort]
+%%   ({x*(1-y)},{(1-y)*(10)}, {y*20}); 
 
-  \addplot3[surf,shader=faceted,opacity=.7, %front
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=0:.5,
-  z buffer=sort]
-  ({x*(1-y)},{(1-y)*(-10)}, {y*20});
+%%   \addplot3[surf,shader=faceted,opacity=.7, %front
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=0:.5,
+%%   z buffer=sort]
+%%   ({x*(1-y)},{(1-y)*(-10)}, {y*20});
  
- \addplot3[surf,shader=faceted,opacity=.7, %front
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=0:.5,
-  z buffer=sort]
-  ({10*(1-y)},{(1-y)*(x)}, {y*20});
+%%  \addplot3[surf,shader=faceted,opacity=.7, %front
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=0:.5,
+%%   z buffer=sort]
+%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
 
 
 
-  %square
-  \addplot3[surf,colormap/\sliceColor,shader=flat,
-  samples=4,
-  samples y = 4,
-  domain=-1:1,y domain=-1:1,
-  z buffer=sort]
-  ({10*(.5)*y},{(.5)*(x)*10}, {.5*20});
+%%   %square
+%%   \addplot3[surf,colormap/\sliceColor,shader=flat,
+%%   samples=4,
+%%   samples y = 4,
+%%   domain=-1:1,y domain=-1:1,
+%%   z buffer=sort]
+%%   ({10*(.5)*y},{(.5)*(x)*10}, {.5*20});
 
 
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=.5:1,
-  z buffer=sort]
-  ({10*(1-y)},{(1-y)*(x)}, {y*20});
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=.5:1,
+%%   z buffer=sort]
+%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
 
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=.5:1,
-  z buffer=sort]
-  ({x*(1-y)},{(1-y)*(10)}, {y*20}); 
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=.5:1,
+%%   z buffer=sort]
+%%   ({x*(1-y)},{(1-y)*(10)}, {y*20}); 
 
-  \addplot3[surf,shader=faceted,opacity=.7, %front
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=.5:1,
-  z buffer=sort]
-  ({x*(1-y)},{(1-y)*(-10)}, {y*20});
+%%   \addplot3[surf,shader=faceted,opacity=.7, %front
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=.5:1,
+%%   z buffer=sort]
+%%   ({x*(1-y)},{(1-y)*(-10)}, {y*20});
  
- \addplot3[surf,shader=faceted,opacity=.7, %front
-  samples=12,
-  samples y = 6,
-  domain=-10:10,y domain=.5:1,
-  z buffer=sort]
-  ({10*(1-y)},{(1-y)*(x)}, {y*20});
- \end{axis}
-\end{tikzpicture}
+%%  \addplot3[surf,shader=faceted,opacity=.7, %front
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-10:10,y domain=.5:1,
+%%   z buffer=sort]
+%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
+%%  \end{axis}
+%% \end{tikzpicture}
 
-\end{image}
+%% \end{image}
 
 
 \begin{explanation}
@@ -177,54 +178,54 @@ solid.
 
 
 
-\begin{image}
-% triangleRegion
-\begin{tikzpicture}
- \begin{axis}[view={30}{30},colormap/\surfaceColor,
-   xlabel=$x$, ylabel=$z$, zlabel=$y$,]
+%% \begin{image}
+%% % triangleRegion
+%% \begin{tikzpicture}
+%%  \begin{axis}[view={30}{30},colormap/\surfaceColor,
+%%    xlabel=$x$, ylabel=$z$, zlabel=$y$,]
 
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=12,
-  samples y = 6,
-  domain=-1:.5,y domain=0:1,
-  z buffer=sort]
-  (x,{(1-y)*(-x^2+1)}, {y*sqrt(3)*(1-x^2)});
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-1:.5,y domain=0:1,
+%%   z buffer=sort]
+%%   (x,{(1-y)*(-x^2+1)}, {y*sqrt(3)*(1-x^2)});
 
-  \addplot3[surf,shader=faceted,opacity=.7,%front
-  samples=12,
-  samples y = 6,
-  domain=-1:.5,y domain=0:1,
-  z buffer=sort]
-  (x,{(1-y)*(x^2-1)}, {y*sqrt(3)*(1-x^2)});
+%%   \addplot3[surf,shader=faceted,opacity=.7,%front
+%%   samples=12,
+%%   samples y = 6,
+%%   domain=-1:.5,y domain=0:1,
+%%   z buffer=sort]
+%%   (x,{(1-y)*(x^2-1)}, {y*sqrt(3)*(1-x^2)});
 
-  %tri
-  \addplot3[surf,colormap/\sliceColor,shader=flat,
-  samples=6,
-  samples y = 6,
-  domain=-1:1,y domain=0:1,
-  z buffer=sort]
-  (.5,{x*(1-y)*(.5^2-1)}, {abs(x)*y*sqrt(3)*(1-.5^2)});
+%%   %tri
+%%   \addplot3[surf,colormap/\sliceColor,shader=flat,
+%%   samples=6,
+%%   samples y = 6,
+%%   domain=-1:1,y domain=0:1,
+%%   z buffer=sort]
+%%   (.5,{x*(1-y)*(.5^2-1)}, {abs(x)*y*sqrt(3)*(1-.5^2)});
 
-  \addplot3[surf,shader=faceted,opacity=.3, 
-  samples=4,
-  samples y = 6,
-  domain=.5:1,y domain=0:1,
-  z buffer=sort]
-  (x,{(1-y)*(-x^2+1)}, {y*sqrt(3)*(1-x^2)});
+%%   \addplot3[surf,shader=faceted,opacity=.3, 
+%%   samples=4,
+%%   samples y = 6,
+%%   domain=.5:1,y domain=0:1,
+%%   z buffer=sort]
+%%   (x,{(1-y)*(-x^2+1)}, {y*sqrt(3)*(1-x^2)});
 
-  \addplot3[surf,shader=faceted,opacity=.7,%front
-  samples=4,
-  samples y = 6,
-  domain=.5:1,y domain=0:1,
-  z buffer=sort]
-  (x,{(1-y)*(x^2-1)}, {y*sqrt(3)*(1-x^2)});
+%%   \addplot3[surf,shader=faceted,opacity=.7,%front
+%%   samples=4,
+%%   samples y = 6,
+%%   domain=.5:1,y domain=0:1,
+%%   z buffer=sort]
+%%   (x,{(1-y)*(x^2-1)}, {y*sqrt(3)*(1-x^2)});
 
- \end{axis}
-\end{tikzpicture}
-%% \caption{A solid with equilateral triangle cross-sections bounded by
-%%   the region between $f(x)=x^2-1$ and $g(x)=-x^2+1$.}
-%% \label{fig:triangular cross-sections}
-\end{image}
+%%  \end{axis}
+%% \end{tikzpicture}
+%% %% \caption{A solid with equilateral triangle cross-sections bounded by
+%% %%   the region between $f(x)=x^2-1$ and $g(x)=-x^2+1$.}
+%% %% \label{fig:triangular cross-sections}
+%% \end{image}
 
 We want to find the volume of the triangular slab at $x$. We know its width is $\d x$.  What is the area,  $A(x)$, of the triangular face of this slab?
 
@@ -287,47 +288,47 @@ Rotating $f$ around the $x$-axis will generate a figure whose
 volume we can compute.
 
 
-\begin{image}
-\begin{tikzpicture}
- \begin{axis}[view={30}{30},colormap/\surfaceColor,
-   xlabel=$x$, ylabel=$z$, zlabel=$y$,
-   ]
+%% \begin{image}
+%% \begin{tikzpicture}
+%%  \begin{axis}[view={30}{30},colormap/\surfaceColor,
+%%    xlabel=$x$, ylabel=$z$, zlabel=$y$,
+%%    ]
 
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=10,
-  samples y =20,
-  domain=1:2.7,y domain=0:2*pi,
-  z buffer=sort]
-  (x,{(16-19*x+8*x^2-x^3) * cos(deg(y))}, {(16-19*x+8*x^2-x^3) * sin(deg(y))});
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=10,
+%%   samples y =20,
+%%   domain=1:2.7,y domain=0:2*pi,
+%%   z buffer=sort]
+%%   (x,{(16-19*x+8*x^2-x^3) * cos(deg(y))}, {(16-19*x+8*x^2-x^3) * sin(deg(y))});
 
-  \addplot3[surf,colormap/\sliceColor,shader=flat,%disk
-  samples=5,
-  samples y = 20,
-  domain=0:1,y domain=0:2*pi,
-  z buffer=sort
-]
-  (2.7,{3.337*x*cos(deg(y))}, {3.337*x*sin(deg(y))});
-
-
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=10,
-  samples y=20,
-  domain=2.7:4,y domain=0:2*pi,
-  z buffer=sort]
-  (x,{(16-19*x+8*x^2-x^3) * cos(deg(y))}, {(16-19*x+8*x^2-x^3) * sin(deg(y))});
+%%   \addplot3[surf,colormap/\sliceColor,shader=flat,%disk
+%%   samples=5,
+%%   samples y = 20,
+%%   domain=0:1,y domain=0:2*pi,
+%%   z buffer=sort
+%% ]
+%%   (2.7,{3.337*x*cos(deg(y))}, {3.337*x*sin(deg(y))});
 
 
-  \addplot3[surf,shader=faceted,opacity=.7,
-  samples=5,
-  samples y = 20,
-  domain=0:1,y domain=0:2*pi,
-  z buffer=sort
-]
-  (4,{4*x*cos(deg(y))}, {4*x*sin(deg(y))});
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=10,
+%%   samples y=20,
+%%   domain=2.7:4,y domain=0:2*pi,
+%%   z buffer=sort]
+%%   (x,{(16-19*x+8*x^2-x^3) * cos(deg(y))}, {(16-19*x+8*x^2-x^3) * sin(deg(y))});
 
- \end{axis}
-\end{tikzpicture}
-\end{image}
+
+%%   \addplot3[surf,shader=faceted,opacity=.7,
+%%   samples=5,
+%%   samples y = 20,
+%%   domain=0:1,y domain=0:2*pi,
+%%   z buffer=sort
+%% ]
+%%   (4,{4*x*cos(deg(y))}, {4*x*sin(deg(y))});
+
+%%  \end{axis}
+%% \end{tikzpicture}
+%% \end{image}
 
 The volume of each disk will have the form $\pi \left( f(x)\right)^2 \d x$, and so we only have to accumulate these infinitesmal volumes to obtain the total volume.
 
@@ -336,51 +337,51 @@ Find the volume of a right circular cone with base radius $10$ and
 height $20$. Here, a right circular cone is one with a circular base and
 with the tip of the cone directly over the center of the base.
 
-\begin{image}
-%cone
-\begin{tikzpicture}
- \begin{axis}[
-     view={30}{30},colormap/\surfaceColor,
-     xlabel=$x$, ylabel=$z$, zlabel=$y$,
-   ]
+%% \begin{image}
+%% %cone
+%% \begin{tikzpicture}
+%%  \begin{axis}[
+%%      view={30}{30},colormap/\surfaceColor,
+%%      xlabel=$x$, ylabel=$z$, zlabel=$y$,
+%%    ]
 
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=10,
-  samples y =20,
-  domain=0:12,y domain=0:2*pi,
-  z buffer=sort]
-  (x,{(x/2) * cos(deg(y))}, {(x/2) * sin(deg(y))});
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=10,
+%%   samples y =20,
+%%   domain=0:12,y domain=0:2*pi,
+%%   z buffer=sort]
+%%   (x,{(x/2) * cos(deg(y))}, {(x/2) * sin(deg(y))});
 
-  \addplot3[surf,colormap/\sliceColor,shader=flat,%disk
-  samples=5,
-  samples y = 20,
-  domain=0:1,y domain=0:2*pi,
-  z buffer=sort
-]
-  (12,{6*x*cos(deg(y))}, {6*x*sin(deg(y))});
-
-
-  \addplot3[surf,shader=faceted,opacity=.3,
-  samples=10,
-  samples y=20,
-  domain=12:20,y domain=0:2*pi,
-  z buffer=sort]
-  (x,{(x/2) * cos(deg(y))}, {(x/2) * sin(deg(y))});
+%%   \addplot3[surf,colormap/\sliceColor,shader=flat,%disk
+%%   samples=5,
+%%   samples y = 20,
+%%   domain=0:1,y domain=0:2*pi,
+%%   z buffer=sort
+%% ]
+%%   (12,{6*x*cos(deg(y))}, {6*x*sin(deg(y))});
 
 
-  \addplot3[surf,shader=faceted,opacity=.7,
-  samples=5,
-  samples y = 20,
-  domain=0:1,y domain=0:2*pi,
-  z buffer=sort
-]
-  (20,{10*x*cos(deg(y))}, {10*x*sin(deg(y))});
+%%   \addplot3[surf,shader=faceted,opacity=.3,
+%%   samples=10,
+%%   samples y=20,
+%%   domain=12:20,y domain=0:2*pi,
+%%   z buffer=sort]
+%%   (x,{(x/2) * cos(deg(y))}, {(x/2) * sin(deg(y))});
 
- \end{axis}
-\end{tikzpicture}
-%% \caption{A right circular cone with base radius 10 and height 20.}
-%% \label{fig:line to cone}
-\end{image}
+
+%%   \addplot3[surf,shader=faceted,opacity=.7,
+%%   samples=5,
+%%   samples y = 20,
+%%   domain=0:1,y domain=0:2*pi,
+%%   z buffer=sort
+%% ]
+%%   (20,{10*x*cos(deg(y))}, {10*x*sin(deg(y))});
+
+%%  \end{axis}
+%% \end{tikzpicture}
+%% %% \caption{A right circular cone with base radius 10 and height 20.}
+%% %% \label{fig:line to cone}
+%% \end{image}
 
 We can view this cone as produced by the rotation of the line
 $y=x/2$ rotated about the $x$-axis.

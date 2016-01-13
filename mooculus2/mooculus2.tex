@@ -1,6 +1,13 @@
 \documentclass[10pt,twocolumn,twoside,handout,wordchoicegiven]{xourse}
 
+\input{../preamble.tex}
+
+\iftikzexport
+\newcommand\chapterstyle{}
+\newcommand\sectionstyle{}
+\else
 \usepackage{lulu2}
+\fi
 
 \title{Calculus 2}
 
@@ -58,7 +65,6 @@
 %% \activity{../lengthOfCurves/digInLengthOfCurves.tex}
 
 
-
-\printindex
+\iftikzexport\else\printindex\fi
 
 \end{document}

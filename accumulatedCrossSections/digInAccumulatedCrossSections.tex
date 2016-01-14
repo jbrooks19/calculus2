@@ -12,7 +12,7 @@
 \end{abstract}
 \maketitle
 
-\section{Volume}
+\section{Accumulation of cross-sections}
 
 We have seen how to compute certain areas by using integration. Now we
 will see how to compute some volumes.  The volumes that we can compute
@@ -104,12 +104,12 @@ L(y) = \answer[given]{20-y}
 \end{hint}
 For each slab, the infinitesmal volume at height $y$ is
 \begin{align*}
-  \d V = \mathrm{length} \cdot \mathrm{width}\cdot \mathrm{height}\\
-&= L(y)\cdot L(y)\cdot  \d y
+  \d V &= \mathrm{length} \cdot \mathrm{width}\cdot \mathrm{height}\\
+  &= L(y)\cdot L(y)\cdot  \d y
 \end{align*}
 so the total volume is given by
 \begin{align*}
-  \mathrm{Volume} &= \int_0^{20} (L(y))^2 \d y \\
+  \mathrm{Volume} &= \int_0^{20} L(y)^2 \d y \\
   &= \int_0^{20} (\answer[given]{20-y})^2 \d y
 \end{align*}
 Making the substitution $g = 20-y $, we have $\d g = - \d y$, $g$ going from $20$ to $0$, and 
@@ -240,7 +240,7 @@ Thus the total volume is
 \end{explanation}
 \end{example}
 
-
+\section{Solids of revolution}
 
 One easy way to get ``nice'' cross-sections is by rotating a plane
 figure around a line. Below we see a function $f$ bounded by two
@@ -404,6 +404,10 @@ radius:
 \]
 giving us the usual formula for the volume of a cone.
 \end{example}
+
+
+\section{Revolving around other lines}
+
 
 
 \end{document}

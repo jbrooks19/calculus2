@@ -8,7 +8,7 @@
 
 \begin{document}
 \begin{abstract}
-  Is this needed?
+  We can also use integrals to compute volume.
 \end{abstract}
 \maketitle
 
@@ -23,126 +23,104 @@ create a volume.
 
 \begin{example}
 Find the volume of a pyramid with a square base that is $20$ meters tall
-and $20$ meters on a side at the base. 
-%% \begin{image}
-%% %pyramid
-%% \begin{tikzpicture}
-%%  \begin{axis}[view={30}{30},colormap/\surfaceColor,
-%%    xlabel=$x$, ylabel=$y$, zlabel=$z$,]
+and $20$ meters on a side at the base.
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}[
+          xmin =-4,xmax=7,ymax=4,ymin=-4,
+          axis lines=center, xlabel=$x$, ylabel=$y$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          width=5in,
+          axis on top,
+          xtick={0,6}, xticklabels={$0$, $20$},
+          ytick={0,3},yticklabels={$0$,$20$},
+            clip=false,
+      ]
+      \addplot [draw=penColor, fill = fillp, very thick] plot coordinates {(-3,-3) (3,-3) (6,0) (1.5, 3) (-3,-3)};
+      \addplot [draw=penColor, very thick] plot coordinates {(-3,-3) (0,0)};
+      \addplot [draw=penColor, very thick] plot coordinates {(6,0) (0,0)};
+      \addplot [draw=penColor, very thick] plot coordinates {(1.5,3) (3,-3)};
+      \addplot [draw=penColor, very thick] plot coordinates {(1.5,3) (0,0)};
 
-%%   \addplot3[surf,shader=faceted,opacity=.3,
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=0:.5,
-%%   z buffer=sort]
-%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
-
-%%   \addplot3[surf,shader=faceted,opacity=.3,
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=0:.5,
-%%   z buffer=sort]
-%%   ({x*(1-y)},{(1-y)*(10)}, {y*20}); 
-
-%%   \addplot3[surf,shader=faceted,opacity=.7, %front
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=0:.5,
-%%   z buffer=sort]
-%%   ({x*(1-y)},{(1-y)*(-10)}, {y*20});
- 
-%%  \addplot3[surf,shader=faceted,opacity=.7, %front
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=0:.5,
-%%   z buffer=sort]
-%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
-
-
-
-%%   %square
-%%   \addplot3[surf,colormap/\sliceColor,shader=flat,
-%%   samples=4,
-%%   samples y = 4,
-%%   domain=-1:1,y domain=-1:1,
-%%   z buffer=sort]
-%%   ({10*(.5)*y},{(.5)*(x)*10}, {.5*20});
-
-
-%%   \addplot3[surf,shader=faceted,opacity=.3,
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=.5:1,
-%%   z buffer=sort]
-%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
-
-%%   \addplot3[surf,shader=faceted,opacity=.3,
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=.5:1,
-%%   z buffer=sort]
-%%   ({x*(1-y)},{(1-y)*(10)}, {y*20}); 
-
-%%   \addplot3[surf,shader=faceted,opacity=.7, %front
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=.5:1,
-%%   z buffer=sort]
-%%   ({x*(1-y)},{(1-y)*(-10)}, {y*20});
- 
-%%  \addplot3[surf,shader=faceted,opacity=.7, %front
-%%   samples=12,
-%%   samples y = 6,
-%%   domain=-10:10,y domain=.5:1,
-%%   z buffer=sort]
-%%   ({10*(1-y)},{(1-y)*(x)}, {y*20});
-%%  \end{axis}
-%% \end{tikzpicture}
-
-%% \end{image}
-
+      \addplot [->] plot coordinates {(0,0) (-4,-4)};
+      \node[anchor=north east] at (axis cs:-4,-4) {$z$};       
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
 
 \begin{explanation}
-We will  ``sum up" (integrate) infinitely many ``infinitesmal'' slabs which are parallel to the base to obtain
-the volume of the pyramid.
+To solve this problem, we will ``sum up'' (integrate) infinitely many
+``infinitesmal'' slabs which are parallel to the base of the pyramid
+to obtain the volume.
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}[
+          xmin =-4,xmax=7,ymax=4,ymin=-4,
+          axis lines=center, xlabel=$x$, ylabel=$y$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          axis on top,
+          width=5in,
+          xtick={0,6}, xticklabels={$0$, $20$},
+          ytick={0,3},yticklabels={$0$,$20$},
+            clip=false,
+      ]
+      \addplot [draw=penColor, thick] plot coordinates {(-3,-3) (3,-3) (6,0) (1.5, 3) (-3,-3)};
+            
+      \addplot [draw=penColor, thick] plot coordinates {(-3,-3) (0,0)};
+      \addplot [draw=penColor, thick] plot coordinates {(6,0) (0,0)};
+      \addplot [draw=penColor, thick] plot coordinates {(1.5,3) (3,-3)};
+      \addplot [draw=penColor, thick] plot coordinates {(1.5,3) (0,0)};
 
-Centering our pyramid at the origin, and placing the base of the box at $z = 0$,
-the infinitesmal volume of each slab at height $z$ is 
+      %% slab
+      \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,2) (1,2) (0,1) (2, 1) (3,2)};
+      \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(0,.8) (0,1) (2,1) (2, .8) (0,.8)};
+      \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(2,1) (2, .8) (3,1.8) (3,2) (2,1)};
+
+      %\addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,1.8) (1,1.8) (0,.8) (2, .8) (3,1.8)};
+      %\addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,2) (1,2) (0,1) (2, 1) (3,2)};
+
+      \addplot [draw=penColor, thick] plot coordinates {(1.5,3) (3,-3)};
+
+      \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (axis cs:0,.8)--(axis cs:2,.8);
+      \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:3.1,2.05)--(axis cs:3.1,1.75);
+      
+      \addplot [->] plot coordinates {(0,0) (-4,-4)};
+      \node[anchor=north east] at (axis cs:-4,-4) {$z$};
+
+      \node at (axis cs:3.6,1.9) {$\d y$};
+      \node at (axis cs:1,.4) {$L(y)$};       
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
+The ``height'' of each slab will be $\d y$, and we'll let $L(y)$ be the width:
 \[
-\d V = (L(z))^2 \d z
+L(y) = \answer[given]{20-y}
 \]
-where $\d z$ is the infinitesmal height of the slab, and $L(z)$ is the side length of the slab at height $z$. 
-
-\begin{question}
-\[
-L(z) = \answer{20-z}
-\]
-
 \begin{hint}
-	$L(z)$ must is a linear function of $z$, $L(z) = 20$, and $L(20) = 0$.  So $L(z) = 20-z$
+  Since $L(y)$ is a linear function of $y$, and $L(0) = 20$, and
+  $L(20) = 0$ we see $L(y) = 20-y$ by the point-slope formula.
 \end{hint}
-\end{question}
-
-We want to sum these infinitesmal volumes from $z=0$ to $z = 20$, so we obtain the integral
-
-\begin{question}
-\[
-\textrm{Volume} = \int_0^{20} (L(z))^2 \d z = \answer{\frac{20^3}{3}}
-\]
-
-\begin{hint}
-	Making the substitution $u = z-20$, we have $\d u = - \d z$, $u$ going from $20$ to $0$, and 
+For each slab, the infinitesmal volume at height $y$ is
+\begin{align*}
+  \d V = \mathrm{length} \cdot \mathrm{width}\cdot \mathrm{height}\\
+&= L(y)\cdot L(y)\cdot  \d y
+\end{align*}
+so the total volume is given by
+\begin{align*}
+  \mathrm{Volume} &= \int_0^{20} (L(y))^2 \d y \\
+  &= \int_0^{20} (\answer[given]{20-y})^2 \d y
+\end{align*}
+Making the substitution $g = 20-y $, we have $\d g = - \d y$, $g$ going from $20$ to $0$, and 
 	\begin{align*}
-	\int_0^{20} (20-z)^2 \d z &= -\int_{20}^{0} u^2 \d u\\
-		&= \int_0^{20} u^2 \d u\\
-		&= \eval{\frac{1}{3} u^3}_0^{20}\\
-		&= \frac{1}{3}(20^3)
+	\int_0^{20} (20-y)^2 \d y &= -\int_{\answer[given]{20}}^{\answer[given]{0}} g^2 \d g\\
+		&= \int_0^{20} g^2 \d g\\
+		&= \eval{\answer[given]{\frac{1}{3} g^3}}_0^{20}\\
+		&= \frac{20^3}{3}.
 	\end{align*}
-\end{hint}
-\end{question}
-
-As you may know, the volume of a pyramid is 
-$(1/3)(\hbox{height})(\hbox{area of base})=(1/3)(20)(400)$, which
+As you may know, the volume of a pyramid is
+$(1/3)(\text{height})(\text{area of base})=(1/3)(20)(400)$, which
 agrees with our answer.
 \end{explanation}
 \end{example}
@@ -159,7 +137,7 @@ solid.
   \begin{axis}[
       xmin=-1, xmax=1,domain=-1:1,
       clip=false,
-      axis lines =center, xlabel=$x$, ylabel=$z$,
+      axis lines =center, xlabel=$x$, ylabel=$y$,
       every axis y label/.style={at=(current axis.above origin),anchor=south},
       every axis x label/.style={at=(current axis.right of origin),anchor=west},
       axis on top,
@@ -265,7 +243,8 @@ Thus the total volume is
 
 
 One easy way to get ``nice'' cross-sections is by rotating a plane
-figure around a line. Below we see $f$ bounded by two vertical lines:
+figure around a line. Below we see a function $f$ bounded by two
+vertical lines:
 \begin{image}
 \begin{tikzpicture}
   \begin{axis}[
@@ -284,8 +263,8 @@ figure around a line. Below we see $f$ bounded by two vertical lines:
 \end{image}
 
 
-Rotating $f$ around the $x$-axis will generate a figure whose
-volume we can compute.
+Rotating $f$ around the $x$-axis will generate a figure whose volume
+we can compute.
 
 
 %% \begin{image}

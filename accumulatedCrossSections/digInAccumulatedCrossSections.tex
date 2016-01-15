@@ -423,21 +423,113 @@ Now let's try a more involved example.
     \end{tikzpicture}
     \end{image}
     The radius of the disk, given any value of $y$ is given by
-    $\answer[given]{(3y)^{1/4}}$.
+    $\answer[given]{(3y)^{1/4}}$. Hence the volume of the
+    infinstesimal disk is
     \[
-    V(y) = \frac{2\pi y^{3/2}}{\sqrt{3}}.
+    \d V = \pi (\answer[given]{(3y)^{1/4}})^2 \d y
     \]
-    
+    summing these all together, via integration we find
+    \begin{align*}
+      \int_0^h \pi (\answer[given]{(3y)^{1/4}})^2 \d y &= \int_0^h \pi\answer[given]{3^{1/2} y^{1/2}} \d y\\
+      &= \eval{\answer[given]{\frac{2\pi y^{3/2}}{\sqrt{3}}}}_0^h\\
+      &= \answer[given]{\frac{2\pi h^{3/2}}{\sqrt{3}}}.
+    \end{align*}
+    Now that we have a formula for volume, we need to see when it is
+    equal to $250$. Write with me
+    \begin{align*}
+      250 &= \frac{2\pi h^{3/2}}{\sqrt{3}},\\
+      \frac{\sqrt{3} \cdot 125}{\pi} &=  h^{3/2},\\
+      \left(\frac{\sqrt{3} \cdot 125}{\pi}\right)^{2/3} &=  h,
+    \end{align*}
+    So we see that we should put our mark at approximately $16.8$
+    centimeters.
   \end{explanation}
-
-
-  
-  
 \end{example}
 
+\section{Washers as cross sections}
 
 
+\subsection{The Washer Method}
 
+Sometimes the ``slabs'' look like disks with holes in them, or
+``washers.'' Let's see an example of this.
+
+\begin{example}
+Find the volume of the object generated when the area between $f(x) =
+x$ and $g(x)=x^2$ is rotated around the $x$-axis:
+\begin{image}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=0, xmax=1,domain=0:1,
+      clip=false,
+      axis lines =center, xlabel=$x$, ylabel=$y$,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+    ] 
+    \addplot [draw=none,fill=fill1,very thick] {x} \closedcycle;
+    \addplot [draw=none, fill=background,very thick] {x^2}\closedcycle;
+
+    \addplot [penColor,very thick] {x};
+    \addplot [penColor2,very thick] {x^2};
+
+    \node at (axis cs:.5,.58) [penColor] {$f$};
+    \node at (axis cs:.5,.2) [penColor2] {$g$};
+    \end{axis}
+\end{tikzpicture}
+\end{image}
+
+\begin{explanation}
+This solid has a ``hole'' in the middle. We can compute the volume by
+subtracting the volume of the hole from the volume enclosed by the
+outer surface of the solid. To do this, let's look at once of the
+``washer'' shaped cross-sections:
+\begin{image}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=0, xmax=1,domain=0:1,
+      clip=false,
+      axis lines =center, xlabel=$x$, ylabel=$y$,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+    ] 
+    \addplot [very thick, penColor] {x};
+    \addplot [very thick,penColor2] {x^2};
+
+    \addplot [very thick,penColor] {-x};
+    \addplot [very thick,penColor2] {-x^2};
+
+    \draw[penColor,very thick,fill=fillp] (axis cs:.48,0) ellipse (5 and 500);
+    \draw[penColor2,very thick,fill=white] (axis cs:.48,0) ellipse (2.5 and 250);
+    
+    \draw[penColor,very thick,fill=fillp] (axis cs:.5,0) ellipse (5 and 500);
+    \draw[penColor2,very thick,fill=white] (axis cs:.5,0) ellipse (2.5 and 250);
+
+    \addplot [very thick,penColor2,domain=.5:1] {x^2};
+    \addplot [very thick,penColor2,domain=.5:1] {-x^2};
+    
+    \draw[penColor,very thick] (axis cs:1,0) ellipse (5 and 1000);
+    
+    
+    \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (axis cs:.47,-.5)--(axis cs:.51,-.5);  
+    \node[anchor=north] at (axis cs:.49,-.6) {$\d x$};
+   
+    \end{axis}
+\end{tikzpicture}
+\end{image}
+Hence we see that 
+\[
+\d V = \left(\answer[given]{\pi x^2 - \pi x^4} \right)\d x. 
+\]
+Thus, the total volume is
+\begin{align*}
+  \int_0^1 \pi x^2-\pi x^4\d x &= \eval{\answer[given]{\pi\left(\frac{x^3}{3}-\frac{x^5}{5}\right)}}_0^1\\
+  &=\pi\left(\frac{1}{3}-\frac{1}{5}\right)\\
+  &=\frac{2\pi}{15}.
+\end{align*}
+\end{explanation}
+\end{example}
 
 
 \section{Revolving around other lines}

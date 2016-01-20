@@ -11,3 +11,9 @@
 *.idx
 *.ilg
 *.ind
+*.4ct
+*.auxlock
+*.html
+*.idv
+*.tmp
+*.xref

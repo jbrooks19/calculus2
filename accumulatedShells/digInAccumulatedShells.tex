@@ -15,7 +15,11 @@ Some volumes of revolution are more easily computed with cylindrical shells.
 \maketitle
 
 
-Consider the region bounded by $f(x)=x+1$ and $g(x)=(x-1)^2$:
+\section{More than one method}
+
+In this section, we will show you a new method for computing volumes
+of solids of revolution.  Consider the following region bounded by
+$f(x)=x+1$ and $g(x)=(x-1)^2$:
 \begin{image}
 \begin{tikzpicture}
   \begin{axis}[
@@ -73,6 +77,10 @@ methods we have used so far. The issue is that there are two
 
     \node at (axis cs:2,3.3) [penColor] {$f$};
     \node at (axis cs:2.5,1.7) [penColor2] {$g$};
+    \node at (axis cs:-2.7,2) {$\d y$};
+
+    \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:-2.4,1.8)--(axis cs:-2.4,2.1);
+    
     \addplot [very thick, penColor4] plot coordinates {(.25,.56) (1.75,.56)};
     \addplot [very thick, penColor4] plot coordinates {(1,2) (2.41,2)};
     
@@ -117,8 +125,8 @@ Substituting in, we find
   \begin{align*}
   =\int_0^1 &\pi(1+\sqrt{y})^2-\answer[given]{\pi(1-\sqrt{y})^2}\d y+
   \int_1^4  \pi(1+\sqrt{y})^2-\answer[given]{\pi(y-1)^2}\d y\\
-  &=\frac{8}{3}\pi + \frac{65}{6}\pi\\
-  &=\answer[given]{\frac{27}{2}\pi}.
+  &=\frac{8\pi}{3} + \frac{65\pi}{6}\\
+  &=\answer[given]{\frac{27\pi}{2}}.
 \end{align*}
 While we have successfully solved this problem, it wasn't easy. Let's
 see another, perhaps easier method.
@@ -127,12 +135,14 @@ see another, perhaps easier method.
 If instead we consider a vertical rectangle of height $f(x)-g(x)$
 (just like we did when we computed areas of regions between curves!)
 and width $\d x$, and we additionally rotate this rectangle around the
-$y$-axis, we get a thin shell:
+$y$-axis, we get a thin ``shell'' or hollow-tube:
 \begin{image}
 \begin{tikzpicture}
   \begin{axis}[
-      xmin=0, xmax=3,domain=0:3,
+      xmin=-3, xmax=3,domain=0:3,
       clip=false,
+      width=4in,
+      height=2in,
       axis lines =center, xlabel=$x$, ylabel=$y$,
       every axis y label/.style={at=(current axis.above origin),anchor=south},
       every axis x label/.style={at=(current axis.right of origin),anchor=west},
@@ -158,6 +168,11 @@ $y$-axis, we get a thin shell:
 
     \node at (axis cs:2,3.3) [penColor] {$f$};
     \node at (axis cs:2.5,1.7) [penColor2] {$g$};
+
+    
+    \node at (axis cs:1.35,3) {$\d x$};
+    \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:1.2,2.6)--(axis cs:1.5,2.6);
+    
     \addplot [very thick, penColor4] plot coordinates {(1.5,2.5) (1.5,.25)};
     \addplot [very thick, penColor4] plot coordinates {(-1.5,2.5) (-1.5,.25)};
     \addplot [very thick, penColor4, dashed] plot coordinates {(1.2,2.5) (1.2,.25)};
@@ -168,9 +183,78 @@ $y$-axis, we get a thin shell:
 %%   ``shell'' indicated.}
 %% \label{figure:shellIndicated}
 \end{image}
+Here the infinitesimal change in volume is:
+\begin{image}
+  \begin{tikzpicture}
+    \node at (0,0) {
+      $\d V = \underbrace{2\pi x} \overbrace{(f(x)- g(x))}\underbrace{\d x}$
+    };
+    \node at (-1,-.7) {\small{circumference}};
+    \node at (.5,.7) {\small{height}};
+    \node at (1.8,-.7) {\small{thickness}};
+  \end{tikzpicture}
+\end{image}
+Integrating $\d V$ will give us our desired volume.
 
-If we add up the volume of such thin shells we will get an
-approximation to the true volume.
+%% What is the volume of such a shell?  Consider the shell at $x$.
+%% Imagine that we cut the shell vertically in one place and ``unroll''
+%% it into a thin, flat sheet. This sheet will be $f(x)-g(x)$ tall, and
+%% $2\pi x$ wide since this is the circumference of the shell before it
+%% was unrolled.  We may now write the integral
+
+
+%% \begin{image}
+%%   \begin{tikzpicture}
+%%     \begin{axis}[
+%%           xmin =0,xmax=4,ymax=5,ymin=-5,
+%%           axis lines=none, xlabel=$x$, ylabel=$y$,
+%%           every axis y label/.style={at=(current axis.above origin),anchor=south},
+%%           every axis x label/.style={at=(current axis.right of origin),anchor=west},
+%%           axis on top,
+%%           width=5in,
+%%           xtick={0,6}, xticklabels={$0$, $20$},
+%%           ytick={0,3},yticklabels={$0$,$20$},
+%%             clip=false,
+%%       ]
+
+            
+%%       %\addplot [draw=penColor, thick] plot coordinates {(-3,-3) (0,0)};
+%%       %\addplot [draw=penColor, thick] plot coordinates {(6,0) (0,0)};
+%%       %\addplot [draw=penColor, thick] plot coordinates {(1.5,3) (3,-3)};
+%%       %\addplot [draw=penColor, thick] plot coordinates {(1.5,3) (0,0)};
+
+%%       %% slab
+%%       \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,2) (1,2) (0,1) (2, 1) (3,2)};
+%%       \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(0,.8) (0,1) (2,1) (2, .8) (0,.8)};
+%%       \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(2,1) (2, .8) (3,1.8) (3,2) (2,1)};
+
+%%       %\addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,1.8) (1,1.8) (0,.8) (2, .8) (3,1.8)};
+%%       %\addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,2) (1,2) (0,1) (2, 1) (3,2)};
+
+
+
+%%       \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (axis cs:0,.8)--(axis cs:2,.8);
+%%       \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (axis cs:2,.8)--(axis cs:3,1.8);
+%%       \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:3,2.05)--(axis cs:3,1.75);
+      
+%%      % \addplot [->] plot coordinates {(0,0) (-4,-4)};
+%%       %\node[anchor=north east] at (axis cs:-4,-4) {$z$};
+
+%%       \node at (axis cs:3.15,1.9) {$\d x$};
+%%       \node at (axis cs:2.8,0.8) {$f(x)-g(x)$};
+%%       \node at (axis cs:1,.4) {$2x\pi$};       
+%%     \end{axis}
+%%   \end{tikzpicture}
+%% \end{image}
+
+\section{Shells around the axes}
+
+
+Let's start by actually doing our motivating example above.
+
+
+\begin{example}
+  Consider the region below bounded by $f(x)=x+1$ and $g(x)=(x-1)^2$:
 \begin{image}
 \begin{tikzpicture}
   \begin{axis}[
@@ -180,93 +264,88 @@ approximation to the true volume.
       every axis y label/.style={at=(current axis.above origin),anchor=south},
       every axis x label/.style={at=(current axis.right of origin),anchor=west},
       axis on top,
-    ] 
-    \addplot [penColor2,very thick] {x+1};
-    \addplot [penColor,very thick] {(x-1)^2};
+    ]
+    \addplot [draw=none,fill=fillp] {x+1}\closedcycle;
+    \addplot [draw=none,fill=white] {(x-1)^2}\closedcycle;
+    \addplot [penColor,very thick] {x+1};
+    \addplot [penColor2,very thick] {(x-1)^2};
 
-    \node at (axis cs:.5,1.7) [penColor2] {$f(x)$};
-    \node at (axis cs:2.5,1.7) [penColor] {$g(x)$};
+    \node at (axis cs:2,3.3) [penColor] {$f$};
+    \node at (axis cs:2.5,1.7) [penColor2] {$g$};
+  \end{axis}
+\end{tikzpicture}
+\end{image}
+  Find the volume of the solid of revolution formed by rotating this
+  region around the $y$-axis.
+  \begin{explanation}
+    We'll solve this problem using accumulated shells. If we draw our shell, we see
+    \begin{image}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=-3, xmax=3,domain=0:3,
+      clip=false,
+      width=4in,
+      height=2in,
+      axis lines =center, xlabel=$x$, ylabel=$y$,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+    ] 
+   
+
+    \addplot [draw=none,fill=fillp!50!white] plot coordinates {(1.5,2.5) (1.5,.25) (-1.5,.25) (-1.5,2.5)};
+    
+    \draw[penColor,very thick,fill=fillp] (axis cs:0,2.5) ellipse (150 and 20);
+    \draw[penColor,very thick,fill=white] (axis cs:0,2.5) ellipse (120 and 10);
+
+
+   \draw[penColor, dashed, fill=fillp!50!white] (axis cs:0,0.25) ellipse (150 and 20);
+   \draw[penColor, dashed,fill=white] (axis cs:0,0.25) ellipse (120 and 10);
+
+
+     \addplot [penColor,very thick,domain=-3:0] {-x+1};
+   \addplot [penColor2,very thick,domain=-3:0] {(-x-1)^2};
+   
+   \addplot [penColor,very thick] {x+1};
+   \addplot [penColor2,very thick] {(x-1)^2};
+
+    \node at (axis cs:2,3.3) [penColor] {$f$};
+    \node at (axis cs:2.5,1.7) [penColor2] {$g$};
+
+    
+    \node at (axis cs:1.35,3) {$\d x$};
+    \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:1.2,2.6)--(axis cs:1.5,2.6);
+    
     \addplot [very thick, penColor4] plot coordinates {(1.5,2.5) (1.5,.25)};
+    \addplot [very thick, penColor4] plot coordinates {(-1.5,2.5) (-1.5,.25)};
+    \addplot [very thick, penColor4, dashed] plot coordinates {(1.2,2.5) (1.2,.25)};
+    \addplot [very thick, penColor4, dashed] plot coordinates {(-1.2,2.5) (-1.2,.25)};
   \end{axis}
 \end{tikzpicture}
 %% \caption{A plot of $f(x) = x+1$ and $g(x) = (x-1)^2$ with the
 %%   ``shell'' indicated.}
 %% \label{figure:shellIndicated}
-\end{image}
+    \end{image}
+    Since the volume of each shell is
+    \[
+    \d V = 2\pi x (f(x) -g(x) ) \d x
+    \]
+    we may write 
+    \begin{align*}
+      \int_{\answer[given]{0}}^{\answer[given]{3}} 2\pi x(f(x)-g(x))\d x &= \int_{\answer[given]{0}}^{\answer[given]{3}} 2\pi x(\answer[given]{x+1}-(x-1)^2)\d x\\
+      &= \eval{\answer[given]{2\pi x^3 -\frac{\pi x^4}{2}}}_{\answer[given]{0}}^{\answer[given]{3}}\\
+      &=\answer[given]{\frac{27\pi}{2}}.
+    \end{align*}
+  \end{explanation}
+\end{example}
 
 
-If instead we consider a typical vertical rectangle, but still rotate
-around the $y$-axis, we get a thin ``shell'' instead of a thin
-``washer''. 
-
-
-
-If we add up the volume of such thin shells we will get an
-approximation to the true volume.
-
-
-What is the volume of such a shell?  Consider the shell at $x$.
-Imagine that we cut the shell vertically in one place and ``unroll''
-it into a thin, flat sheet. This sheet will be $f(x)-g(x)$ tall, and
-$2\pi x$ wide since this is the circumference of the shell before it
-was unrolled.  We may now write the integral
-
-
-\begin{image}
-  \begin{tikzpicture}
-    \begin{axis}[
-          xmin =0,xmax=4,ymax=5,ymin=-5,
-          axis lines=none, xlabel=$x$, ylabel=$y$,
-          every axis y label/.style={at=(current axis.above origin),anchor=south},
-          every axis x label/.style={at=(current axis.right of origin),anchor=west},
-          axis on top,
-          width=5in,
-          xtick={0,6}, xticklabels={$0$, $20$},
-          ytick={0,3},yticklabels={$0$,$20$},
-            clip=false,
-      ]
-
-            
-      %\addplot [draw=penColor, thick] plot coordinates {(-3,-3) (0,0)};
-      %\addplot [draw=penColor, thick] plot coordinates {(6,0) (0,0)};
-      %\addplot [draw=penColor, thick] plot coordinates {(1.5,3) (3,-3)};
-      %\addplot [draw=penColor, thick] plot coordinates {(1.5,3) (0,0)};
-
-      %% slab
-      \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,2) (1,2) (0,1) (2, 1) (3,2)};
-      \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(0,.8) (0,1) (2,1) (2, .8) (0,.8)};
-      \addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(2,1) (2, .8) (3,1.8) (3,2) (2,1)};
-
-      %\addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,1.8) (1,1.8) (0,.8) (2, .8) (3,1.8)};
-      %\addplot [draw=penColor, fill=fillp,very thick] plot coordinates {(3,2) (1,2) (0,1) (2, 1) (3,2)};
-
-
-
-      \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (axis cs:0,.8)--(axis cs:2,.8);
-      \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (axis cs:2,.8)--(axis cs:3,1.8);
-      \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:3,2.05)--(axis cs:3,1.75);
-      
-     % \addplot [->] plot coordinates {(0,0) (-4,-4)};
-      %\node[anchor=north east] at (axis cs:-4,-4) {$z$};
-
-      \node at (axis cs:3.15,1.9) {$\d x$};
-      \node at (axis cs:2.8,0.8) {$f(x)-g(x)$};
-      \node at (axis cs:1,.4) {$2x\pi$};       
-    \end{axis}
-  \end{tikzpicture}
-\end{image}
-
-
-
-$$
-  \int_0^3 2\pi x(f(x)-g(x))\d x=
-  \int_0^3 2\pi x(x+1-(x-1)^2)\d x={27\over2}\pi.
-$$
-Not only does this accomplish the task with only one integral, the
-integral is somewhat easier than those in the previous
-calculation. Things are not always so neat, but it is often the case
+Comparing our work above to our eariler work, we see that using shells
+not only solves the problem with just one integral, we see that the
+integral itself is somewhat easier than those in the previous
+calculation! Things are not always so neat, but it is often the case
 that one of the two methods will be simpler than the other, so it is
-worth considering both before starting to do calculations.
+worth considering both methods.
 
 
 \begin{example} 
@@ -314,6 +393,12 @@ Thus the volume is
 \]
 \end{explanation}
 \end{example}
+
+
+\section{Shells around other lines}
+
+
+
 
 \begin{example}
 	What if we had wanted to rotate the region from the last example about the line $y = -1$ instead of the $x$-axis?

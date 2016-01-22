@@ -2,6 +2,12 @@
 
 \input{../preamble.tex}
 
+\outcome{Understand that we are approximating curves with straight lines.}
+\outcome{Understand the connection between the Pythagorean Theorem and the length of curves.}
+\outcome{Find lengths of curves both in terms of $x$ and $y$.}
+  
+
+
 \title[Dig-In:]{Length of curves}
 
 \begin{document}
@@ -80,12 +86,12 @@ infinitesimal lengths. This means that the length of the curve on the interval $
     };
   \end{tikzpicture}
 \end{image}
-which can be interperted as
+which can be interpreted as
 \begin{quote}
   \textbf{The length of a curve is given by the
     \textcolor{green!70!black!70!blue}{accumulated}
     \textcolor{purple!50!blue!90!black}{length determined by the
-      instantanous horizontal change and the instantaneous vertical
+      instantaneous horizontal change and the instantaneous vertical
       change}.}
 \end{quote}
 Let's see an example:
@@ -127,7 +133,7 @@ them up and estimate them numerically.
     friends, it is not so bad.  You can use a computer algebra system
     (or Wolfram Alpha) to approximate this to two decimal places:
     \[
-    \text{Length} \approx \answer{3.82}.
+    \text{Length} \approx \answer[given]{3.82}.
     \]
   \end{explanation}
 \end{example}
@@ -148,36 +154,38 @@ using the same reasoning as before
     };
   \end{tikzpicture}
 \end{image}
-which \textbf{still} can be interperted as
+which \textbf{still} can be interpreted as
 \begin{quote}
   \textbf{The length of a curve is given by the
     \textcolor{green!70!black!70!blue}{accumulated}
     \textcolor{purple!50!blue!90!black}{length determined by the
-      instantanous horizontal change and the instantaneous vertical
+      instantaneous horizontal change and the instantaneous vertical
       change}.}
 \end{quote}
 \begin{example}
-Find the length of $y = \arcsec(e^x)$ from $x= 0$ to
-$x=\ln(\sqrt{2})$.
-\begin{explanation}
-\[
-\textrm{Length} = \answer{\ln(1+\sqrt{2})}
-\]
-
-  The integral will be easier to compute with respect to $y$.  Solving for $x$, we have $x = \answer{\ln(\sec(y))}$.  $y$ ranges from $0$ to $\answer{\frac{\pi}{4}}$ 
-
-	\[
-	\frac{\d x}{\d y} = \answer{\tan(y)}
-	\]
-
-	\begin{align*}
-		\textrm{Length} &= \int_0^{\frac{\pi}{4}} \sqrt{1+\left( \tan(y) \right)} \d y\\
-			&=\int_0^{\frac{\pi}{4}} \sqrt{1+\tan^2(y)}\d y\\
-			&=\int_0^{\frac{\pi}{4}} \sqrt{\sec^2(y))}\d y\\
-			&=\int_0^{\frac{\pi}{4}} \sec(y) \d y\\
-			&=\eval{\ln(\sec(x)+\tan(x))}_0^\frac{\pi}{4}\\
-			&=\ln(1+\sqrt(2))
-	\end{align*}
-\end{explanation}
+  Find the length of $y = \arcsec(e^x)$ from $x= 0$ to
+  $x=\ln(\sqrt{2})$.
+  \begin{explanation}
+    This problem will be much easier if we work with respect to $y$. Write with me
+    \begin{align*}
+      y &= \arcsec(e^x)\\
+      \sec(y) &= e^x\\
+      \ln(\sec(y)) &= x.
+    \end{align*}
+    The limits of integration are
+    \begin{align*}
+      \arcsec(e^0) &= \answer[given]{0}\\
+      \arcsec(e^{\ln(\sqrt{2})}) &= \answer[given]{\frac{\pi}{4}}
+    \end{align*}
+    So now write with me:
+    \begin{align*}
+      \text{Length} &= \int_0^{\frac{\pi}{4}} \sqrt{1+\left( \answer[given]{\tan(y)} \right)^2} \d y\\
+      &=\int_0^{\frac{\pi}{4}} \answer[given]{\sqrt{1+\tan^2(y)}}\d y\\
+      &=\int_0^{\frac{\pi}{4}} \answer[given]{\sqrt{\sec^2(y)}}\d y\\
+      &=\int_0^{\frac{\pi}{4}} \answer[given]{\sec(y)} \d y\\
+      &=\eval{\ln(\sec(x)+\tan(x))}_0^\frac{\pi}{4}\\
+      &=\ln(\answer[given]{1+\sqrt{2}}).
+    \end{align*}
+  \end{explanation}
 \end{example}
 \end{document}

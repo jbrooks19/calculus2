@@ -6,17 +6,19 @@
 
 \begin{document}
 \begin{abstract}
-SOMETHING
+We can integrate to find the length of curves
 \end{abstract}
 \maketitle
 
+Another geometric application of the integral is to find the
+length of a curve.
 
 
+We already know how to compute one simple arc length, that of a line
+segment. If the endpoints are $(x_0,y_0)$ and $(x_1,y_1)$ then the
+length of the segment is the distance between the points,
+$\sqrt{(x_1-x_0)^2+(y_1-y_0)^2}$.
 
-Here is another geometric application of the integral, finding the
-length of a portion of a curve. As usual, we need to think about how
-we might approximate the length, and turn the approximation into an
-integral.
 
 \begin{image}
 \begin{tikzpicture}
@@ -39,114 +41,136 @@ integral.
     \node at (axis cs:4.5,3.2) [penColor,anchor=east] {$\sqrt{(x_1-x_0)^2+(y_1-y_0)^2}$};
   \end{axis}
 \end{tikzpicture}
-%\caption{The length of a line segment.}
-%\label{fig:length of a line segment}
 \end{image}
 
-
-We already know how to compute one simple arc length, that of a line
-segment. If the endpoints are $(x_0,y_0)$ and $(x_1,y_1)$ then the
-length of the segment is the distance between the points,
-$\sqrt{(x_1-x_0)^2+(y_1-y_0)^2}$, see Figure~\ref{fig:length of a line segment}.
-
-Now if $f(x)$ is ``nice'' (say, differentiable) it appears that we can
-approximate the length of a portion of the curve with line segments,
-and that as the number of segments increases, and their lengths
-decrease, the sum of the lengths of the line segments will approach
-the true arc length, see Figure~\ref{fig:approximating arc length}.
+Now if $f(x)$ is differentiable, we can think of its graph as being composed of infinitely many infinitesimal line segments with run $\d x$, rise $\d y$, and length $\d s$.
 
 \begin{image}
 \begin{tikzpicture}
-	\begin{axis}[
-            domain=-3:2,
-            ymax=5,
-            ymin=-5,
-            %samples=100,
-            axis lines =middle, xlabel=$x$, ylabel=$y$,
-            every axis y label/.style={at=(current axis.above origin),anchor=south},
-            every axis x label/.style={at=(current axis.right of origin),anchor=west}
-          ]
-          \addplot [dashed, textColor, smooth] {-(x^4)/4 - (x^3)/3 +x^2};
-          \addplot [very thick, penColor] plot coordinates {
-            (-3,-9/4) (-2,8/3) (-1,13/12) (0,0) (1,5/12) (2,-8/3)
-          };
-          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(-3,-9/4) (-2,8/3) (-1,13/12) (0,0) (1,5/12) (2,-8/3)};  %% closed hole
-
-          \node at (axis cs:-1.3,2) [anchor=west,textColor] {$f(x)$};  
-        \end{axis}
+  \begin{axis}[
+      xmin=0, xmax=5,domain=0:5, clip=false, axis lines =center,
+      xlabel=$x$, ylabel=$y$,
+      ticks=none, every axis y label/.style={at=(current
+        axis.above origin),anchor=south}, every axis x
+      label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top, ]
+    \addplot [penColor,smooth]{16-19*x+8*x^2-x^3};
+    \addplot [very thick, penColor2] plot coordinates {(2.4,2.656) (2.8,3.586) (2.8,2.656) (2.4,2.656)};
+    \node at (axis cs:2.65,2.2) {$\d x$};
+    \node at (axis cs:2.95,3.121) {$\d y$};
+    \node at (axis cs:2.6,3.75) {$\d s$};
+  \end{axis}
 \end{tikzpicture}
-%\caption{Approximating the arc length of the curve defined by $f(x)$.}
-%\label{fig:approximating arc length}
 \end{image}
 
-Now we need to write a formula for the sum of the lengths of the line
-segments, in a form that we know becomes an integral in the limit.  So
-we suppose we have divided the interval $[a,b]$ into $n$ subintervals
-as usual, each with length $h=(b-a)/n$, and endpoints 
-\[
-a=x_0, x_1, x_2, \dots, x_n=b.
-\]
-The length of a typical line segment, joining $(x_i,f(x_i))$ to $
-(x_{i+1},f(x_{i+1}))$, is 
-\[
-\sqrt{h^2 +(f(x_{i+1})-f(x_i))^2}.
-\]
-By the Mean Value Theorem, Theorem~\ref{thm:mvt}, there is a number $c_i$
-in $(x_i,x_{i+1})$ such that 
-\[
-f'(c_i)=\frac{f(x_{i+1})-f(x_i)}{x_{i+1}-x_i} = \frac{f(x_{i+1})-f(x_i)}{h}.
-\]
-so $f'(c_i)h=f(x_{i+1})-f(x_i).$ Hence, the length of the line segment
-can be written as
-$$
-  \sqrt{h^2 + (f'(c_i))^2h^2}=
-  h\sqrt{1+(f'(c_i))^2}.
-$$ 
-The arc length is then
-\[
-\lim_{n\to\infty}\sum_{i=0}^{n-1} h\sqrt{1+(f'(c_i))^2} 
-\]
-This is a Riemann sum! Now we may take the limit as the number of
-$x_i$'s chosen goes to infinity and $h$ goes to zero to obtain the
-integral
-\[
-  \int_a^b \sqrt{1+(f'(x))^2}\d x.
-\]
-Note that the sum looks a bit different than others we have
-encountered, because the approximation contains a $c_i$ instead of an
-$x_i$. In the past we have always used left endpoints (namely, $x_i$)
-to get a representative value of $f$ on $[x_i,x_{i+1}]$; now we are
-using a different point, but the principle is the same.
+By the Pythagorean theorem, we have
 
-To summarize, to compute the length of a curve on the interval
-$[a,b]$, we compute the integral
-$$\int_a^b \sqrt{1+(f'(x))^2}\d x.$$ 
-Unfortunately, integrals of this form are typically difficult or
-impossible to compute exactly, because usually none of our methods for
-finding antiderivatives will work. In practice this means that the
-integral will usually have to be approximated.
+\begin{align*}
+	\left( \d s \right)^2 &= \left( \d x \right)^2 + \left( \d y \right)^2\\
+	\left( \d s \right)^2 &= \left( 1 + \left( \frac{\d y}{\d x} \right)^2 \right) \left( \d x\right)^2\\
+	\left( \d s \right)^2 &= \left( 1 + \left( f'(x) \right)^2 \right) \left( \d x\right)^2\\
+	 \d s &= \sqrt{1 + \left( f'(x) \right)^2}\d x
+\end{align*}
 
+So, to find the length of a curve, we should accumulate these infinitesimal lengths.
 
-\begin{example} Let $f(x) = \sqrt{r^2-x^2}$, the upper half circle of radius
-$r$. The length of this curve is half the circumference, namely $\pi
-r$. Let's compute this with the arc length formula.
-The derivative $f'$ is $-x/\sqrt{r^2-x^2}$ so the integral is
-$$
-  \int_{-r}^r \sqrt{1+{x^2\over r^2-x^2}}\d x
-  =\int_{-r}^r \sqrt{r^2\over r^2-x^2}\d x
-  =r\int_{-r}^r \sqrt{1\over r^2-x^2}\d x.
-$$
-Using a trigonometric substitution, we find the antiderivative, namely
-$\arcsin(x/r)$. Notice that the integral is improper at both
-endpoints, as the function $\sqrt{1/(r^2-x^2)}$ is undefined when
-$x=\pm r$. So we need to compute
-$$
-  \lim_{D\to-r^+}\int_D^0  \sqrt{1\over r^2-x^2}\d x +
-  \lim_{D\to r^-}\int_0^D  \sqrt{1\over r^2-x^2}\d x.
-$$
-This is not difficult, and has value $\pi$, so the original integral,
-with the extra $r$ in front, has value $\pi r$ as expected.
+\begin{example}
+	Find the length of $y = x^{\frac{3}{2}}$ from $x=0$ to $x=2$.
+	
+	\[
+		\textrm{Length} = \answer{\frac{13\sqrt{13} - 8}{27}}
+	\]
+	
+	\begin{hint}
+		\[
+		\textrm{Length} = \int_0^2 \sqrt{1+\left( \frac{\d y}{ \d x}\right)^2} \d x
+		\]
+	\end{hint}
+	
+	\begin{hint}	
+		For this curve, $\frac{\d y}{\d x} = \answer{\frac{3}{2} x^{\frac{1}{2}}}$
+	\end{hint}
+	
+	\begin{hint}
+	\begin{align*}
+		\int_0^2 \sqrt{1+\left( \frac{\d y}{ \d x}\right)^2} \d x &= \int_0^2 \sqrt{1+\left( \frac{3}{2} x^{\frac{1}{2}}\right)^2} \d x\\
+		&= \int_0^2 \sqrt{1+\frac{9}{4} x} \d x
+	\end{align*}
+	\end{hint}
+	\begin{hint}
+		Use the substitution $u = 1+\frac{9}{4}x$ to solve this integral
+	\end{hint}
+	\begin{hint}
+		\begin{align*}
+		 \int_0^2 \sqrt{1+\frac{9}{4} x} \d x &= \frac{4}{9} \int_1^{\frac{13}{4}} u^\frac{1}{2} \d u\\
+		 		&= \frac{4}{9} \left(\frac{2}{3}\right) \eval{u^{\frac{3}{2}}}_1^{\frac{13}{4}}\\
+				&=\frac{8}{27} ((\frac{13}{4})^\frac{3}{2} - 1)\\
+				&=\frac{13\sqrt{13} - 8}{27}
+		\end{align*}
+	\end{hint}
 \end{example}
 
 
+Most of the integrands arising in length calculations do not have elementary antiderivatives, so oftentimes you will only be able to set them up and estimate them numerically.
+
+\begin{example}
+	Estimate the length of the curve $y = \sin(x)$ from $x=0$ to $x = \pi$.  Truncate your answer at the hundredths place.
+		
+	\[
+	\textrm{Length} \approx \answer{3.82}
+	\]
+	
+\begin{hint}
+		\[
+		\textrm{Length} = \int_0^\pi \sqrt{1+\left( \frac{\d y}{ \d x}\right)^2} \d x
+		\]
+	\end{hint}
+	
+	\begin{hint}	
+		For this curve, $\frac{\d y}{\d x} = \answer{\cos(x)}$
+	\end{hint}
+	
+	\begin{hint}
+		\[
+		\textrm{Length} = \int_0^\pi \sqrt{1+\cos^2(x)} \d x
+		\]
+		
+		You can use a computer algebra system (or wolfram alpha) to approximate this as $3.8202$, which gets truncated to $3.82$.
+	\end{hint}
+\end{example}
+
+Just like it was sometimes advantageous to integrate with respect to $y$ in our area and volume calculations, it can also help us sometimes in arclength calculations.  If you look back at how we calculated $\d s$, you will see that we basically used the pythagorean theorem, and pulled out a $\d x$.  Pulling out a $\d y$ instead yields
+
+\[
+\d s = \sqrt{1+\frac{\d x}{\d y}} \d y
+\]
+
+\begin{example}
+Find the length of $y = \arcsec(e^x)$ from $x= 0$ to $x=\ln(\sqrt{2})$.
+
+\[
+\textrm{Length} = \answer{\ln(1+\sqrt{2})}
+\]
+
+\begin{hint}
+	The integral will be easier to compute with respect to $y$.  Solving for $x$, we have $x = \answer{\ln(\sec(y))}$.  $y$ ranges from $0$ to $\answer{\frac{\pi}{4}}$ 
+\end{hint}
+
+\begin{hint}
+	\[
+	\frac{\d x}{\d y} = \answer{\tan(y)}
+	\]
+\end{hint}
+
+\begin{hint}
+	\begin{align*}
+		\textrm{Length} &= \int_0^{\frac{\pi}{4}} \sqrt{1+\left( \tan(y) \right)} \d y\\
+			&=\int_0^{\frac{\pi}{4}} \sqrt{1+\tan^2(y)}\d y\\
+			&=\int_0^{\frac{\pi}{4}} \sqrt{\sec^2(y))}\d y\\
+			&=\int_0^{\frac{\pi}{4}} \sec(y) \d y\\
+			&=\eval{\ln(\sec(x)+\tan(x))}_0^\frac{\pi}{4}\\
+			&=\ln(1+\sqrt(2))
+	\end{align*}
+\end{hint}
+\end{example}
 \end{document}

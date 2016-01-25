@@ -102,25 +102,29 @@ integrals:
     $f$, $g$ and the line $y=1$, rotated about the $y$-axis.
 \end{itemize}
 Since we are rotating around the $y$-axis, we should look at $f^{-1}$
-and $g^{-1}$. Write with me:
-\[
-f^{-1}(y) = \answer[given]{y-1}
-\]
-on the other hand $g$ is \textbf{not} \index{one-to-one}one-to-one, so
-we cannot invert it on the entire domain. Nevertheless, if we restrict
-the domain of $g$ we may write two separate functions
-\[
-g^{-1}_1(y) = \answer[given]{1-\sqrt{y}}\qquad\text{when $0<x<1$}
-\]
-and
-\[
-g^{-1}_2(y) = \answer[given]{1+\sqrt{y}}\qquad\text{when $1<x<3$}.
-\]
+and $g^{-1}$.
+\begin{explanation}
+  Write with me:
+  \[
+  f^{-1}(y) = \answer[given]{y-1}
+  \]
+  On the other hand $g$ is \textbf{not} \index{one-to-one}one-to-one, so
+  we cannot invert it on the entire domain. Nevertheless, if we restrict
+  the domain of $g$ we may write two separate functions
+  \[
+  g^{-1}_1(y) = \answer[given]{1-\sqrt{y}}\qquad\text{when $0<x<1$}
+  \]
+  and
+  \[
+  g^{-1}_2(y) = \answer[given]{1+\sqrt{y}}\qquad\text{when $1<x<3$}.
+  \]
+\end{explanation}
 With this in mind, we can compute our volume with:
 \begin{align*}
   \int_0^1 &\pi(g^{-1}_2(y))^2-\pi(g_1^{-1}(y))^2\d y\\
   &+ \int_1^4\pi(g^{-1}_2(y))^2-\pi(f^{-1}(y))^2\d y
 \end{align*}
+\begin{explanation}
 Substituting in, we find
   \begin{align*}
     =\int_0^1 &\pi(1+\sqrt{y})^2-\answer[given]{\pi(1-\sqrt{y})^2}\d y\\
@@ -130,7 +134,8 @@ Substituting in, we find
   \begin{align*}
   &=\frac{8\pi}{3} + \frac{65\pi}{6}\\
   &=\answer[given]{\frac{27\pi}{2}}.
-\end{align*}
+  \end{align*}
+\end{explanation}
 While we have successfully solved this problem, it wasn't easy. Let's
 see another, perhaps easier method to solve this problem.  If instead
 we consider a vertical rectangle of height $f(x)-g(x)$ (just like we

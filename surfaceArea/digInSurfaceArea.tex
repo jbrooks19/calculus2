@@ -4,6 +4,13 @@
 
 \title[Dig-In:]{Surface area}
 
+\outcome{Know the definition of a frustum.}
+\outcome{Know how to compute the surface area of a frustum.}
+\outcome{Set-up an integral to compute the area of a surface of revolution in terms of $x$.}
+\outcome{Set-up an integral to compute the area of a surface of revolution in terms of $y$.}
+\outcome{Compute the area of a surface of revolution.}
+
+
 \begin{document}
 \begin{abstract}
 We compute surface area.
@@ -46,7 +53,7 @@ argument, we have to begin by computing the area of a `lamp shade' or
 \end{definition}
 
 And of course, this writer can think of nothing more interesting than
-the area of a frustum.
+the area of a frustum:
 
 \begin{theorem}
   The surface area of the frustum; meaning the lateral sides, not the top nor the bottom;
@@ -100,7 +107,7 @@ the area of a frustum.
     \item $h_{n}$ denote the height of each trapezoid,
     \item $b_{n}$ denote the length of the bottom of each trapezoid,
     \end{itemize}
-    then using basic geometry we can show that each of the trapezoids
+    then using basic geometry, we can show that each of the trapezoids
     %% \begin{image}
     %%   \begin{tikzpicture}
     %%     \draw[penColor,very thick] (0,0) -- (1,2) -- (3,2) -- (4,0) -- (0,0);
@@ -142,13 +149,13 @@ the area of a frustum.
     \end{image}
     have area
     \[
-    h_{n}\cdot \left(  \frac{t_{n}+b_n}{2}\right).
+    \left(  \frac{t_{n}+b_n}{2}\right)\cdot h_n.
     \]
     The area of the frustum approximated by the sum of these $n$
     trapezoids, so the area of the frustum is approximated by
     \[
-    n\cdot h_n\cdot\left(\frac{t_{n}+b_n}{2}\right)
-    =h_n\cdot \left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right).
+    n\cdot\left(\frac{t_{n}+b_n}{2}\right)\cdot h_n
+    =\left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right)\cdot h_n.
     \]
     As $n$ goes to infinity, where $n$ is the number of trapezoids,
     \begin{image}
@@ -182,12 +189,12 @@ the area of a frustum.
     \end{image}
     Hence,
     \[
-    \lim_{n\to \infty} \left(h_n\cdot \left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right)\right) = \text{area of the frustum}
+    \lim_{n\to \infty} \left(\left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right)\cdot h_n\right) = \text{area of the frustum.}
     \]
     However, if
     \begin{itemize}
     \item $c$ is the circumference of the top circle,
-    \item $s$ is the slant height of the collar as shown in the above
+    \item $s$ is the slant height of the frustum as shown in the above
       figure, and 
     \item $C$ is the circumference of the bottom circle,    
     \end{itemize}
@@ -199,15 +206,15 @@ the area of a frustum.
     \end{align*}
     and by way of limit laws\index{limit laws} we find
     \[
-    \lim_{n\to \infty} \left(h_n\cdot \left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right)\right) = s\cdot \frac{c + C}{2}.
+    \lim_{n\to \infty} \left(\left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right)\cdot h_n\right) = \frac{c + C}{2}\cdot s.
     \]
-    Letting
+    Now, letting
     \begin{itemize}
-    \item $r$ be the radius of the circle defining the top of the collar,
-    \item $s$ be the slant height of the collar, and
-    \item $R$ be the radius of the circle defining the base of the collar,
+    \item $r$ be the radius of the circle defining the top of the frustum,
+    \item $s$ be the slant height of the frustum, and
+    \item $R$ be the radius of the circle defining the base of the frustum,
     \end{itemize}
-    We see that 
+    we see that
     \begin{align*}
       \text{area of frustum}  &= s\cdot \frac{c + C}{2} \\
       &= s\cdot \frac{2\pi r + 2\pi R}{2}\\
@@ -218,13 +225,11 @@ the area of a frustum.
 Now we are ready to compute the area of a surface of revolution.
 
 \section{The area of a surface of revolution}
+\index{area!surface of revolution}
 
-From our work above, we know that the area of a frustum is given by
-\[
-2\pi \cdot \frac{r+R}{2}\cdot s
-\]
-now let's consider a function with a continuous derivative, and the
-surface of revolution formed by this curve by rotating around the $x$-axis:
+Let's consider a function $f$ with a continuous derivative, and the
+surface of revolution formed by this curve by rotating around the
+$x$-axis:
 \begin{image}
 \begin{tikzpicture}
   \begin{axis}[
@@ -275,81 +280,166 @@ and have seen that
 \]
 and that as $\d x \to 0$, $f(x+\d x) \to f(x)$, hence
 \[
-\d A = 2\pi f(x) \sqrt{1+(f'(x))^2}\d x
+\d A = 2\pi f(x) \sqrt{1+(f'(x))^2}\d x.
+\]
+The upshot of all this work is that if $f$ is differentiable on an
+open interval containing $[a,b]$ where $f'$ is also continuous on
+$[a,b]$, then the area of the surface of revolution formed by
+revolving the graph of $y=f(x)$, where $f(x)\ge 0$, about the $x$-axis
+is
+\[
+\text{Area} = \int_a^b 2\pi f(x)\sqrt{1+f'(x)^2}\d x.
 \]
 
 
-%\keyidea{idea:surface_area}{Surface Area of a Solid of Revolution}
-Let $f$ be differentiable on an open interval containing $[a,b]$ where
-$f'$ is also continuous on $[a,b]$.
-\index{integration!surface area}\index{surface area!solid of revolution}
-\begin{enumerate}
-\item The surface area of the solid formed by revolving the graph of
-  $y=f(x)$, where $f(x)\geq0$, about the $x$-axis is
-  \[
-  \text{Surface Area} = 2\pi\int_a^b f(x)\sqrt{1+f'(x)^2}\d x.
-  \]
-\item The surface area of the solid formed by revolving the graph of
-  $y=f(x)$ about the $y$-axis, where $a,b\ge 0$, is
-  \[
-  \text{Surface Area} = 2\pi\int_a^b x\sqrt{1+f'(x)^2}\d x.
-  \]
-\end{enumerate}
-
-
-(When revolving $y=f(x)$ about the $y$-axis, the radii of the
-resulting frustum are $x_i$ and $x_{i+1}$; their average value is
-simply the midpoint of the interval. In the limit, this midpoint is
-just $x$. This gives the second part of Key Idea
-\ref{idea:surface_area}.)
-
 \begin{example}
-Find the surface area of the solid formed by revolving $y=\sin x$ on
-$[0,\pi]$ around the $x$-axis, as shown in Figure \ref{fig:sa1}.
-Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.  The setup is
-relatively straightforward. Using Key Idea \ref{idea:surface_area}, we
-have the surface area $SA$ is:
-\begin{align*}
-SA  &=	2\pi\int_0^\pi \sin x\sqrt{1+\cos^2x}\d x \\
-		&=	-2\pi\frac12\left.\left(\sinh^{-1}(\cos x)+\cos x\sqrt{1+\cos^2x}\right)\right|_0^\pi \\
-		&= 2\pi\left(\sqrt{2}+\sinh^{-1} 1\right) \\
-		&\approx 14.42\ \text{units}^2.
-\end{align*}
-The integration step above is nontrivial, utilizing an integration method called Trigonometric Substitution. 
-
-It is interesting to see that the surface area of a solid, whose shape is defined by a trigonometric function, involves both a square root and an inverse hyperbolic trigonometric function.
+  Consider the surface of revolution found by revolving $f(x) =
+  \sqrt{x}$ around the $x$-axis. Find its area on the interval
+  $[0,1]$.
+  \begin{explanation}
+    Let's look at a picture, with our infitesimal frustrum added:
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-.5, xmax=1.5,
+            domain=0:1,
+            ymin=-1.5, ymax=1.5,
+            clip=false,
+            axis lines =center,
+            xlabel=$x$, ylabel=$y$, every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            axis on top,
+          ]
+          \addplot [fill=fill1!50!white,draw=none,domain=.4:.6] {sqrt(x)} \closedcycle;
+          \addplot [fill=fill1!50!white,draw=none,domain=.4:.6] {-sqrt(x)} \closedcycle;
+          
+          \draw[penColor,very thick,fill=fill1!20!white] (axis cs:.4,0) ellipse (7 and 63);
+          %\draw[penColor,very thick,fill=fill1] (axis cs:2.5,0) ellipse (20 and 287.5);
+          \draw[penColor,very thick,dashed] (axis cs: .6,-.77) arc (270:90:7 and 77);
+          \draw[penColor,very thick,fill=fill1!50!white] (axis cs: .6,-.77) arc (270:450:7 and 77);
+          
+          \addplot [penColor,very thick,smooth,samples=100]{sqrt(x)};
+          \addplot [penColor,very thick,smooth,samples=100]{-sqrt(x)};
+          
+          \addplot[dashed,->] plot coordinates {(.4,.63) (.6,.63)};
+          \addplot[dashed,->] plot coordinates {(.6,.63) (.6,.77)};
+          \addplot[->,ultra thick, penColor2] plot coordinates {(.4,.63) (.6,.77)};
+          
+          \node[anchor=north] at (axis cs:.5,.63) {$\d x$};
+          %\node[anchor=west] at (axis cs:2.5,2.4375) {$\d y$};
+          \node[anchor=south] at (axis cs:.5,.7) {$\d s$};
+          
+          \addplot[dashed] plot coordinates {(.6,0) (.6,.77)};
+          \addplot[dashed] plot coordinates {(.4,0) (.4,.63)};
+          
+          \node[penColor] at (axis cs:.8,1) {$f$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
+    Write with me:
+    \[
+    f'(x) = \frac{x^{-1/2}}{2}
+    \]
+    So
+    \begin{align*}
+      \text{Area} &= \int_0^1 2\pi \sqrt{x} \sqrt{1 + \left(\frac{x^{-1/2}}{2}\right)^2} \d x\\
+      &= \int_0^1 2\pi \sqrt{x} \sqrt{1 + \frac{1}{4x}} \d x\\
+      &= \int_0^1 2\pi \sqrt{x+\frac{1}{4}} \d x\\
+      &= \eval{\frac{4\pi}{3}(x+1/4)^{3/2}}_0^1\\
+      &= \frac{4\pi}{3}(1+1/4)^{3/2}  - \frac{4\pi}{3}(1/4)^{3/2}.
+    \end{align*}
+  \end{explanation}
 \end{example}
 
-\begin{example}
-Find the surface area of the solid formed by revolving the curve
-$y=x^2$ on $[0,1]$ about:
-		\begin{enumerate}
-		\item		the $x$-axis
-		\item		the $y$-axis.
-		\end{enumerate}
-                Like the integral in Example \ref{ex_sa1}, this requires Trigonometric Substitution.
-\begin{enumerate}
-	\item		The integral is straightforward to setup:
-	\begin{align*}
-	SA &= 2\pi\int_0^1 x^2\sqrt{1+(2x)^2}\d x\\
-		&= \left.\frac{\pi}{32}\left(2(8x^3+x)\sqrt{1+4x^2}-\sinh^{-1}(2x)\right)\right|_0^1\\
-		&=\frac{\pi}{32}\left(18\sqrt{5}-\sinh^{-1}2\right)\\
-		&\approx 3.81\ \text{units}^2.
-	\end{align*}
-	The solid formed by revolving $y=x^2$ around the $x$-axis is graphed in Figure \ref{fig:sa2} (a).
-	
-	\item	 Since we are revolving around the $y$-axis, the ``radius'' of the solid is not $f(x)$ but rather $x$. Thus the integral to compute the surface area is: This integral can be solved using substitution. Set $u=1+4x^2$; the new bounds are $u=1$ to $u=5$. We then have 
-	\begin{align*}
-	SA &= 2\pi\int_0^1x\sqrt{1+(2x)^2}\d x.
-		&=	\frac{\pi}4\int_1^5 \sqrt{u}\d u \\
-		&= \left.\frac{\pi}{4}\frac23 u^{3/2}\right|_1^5\\
-		&= \frac{\pi}6\left(5\sqrt{5}-1\right)\\
-		&\approx 5.33\ \text{units}^2.
-	\end{align*}
- The solid formed by revolving $y=x^2$ about the $y$-axis is graphed in Figure \ref{fig:sa2} (b).	
-\end{enumerate}
 
+On the other hand, the surface area of the solid formed by revolving
+the graph of $y=f(x)$ about the $y$-axis, where $a,b\ge 0$, is
+\[
+\text{Area} = \int_a^b 2\pi x\sqrt{1+f'(x)^2}\d x.
+\]
+Here the ``radius'' of the frustum is $x$, rather than $f(x)$. Let's
+see an example:
+
+\begin{example}
+  Consider the surface of revolution found by revolving $f(x) = x^2$
+  around the $y$-axis. Find its area on the interval when $0\le x\le
+  1$.
+  \begin{explanation}
+    Let's look at a picture, with our infitesimal frustrum added:
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-1.5, xmax=1.5,
+            domain=-1:1,
+            ymin=-.5, ymax=1.5,
+            clip=false,
+            axis lines =center,
+            xlabel=$x$, ylabel=$y$, every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            axis on top,
+          ]
+          \addplot [fill=fill1!50!white,draw=none,domain=-.77:.77] {.6} \closedcycle;
+          \addplot [fill=white,draw=none,domain=-.77:.77] {.4} \closedcycle;
+          \addplot [fill=white,draw=none,domain=-.77:.77] {x^2} \closedcycle;
+          
+          \draw[penColor,very thick,fill=fill1!20!white] (axis cs: 0,.4) ellipse (63 and 7);
+          %\draw[penColor,very thick,fill=fill1] (axis cs:2.5,0) ellipse (20 and 287.5);
+          \draw[penColor,very thick,fill=fill1!50!white] (axis cs:.77,.6) arc (0:180:77 and 7);
+          \draw[penColor,very thick,dashed,fill=fill1!50!white] (axis cs: .77,.6) arc (360:180:77 and 7);
+          
+          \addplot [penColor,very thick,smooth]{x^2};
+                    
+          \addplot[dashed,->] plot coordinates {(.63,.4) (.63,.6)};
+          \addplot[dashed,->] plot coordinates {(.63,.6) (.77,.6)};
+          \addplot[->,ultra thick, penColor2] plot coordinates {(.63,.4) (.77,.6)};
+          
+          \node[anchor=south] at (axis cs:.7 ,.63) {$\d x$};
+          %\node[anchor=west] at (axis cs:2.5,2.4375) {$\d y$};
+          \node[anchor=west] at (axis cs:.7,.5) {$\d s$};
+          
+          \addplot[dashed] plot coordinates {(0,.6) (.77,.6)};
+          \addplot[dashed] plot coordinates {(0,.4) (.63,.4)};
+          
+          \node[penColor] at (axis cs:.8,1) {$f$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
+    Write with me:
+    \[
+    f'(x) = \frac{x^{-1/2}}{2}
+    \]
+    So
+    \begin{align*}
+      \text{Area} &= \int_0^1 2\pi x \sqrt{1 + \left(2x\right)^2} \d x\\
+      &= \int_0^1 2\pi x \sqrt{1 + 4x^2} \d x\\
+      &= \eval{\frac{\pi}{6}(1+4x^2)^{3/2}}\\
+      &= \frac{\pi}{6}(5)^{3/2}  - \frac{\pi}{6}.
+    \end{align*}
+  \end{explanation}
 \end{example}
+
+
+\begin{question}
+  The final answers in the previous two examples are:
+  \begin{multipleChoice}
+    \choice[correct]{equal}
+    \choice{not equal}
+  \end{multipleChoice}
+  \begin{feedback}
+    Since they are computing the same surface area, they are necessarily equal.
+  \end{feedback}
+\end{question}
+
+
+
+
+
+
+
+
+
+
+  
 
 
 
@@ -368,4 +458,11 @@ $y=x^2$ on $[0,1]$ about:
     &=4\pi r^2
   \end{align*}
 \end{example}
+
+
+
+
+
+
+
 \end{document}

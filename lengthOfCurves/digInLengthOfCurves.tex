@@ -62,8 +62,8 @@ $\d x$, rise $\d y$, and length $\d s$.
       axis on top, ]
     \addplot [very thick, penColor,smooth]{16-19*x+8*x^2-x^3};
     \addplot [ultra thick, penColor2,->] plot coordinates {(2.4,2.656) (2.8,3.586)};
-    \addplot [very thick, ->, dashed,] plot coordinates {(2.8,2.656) (2.8,3.586)};
-    \addplot [very thick, ->, dashed,] plot coordinates {(2.4,2.656) (2.8,2.656)};
+    \addplot [->, dashed,] plot coordinates {(2.8,2.656) (2.8,3.586)};
+    \addplot [->, dashed,] plot coordinates {(2.4,2.656) (2.8,2.656)};
     \node at (axis cs:2.65,2.3) {$\d x$};
     \node at (axis cs:2.85,3.121) {$\d y$};
     \node at (axis cs:2.6,3.45) {$\d s$};
@@ -78,7 +78,8 @@ By the \index{Pythagorean Theorem} Pythagorean Theorem, we have
 	 \d s &= \sqrt{1 + \left( f'(x) \right)^2}\d x
 \end{align*}
 So, to find the length of a curve, we should accumulate these
-infinitesimal lengths. This means that the length of the curve on the interval $[a,b]$ is given by
+infinitesimal lengths. This means that the length of the curve on the
+interval $[a,b]$ is given by
 \begin{image}
   \begin{tikzpicture}[scale=2,every node/.style={transform shape}]
     \node at (0,0) {
@@ -94,6 +95,13 @@ which can be interpreted as
       instantaneous horizontal change and the instantaneous vertical
       change}.}
 \end{quote}
+
+\begin{warning}
+  In order to be sure that our expression above actually computes the
+  length, we need to also have the condition that $f'(x)$ is
+  continuous on the (open) interval that we are integrating over.
+\end{warning}
+
 Let's see an example:
 \begin{example}%% From guichard
   Find the length of $y = x^{\frac{3}{2}}$ from $x=0$ to $x=2$.
@@ -162,6 +170,13 @@ which \textbf{still} can be interpreted as
       instantaneous horizontal change and the instantaneous vertical
       change}.}
 \end{quote}
+
+\begin{warning}
+  In order to be sure that our expression above actually computes the
+  length, we need to also have the condition that $\dd[f^{-1}(y)]{y}$ is
+  continuous on the (open) interval that we are integrating over.
+\end{warning}
+
 \begin{example}
   Find the length of $y = \arcsec(e^x)$ from $x= 0$ to
   $x=\ln(\sqrt{2})$.

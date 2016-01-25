@@ -16,9 +16,11 @@ We have already seen how a curve $y=f(x)$ on $[a,b]$ can be revolved
 around an axis to form a solid. Instead of computing the volume of
 this solid, we'll compute the area of its surface.
 
+\section{The area of a frustum}
+
 %% Herb Clemens! IT IS BEAUTIFUL
 To compute the area of a \dfn{surface of revolution}, we will show
-that its area is equal to the area of the sum of things that we can
+that this area is equal to the sum of areas of things that we can
 lay out flat. The argument for this goes way back to the great
 physicist and mathematician, \index{Archimedes of Alexandria}\textit{Archimedes of Alexandria}. To follow his
 argument, we have to begin by computing the area of a `lamp shade' or
@@ -64,14 +66,14 @@ the area of a frustum.
       %\draw[decoration={brace,raise=.1cm},decorate,thin] (0,-3)   -- (2,-3);
       \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (2,-2.9)--(1,0);
       
-      \node [left] at (2,-1) {$s$};
+      \node [right] at (1.7,-1.4) {$s$};
       \node [above] at (.5,0) {$r$};
       \node [above] at (1,-3) {$R$};               
     \end{tikzpicture}
   \end{image}
   is given by
   \[
-  A = 2\pi\cdot s\cdot \frac{r+R}{2}.
+  \text{area of frustum} = 2\pi\cdot \frac{r+R}{2}\cdot s.
   \]
   \begin{explanation}
     We can think of a frustum as approximated by an arrangement of $n$
@@ -140,69 +142,142 @@ the area of a frustum.
     \end{image}
     have area
     \[
-    h_{n}\cdot \left(  \frac{b_{n}+t_{n}}{2}\right).
+    h_{n}\cdot \left(  \frac{t_{n}+b_n}{2}\right).
     \]
-    The area of the frustum approximated by all of these $n$
+    The area of the frustum approximated by the sum of these $n$
     trapezoids, so the area of the frustum is approximated by
     \[
-    n\cdot h_n\cdot\left(\frac{b_{n}+t_{n}}{2}\right)
+    n\cdot h_n\cdot\left(\frac{t_{n}+b_n}{2}\right)
+    =h_n\cdot \left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right).
     \]
+    As $n$ goes to infinity, where $n$ is the number of trapezoids,
+    \begin{image}
+      \begin{tikzpicture}
+        
+      \draw [penColor,very thick,domain=0:360, samples=11] 
+      plot ({cos(\x)}, {.5*sin(\x)} );
+
+      \draw [penColor,very thick,domain=0:360, samples=11] 
+        plot ({2*cos(\x)}, {sin(\x)-3} );
+
+      \foreach \x in {0,36,72,...,360}
+               {
+                 \draw[penColor,very thick,] ({cos(\x)},{.5*sin(\x)}) -- ({2*cos(\x)},{sin(\x)-3}) ;
+               }
+               
+
+      \draw[penColor,very thick,] (4,0) arc (180:360:1cm and 0.5cm);
+      \draw[penColor,very thick,] (4,0) arc (180:0:1cm and 0.5cm);
+      \draw[penColor,very thick,] (3,-3) arc (180:370:2cm and 1cm);
+      \draw[penColor,very thick,dashed] (3,-3) arc (180:10:2cm and 1cm);
+      \draw[penColor,very thick,] (3,-2.9)  -- (4,0);
+      \draw[penColor,very thick,] (7,-2.9)   -- (6,0);
+
+      \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (7,-2.9)--(6,0);
+      \node [right] at (6.7,-1.4) {$s$};
+
+      \node[scale=2] at (-3,-2) {$\lim_{n\to \infty}$}; 
+      \node[scale=2] at (2.5,-2) {$=$};
+      \end{tikzpicture}
+    \end{image}
+    Hence,
     \[
-    =h_n\cdot \left(\frac{n\cdot b_{n}+n\cdot t_{n}}{2}\right).
+    \lim_{n\to \infty} \left(h_n\cdot \left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right)\right) = \text{area of the frustum}
     \]
-    As $n$ goes to infinity, the area of the approximation approaches the area of
-    the collar. But if 
+    However, if
     \begin{itemize}
-    \item $c_{b}$ is the circumference of the bottom circle
-    \item $c_{t}$ is the circumference of the top circle and 
+    \item $c$ is the circumference of the top circle,
     \item $s$ is the slant height of the collar as shown in the above
-      figure,
+      figure, and 
+    \item $C$ is the circumference of the bottom circle,    
     \end{itemize}
     then
     \begin{align*}
-      \lim_{i\to \infty} n\cdot b_{n}  &  =c_{b}\\
-      \lim_{n\to \infty} n \cdot t_{n}  &  =c_{t}\\
-      \lim_{n\to \infty} h_{n}  &  =s.
+      \lim_{n\to \infty} n \cdot t_{n}  &  =c,\\
+      \lim_{n\to \infty} h_{n}  &  =s,\\
+      \lim_{n\to \infty} n\cdot b_{n}  &  =C,
     \end{align*}
-    Let
-    \begin{itemize}
-    \item $r_b$ be the radius of the circle defining the base of the collar,
-    \item $r_t$ be the radius of the circle defining the top of the collar,
-    \item $r_a$ be the average of $r_b$ and $r_t$,
-    \item $s$ be the slant height of the collar.
-    \end{itemize}
-    Explain why the area of the collar is
+    and by way of limit laws\index{limit laws} we find
     \[
-    \pi \cdot \left( r_{b}+r_{t}\right)\cdot s =2\pi\cdot r_{a}\cdot s
+    \lim_{n\to \infty} \left(h_n\cdot \left(\frac{n\cdot t_{n}+n\cdot b_n}{2}\right)\right) = s\cdot \frac{c + C}{2}.
     \]
+    Letting
+    \begin{itemize}
+    \item $r$ be the radius of the circle defining the top of the collar,
+    \item $s$ be the slant height of the collar, and
+    \item $R$ be the radius of the circle defining the base of the collar,
+    \end{itemize}
+    We see that 
+    \begin{align*}
+      \text{area of frustum}  &= s\cdot \frac{c + C}{2} \\
+      &= s\cdot \frac{2\pi r + 2\pi R}{2}\\
+      &=2\pi \cdot \frac{r+R}{2}\cdot s.
+    \end{align*}
   \end{explanation}
 \end{theorem}
+Now we are ready to compute the area of a surface of revolution.
 
+\section{The area of a surface of revolution}
 
+From our work above, we know that the area of a frustum is given by
+\[
+2\pi \cdot \frac{r+R}{2}\cdot s
+\]
+now let's consider a function with a continuous derivative, and the
+surface of revolution formed by this curve by rotating around the $x$-axis:
+\begin{image}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=1.5, xmax=3.5,
+      domain=1.5:3.5,
+      ymin=-4.5, ymax=4.5,
+      clip=false,
+      axis lines =center,
+      xlabel=$x$, ylabel=$y$, every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+      xtick={2,2.5},
+      xticklabels={$x$,$x+\d x$}
+    ]
+    \addplot [penColor,very thick,smooth,domain=2:2.5,fill=fill1!50!white,draw=none] {16-19*x+8*x^2-x^3} \closedcycle;
+    \addplot [penColor,very thick,smooth,domain=2:2.5,fill=fill1!50!white,draw=none] {-16+19*x-8*x^2+x^3} \closedcycle;
 
+    \draw[penColor,very thick,fill=fill1!20!white] (axis cs:2,0) ellipse (20 and 200);
+    %\draw[penColor,very thick,fill=fill1] (axis cs:2.5,0) ellipse (20 and 287.5);
+    \draw[penColor,very thick,dashed] (axis cs: 2.5,-2.875) arc (270:90:20 and 287.5);
+    \draw[penColor,very thick,fill=fill1!50!white] (axis cs: 2.5,-2.875) arc (270:450:20 and 287.5);
 
-Thus the surface area of this sample frustum of the cone is
-approximately
+    \addplot [penColor,very thick,smooth]{16-19*x+8*x^2-x^3};
+    \addplot [penColor,very thick,smooth,domain=2:2.5]{-16+19*x-8*x^2+x^3};
+
+    \addplot[dashed,->] plot coordinates {(2,2) (2.5,2)};
+    \addplot[dashed,->] plot coordinates {(2.5,2) (2.5,2.875)};
+    \addplot[->,ultra thick, penColor2] plot coordinates {(2,2) (2.5,2.875)};
+
+    \node[anchor=north] at (axis cs:2.25,2) {$\d x$};
+    %\node[anchor=west] at (axis cs:2.5,2.4375) {$\d y$};
+    \node[anchor=south] at (axis cs:2.25,2.6875) {$\d s$};
+
+    \addplot[dashed] plot coordinates {(2,0) (2,2)};
+    \addplot[dashed] plot coordinates {(2.5,0) (2.5,2.875)};
+    
+    \node[penColor] at (axis cs:3,3.5) {$f$};
+  \end{axis}
+\end{tikzpicture}
+\end{image}
+Thus the surface area of this frustum is
 \[
-2\pi\frac{f(x_i)+f(x_{i+1})}2\sqrt{1+f'(c_i)^2}\d x_i.
+\d A = 2\pi\frac{f(x)+f(x+\d x)}{2} \d s
 \]
-Since $f$ is a continuous function, the Intermediate Value Theorem\index{Intermediate Value Theorem}
-states there is some $d_i$ in $[x_i,x_{i+1}]$ such that
+and have seen that
 \[
-f(d_i) = \frac{f(x_i)+f(x_{i+1})}{2};
+\d s =  \sqrt{1+(f'(x))^2}\d x
 \]
-we can use this to rewrite the above equation as
+and that as $\d x \to 0$, $f(x+\d x) \to f(x)$, hence
 \[
-2\pi f(d_i)\sqrt{1+f'(c_i)^2}\d x_i.
+\d A = 2\pi f(x) \sqrt{1+(f'(x))^2}\d x
 \]
-Summing over all the subintervals we get the total surface area to be
-approximately
-\[
-\text{Surface Area}\approx \sum_{i=1}^n 2\pi f(d_i)\sqrt{1+f'(c_i)^2}\d x_i,
-\]
-which is a Riemann Sum. Taking the limit as the subinterval lengths go
-to zero gives us the exact surface area, given in the following Key
-Idea.
+
 
 %\keyidea{idea:surface_area}{Surface Area of a Solid of Revolution}
 Let $f$ be differentiable on an open interval containing $[a,b]$ where

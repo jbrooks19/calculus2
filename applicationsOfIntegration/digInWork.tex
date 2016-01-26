@@ -1,0 +1,214 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Applications of integration}
+
+\begin{document}
+\begin{abstract}
+We see applications of integration.
+\end{abstract}
+\maketitle
+
+
+\section{Work}
+
+\textit{Work} is the scientific term used to describe the action of a
+force which moves an object. When a constant force $F$ is applied to
+move an object a distance $d$, the amount of work performed is
+$W=F\cdot d$.
+
+The SI unit of force is the Newton, (N = kg$\cdot$m/s$^2$), and the SI
+unit of distance is a meter (m). The fundamental unit of work is one
+Newton--meter, or a joule (J). That is, applying a force of one Newton
+for one meter performs one joule of work. In Imperial units (as used
+in the United States), force is measured in pounds (lb) and distance
+is measured in feet (ft), hence work is measured in ft--lb.
+
+\begin{warning} \textit{Mass} and \textit{weight} are
+  closely related, yet different, concepts. The mass $m$ of an object
+  is a quantitative measure of that object's resistance to
+  acceleration. The weight $w$ of an object is a measurement of the
+  force applied to the object by the acceleration of gravity $g$.
+
+Since the two measurements are proportional, $w=m\cdot g$,
+they are often used interchangeably in everyday conversation. When
+computing Work, one must be careful to note which is being referred
+to. When mass is given, it must be multiplied by the acceleration of
+gravity to reference the related force.  We will approximate standard gravity, on Earth, as $9.8 \frac{\textrm{m}}{\textrm{s}^2}$ or as $32 \frac{\textrm{ft}}{\textrm{s}^2}$
+\end{warning}
+
+When force is constant, the measurement of work is
+straightforward. 
+
+\begin{question}
+Lifting a $200$ lb object $5$ ft performs
+$ \answer{1000}$ ft--lb of work.
+\end{question}
+
+In the real world, most problems are not so simple.  Either the amount of force changes as you move the object, or the distance each part of the object has to move is variable.  We will need to use calculus to calculate work in these kinds of situations.
+
+In this course, we will either ``Accumulate large forces over infinitesimal distances'', or we will ``Accumulate infinitesimal forces over large distances''.   
+
+Here is an example of each type of situation:
+
+\begin{example}[Accumulating large forces over infinitesimal distances]
+How much work is performed pulling a $60$ m climbing rope up a cliff
+  face, where the rope has a mass of $66$ g/m?
+  
+  \begin{explanation}
+  	Let $y$ be the distance we have pulled the rope.  The force $F(y)$ on the rope is always  ``large'' (read:  not infinitesimal), but the force is changing as we pull the rope up.  If we think of pulling the rope up only an infinitesimal amount $\d y$, then the force will be constant over that infinitesimal distance, so the infinitesimal amount of work done by moving the rope through $\d y$ at height $y$ is $\d W = F(y) \d y$.  Integrating these infinitesimal amounts of work from $y=0$ to $y=60$ should yield the total amount of work done.
+	
+	\begin{question}
+	In this example, the mass of the rope remaining after $y$ feet have been pulled up is
+	
+	\[
+	\textrm{Mass}(y) = \answer{(0.066)(60-y)} \textrm{kg}
+	\]
+	
+	\begin{hint}
+		There are $60-y$ feet of rope, at a density of $66$ g/m, so the total mass of the rope is $(60-y)66$ g.  Converted to kg, this is $(60-y)(0.066)$ kg.
+	\end{hint}
+	\end{question}
+	
+	\begin{question}
+	The force due to gravity on the rope after $y$ feet have been pulled up is
+	
+	\[
+	F(y) = \answer{(0.066)(60-y)(9.8)} N 
+	\]
+	
+	\begin{hint}
+		To get the force due to gravity from the mass, we just multiply the mass by standard gravity, $g  = 9.8 \frac{\textrm{m}}{\textrm{s}^2}$.  Since we have already written our mass in kg, we obtain $F(y) = (0.066)(60-y)(9.8)$ N.
+	\end{hint}
+	\end{question}
+	
+	\begin{question}
+		The total work done is
+		
+		\[
+		\int_0^{60} F(y) \d y = \answer{1164.24} \textrm{J}
+		\]
+		
+		\begin{hint}
+			\begin{align*}
+				\int_0^{60} F(y) \d y &= \int_0^{60}(0.066)(60-y)(9.8) \d y \\
+					&= (0.066)(9.8) \eval{60y - \frac{y^2}{2}}_0^{60}\\
+					&=(0.066)(9.8)(1800)\\
+					&= 1164.24
+			\end{align*}
+		\end{hint}
+	\end{question}
+	
+	By comparison, consider the work done in lifting the entire rope 60 meters. The rope weights $60\times 0.066 \times 9.8 = 38.808$ N, so the work applying this force for 60 meters is $60\times 38.808 = 2,328.48$ J. This is exactly twice the work calculated before (and we leave it to the reader to understand why.)
+
+\end{explanation}
+\end{example}
+
+
+\begin{example}{Accumulating infinitesimal forces over large distances}
+
+A cylindrical storage tank with a radius of $10$ ft and a height of $30$ ft is filled with water, which weighs approximately $62.4$ lb/ft$^3$. Compute the amount of work performed by pumping the water up to a point 5 feet above the top of the tank.
+
+\begin{explanation}
+	If we were lifting the entire tank $35$ feet, there would be no need for calculus, and we could treat this as a simple multiplication problem.  Unfortunately, different parts of the water are traveling different distances.  The water at the top of the tank has a much shorter distance to travel than the water at the bottom of the tank, for instance.
+	
+	Our approach will be to look at infinitesimal slabs of water.  All of the water in such a slab will have to travel the same distance to the top of the tank.  The force due to gravity on this slab will be infinitesimal because the volume of the water is infinitesimal.
+	
+	Let $y$ be the depth of the slab below the top of the cylinder, and $\d y$ be its width.
+
+	\begin{image}
+\begin{tikzpicture}
+\draw[penColor,very thick] (0,2) ellipse (2 and .7);
+\draw[very thick,penColor!20!background] (2,-2) arc (0:180:2 and .7);% top half of ellipse
+\draw[very thick,penColor] (-2,-2) arc (180:360:2 and .7);% bottom half of ellipse
+
+\draw[very thick,penColor!20!background] (2,0) arc (0:180:2 and .7);% top half of ellipse
+\draw[very thick,penColor] (-2,0) arc (180:360:2 and .7);% bottom half of ellipse
+\draw[very thick,penColor!20!background] (2,0.1) arc (0:180:2 and .7);% top half of ellipse
+\draw[very thick,penColor] (-2,0.1) arc (180:360:2 and .7);% bottom half of ellipse
+
+\draw[decoration={brace,mirror, raise=.1cm},decorate,thin] (-2,2)--(-2,0);
+
+\node [above,penColor] at (-2.4,0.7) {$y$};
+\node [above,penColor] at (2.2,-0.3) {$\d y$};
+
+\draw[penColor, very thick] (2,2) -- (2,-2);
+\draw[penColor, very thick] (-2,2) -- (-2,-2);
+\end{tikzpicture}
+	\end{image}
+
+The total work done is
+
+\[
+\textrm{Work} = \answer{3744000 \pi} \textrm{ft--lbs}
+\]
+
+\begin{hint}
+	Each slab has a volume of $\pi r^2 \d y = 100\pi \d y$
+\end{hint}
+
+\begin{hint}
+	Thus the weight of each slab is $62.4(100\pi)\d y = 6240\pi \d y$.  Note that this is already a force, not a mass measurement, so we do not have to convert it further.
+\end{hint}
+
+\begin{hint}
+	Each slab has to move a distance of $y+5$, so the total work done by moving each slab is $6240 \pi (y+5) \d y$.
+\end{hint}
+
+\begin{hint}
+	Thus the total work done by pumping all of the water to the top is
+	
+	\begin{align*}
+		\textrm{Work} &= \int_0^{30} 6240 \pi (y+5) \d y\\
+			&= 6240 \pi \eval{\frac{1}{2}y^2+5y}_0^{30}\\
+			&=  3744000 \pi
+	\end{align*}
+\end{hint}
+	
+\end{explanation}
+	
+\end{example}
+
+
+\begin{example}
+
+\begin{warning}
+	We expect you to memorize Hooke's law, and be able to use it in similar work problems.
+\end{warning}
+
+\textbf{Hooke's Law} states that the force required to compress or stretch a spring $x$ units from its natural length (its un-stretched length) is proportional to $x$; that is, this force is $F(x) = kx$ for some constant $k$. For example, if a åforce of $1$ N stretches a given spring $2$ cm, then a force of $5$ N will stretch the spring $10$ cm. Converting the distances to meters, we have that stretching this spring $0.02$ m requires a force of $F(0.02) = k(0.02) = 1$ N, hence $k = 1/0.02 = 50$ N/m. 
+
+Say a force of $20$ lb stretches a spring from its natural length of $7$ inches to a length of $12$ inches. How much work was performed in stretching the spring to this length?
+
+\[
+\textrm{Work} = \answer{\frac{50}{12}} \textrm{ft--lb}
+\]
+
+\begin{hint}
+	This is a ``Large forces over infinitesimal distances'' problem.
+\end{hint}
+
+\begin{hint}
+	Let $x$ be the amount we have stretched the spring beyond its natural length in inches, and let $F(x)$ be the force exerted by the spring at this distance in pounds.  We have that $F(0)=0$, $F(5) = 20$, and we know that it is linear in the distance by Hooke's law.  So we must have $F(x) = 4x$.
+\end{hint}
+
+\begin{hint}
+	So the work done by moving the spring from $x$ to $x+\d x$ is $4x \d x$.  We need to accumulate these infinitesimal forces from $x=0$ to $x=5$.
+\end{hint}
+
+\begin{hint}
+	\begin{align*}
+		\textrm{Work} &= \int_0^5 4x \d x\\
+			&= \eval{2x^2}_0^5\\
+			&=50 \textrm{in--lb}
+	\end{align*}
+\end{hint}
+
+\begin{hint}
+	We need the answer to be in ft--lb not in--lb, so we convert inches to feet to obtain $\frac{50}{12}$ ft--lb.
+\end{hint}
+
+\end{example}
+
+\end{document}

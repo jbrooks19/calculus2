@@ -10,6 +10,39 @@ We see applications of integration.
 \end{abstract}
 \maketitle
 
+\section{Density}
+
+Given an object which can be modeled as one dimensional (like a wire), its \textbf{linear density} is a measure of its mass per unit length.
+
+\begin{question}
+	If a wire has linear density $5$ g/m, how many grams will $4 m$ of this wire be?
+	
+	\[
+	\textrm{Mass} = \answer{20} \textrm{g}
+	\]
+\end{question}
+
+Sometimes the linear density of an object can vary from one part of the object to another.  Then we will have to use calculus to find the total mass.
+
+\begin{question}
+	If the linear density of a rod of length $5$ m is given by $p(x) = 1+3x^2$ g/m, where $x$ is the distance from one end of the rod, then what is total mass of the rod?
+	
+	\[
+		\textrm{Mass} = \answer{130} \textrm{g}
+	\]
+	
+	\begin{hint}
+		We can think of breaking the rod into infinitesimal pieces of length $\d x$.  At position $x$, the mass of the infinitesimal piece will be $(1+3x^2)\d x$.  So we just have to sum all of these up from $x=0$ to $x=5$
+	\end{hint}
+	
+	\begin{hint}
+		\begin{align*}
+			\textrn{Mass} &= \int_0^1 1+3x^2 \d x\\
+				&=\eval{x+x^3}_0^5\\
+				&=130
+		\end{align*}
+	\end{hint}
+\end{question}
 
 \section{Work}
 

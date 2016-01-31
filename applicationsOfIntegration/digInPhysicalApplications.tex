@@ -287,12 +287,83 @@ Let's see an example of each type of situation:
     \]
     so the work applying this force for $60$ meters is
     \[
-    60\times 38.808 = 2,328.48 \unit{J}.
+    60\times 38.808 = 2328.48 \unit{J}.
     \]
     This is exactly twice the work calculated before, we leave it to
     the young mathematician to understand why.
   \end{explanation}
 \end{example}
+
+We can also do ``spring'' problems, for this we need \textit{Hooke's
+  Law}:
+
+\begin{definition}[Hooke's Law]\index{Hooke's Law}
+  The force required to compress or stretch a spring $x$ units from
+  its natural length (its un-stretched length) is proportional to $x$.
+  That is, this force is
+  \[
+  F(x) = k\cdot x
+  \]
+  for some constant $k$, known as the \dfn{spring constant}.
+\end{definition}
+
+\begin{warning}
+  We expect you to memorize Hooke's law, and be able to use it in similar work problems.
+\end{warning}
+
+\begin{question}
+  If a a force of $1\unit{N}$ stretches a given spring $2\unit{cm}$,
+  then how far will a force of $5\unit{N}$ stretch the spring?
+  \begin{prompt}
+    The spring will stretch $\answer{10}\unit{cm}$.
+  \end{prompt}
+  \begin{question}
+    What is the spring constant in this case?
+    \begin{hint}
+      Convert the distances to meters.
+    \end{hint}
+    \begin{prompt}
+      $k= \answer{50}\unit{N}/\unit{m}$.
+    \end{prompt}
+  \end{question}
+\end{question}
+  
+\begin{example}
+  Say a force of $20\unit{lb}$ stretches a spring from its natural
+  length of $7$ inches to a length of $12$ inches. How much work was
+  performed in stretching the spring to this length?
+  \begin{explanation}
+    \begin{hint}
+      This is a ``Large forces over infinitesimal distances'' problem.
+    \end{hint}
+    Let $x$ be the amount we have stretched the spring beyond its
+    natural length in inches, and let $F(x)$ be the force exerted by
+    the spring at this distance in pounds.  We have that $F(0)=0$,
+    $F(5) = 20$, and we know that it is linear in the distance by
+    Hooke's law.  So the ``large force'' involved is $F(x) = 4x$.  The
+    work done by moving the spring from $x$ to $x+\d x$ (an
+    infinitesimal distance) is
+    \[
+    \d W = \answer[given]{4x} \d x.
+    \]
+    We need to accumulate these ``large forces over infinitesimal
+    distances'' from $x=0$ to $x=5$.
+    \begin{align*}
+      \text{Work} &= \int_0^5 4x \d x\\
+      &= \eval{\answer[given]{2x^2}}_0^5\\
+      &=50
+    \end{align*}
+  \begin{hint}
+    We need the answer to be in foot-pounds not inch-pounds, so we convert
+    inches to feet to obtain $\frac{50}{12}$ foot-pounds.
+  \end{hint}
+    \[
+    \text{Work} = \answer[given]{\frac{50}{12}} \unit{ft}\cdot\unit{lb}.
+    \]
+  \end{explanation}
+\end{example}
+
+
 
 
 
@@ -368,73 +439,5 @@ Let's see an example of each type of situation:
   \end{explanation}
 \end{example}
 
-
-We can also do ``spring'' problems, for this we need \textit{Hooke's
-  Law}:
-
-\begin{definition}[Hooke's Law]\index{Hooke's Law}
-  The force required to compress or stretch a spring $x$ units from
-  its natural length (its un-stretched length) is proportional to $x$.
-  That is, this force is
-  \[
-  F(x) = k\cdot x
-  \]
-  for some constant $k$, known as the \dfn{spring constant}.
-\end{definition}
-
-\begin{warning}
-  We expect you to memorize Hooke's law, and be able to use it in similar work problems.
-\end{warning}
-
-\begin{question}
-  If a a force of $1\unit{N}$ stretches a given spring $2\unit{cm}$,
-  then how far will a force of $5\unit{N}$ stretch the spring?
-  \begin{prompt}
-    The spring will stretch $\answer{10}\unit{cm}$.
-  \end{prompt}
-  \begin{question}
-    What is the spring constant in this case?
-    \begin{hint}
-      Convert the distances to meters.
-    \end{hint}
-    \begin{prompt}
-      $k= \answer{50}\unit{N}/\unit{m}$.
-    \end{prompt}
-  \end{question}
-\end{question}
-  
-\begin{example}
-  Say a force of $20\unit{lb}$ stretches a spring from its natural
-  length of $7$ inches to a length of $12$ inches. How much work was
-  performed in stretching the spring to this length?
-  \begin{explanation}
-    \begin{hint}
-      This is a ``Large forces over infinitesimal distances'' problem.
-    \end{hint}
-    Let $x$ be the amount we have stretched the spring beyond its
-    natural length in inches, and let $F(x)$ be the force exerted by
-    the spring at this distance in pounds.  We have that $F(0)=0$,
-    $F(5) = 20$, and we know that it is linear in the distance by
-    Hooke's law.  So we must have $F(x) = 4x$.  So the work done by
-    moving the spring from $x$ to $x+\d x$ is
-    \[
-    \d W = \answer[given]{4x} \d x.
-    \]
-    We need to accumulate these infinitesimal forces from $x=0$ to
-    $x=5$.
-    \begin{align*}
-      \text{Work} &= \int_0^5 4x \d x\\
-      &= \eval{\answer[given]{2x^2}}_0^5\\
-      &=50
-    \end{align*}
-  \begin{hint}
-    We need the answer to be in foot-pounds not inch-pounds, so we convert
-    inches to feet to obtain $\frac{50}{12}$ foot-pounds.
-  \end{hint}
-    \[
-    \text{Work} = \answer[given]{\frac{50}{12}} \unit{ft}\cdot\unit{lb}.
-    \]
-  \end{explanation}
-\end{example}
 
 \end{document}

@@ -2,6 +2,8 @@
 
 \input{../preamble.tex}
 
+\outcome{Understand the integral definition of the natural logarithm.}
+
 \title[Dig-In:]{The origins of a logarithm}
 
 \begin{document}
@@ -101,15 +103,16 @@ Still thinking about our work above, consider this: If we want a function
 \]
 to have the property
 \[
-\log(x\cdot y) = \log(x) + \log(y)
+\log(a\cdot b) = \log(a) + \log(b),
 \]
-then it is natural to want these two things too,
-\begin{enumerate}
-\item $\log(1) =0$,
-\item $\lim_{x\to 0^+}\log(x) = -\infty$,
-\end{enumerate}
-we'll let the young mathematician think about \textbf{why} this is the
-case. Regardless, the natural logarithm is typically defined as follows:
+then how is a logarithm actually defined?
+%% then it is natural to want these two things too,
+%% \begin{enumerate}
+%% \item $\log(1) =0$,
+%% \item $\lim_{x\to 0^+}\log(x) = -\infty$,
+%% \end{enumerate}
+%% we'll let the young mathematician think about \textbf{why} this is the
+%% case. Regardless, the natural logarithm is typically defined as follows:
 
 \begin{definition}
   The \dfn{natural logarithm} is the accumulation function defined by
@@ -120,39 +123,39 @@ case. Regardless, the natural logarithm is typically defined as follows:
   and its range is $\RR$ (all real numbers). 
 \end{definition}
 
-At this point, let's check that the natural logarithm (as defined as
-an accumulation function) has the properties we want. 
+%% At this point, let's check that the natural logarithm (as defined as
+%% an accumulation function) has the properties we want.
 
-\begin{example}
-  Show that:
-  \[
-  \ln(1) = 0
-  \]
-  \begin{explanation}
-    Well, 
-    \[
-    \ln(1) = \int_1^{\answer[given]{1}} \answer[given]{\frac{1}{t}} \d t
-    \]
-    Since no area is accumulated between $x=\answer[given]{1}$ and
-    $x=\answer[given]{1}$, the value of the integral, and hence the
-    natural logarithm, must be $0$.
-  \end{explanation}
-\end{example}
+%% \begin{example}
+%%   Show that:
+%%   \[
+%%   \ln(1) = 0
+%%   \]
+%%   \begin{explanation}
+%%     Well, 
+%%     \[
+%%     \ln(1) = \int_1^{\answer[given]{1}} \answer[given]{\frac{1}{t}} \d t
+%%     \]
+%%     Since no area is accumulated between $x=\answer[given]{1}$ and
+%%     $x=\answer[given]{1}$, the value of the integral, and hence the
+%%     natural logarithm, must be $0$.
+%%   \end{explanation}
+%% \end{example}
 
-\begin{example}
-  Show that:
-  \[
-  \lim_{x\to 0^+}\ln(x) = -\infty
-  \]
-  \begin{explanation}
-    This question is just slightly out-of-reach for us at the
-    moment. Once we learn a little more, we'll be able to say something.
-    Maybe you can think of an argument using only the tools you know!
-  \end{explanation}
-\end{example}
+%% \begin{example}
+%%   Show that:
+%%   \[
+%%   \lim_{x\to 0^+}\ln(x) = -\infty
+%%   \]
+%%   \begin{explanation}
+%%     This question is just slightly out-of-reach for us at the
+%%     moment. Once we learn a little more, we'll be able to say something.
+%%     Maybe you can think of an argument using only the tools you know!
+%%   \end{explanation}
+%% \end{example}
 
 Finally, we'll show that the natural logarithm has the property that
-transforms multipication into addition.
+transforms multiplication into addition.
 
 \begin{example}
   Show that:

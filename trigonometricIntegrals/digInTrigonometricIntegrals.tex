@@ -6,14 +6,17 @@
 
 \begin{document}
 \begin{abstract}
-  lkdfjlksdj
+	We can use substitution and trig to integrate trigonometric polynomials
 \end{abstract}
 \maketitle
 
-\section{Powers of Sine and Cosine}
+Here are some strategies for dealing with expressions of the following form:
 
+\[
+\int \sin^n(x)\cos^m(x) \d x
+\]
 
-Functions consisting of products of the sine and cosine can be
+Functions like these, consisting of products of the sine and cosine function, can be
 integrated by using substitution and trigonometric identities. These
 can sometimes be tedious, but the technique is straightforward. The
 basic idea in each case is to somehow take advantage of a
@@ -21,19 +24,112 @@ trigonometric identity, usually:
 \[
 \cos^2(x) + \sin^2(x) = 1, \qquad \sin^2(x) = \frac{1-\cos(2x)}{2}, \qquad \cos^2(x)= \frac{1+\cos(2x)}{2}.
 \]
-Some examples will suffice to explain the approach.
+
+\section{If either power is odd}
+
+\begin{example}
+Consider an integral like 
+
+\[
+\int \sin^5(x) \cos^2(x) \d x
+\]
+
+Since the power of sine is odd, we can rewrite this suggestively as
+
+\[
+\int \sin^4(x) \cos^2(x) (\sin(x) \d x) = \int (\sin^2)^2 \cos^2(x) (\sin(x) \d x)
+\]
+
+Now using the Pythagorean identity we can rewrite everything in terms of $\cos(x)$, 
+but reserve the one power of $\sin(x)$ to help with the differential in an eventual variable substitution.
+
+\[
+\int (1-\cos^2(x))^2 \cos^2(x) (\sin(x) \d x)
+\]
+
+
+Making the substitution $u = \cos(x)$ yields
+
+\[
+\int \answer{-(1-u^2)^2 u^2} \d u
+\]
+
+This is a polynomial in $u$, and so we can easily finish the integration by just expanding the polynomial out and integrating term by term.
+\end{example}
+
+We can generalize this thinking:
+
+\begin{explanation}[Odd power of sine]
+If we are integrating a product of powers of sine and cosine functions, and the power of sine is odd, then the function looks like
+
+\[
+\int \sin^{2k+1}(x) \cos^m(x) \d x
+\]
+
+where $k$ is some integer. 
+
+Then
+
+\[
+\int \sin^{2k+1}(x) \cos^m(x) \d x = \int (1-\cos^2(x))^k \cos^m(x) \sin(x)\d x 
+\]
+
+So letting $u = \cos(x)$, so $\d u =-\sin(x) \d x$, we have
+
+\[
+\int -(1-u^2)^k u^m \d u
+\]
+
+which is a polynomial, and so can be integrated term by term after expansion.
+\end{explanation}
+
+\begin{explanation}[Odd power of cosine]
+We can follow exactly the same line of thinking in this case.
+
+\begin{question}
+	After making the substitution $u = \sin(x)$, the integral
+	
+	\[
+	\int \sin^n(x) \cos^{2k+1}(x) \d x
+	\]
+	
+	becomes
+	
+	\[
+	\int \answer{ u^n(1-u^2)^k} \d u
+	\]
+	
+	\begin{hint}
+		\begin{align*}
+			\int \sin^n(x) \cos^{2k+1}(x) \d x &= \int \sin^n(x) \cos^{2k}(x) \cos(x) \d x\\
+				&=\int \sin^n(x) (\cos^2(x))^k \cos(x)\d x\\
+				&=\int \sin^n(x)(1-\sin^2(x))^k \cos(x) \d x\\
+				&=\int u^n(1-u^2)^k \d u
+		\end{align*}
+	\end{hint}
+\end{question}
+\end{explanation}
+
+\begin{warning}
+Instead of memorizing this general result, you should focus on internalizing the technique by which the result was obtained.  In each case, you take off one power from an odd power of the trig function, and you are left with an even power of that trig function.  You can then use a Pythagorean identity to rewrite that even power in terms of the other trig function.  Making a variable substitution finishes the conversion to a polynomial function in $u$.
+\end{warning}
 
 \begin{example}
 Compute
-\[\int \sin^5 x\d x.
+
+\[
+\int \sin^5 x \d x = \answer{-\cos x+\frac{2}{3}\cos^3 x-\frac{1}{5}\cos^5x} + C
 \]
-\begin{explanation}
+
+\begin{hint}
 Rewrite the function:
 \[
   \int \sin^5 x\d x=\int \sin x \sin^4 x\d x=
   \int \sin x (\sin^2 x)^2\d x=
   \int \sin x (1-\cos^2 x)^2\d x.
 \]
+\end{hint}
+\begin{hint}
 Now use $u=\cos x$, $du=-\sin x\d x$:
 \begin{align*}
   \int \sin x (1-\cos^2 x)^2\d x&=\int -(1-u^2)^2\d u \\
@@ -41,53 +137,13 @@ Now use $u=\cos x$, $du=-\sin x\d x$:
   &=-u+{2\over3}u^3-{1\over5}u^5+C \\
   &=-\cos x+{2\over3}\cos^3 x-{1\over5}\cos^5x+C. 
 \end{align*}
-\end{explanation}
+\end{hint}
+
 \end{example}
 
+\section{When both powers are even}
 
-\begin{example}
-Evaluate 
-\[
-\int \sin^6 x\d x.
-\]
-\begin{explanation}
-Use $\sin^2x =(1-\cos(2x))/2$ to rewrite the function:
-\begin{align*}
-  \int \sin^6 x\d x=\int (\sin^2 x)^3\d x&=
-  \int {(1-\cos 2x)^3\over 8}\d x \\
-  &={1\over 8}\int 1-3\cos 2x+3\cos^2 2x-\cos^3 2x\d x.
-\end{align*}
-Now we have four integrals to evaluate:
-\[
-\int 1\d x=x
-\]
-and
-\[
-\int -3\cos 2x\d x = -{3\over 2}\sin 2x
-\]
-are easy. The $\cos^3 2x$ integral is like the previous example:
-\begin{align*}
-  \int -\cos^3 2x\d x&=\int -\cos 2x\cos^2 2x\d x \\
-  &=\int -\cos 2x(1-\sin^2 2x)\d x \\
-  &=\int -{1\over 2}(1-u^2)\d u \\
-  &=-{1\over 2}\left(u-{u^3\over 3}\right) \\
-  &=-{1\over 2}\left(\sin 2x-{\sin^3 2x\over 3}\right).
-\end{align*}
-And finally we use another trigonometric identity,
-$\cos^2x=(1+\cos(2x))/2$:
-\[
-  \int 3\cos^2 2x\d x=3\int {1+\cos 4x\over 2}\d x=
-  {3\over 2}\left(x+{\sin 4x\over 4}\right).
-\]
-So at long last we get
-\[
-  \int \sin^6 x\d x = {x\over8} -{3\over 16}\sin 2x 
-  -{1\over 16}\left(\sin 2x-{\sin^3 2x\over 3}\right)
-  +{3\over 16}\left(x+{\sin 4x\over 4}\right)+C.
-\]
-\end{explanation}
-\end{example}
-
+What about when both powers are even?  Our strategy above is sunk, since peeling off one power leaves an odd power, and we cannot use the Pythagorean identity to rewrite this in a nice way.  Instead, we will use the half angle reduction formulae.
 
 \begin{example}
 Compute 
@@ -98,10 +154,32 @@ Compute
 Use the formulas
 $\sin^2x =(1-\cos(2x))/2$ and $\cos^2x =(1+\cos(2x))/2$ to get:
 \[
-  \int \sin^2x\cos^2x\d x=\int {1-\cos(2x)\over2}\cdot
-  {1+\cos(2x)\over2}\d x.
+  \int \sin^2x\cos^2x\d x=\int \frac{1-\cos(2x)}{2}\cdot
+  \frac{1+\cos(2x)}{2}\d x
 \]
-The remainder is left as an exercise.
+
+From here, we can try to simplify further.  We may end up having to use either of these strategies multiple times.  In this case
+
+\begin{align*}
+	\int \frac{1-\cos(2x)}{2} \cdot \frac{1+\cos(2x)}{2}\d x &= \frac{1}{4} \int 1-\cos^2(2x) \d x
+		&= \frac{1}{4} \int \sin^2(2x) \d x
+\end{align*}
+
+Since this expression has only even powers of sine, we must use the same strategy again, and employ a half angle identity:
+
+\[
+\sin^2(2x) = \frac{1-\cos(\answer{4x})}{2}
+\]
+
+so we get
+
+\[
+\frac{1}{8}\int 1-\cos(4x) \d x = \answer{\frac{1}{8}(x - \frac{1}{4}\sin(4x))} + C
+\]
 \end{explanation}
+
+So when confronted with even powers of both sine and cosine, we employ the half angle identities, simplify, and see what we end up with.  If we get some odd powered terms, we can use that strategy for those parts.  If we end up with both even powers again, we might have to use this strategy multiple times.  This can get tricky algebraically, but if you are careful in your algebra you will eventually emerge victorious.
 \end{example}
+
 \end{document}
+

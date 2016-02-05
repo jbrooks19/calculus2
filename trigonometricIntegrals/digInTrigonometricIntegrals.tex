@@ -19,10 +19,10 @@ function, can be integrated by using substitution and trigonometric
 identities. These can sometimes be tedious, but the technique is
 straightforward. The basic idea in each case is to somehow take
 advantage of a trigonometric identity, usually:
-\begin{description}
-\item[Pythagorean Identity] $\cos^2(x) + \sin^2(x) = 1$
-\item[Sine Power-Reduction] $\sin^2(x) = \frac{1-\cos(2x)}{2}$,
-\item[Cosine Power-Reduction] $\cos^2(x)= \frac{1+\cos(2x)}{2}$.
+\begin{description}\index{power-reduction}
+\item[Pythagorean Identity] $\cos^2(x) + \sin^2(x) = 1$\index{Pythagorean idenity}
+\item[Sine Power-Reduction] $\sin^2(x) = \frac{1-\cos(2x)}{2}$\index{sine power-reduction}
+\item[Cosine Power-Reduction] $\cos^2(x)= \frac{1+\cos(2x)}{2}$\index{cosine power-reduction}
 \end{description}
 
 \section{If either power is odd}
@@ -34,14 +34,15 @@ advantage of a trigonometric identity, usually:
   \]
   \begin{explanation}
     Since the power of sine is odd, we can rewrite this suggestively as
-    \[
-    \int \sin^4(x) \cos^2(x) (\sin(x) \d x) = \int (\sin^2x)^2 \cos^2(x) (\sin(x) \d x)
-    \]
+    \begin{align*}
+    \int &\sin^4(x) \cos^2(x) (\sin(x) \d x) \\
+    &= \int (\sin^2x)^2 \cos^2(x) \sin(x) \d x
+    \end{align*}
     Now using the Pythagorean identity we can rewrite everything in
     terms of $\cos(x)$, but reserve the one power of $\sin(x)$ to help
     with the differential in an eventual variable substitution.
     \[
-    \int (1-\cos^2(x))^2 \cos^2(x) (\sin(x) \d x)
+    \int (1-\cos^2(x))^2 \cos^2(x) \sin(x) \d x
     \]
     Making the substitution
     \begin{align*}
@@ -50,15 +51,24 @@ advantage of a trigonometric identity, usually:
     \end{align*}
     yields
     \[
-    \int \answer{-(1-g^2)^2 g^2} \d g
+    \int \answer[given]{-(1-g^2)^2 g^2} \d g
     \]
     This is a polynomial in $g$, and so we can easily finish the
     integration by just expanding the polynomial out and integrating
-    term by term.
+    term by term. Write with me
+    \begin{align*}
+      \int {-(1-g^2)^2 g^2} \d g &= \int -(1-2g^2+g^4)g^2\d g\\
+      &= \int-g^6 + 2g^4-g^2 \d g\\
+      &=\answer[given]{-g^7/7 + 2g^5/5 - g^3/3}+C
+    \end{align*}
+    Substituting $g = \cos(x)$ we find our final answer:
+    \[
+    -\cos^7(x)/7 + 2\cos^5(x)/5 - \cos^3(x)/3+C
+    \]
   \end{explanation}
 \end{example}
 
-We can generalize this thinking:
+We can generalize this thinking whenever we have an odd-power:
 
 \subsection{Odd powers of sine}
 
@@ -82,7 +92,7 @@ expansion.
 \begin{question}
   Consider the following integral:
   \[
-  SOME INTEGRAL!!!
+  \int \sec^{28}(x)\csc^{83}(x) \d x
   \]
   After making the substitution, $g = \cos(x)$ we find
   \begin{multipleChoice}
@@ -106,7 +116,7 @@ where $k$ is some integer. Then
 \]
 So letting $g = \sin(x)$, $\d g =\cos(x) \d x$, and we have 
 \[
-\int \answer{ g^n(1-g^2)^k} \d g
+\int g^n(1-g^2)^k \d g
 \]
 which is a polynomial, and can be integrated term by term after
 expansion.
@@ -114,7 +124,7 @@ expansion.
 \begin{question}
   Consider the following integral:
   \[
-  SOME INTEGRAL!!!
+  \int \sec^{90}(x) \cot^{60}(x)  \d x
   \]
   After making the substitution, $g = \sin(x)$ we find
   \begin{multipleChoice}
@@ -153,9 +163,12 @@ Sometimes we need to massage our function into the correct form:
     \begin{align*}
       \int \sin x (1-\cos^2 x)^2\d x&=\int \answer[given]{-(1-g^2)^2} \d g \\
       &=\int -(1-2g^2+g^4)\d g \\
-      &=\answer[given]{-g+\frac{2}{3}g^3-\frac{1}{5}g^5}+C \\
-      &=\answer[given]{-\cos x+\frac{2}{3}\cos^3 x-\frac{1}{5}\cos^5x}+C 
+      &=\answer[given]{-g+\frac{2}{3}g^3-\frac{1}{5}g^5}+C
     \end{align*}
+    Hence our final answer is:
+    \[
+    \answer[given]{-\cos x+\frac{2}{3}\cos^3 x-\frac{1}{5}\cos^5x}+C
+    \]
   \end{explanation}
 \end{example}
   
@@ -185,18 +198,18 @@ use the power-reduction formulas.
     From here, we can try to simplify further.  We may end up having
     to use either of these strategies multiple times.  In this case
     \begin{align*}
-      \int \frac{1-\cos(2x)}{2} \cdot \frac{1+\cos(2x)}{2}\d x &= \frac{1}{4} \int 1-\cos^2(2x) \d x
+      \int \frac{1-\cos(2x)}{2} \cdot \frac{1+\cos(2x)}{2}\d x &= \frac{1}{4} \int 1-\cos^2(2x) \d x\\
       &= \frac{1}{4} \int \sin^2(2x) \d x
     \end{align*}
     
     Since this expression has only even powers of sine, we must use
     the same strategy again, and employ a power-reduction formula:
     \[
-    \sin^2(2x) = \frac{1-\cos(\answer{4x})}{2}
+    \sin^2(2x) = \frac{1-\cos(\answer[given]{4x})}{2}
     \]
     so we get
     \[
-    \frac{1}{8}\int 1-\cos(4x) \d x = \answer{\frac{1}{8}(x - \frac{1}{4}\sin(4x))} + C
+    \frac{1}{8}\int 1-\cos(4x) \d x = \answer[given]{\frac{1}{8}(x - \frac{1}{4}\sin(4x))} + C
     \]
   \end{explanation}
 \end{example}

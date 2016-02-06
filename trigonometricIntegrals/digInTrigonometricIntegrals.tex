@@ -494,12 +494,15 @@ cosecant, tangent, and cotangent.
     Set $g =\sin(x)$ so $\d g = \cos(x) \d x$, and write with me
     \begin{align*}
       \int(1-\sin^2(x))^{-1} \cos(x) \d x &= \int \frac{1}{1-g^2}\d g\\
-      &= \frac{1}{2}\int \frac{1}{1-g} + \frac{1}{1+g} \d g\\
-      &= \frac{1}{2}\left(\ln(1-g) - \ln(1-g)\right)+C\\
+      &= \frac{1}{2}\int \frac{1}{1-g} + \frac{1}{1+g} \d g\
+    \end{align*}
+    Antidifferentiating we find
+    \begin{align*}
+      &=\frac{1}{2}\left(\ln(1-g) - \ln(1-g)\right)+C\\
       &= \frac{1}{2}\left(\frac{1+\sin(x)}{1-\sin(x)}\right)+C
     \end{align*}
     Note, we could stop here, but we won't because this is not the
-    typical antiderivative of $\sec(x)$. Keep writing with me
+    typical antiderivative of $\sec(x)$. Please keep writing with me
     \begin{align*}
       \frac{1}{2}\ln\left(\frac{1+\sin(x)}{1-\sin(x)}\right)+C &= \frac{1}{2}\ln\left(\frac{(1+\sin(x))^2}{1-\sin^2(x)}\right)+C \\
       &= \frac{1}{2}\ln\left(\frac{(1+\sin(x))^2}{\cos^2(x)}\right)+C \\

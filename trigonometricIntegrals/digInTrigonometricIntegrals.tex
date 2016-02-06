@@ -12,7 +12,7 @@
 
 \begin{document}
 \begin{abstract}
-  We can use substitution and trigonometric identities to integrate
+  We can substitution and trigonometric identities to antidifferentiate
   trigonometric functions.
 \end{abstract}
 \maketitle
@@ -22,11 +22,12 @@ form:
 \[
 \int \sin^n(x)\cos^m(x) \d x
 \]
-Functions like these, consisting of products of the sine and cosine
-function, can be integrated by using substitution and trigonometric
-identities. These can sometimes be tedious, but the technique is
+Functions like these, consisting of products of sine and cosine, can
+be antidifferentiated by using substitution and trigonometric
+identities. This process can be tedious, but the idea is
 straightforward. The basic idea in each case is to somehow take
-advantage of a trigonometric identity, usually the \dfn{Pythagorean identity}:
+advantage of a trigonometric identity, usually the \dfn{Pythagorean
+  identity}:
 \[
 \cos^2(x) + \sin^2(x) = 1
 \]
@@ -67,7 +68,7 @@ advantage of a trigonometric identity, usually the \dfn{Pythagorean identity}:
     \]
     This is a polynomial in $g$, and so we can easily finish the
     integration by just expanding the polynomial out and integrating
-    term by term. Write with me
+    term-by-term. Write with me
     \begin{align*}
       \int {-(1-g^2)^2 g^2} \d g &= \int -(1-2g^2+g^4)g^2\d g\\
       &= \int-g^6 + 2g^4-g^2 \d g\\
@@ -94,7 +95,7 @@ where $k$ is some integer.  Then
   \int \sin^{2k+1}(x) \cos^m(x) \d x &=\int(\sin^{2}(x))^k \cos^m(x) \sin(x) \d x\\
   &= \int (1-\cos^2(x))^k \cos^m(x) \sin(x)\d x.
 \end{align*}
-We have now set ourselves up for an eventual substitution
+We have now set ourselves up for an eventual substitution:
 \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
   \begin{tikzpicture}
     \node at (0,0) {
@@ -104,11 +105,11 @@ We have now set ourselves up for an eventual substitution
     \node at (1.8,-.7) {\small{$\d g$}};
   \end{tikzpicture}
 \end{center}
-so letting $g = \cos(x)$, $\d g =-\sin(x) \d x$, and we have
+so letting $g = \cos(x)$ so $\d g =-\sin(x) \d x$, we have
 \[
 \int -(1-g^2)^k g^m \d g
 \]
-which is a polynomial, and can be integrated term by term after
+which is a polynomial, and can be integrated term-by-term after
 expansion.
 
 
@@ -143,6 +144,7 @@ where $k$ is some integer. Then
 \int \sin^n(x) \cos^{2k+1}(x) \d x &=\int \sin^n(x) (\cos^{2}(x))^k \cos(x)\d x\\
 &= \int \sin^n(x) (1-\sin^{2}(x))^k \cos(x) \d x.
 \end{align*}
+We have now set ourselves up for an eventual substitution:
 \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
   \begin{tikzpicture}
     \node at (0,0) {
@@ -152,11 +154,11 @@ where $k$ is some integer. Then
     \node at (1.8,-.7) {\small{$\d g$}};
   \end{tikzpicture}
 \end{center}
-so letting $g = \sin(x)$, $\d g =\cos(x) \d x$, and we have 
+so letting $g = \sin(x)$ so $\d g =\cos(x) \d x$, we have 
 \[
 \int g^n(1-g^2)^k \d g
 \]
-which is a polynomial, and can be integrated term by term after
+which is a polynomial, and can be integrated term-by-term after
 expansion.
 
 \begin{question}
@@ -179,13 +181,17 @@ expansion.
 
 \begin{warning}
 Instead of memorizing this general result, you should focus on
-internalizing the technique by which the result was obtained.  In each
-case, you take off one power from an odd power of the trigonometric
-function, and you are left with an even power of that trigonometric
-function.  You can then use a Pythagorean identity to rewrite that
-even power in terms of the other trigonometric functions.  Making a
-variable substitution finishes the conversion to a polynomial function
-in $g$.
+internalizing the \textbf{process} by which the result was obtained.
+In each case,
+\begin{itemize}
+\item you take off one power of a trigonometric function, and
+\item you are left with an even power of that trigonometric
+  function.
+\end{itemize}
+You can then use a Pythagorean identity to rewrite that even power in
+terms of the other trigonometric functions.  Making a variable
+substitution finishes the conversion to a polynomial function (or as
+we will see, a rational function) in $g$.
 \end{warning}
 
 
@@ -231,7 +237,7 @@ Sometimes we need to massage our function into the correct form:
 A general strategy for dealing with trigonometric integrals is to
 express every trigonometric function in terms of cosine and sine, and
 then proceed as we have above. However, this is not the only trick up
-our sleeves.  Remember, the Pythagorean identity has two other forms:
+our sleeve.  Remember, the Pythagorean identity has two other forms:
 \[
 1 + \tan^2(x) = \sec^2(x) \qquad\text{and}\qquad \cot^2(x) + 1 = \csc^2(x)
 \]
@@ -275,7 +281,7 @@ worth seeing several examples where we use these identities.
     \]
     This is a polynomial in $g$, and so we can easily finish the
     integration by just expanding the polynomial out and integrating
-    term by term. We leave it to the intrepid young mathematician to
+    term-by-term. We leave it to the intrepid young mathematician to
     finish this problem.
   \end{explanation}
 \end{example}
@@ -301,7 +307,7 @@ worth seeing several examples where we use these identities.
         \node at (0,0) {
           $\int \underbrace{(\sec^2(x)-1)^2\sec^4(x)} \underbrace{\sec(x)\tan(x) \d x}$
         };
-        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (-1,-.7) {\small{polynomial in $g$}};
         \node at (1.8,-.7) {\small{$\d g$}};
       \end{tikzpicture}
     \end{center}
@@ -316,7 +322,7 @@ worth seeing several examples where we use these identities.
     \]
     This is a polynomial in $g$, and so we can easily finish the
     integration by just expanding the polynomial out and integrating
-    term by term. We leave it to the interested young mathematician to
+    term-by-term. We leave it to the interested young mathematician to
     finish this problem.
   \end{explanation}
 \end{example}
@@ -360,7 +366,7 @@ completeness sake.
     \]
     This is a polynomial in $g$, and so we can easily finish the
     integration by just expanding the polynomial out and integrating
-    term by term. We leave it to the fearless young mathematician to
+    term-by-term. We leave it to the fearless young mathematician to
     finish this problem.
   \end{explanation}
 \end{example}
@@ -387,7 +393,7 @@ completeness sake.
         \node at (0,0) {
           $\int \underbrace{(\csc^2(x)-1)\csc^4(x)} \underbrace{\csc(x)\cot(x) \d x}$
         };
-        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (-1,-.7) {\small{polynomial in $g$}};
         \node at (1.8,-.7) {\small{$\d g$}};
       \end{tikzpicture}
     \end{center}
@@ -398,11 +404,11 @@ completeness sake.
     \end{align*}
     yields
     \[
-    \int \answer[given]{-(g-1)g^4} \d g
+    \int \answer[given]{-(g^2-1)g^4} \d g
     \]
     This is a polynomial in $g$, and so we can easily finish the
     integration by just expanding the polynomial out and integrating
-    term by term. We leave it to the patient young mathematician to
+    term-by-term. We leave it to the patient young mathematician to
     finish this problem.
   \end{explanation}
 \end{example}
@@ -475,7 +481,17 @@ cosecant, tangent, and cotangent.
       &= \int \cos^{-2}(x)\cos(x) \d x\\
       &=\int(1-\sin^2(x))^{-1} \cos(x) \d x
     \end{align*}
-    Now set $g =\sin(x)$ so $\d g = \cos(x) \d x$ and write with me
+    We have now set ourselves up for an eventual substitution:
+    \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+      \begin{tikzpicture}
+        \node at (0,0) {
+          $\int \underbrace{(1-\sin^2(x))^{-1}} \underbrace{\cos(x) \d x}$
+        };
+        \node at (-.4,-.7) {\small{rational function in $g$}};
+        \node at (1.8,-.7) {\small{$\d g$}};
+      \end{tikzpicture}
+    \end{center}
+    Set $g =\sin(x)$ so $\d g = \cos(x) \d x$, and write with me
     \begin{align*}
       \int(1-\sin^2(x))^{-1} \cos(x) \d x &= \int \frac{1}{1-g^2}\d g\\
       &= \frac{1}{2}\int \frac{1}{1-g} + \frac{1}{1+g} \d g\\
@@ -514,8 +530,7 @@ the power-reduction formulas, simplify, and see what we end up with.
 If we get some odd powered terms, we can use that strategy for those
 parts.  If we end up with both even powers again, we might have to use
 this strategy multiple times.  This can get tricky algebraically, but
-if you are careful in your algebra you will eventually emerge
-victorious.
+if you are careful, you will eventually emerge victorious.
 
 
 \end{document}

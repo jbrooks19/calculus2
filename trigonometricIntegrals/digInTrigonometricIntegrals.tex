@@ -17,7 +17,8 @@
 \end{abstract}
 \maketitle
 
-Here are some strategies for dealing with expressions of the following form:
+Here are some strategies for dealing with expressions of the following
+form:
 \[
 \int \sin^n(x)\cos^m(x) \d x
 \]
@@ -25,12 +26,10 @@ Functions like these, consisting of products of the sine and cosine
 function, can be integrated by using substitution and trigonometric
 identities. These can sometimes be tedious, but the technique is
 straightforward. The basic idea in each case is to somehow take
-advantage of a trigonometric identity, usually:
-\begin{description}\index{power-reduction}
-\item[Pythagorean Identity] $\cos^2(x) + \sin^2(x) = 1$\index{Pythagorean identity}
-\item[Sine Power-Reduction] $\sin^2(x) = \frac{1-\cos(2x)}{2}$\index{sine power-reduction}
-\item[Cosine Power-Reduction] $\cos^2(x)= \frac{1+\cos(2x)}{2}$\index{cosine power-reduction}
-\end{description}
+advantage of a trigonometric identity, usually the \dfn{Pythagorean identity}:
+\[
+\cos^2(x) + \sin^2(x) = 1
+\]
 
 \section{If either power is odd}
 
@@ -47,10 +46,16 @@ advantage of a trigonometric identity, usually:
     \end{align*}
     Now using the Pythagorean identity we can rewrite everything in
     terms of $\cos(x)$, but reserve the one power of $\sin(x)$ to help
-    with the differential in an eventual variable substitution.
-    \[
-    \int (1-\cos^2(x))^2 \cos^2(x) \sin(x) \d x
-    \]
+    with the differential in an eventual variable substitution:
+    \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+      \begin{tikzpicture}
+        \node at (0,0) {
+          $\int \underbrace{(1-\cos^2(x))^2 \cos^2(x)} \underbrace{\sin(x) \d x}$
+        };
+        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (1.8,-.7) {\small{$\d g$}};
+      \end{tikzpicture}
+    \end{center}
     Making the substitution
     \begin{align*}
       g &= \cos(x)\\
@@ -85,10 +90,21 @@ functions, and the power of sine is odd, then the integral looks like
 \int \sin^{2k+1}(x) \cos^m(x) \d x
 \]
 where $k$ is some integer.  Then
-\[
-\int \sin^{2k+1}(x) \cos^m(x) \d x = \int (1-\cos^2(x))^k \cos^m(x) \sin(x)\d x.
-\]
-So letting $g = \cos(x)$, $\d g =-\sin(x) \d x$, and we have
+\begin{align*}
+  \int \sin^{2k+1}(x) \cos^m(x) \d x &=\int(\sin^{2}(x))^k \cos^m(x) \sin(x) \d x\\
+  &= \int (1-\cos^2(x))^k \cos^m(x) \sin(x)\d x.
+\end{align*}
+We have now set ourselves up for an eventual substitution
+\begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+  \begin{tikzpicture}
+    \node at (0,0) {
+      $\int \underbrace{(1-\cos^2(x))^k \cos^m(x)} \underbrace{\sin(x) \d x}$
+        };
+    \node at (-.5,-.7) {\small{polynomial in $g$}};
+    \node at (1.8,-.7) {\small{$\d g$}};
+  \end{tikzpicture}
+\end{center}
+so letting $g = \cos(x)$, $\d g =-\sin(x) \d x$, and we have
 \[
 \int -(1-g^2)^k g^m \d g
 \]
@@ -102,7 +118,9 @@ expansion.
   \int \sec^{27}(x)\csc^{83}(x) \d x
   \]
   After making the substitution, $g = \cos(x)$ we find
-  \begin{multipleChoice}
+  \begin{hint}
+    First express secant and cosecant in terms of cosine and sine.
+  \end{hint}\begin{multipleChoice}
     \choice{$\int -(1-g^2)^{13} g^{83} \d g$}
     \choice{$\int -(1-g^2)^{27} g^{83} \d g$}
     \choice[correct]{$\int -(1-g^2)^{-42} g^{-27} \d g$}
@@ -121,10 +139,20 @@ of cosine is odd, then the integral looks like
 \int \sin^n(x) \cos^{2k+1}(x) \d x
 \]
 where $k$ is some integer. Then
-\[
-\int \sin^n(x) \cos^{2k+1}(x) \d x = \int \sin^n(x) \cos^{2k}(x) \cos(x) \d x.
-\]
-So letting $g = \sin(x)$, $\d g =\cos(x) \d x$, and we have 
+\begin{align*}
+\int \sin^n(x) \cos^{2k+1}(x) \d x &=\int \sin^n(x) (\cos^{2}(x))^k \cos(x)\d x\\
+&= \int \sin^n(x) (1-\sin^{2}(x))^k \cos(x) \d x.
+\end{align*}
+\begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+  \begin{tikzpicture}
+    \node at (0,0) {
+      $\int \underbrace{( \sin^n(x) (1-\sin^{2}(x))^k} \underbrace{\cos(x) \d x}$
+        };
+    \node at (-.5,-.7) {\small{polynomial in $g$}};
+    \node at (1.8,-.7) {\small{$\d g$}};
+  \end{tikzpicture}
+\end{center}
+so letting $g = \sin(x)$, $\d g =\cos(x) \d x$, and we have 
 \[
 \int g^n(1-g^2)^k \d g
 \]
@@ -137,6 +165,9 @@ expansion.
   \int \sec^{90}(x) \cot^{59}(x)  \d x
   \]
   After making the substitution, $g = \sin(x)$ we find
+  \begin{hint}
+    First express secant and cosecant in terms of cosine and sine.
+  \end{hint}
   \begin{multipleChoice}
     \choice[correct]{$\int g^{-59}(1-g^2)^{-16} \d g$}
     \choice{$\int g^{90}(1-g^2)^{29} \d g$}
@@ -164,15 +195,23 @@ Sometimes we need to massage our function into the correct form:
 \begin{example}
   Compute:
   \[
-  \int \sin^5 x \d x
+  \int \sin^5(x) \d x
   \]
   \begin{explanation}
-    Write with me
+    Write with me, we start by separating a power of sine for an eventual substitution
     \begin{align*}
-      \int \sin^5 x\d x &=\int \sin x \sin^4 x\d x\\
-      &= \int \sin x (\sin^2 x)^2\d x\\
-      &= \int \sin x (1-\cos^2 x)^2\d x.
+      \int \sin^5 x\d x &=\int \sin^4(x) \sin(x) \d x\\
+      &=\int (\sin^2(x))^2 \sin(x) \d x
     \end{align*}
+    \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+      \begin{tikzpicture}
+        \node at (0,0) {
+          $\int \underbrace{(1-\cos^2)^2} \underbrace{\sin(x) \d x}$
+        };
+        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (1.8,-.7) {\small{$\d g$}};
+      \end{tikzpicture}
+    \end{center}
     Now set $g=\cos x$, $\d g=-\sin x\d x$:
     \begin{align*}
       \int \sin x (1-\cos^2 x)^2\d x&=\int \answer[given]{-(1-g^2)^2} \d g \\
@@ -187,13 +226,206 @@ Sometimes we need to massage our function into the correct form:
 \end{example}
 
 
+\subsection{Working with other trigonometric functions}
+
+A general strategy for dealing with trigonometric integrals is to
+express every trigonometric function in terms of cosine and sine, and
+then proceed as we have above. However, this is not the only trick up
+our sleeves.  Remember, the Pythagorean identity has two other forms:
+\[
+1 + \tan^2(x) = \sec^2(x) \qquad\text{and}\qquad \cot^2(x) + 1 = \csc^2(x)
+\]
+the first identity we find by dividing the Pythagorean identity by
+$\cos^2(x)$ and the second we find by dividing by $\sin^2(x)$. It is
+worth seeing several examples where we use these identities.
+
+
+
+\begin{example}
+  Compute
+  \[
+  \int \tan^3(x) \sec^4(x) \d x
+  \]
+  \begin{explanation}
+    Since the power of secant is even, we can rewrite this suggestively as
+    \begin{align*}
+    \int &\tan^3(x) \sec^4(x) \d x \\
+    &= \int\tan^3(x) \sec^2(x) \sec^2(x) \d x
+    \end{align*}
+    Now using the Pythagorean identity we can rewrite everything in
+    terms of $\tan(x)$, but reserve the one power of $\sec^2(x)$ to help
+    with the differential in an eventual variable substitution:
+    \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+      \begin{tikzpicture}
+        \node at (0,0) {
+          $\int \underbrace{\tan^3(x)(1+\tan^2(x))} \underbrace{\sec^2(x) \d x}$
+        };
+        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (1.8,-.7) {\small{$\d g$}};
+      \end{tikzpicture}
+    \end{center}
+    Making the substitution
+    \begin{align*}
+      g &= \tan(x)\\
+      \d g &=\answer[given]{\sec^2(x)} \d x
+    \end{align*}
+    yields
+    \[
+    \int \answer[given]{g^3(1+g^2)} \d g
+    \]
+    This is a polynomial in $g$, and so we can easily finish the
+    integration by just expanding the polynomial out and integrating
+    term by term. We leave it to the intrepid young mathematician to
+    finish this problem.
+  \end{explanation}
+\end{example}
+
+
+\begin{example}
+  Compute
+  \[
+  \int \tan^3(x) \sec^5(x) \d x
+  \]
+  \begin{explanation}
+    Since the power of tangent is odd and the power of secant is odd,
+    we can rewrite this suggestively as
+    \begin{align*}
+    \int &\tan^3(x) \sec^5(x) \d x \\
+    &= \int\tan^2(x) \sec^4(x) \sec(x)\tan(x) \d x
+    \end{align*}
+    Now using the Pythagorean identity we can rewrite everything in
+    terms of $\sec(x)$, but reserve the one power of $\sec(x)\tan(x)$ to help
+    with the differential in an eventual variable substitution:
+    \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+      \begin{tikzpicture}
+        \node at (0,0) {
+          $\int \underbrace{(\sec^2(x)-1)^2\sec^4(x)} \underbrace{\sec(x)\tan(x) \d x}$
+        };
+        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (1.8,-.7) {\small{$\d g$}};
+      \end{tikzpicture}
+    \end{center}
+    Making the substitution
+    \begin{align*}
+      g &= \sec(x)\\
+      \d g &=\answer[given]{\sec(x)\tan(x)} \d x
+    \end{align*}
+    yields
+    \[
+    \int \answer[given]{(g^2-1)^2g^4} \d g
+    \]
+    This is a polynomial in $g$, and so we can easily finish the
+    integration by just expanding the polynomial out and integrating
+    term by term. We leave it to the interested young mathematician to
+    finish this problem.
+  \end{explanation}
+\end{example}
+
+
+Let's do some problems involving cotangent and cosecant for
+completeness sake.
+
+\begin{example}
+  Compute
+  \[
+  \int \cot^3(x) \csc^4(x) \d x
+  \]
+  \begin{explanation}
+    Since the power of cotangent is odd and the power of cosecant is even,
+    we can rewrite this suggestively as
+    \begin{align*}
+      \int &\cot^3(x) \csc^4(x) \d x \\
+    &= \int\cot^3(x) \csc^2(x) \csc^2(x) \d x
+    \end{align*}
+    Now using the Pythagorean identity we can rewrite everything in
+    terms of $\cot(x)$, but reserve the one power of $\csc^2(x)$ to help
+    with the differential in an eventual variable substitution:
+    \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+      \begin{tikzpicture}
+        \node at (0,0) {
+          $\int \underbrace{(\cot^3(x)(\cot^2(x)+1)} \underbrace{\csc^2(x) \d x}$
+        };
+        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (1.8,-.7) {\small{$\d g$}};
+      \end{tikzpicture}
+    \end{center}
+    Making the substitution
+    \begin{align*}
+      g &= \cot(x)\\
+      \d g &=\answer[given]{-\csc^2(x)} \d x
+    \end{align*}
+    yields
+    \[
+    \int \answer[given]{-g^3(g^2+1)} \d g
+    \]
+    This is a polynomial in $g$, and so we can easily finish the
+    integration by just expanding the polynomial out and integrating
+    term by term. We leave it to the fearless young mathematician to
+    finish this problem.
+  \end{explanation}
+\end{example}
+
+
+
+\begin{example}
+  Compute
+  \[
+  \int \cot^3(x) \csc^5(x) \d x
+  \]
+  \begin{explanation}
+    Since the power of cotangent is odd and the power of cosecant is
+    odd, we can rewrite this suggestively as
+    \begin{align*}
+      \int &\cot^3(x) \csc^5(x) \d x \\
+    &= \int\cot^2(x) \csc^4(x) \csc(x)\cot(x) \d x
+    \end{align*}
+    Now using the Pythagorean identity we can rewrite everything in
+    terms of $\csc(x)$, but reserve the one power of $\csc(x)\cot(x)$ to help
+    with the differential in an eventual variable substitution:
+    \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
+      \begin{tikzpicture}
+        \node at (0,0) {
+          $\int \underbrace{(\csc^2(x)-1)\csc^4(x)} \underbrace{\csc(x)\cot(x) \d x}$
+        };
+        \node at (-.5,-.7) {\small{polynomial in $g$}};
+        \node at (1.8,-.7) {\small{$\d g$}};
+      \end{tikzpicture}
+    \end{center}
+    Making the substitution
+    \begin{align*}
+      g &= \csc(x)\\
+      \d g &=\answer[given]{-\csc(x)\cot(x)} \d x
+    \end{align*}
+    yields
+    \[
+    \int \answer[given]{-(g-1)g^4} \d g
+    \]
+    This is a polynomial in $g$, and so we can easily finish the
+    integration by just expanding the polynomial out and integrating
+    term by term. We leave it to the patient young mathematician to
+    finish this problem.
+  \end{explanation}
+\end{example}
+
+
+
 
 \section{When both powers are even}
 
-What about when both powers are even?  Our strategy above is sunk,
-since peeling off one power leaves an odd power, and we cannot use the
-Pythagorean identity to rewrite this in a nice way.  Instead, we will
-use the power-reduction formulas.
+Thinking again about powers of cosine and sine, what do we do when
+both powers are even?  Our strategy above is sunk, since peeling-off
+one power leaves an odd power, and we cannot use the Pythagorean
+identity to rewrite this in a nice way.  Instead, we will use the
+power-reduction formulas:
+
+\begin{description}\index{power-reduction}
+\item[Cosine Power-Reduction] $\cos^2(x)= \frac{1+\cos(2x)}{2}$\index{cosine power-reduction}
+\item[Sine Power-Reduction] $\sin^2(x) = \frac{1-\cos(2x)}{2}$\index{sine power-reduction}
+\end{description}
+
+In this case, it is (usually) critical to apply the power-reduction
+formulas to \textit{every} instance of cosine and sine appearing in
+the integrand.
 
 \begin{example}
   Compute:
@@ -201,12 +433,7 @@ use the power-reduction formulas.
   \int \sin^2x\cos^2x\d x
   \]
   \begin{explanation} 
-    Use both power-reduction formulas
-    \begin{itemize}
-    \item $\sin^2x =(1-\cos(2x))/2$ and
-    \item $\cos^2x =(1+\cos(2x))/2$,
-    \end{itemize}
-    to get:
+    Use both power-reduction formulas to find:
     \[
     \int \sin^2x\cos^2x\d x=\int \frac{1-\cos(2x)}{2}\cdot
     \frac{1+\cos(2x)}{2}\d x
@@ -231,7 +458,10 @@ use the power-reduction formulas.
 \end{example}
 
 
-\section{Other trigonometric functions}
+\section{Antiderivatives of other trigonometric functions}
+
+Finally we will reveal the antiderivatives of functions like secant,
+cosecant, tangent, and cotangent.
 
 \begin{example}
   Compute:
@@ -262,6 +492,18 @@ use the power-reduction formulas.
     \end{align*}
   \end{explanation}
 \end{example}
+
+Using a similar technique, we can find the antiderivatives of other trigonometric functions:
+
+
+\begin{theorem}[Antiderivatives of trigonometric functions]\hfil
+  \begin{itemize}
+  \item $\int \tan(x) \d x = -\ln|\cos(x)| + C$
+  \item $\int \cot(x) \d x = \ln|\sin(x)| + C$
+  \item $\int \sec(x) \d x = \ln|\sec(x) + \tan(x)| + C$
+  \item $\int \csc(x) \d x = -\ln|\csc(x) + \cot(x)| + C$
+  \end{itemize}
+\end{theorem}
 
 
 

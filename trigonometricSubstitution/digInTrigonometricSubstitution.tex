@@ -2,20 +2,23 @@
 
 \input{../preamble.tex}
 
+
+\outcome{Use Pythagorean identities to simplify expressions.}
+\outcome{Substitute trigonometric functions to simiplify integrals.}
+\outcome{Complete the square to change the form of an integral.}
+
 \title[Dig-In:]{Trigonometric substitution}
 
 \begin{document}
 \begin{abstract}
-  Quadratic functions can integrated by substitution with the
-  appropriate trigonometric function.
+  We integrate by substitution with the appropriate trigonometric
+  function.
 \end{abstract}
 \maketitle
 
-
-
 One useful model of the definite integral is that of a ``machine''
 that computes ``signed area under the curve.'' In particular, this
-metaphore allows us to compute
+metaphor allows us to compute
 \[
 \int_{-1}^1 \sqrt{1-x^2} \d x
 \]
@@ -46,223 +49,380 @@ via geometry. Check out a graph of $y= \sqrt{1-x^2}$:
   \]
 \end{question}
 
-We have since learned a number of integration techniques, including
-substitution and integration by parts, yet we are still unable to
-evaluate the above integral without resorting to a geometric
-interpretation.
+We now know a number of integration techniques, yet we are still
+unable to evaluate the above integral without resorting to a geometric
+interpretation!  This section introduces \dfn{trigonometric substitution},
+a method of integration that will give us a new tool in our quest to compute all integrals.
+This technique works on the same principle as substitution. Recall the
+substitution formula, rewritten with suggestive notation:
 
-This section introduces \dfn{trigonometric substitution}, a method of
-integration that fills this gap in our integration skill.
-
-It will apply more generally to most integrals which involve a quadratic function of $x$.
-
-This technique works on the same principle as substitution. However,
-whereas with substitution we were typically transforming the integral
-left to right in the diagram below
-
+\begin{theorem}[Integral Substitution Formula]\index{substitution formula}  
+If a function $x$ is differentiable on the interval $[a,b]$, then
+\[
+\int_{x(a)}^{x(b)} f(x) \d x = \int_a^b f(x(\theta)) x'(\theta) \d \theta 
+\]
+\end{theorem}
+In what follows, we'll be thinking of transforming from left-to-right:
 \begin{image}
   \begin{tikzpicture}[scale=1,every node/.style={transform shape}]
-    \draw [->, line width=10, penColor!10!background] (1,0)--(-0.5,0);
+    \draw [->, line width=10, penColor!10!background] (-1,0)--(.5,0);
     \node at (0,0) {
-      $\int_a^b f'(g(x)) g'(x) \d x =\int_{g(a)}^{g(b)} f'(g) \d g$
-    };
-  \end{tikzpicture}
-\end{image} 
-
-\begin{image}
-  \begin{tikzpicture}[scale=1,every node/.style={transform shape}]
-    \draw [->, line width=10, penColor!10!background] (-.5,0)--(1,0);
-    \node at (0,0) {
-      $\int_a^b f'(g(x)) g'(x) \d x =\int_{g(a)}^{g(b)} f'(g) \d g$
+      $\int_{x(a)}^{x(b)} f(x) \d x=\int_a^b f(x(\theta)) x'(\theta) \d \theta$
     };
   \end{tikzpicture}
 \end{image}
-
-We start by demonstrating this method in evaluating the integral
-above by computing the antiderivative of $\sqrt{1-x^2}$:
+We start by using calculus to compute the area that we previously used
+geometry to compute.
 
 \begin{example}
   Compute:
   \[
   \int_{-1}^1 \sqrt{1-x^2} \d x
   \]
-  \begin{explanation}
-  
-  Evaluate $\int_{-1}^1\sqrt{1-x^2}\d x$. We begin by noting that
-    $\sin^2\theta + \cos^2\theta = 1$, and hence $\cos^2\theta =
-    1-\sin^2\theta$. If we let $x=\sin\theta$, then $1-x^2 =
-    1-\sin^2\theta = \cos^2\theta$.
-
-Setting $x=\sin \theta$ gives $\d x = 3\cos\theta\ \d \theta$. We are
-almost ready to substitute. We also wish to change our bounds of
-integration. The bound $x=-1$ corresponds to $\theta = -\pi/2$ (for
-when $\theta = -\pi/2$, $x=\sin \theta = -1$). Likewise, the bound of
-$x=1$ is replaced by the bound $\theta = \pi/2$. Thus
-
-\begin{align*}
-  \int_{-1}^1\sqrt{1-x^2} \d x &= \int_{-\pi/2}^{\pi/2} \sqrt{1-\sin^2\theta} (\cos\theta)\ \d \theta \\
-  &= \int_{-\pi/2}^{\pi/2} 3\sqrt{\cos^2\theta} \cos\theta\ \d \theta \\
-  &=\int_{-\pi/2}^{\pi/2} |\cos \theta| \cos\theta\ d\theta.
-\end{align*}
-
-On $[-\pi/2,\pi/2]$, $\cos \theta$ is always positive, so we can drop the absolute value bars, then employ a half angle identity
-
+  \begin{explanation}\index{Pythagorean identity}
+    Consider the Pythagorean identity:
+    \[
+    \cos^2(\theta) + \sin^2(\theta) = 1
+    \]
+    From this we see that $\cos^2(\theta)=
+    \answer[given]{1-\sin^2(\theta)}$.  If we let
     \begin{align*}
-      &= \int_{-\pi/2}^{\pi/2} \cos^2 \theta \d \theta \\
-      &= \int_{-\pi/2}^{\pi/2} \frac{1}{2}\big(1+\cos(2\theta)\big) \d \theta\\
-      &= \frac{1}{2} \eval{\theta +\frac{1}{2}\sin(2\theta)}_{-\pi/2}^{\pi/2}\\
-      &=\frac{\pi}{2}
+      x &=\sin(\theta),\\
+      \d x &= \cos(\theta) \d\theta.
     \end{align*}
-    
+    We are almost ready to substitute. We must also change our limits
+    of integration. Write with me
+    \begin{align*}
+      x &= 1\\
+      \sin(\theta) &= 1\\
+      \theta &= \answer[given]{\pi/2}
+    \end{align*}
+    and
+    \begin{align*}
+      x &= -1\\
+      \sin(\theta) &= -1\\
+      \theta &= \answer[given]{-\pi/2}
+    \end{align*}
+    Now we may transform our integral via
+    \begin{image}
+      \begin{tikzpicture}[scale=1,every node/.style={transform shape}]
+        \draw [->, line width=10, penColor!10!background] (-1,0)--(.5,0);
+        \node at (0,0) {
+          $\int_{x(a)}^{x(b)} f(x) \d x=\int_a^b f(x(\theta)) x'(\theta) \d \theta$
+        };
+      \end{tikzpicture}
+    \end{image}
+    \begin{align*}
+      \int_{-1}^1\sqrt{1-x^2} \d x &= \int_{\answer[given]{-\pi/2}}^{\answer[given]{\pi/2}} \sqrt{1-\sin^2(\theta)} \cdot \cos(\theta) \d \theta \\
+      &= \int_{\answer[given]{-\pi/2}}^{\answer[given]{\pi/2}} \sqrt{\cos^2(\theta)}\cdot \cos(\theta) \d\theta \\
+      &=\int_{\answer[given]{-\pi/2}}^{\answer[given]{\pi/2}} |\cos(\theta)| \cos\theta \d\theta.
+    \end{align*}
+    Since on $[-\pi/2,\pi/2]$, the function $\cos(\theta)$ is always
+    \wordChoice{\choice[correct]{positive}\choice{negative}\choice{zero}},
+    we can drop the absolute value, and then employ a power-reduction
+    formula\index{power-reduction formula}
+    \[
+    \cos^2(\theta)= \frac{1+\cos(2\theta)}{2}.
+    \]
+    Write with me
+    \begin{align*}
+      &= \int_{-\pi/2}^{\pi/2} \cos^2(\theta) \d \theta \\
+      &= \int_{-\pi/2}^{\pi/2} \frac{1+\cos(2\theta)}{2} \d \theta\\
+      &= \frac{1}{2} \eval{\answer[given]{\theta +\frac{1}{2}\sin(2\theta)}}_{-\pi/2}^{\pi/2}\\
+      &=\answer[given]{\frac{\pi}{2}}.
+    \end{align*}
     This matches our answer from before.
   \end{explanation}
 \end{example}
 
-
-We now describe in detail Trigonometric Substitution. This method excels when dealing with integrands that contain a quadratic function.   For instance, each of the following integrals is a prime candidate for Trig Sub:
-
-\begin{itemize}
-\item $\int \frac{1}{(2+4x+3x^2)^5} \d x$
-\item $\int \frac{x^2}{\sqrt{9-x^2}} \d x$
-\item $\int \sqrt{1+x^2} \d x$
-\end{itemize}
-
-The key idea is always to complete the square, and then choose a trig function which allows the use of a pythagorean identity to simplify the expression. 
+As you may recall, there are two ways to use substitution. Above we
+transformed the limits of integration, and worked with the variable
+$\theta$. However, we could have solved the problem by finishing with
+an antiderivative in $x$ and then evaluating from $-1$ to $1$. Let's
+do this.
 
 \begin{example}
-
-\[
-\int_{-\frac{1}{2}}^1 \frac{1}{\sqrt{4x^2+4x+10}} \d x
-\]
-
-First we complete the square on the quadratic:
-
-\begin{align*}
-	4x^2+4x+10 &= 4(x^2+x)+10\\
-		&=4(x^2+x+\frac{1}{4} - \frac{1}{4})+10\\
-		&=4(\answer{x+\frac{1}{2}})^2+9\\
-		&=(\answer{2x+1})^2+9
-\end{align*}
-
-Now we would like to choose to let $2x+1$ equal some trig function so that $(2x+1)^2+9$ will simplify after a Pythagorean identity.  We know that $1+\tan^2(\theta) = \sec^2(\theta)$, so a wise choice would be $2x+1 = 3\tan(\theta)$.  In this case we have 
-
-\[
-\d x = \answer{\frac{3}{2} \sec^2(\theta)} \d \theta
-\]
-
-The lower and upper limits of integration after this substitution will be 
-
-\[
-\theta = \answer{0} \textrm{ to } \theta = \answer{\frac{\pi}{2}}
-\]
-
-So making this substitution we have
-
-\begin{align*}
-\int_{-\frac{1}{2}}^1 \frac{1}{\sqrt{4x^2+4x+10}} \d x &= \int_{-\frac{1}{2}}^1 \frac{1}{\sqrt{(2x+1)^2+9}} \d x\\
-&= \int_0^\frac{\pi}{2} \frac{1}{\sqrt{(3\tan(\theta))^2+9}} \sec^2(\theta) \d \theta\\
-&= \int_0^\frac{\pi}{2} \frac{1}{3\sqrt{\tan^2(\theta)+1}} \sec^2(\theta) \d \theta\\
-&= \int_0^\frac{\pi}{2} \frac{1}{3\sqrt{\tan^2(\theta)+1}} \sec^2(\theta) \d \theta\\
-&= \int_0^\frac{\pi}{2} \frac{1}{3\sqrt{\sec^2(\theta)}} \sec^2(\theta) \d \theta\\
-&= \int_0^\frac{\pi}{2} \frac{1}{3 \left| \sec(\theta) \right|} \sec^2(\theta) \d \theta\\
-&= \int_0^\frac{\pi}{2} \frac{1}{3 \sec(\theta)} \sec^2(\theta) \d \theta \textrm{ b/c $\sec{\theta} > 0$ on $[0,\frac{\pi}{2}]$}\\
-&= \int_0^\frac{\pi}{2} \frac{1}{3} \sec(\theta) \d \theta\\
-&= \frac{1}{3} \eval{\ln(\left| \answer{\sec(\theta)+\tan(\theta)} \right| }_0^\frac{\pi}{2}\\
-&=\frac{1}{3} ( \ln(\sqrt{2}+1) - \ln(1))\\
-&=\frac{\ln(\sqrt{2}+1)}{3}
-\end{align*}
- 
-\end{example}
-
-In the last example, we choose to use a substitution involving $\tan$ because our quadratic looked like $a^2+u^2$ after completing the square, so $ u = a\tan(\theta)$ gave us a nice Pythagorean identity.
-
-In general:
-
-\begin{itemize}
-\item If the quadratic has the form $a^2 + u^2$ after completing the square, make the substitution $u = a\tan(\theta)$
-\item If the quadratic has the form $a^2 - u^2$ after completing the square, make the substitution $u = a\sin(\theta)$ 
-\item If the quadratic has the form $u^2 - a^2$ after completing the square, make the substitution $u = a\sec(\theta)$
-\end{itemize}
-
-(The choices $a\cot(\theta)$,  $a\cos(\theta)$, and $a \csc(\theta)$ could be used with equal efficiency, but there is no reason to ever use them.)
-
-Let's try another practice problem, this time an indefinite integral:
-
-
-\begin{example}
-	\[
-	\int \frac{1}{x(4x^2 - 25)}
-	\]
-	
-	Here, the quadratic term is already in the appropriate form $(2x)^2-5^2$.  According to the bullet points above, we should make the substitution
-	
-	\[
-	2x = \answer{5\sec(\theta)}
-	\]
-	
-	\begin{hint}
-		$2x = 5\sec(\theta)$
-	\end{hint}
-	
-	When we make this substitution, we will have
-	
-	\[
-	\d x = \answer{\frac{5}{2} \sec(\theta) \tan(\theta)} \d \theta
-	\]
-	
-	So we have
-	
-	\begin{align*}
-		\int \frac{1}{x(4x^2 - 25)} &= \int \frac{1}{\frac{5}{2} \sec(\theta) (25\sec^2(\theta) - 25)}\frac{5}{2} \sec(\theta) \tan(\theta) \d \theta \\
-				&=\frac{1}{25} \int \frac{\tan(\theta)}{\answer{\tan^2(\theta)}} \d \theta\\
-				&=\frac{1}{25} \int \cot(\theta) \d \theta\\
-				&=\frac{1}{25} \ln(\left| \sin(\theta) \right| )+C
-	\end{align*}
-	
-	Now all the integration is done, but we have to express out answer in terms of $x$, not $\theta$.  
-	
-	Remember that $\sec(\theta)  =\frac{2}{5} x$. So let's draw a right triangle to figure out $\sin(\theta)$ in terms of $x$.
-	
-	\begin{image}
-      \begin{tikzpicture}
-
-        
-        \draw[penColor, very thick] (0,0) -- (3,0);
-        \draw[penColor, very thick] (3,0) -- (3,4);
-        \draw[penColor, very thick] (0,0) -- (3,4);
-        \node [textColor] at (1.4,-0.3) {$1$};
-        \node [textColor] at (1.4,2.5) {$\frac{2x}{5}$};
-        \node [textColor] at (0.5,0.3) {$\theta$};
-        \node [textColor] at (3.8,2) {Opposite};
+  Compute:
+  \[
+  \int \sqrt{1-x^2} \d x
+  \]
+  \begin{explanation}\index{Pythagorean identity}
+    Again, consider the Pythagorean identity:
+    \[
+    \cos^2(\theta) + \sin^2(\theta) = 1
+    \]
+    From this we see that $\cos^2(\theta)=
+    \answer[given]{1-\sin^2(\theta)}$.  If we let
+    \begin{align*}
+      x &=\sin(\theta),\\
+      \d x &= \cos(\theta) \d\theta.
+    \end{align*}
+    Now we may transform our integral via
+    \begin{image}
+      \begin{tikzpicture}[scale=1,every node/.style={transform shape}]
+        \draw [->, line width=10, penColor!10!background] (-1.2,0)--(.3,0);
+        \node at (0,0) {
+          $\int f(x) \d x=\int f(x(\theta)) x'(\theta) \d \theta$
+        };
       \end{tikzpicture}
     \end{image}
-
-	We want to find $\sin(\theta)$ in terms of $x$.  So the first thing is to find the length of the opposite to $\theta$.  By the pythagorean theorem, we have
-	
-	\[
-	\textrm{Opposite} =  \answer{\sqrt{\frac{4x^2}{25}-1}}
-	\]
-	
-	So after a bit of algebra
-	
-	\[
-	\sin(\theta) = \frac{1}{x} \sqrt{x^2 - \frac{25}{4}}
-	\]
-	
-	Thus the integral is (after yet more algebra)
-	
-	\[
-	\int \frac{1}{x(4x^2 - 25)} \d x = \frac{1}{50} \ln(\left| \frac{4x^2-25}{x^2} \right|)+C
-	\]
-	
-	\begin{warning}
-		Note that the absolute value signs are crucially important here.  Without them, the antiderivative would not even be defined at at $x=1$, for example.
-	\end{warning}
+    \begin{align*}
+      \int \sqrt{1-x^2} \d x &= \int \sqrt{1-\answer[given]{\sin^2(\theta)}} \cdot \cos(\theta) \d \theta \\
+      &= \int \sqrt{\cos^2(\theta)}\d\theta \\
+      &=\int |\cos(\theta)| \cos\theta \d\theta.
+    \end{align*}
+    As before, since we are only really interested in the interval
+    $[-\pi/2,\pi/2]$, and the function $\cos(\theta)$ is always
+    \wordChoice{\choice[correct]{positive}\choice{negative}\choice{zero}},
+    we can drop the absolute value, and then employ a power-reduction
+    formula\index{power-reduction formula}
+    \[
+    \cos^2(\theta)= \answer[given]{\frac{1+\cos(2\theta)}{2}}.
+    \]
+    Write with me
+    \begin{align*}
+      &= \int \cos^2(\theta) \d \theta \\
+      &= \int \frac{1+\cos(2\theta)}{2} \d \theta\\
+      &= \answer[given]{\frac{\theta}{2} +\frac{1}{4}\sin(2\theta)}+C
+    \end{align*}
+    However, now we must express our answer in terms of $x$. Recalling that
+    \[
+    \sin(2\theta) = 2\sin(\theta)\cos(\theta)
+    \]
+    we may write our answer as
+    \[
+    \frac{\theta}{2} +\frac{\sin(\theta)\cos(\theta)}{2}+C.
+    \]
+    To convert our answer to a function in $x$, use a reference triangle, noting that $\sin(\theta) = \answer[given]{x}$
+    \begin{image}
+      \begin{tikzpicture}
+        \coordinate (C) at (0,2);
+        \coordinate (D) at (4,2);
+        \coordinate (E) at (4,4);
+        \tkzMarkRightAngle(C,D,E)
+        \tkzMarkAngle(D,C,E)
+        \draw[decoration={brace,mirror,raise=.2cm},decorate,thin] (0,2)--(4,2);
+        \draw[decoration={brace,mirror,raise=.2cm},decorate,thin] (4,2)--(4,4);
+        \draw[decoration={brace,raise=.2cm},decorate,thin] (0,2)--(4,4);
+        \draw[very thick] (D)--(E)--(C)--cycle;
+        \node at (2,2-.7) {$\sqrt{1-x^2}$}; %% adj
+        \node[anchor=west] at (4+.3,3) {$x$}; %% opp
+        \node at (2-.3,3+.5) {$1$}; %% hyp
+        \node at (1.2,2.3) {$\theta$};
+      \end{tikzpicture}
+    \end{image}
+    Thus
+    \begin{align*}
+      \int \sqrt{1-x^2} \d x &= \frac{\theta}{2} +\frac{1}{2}\sin(\theta)\cos(\theta)+C \\
+      &= \answer[given]{\frac{\arcsin(x)}{2} + \frac{x\sqrt{1-x^2}}{2}} + C 
+    \end{align*}
+  \end{explanation}
 \end{example}
 
-\end{document}}
+\begin{question}
+  If
+  \[
+  \int \sqrt{1-x^2} \d x = \frac{\arcsin(x)}{2} + \frac{x\sqrt{1-x^2}}{2} + C,
+  \]
+  then
+  \[
+  \int_{-1}^{1}\sqrt{1-x^2} \d x = \answer{\pi/2}
+  \]
+\end{question}
 
 
+Let's see a more complex example.
+
+
+\begin{example}
+  Compute:
+  \[
+  \int \frac{x^3}{x^2+9} \d x
+  \]
+  \begin{explanation}
+    To start, recall the Pythagorean identity
+    \[
+    \tan^2(\theta) + 1 = \answer[given]{\sec^2(\theta)}
+    \]
+    and note that multiplying the entire equation by $9$ yields
+    \[
+    \left(\answer[given]{3\tan(\theta)}\right)^2 + 9 = (3\sec(\theta))^2.
+    \]
+    Hence we'll make the substitution
+    \begin{align*}
+      x &= 3\tan(\theta),\\
+      \d x &= \answer[given]{3\sec^2(\theta)} \d \theta,
+    \end{align*}
+    Write with me
+    \begin{align*}
+      \int \frac{x^3}{x^2+9} \d x &= \int \frac{(3\tan(\theta))^3}{(3\tan(\theta))^2+9} \cdot 3\sec^2(\theta) \d \theta\\
+      &=\int \frac{(3\tan(\theta))^3}{(3\sec(\theta))^2} \cdot 3\sec^2(\theta) \d \theta\\
+      &=9\int \tan^3(\theta)  \d \theta.
+    \end{align*}
+    We'll use our expertise with trigonometric integrals
+    \begin{align*}
+      9\int \tan^3(\theta)  \d \theta &= 9\int \sin^3(\theta)\cos^{-3}(\theta)  \d \theta\\
+      &= 9\int \sin^2(\theta)\cos^{-3}(\theta)  \sin(\theta) \d \theta\\
+      &= 9\int (1-\cos^2(\theta))\cos^{-3}(\theta)  \sin(\theta) \d \theta
+    \end{align*}
+    Now set
+    \begin{align*}
+      g&=\cos(\theta),\\
+      \d g &= \answer[given]{-\sin(\theta)}\d \theta,
+    \end{align*}
+    to find
+    \begin{align*}
+      &= -9\int \frac{1-g^2}{g^3}\d g\\
+      &= -9\int g^{-3}-\frac{1}{g}\d g\\
+      &= -9\left(\answer[given]{\frac{g^{-2}}{-2}}-\ln|g|\right) + C\\
+      &= \frac{9}{2g^2} + 9\ln|g| + C.
+    \end{align*}
+    Now that we have an answer in $g$, we must convert it back to
+    being a function in $\theta$, and then to a function in $x$. Write
+    with me, since $g = \cos(\theta)$ we have
+    \[
+    \frac{9}{2g^2} + 9\ln|g| + C = \frac{9}{2\cos^2(\theta)} + 9\ln|\cos(\theta)| + C.
+    \]
+    To convert our answer to a function in $x$, use a reference
+    triangle, noting that $3\tan(\theta) = x$, and so $\tan(\theta) =
+    x/3$:
+    \begin{image}
+      \begin{tikzpicture}
+        \coordinate (C) at (0,2);
+        \coordinate (D) at (4,2);
+        \coordinate (E) at (4,4);
+        \tkzMarkRightAngle(C,D,E)
+        \tkzMarkAngle(D,C,E)
+        \draw[decoration={brace,mirror,raise=.2cm},decorate,thin] (0,2)--(4,2);
+        \draw[decoration={brace,mirror,raise=.2cm},decorate,thin] (4,2)--(4,4);
+        \draw[decoration={brace,raise=.2cm},decorate,thin] (0,2)--(4,4);
+        \draw[very thick] (D)--(E)--(C)--cycle;
+        \node at (2,2-.5) {$1$}; %% adj
+        \node[anchor=west] at (4+.3,3) {$x/3$}; %% opp
+        \node at (2-.5,3+.7) {$\sqrt{1+(x/3)^2}$}; %% hyp
+        \node at (1.2,2.3) {$\theta$};
+      \end{tikzpicture}
+    \end{image}
+    Thus
+    \[
+    \cos(\theta) =  \answer[given]{\frac{1}{\sqrt{1+(x/3)^2}}}
+    \]
+    and we may write
+    \begin{align*}
+      \int \frac{x^3}{x^2+9} \d x &= \frac{9}{2\cos^2(\theta)} + 9\ln|\cos(\theta)| + C\\
+      &= \frac{9+x^2}{2} + 9 \ln\left|\frac{1}{\sqrt{1+(x/3)^2}}\right| + C.
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+
+However, sometimes the integral may not be in a form that is clear.
+The key idea is to \dfn{complete the square}, and then choose a
+trigonometric function which allows the use of a Pythagorean identity
+to simplify the expression.
+
+
+
+\begin{example}
+  Compute:
+  \[
+  \int \frac{\sqrt{x^2+6x+5}}{x+3}\d x
+  \]
+  \begin{explanation}
+    First we complete the square of the quadratic:
+    \begin{align*}
+      x^2+6x+5 &= x^2+6x+\answer[given]{9}+(5-\answer[given]{9})\\
+      &= (\answer[given]{x+3})^2-4
+    \end{align*}
+    Our integral is now
+    \[
+    \int \frac{\sqrt{(x+3)^2-4}}{x+3}\d x
+    \]
+    We would like to choose to let $(x+3)$ equal some trigonometric
+    function that will simplify after the application of a
+    Pythagorean identity. Recall the Pythagorean identity
+    \[
+    \tan^2(\theta) + 1 = \sec^2(\theta)
+    \]
+    so we'll multiple this equation by $4$ and rearrange to find
+    \[
+    (\answer[given]{2\tan(\theta)})^2 = (\answer[given]{2\sec(\theta)})^2 - 4
+    \]
+    and set
+    \begin{align*}
+      (x+3) &=  2\sec(\theta)\\
+      \d x &= 2\sec(\theta)\tan(\theta) \d \theta.
+    \end{align*}
+    So making this substitution we have
+    \begin{align*}
+      \int &\frac{\sqrt{(x+3)^2-4}}{x+3}\d x \\
+      &= \int\frac{\sqrt{(\answer[given]{2\sec(\theta)})^2-4}}{\answer[given]{2\sec(\theta)}} \cdot 2\sec(\theta)\tan(\theta)\d \theta\\
+      &= \int\frac{\sqrt{(2\tan(\theta))^2}}{2\sec(\theta)} \cdot 2\sec(\theta)\tan(\theta)\d \theta\\
+    \end{align*}
+    We will now assume $\tan(\theta)>0$ and leave the case when
+    $\tan(\theta)<0$ to the intrepid young mathematician. Hence we may
+    cancel the secants and simplify to:
+    \[
+    \int 2 \tan^2(\theta) \d \theta = 2\int \tan^2(\theta) \d \theta
+    \]
+    We'll again use the Pythagorean identity
+    \[
+    \tan^2(\theta) + 1 = \sec^2(\theta)
+    \]
+    to write
+    \begin{align*}
+      &= 2\int \sec^2(\theta) - 1 \d \theta\\
+      &= \answer[given]{2\left(\tan(\theta) - \theta\right)} + C
+    \end{align*}
+    Now that we have an answer in $\theta$, we must convert it back to
+    being a function in $x$. Write
+    with me, since $x+3 = 2\sec(\theta)$ we have
+    \[
+    \cos(\theta) = \frac{2}{x+3},
+    \]
+    and using a reference triangle,
+    \begin{image}
+      \begin{tikzpicture}
+        \coordinate (C) at (0,2);
+        \coordinate (D) at (4,2);
+        \coordinate (E) at (4,4);
+        \tkzMarkRightAngle(C,D,E)
+        \tkzMarkAngle(D,C,E)
+        \draw[decoration={brace,mirror,raise=.2cm},decorate,thin] (0,2)--(4,2);
+        \draw[decoration={brace,mirror,raise=.2cm},decorate,thin] (4,2)--(4,4);
+        \draw[decoration={brace,raise=.2cm},decorate,thin] (0,2)--(4,4);
+        \draw[very thick] (D)--(E)--(C)--cycle;
+        \node at (2,2-.5) {$2$}; %% adj
+        \node[anchor=west] at (4+.3,3) {$\sqrt{4-(x+3)^2}$}; %% opp
+        \node at (2-.3,3+.5) {$x+3$}; %% hyp
+        \node at (1.2,2.3) {$\theta$};
+      \end{tikzpicture}
+    \end{image}
+    Thus
+    \[
+    \tan(\theta) = \answer[given]{\frac{\sqrt{4-(x+3)^2}}{2}}
+    \]
+    and we may write
+    \begin{align*}
+    \int &\frac{\sqrt{(x+3)^2-4}}{x+3} \d x = 2\left(\tan(\theta) - \theta\right) + C\\
+      &= \sqrt{4-(x+3)^2} - 2\arctan\left(\frac{\sqrt{4-(x+3)^2}}{2}\right) + C.
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+
+\section{Summary}
+
+In general:
+\begin{itemize}
+\item If the quadratic has the form $a^2 + x^2$ after completing the square, make the substitution $u = a\tan(\theta)$
+\item If the quadratic has the form $a^2 - x^2$ after completing the square, make the substitution $u = a\sin(\theta)$ 
+\item If the quadratic has the form $x^2 - a^2$ after completing the
+  square, make the substitution $u = a\sec(\theta)$
+\end{itemize}
+The choices $a\cot(\theta)$, $a\cos(\theta)$, and $a \csc(\theta)$
+could be used with equal efficiency, but there is no reason to ever
+use them.
 
 
 \end{document}

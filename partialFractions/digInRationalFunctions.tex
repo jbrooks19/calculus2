@@ -1,0 +1,242 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Understand how to break up fractions.}
+\outcome{Recognize integrals that are good candidates for the method of partial fractions.}
+\outcome{Use long-division to simplify rational expressions.}
+\outcome{Find the coefficients of partial fraction decomposition.}
+\outcome{Use partial fractions to integrate functions.}
+
+\title[Dig-In:]{Rational functions}
+
+\begin{document}
+\begin{abstract}
+We can now integrate a large class of functions.  
+\end{abstract}
+\maketitle
+
+A \dfn{rational function} is a fraction with polynomials in the
+numerator and denominator.  For example,
+\[
+  \frac{x^3}{x^2+x-6},
+  \qquad
+  \frac{1}{(x-3)^2},
+  \qquad
+  \frac{x^2+1}{x^2-1},
+\] 
+are all rational functions of $x$.  There is a general technique
+called ``partial fractions''\index{partial fractions} that, in
+principle, allows us to integrate any rational function.  The
+algebraic steps in the technique are rather cumbersome if the
+polynomial in the denominator has degree more than 2, and the
+technique requires that we factor the denominator, something that is
+not always possible.  However, in practice one does not often run
+across rational functions with high degree polynomials in the
+denominator for which one has to find the antiderivative function.  So
+we shall explain how to find the antiderivative of a rational function
+only when the denominator is a quadratic polynomial $ax^2+bx+c$.
+
+We should mention a special type of rational function that we already
+know how to integrate: If the denominator has the form $(ax+b)^n$,
+the substitution $u=ax+b$ will always work.  The denominator becomes
+$u^n$, and each $x$ in the numerator is replaced by $(u-b)/a$, and
+$\d x=\d u/a$. While it may be tedious to complete the integration if the
+numerator has high degree, it is merely a matter of algebra.
+
+\begin{example}
+Find $\int\frac{x^3}{(3-2x)^5}\d x$. Using the substitution 
+$u=3-2x$ we get
+\begin{align*}
+  \int\frac{x^3}{(3-2x)^5}\d x
+  &=\frac{1}{-2}\int \frac{\left(\frac{u-3}{-2}\right)^3}{u^5}\d u
+  =\frac{1}{16}\int \frac{u^3-9u^2+27u-27}{u^5}\d u \\
+  &=\frac{1}{16}\int u^{-2}-9u^{-3}+27u^{-4}-27u^{-5}\d u \\
+  &=\frac{1}{16}\left(\frac{u^{-1}}{-1}-\frac{9u^{-2}}{-2}+\frac{27u^{-3}}{-3}
+  -\frac{27u^{-4}}{-4}\right)+C \\
+  &=\frac{1}{16}\left(\frac{(3-2x)^{-1}}{-1}-\frac{9(3-2x)^{-2}}{-2}+
+  \frac{27(3-2x)^{-3}}{-3}
+  -\frac{27(3-2x)^{-4}}{-4}\right)+C \\
+  &=-\frac{1}{16(3-2x)}+\frac{9}{32(3-2x)^2}-\frac{9}{16(3-2x)^3}+\frac{27}{64(3-2x)^4}+C
+\end{align*}
+\end{example}
+
+We now proceed to the case in which the denominator is a quadratic
+polynomial.  We can always factor out the coefficient of $x^2$ and put
+it outside the integral, so we can assume that the denominator has the
+form $x^2+bx+c$.  There are three possible cases, depending on how
+the quadratic factors: either $x^2+bx+c=(x-r)(x-s)$,
+$x^2+bx+c=(x-r)^2$, or it doesn't factor. We can use the quadratic
+formula to decide which of these we have, and to factor the quadratic
+if it is possible.
+
+\begin{example}
+Determine whether $x^2+x+1$ factors, and factor it if possible.
+The quadratic formula tells us that $x^2+x+1=0$ when
+\[
+x=\frac{-1\pm\sqrt{1-4}}{2}.
+\]
+Since there is no square root of $-3$, this quadratic does not factor.
+\end{example}
+
+\begin{example}
+Determine whether $x^2-x-1$ factors, and factor it if possible.
+The quadratic formula tells us that $x^2-x-1=0$ when
+\[
+x=\frac{1\pm\sqrt{1+4}}{2}=\frac{1\pm\sqrt{5}}{2}.
+\]
+Therefore
+\[
+  x^2-x-1=\left(x-\frac{1+\sqrt{5}}{2}\right)\left(x-\frac{1-\sqrt{5}}{2}\right).
+\]
+\end{example}
+
+If $x^2+bx+c=(x-r)^2$ then we have the special case we have already
+seen, that can be handled with a substitution. The other two cases
+require different approaches.
+
+If  $x^2+bx+c=(x-r)(x-s)$, we have an integral of the form
+\[
+\int{p(x)\over (x-r)(x-s)}\d x
+\]
+where $p(x)$ is a polynomial. The first step is to make sure that
+$p(x)$ has degree less than $2$.
+
+\begin{example}
+Rewrite $\int \frac{x^3}{(x-2)(x+3)}\d x$ in terms of an integral
+with a numerator that has degree less than 2. To do this we use 
+\url{http://en.wikipedia.org/wiki/Polynomial_long_division}long
+division of polynomials  to 
+discover that
+\[
+  \frac{x^3}{(x-2)(x+3)}=\frac{x^3}{x^2+x-6}=x-1+\frac{7x-6}{x^2+x-6}=
+  x-1+\frac{7x-6}{(x-2)(x+3)},
+\]
+so 
+\[
+  \int \frac{x^3}{(x-2)(x+3)}\d x=\int x-1\d x +\int \frac{7x-6}{(x-2)(x+3)}\d x.
+\]
+The first integral is easy, so only the second requires some work.
+\end{example}
+
+Now consider the following simple algebra of fractions:
+\[
+  \frac{A}{x-r}+\frac{B}{x-s}=\frac{A(x-s)+B(x-r)}{(x-r)(x-s)}=
+  \frac{(A+B)x-As-Br}{(x-r)(x-s)}.
+\]
+That is, adding two fractions with constant numerator and denominators
+$(x-r)$ and $(x-s)$ produces a fraction with denominator $(x-r)(x-s)$
+and a polynomial of degree less than 2 for the numerator. We want to
+reverse this process: starting with a single fraction, we want to
+write it as a sum of two simpler fractions. An example should make it
+clear how to proceed.
+
+\begin{example} Evaluate $\int \frac{x^3}{(x-2)(x+3)}\d x$.  We start by
+writing $\frac{7x-6}{(x-2)(x+3)}$ as the sum of two fractions.  We
+want to end up with
+\[
+\frac{7x-6}{(x-2)(x+3)}=\frac{A}{x-2}+\frac{B}{x+3}.
+\]
+If we go ahead and add the fractions on the right hand side we get
+\[
+\frac{7x-6}{(x-2)(x+3)}=\frac{(A+B)x+3A-2B}{(x-2)(x+3)}.
+\]
+So all we need to do is find $A$ and $B$ so that $7x-6=(A+B)x+3A-2B$,
+which is to say, we need $7=A+B$ and $-6=3A-2B$. This is a problem
+you've seen before: solve a system of two equations in two
+unknowns. There are many ways to proceed; here's one: If $7=A+B$ then
+$B=7-A$ and so $-6=3A-2B=3A-2(7-A)=3A-14+2A=5A-14$. This is easy to
+solve for $A$: $A= 8/5$, and then $B=7-A=7-8/5=27/5$. Thus
+\[
+  \int \frac{7x-6}{(x-2)(x+3)}\d x=
+  \int \frac{8}{5}\frac{1}{x-2}+\frac{27}{5}\frac{1}{x+3}\d x=
+  \frac{8}{5}\ln |x-2|+\frac{27}{5}\ln|x+3|+C.
+\]
+The answer to the original problem is now
+\begin{align*}
+  \int \frac{x^3}{(x-2)(x+3)}\d x
+  &=\int x-1\d x +\int \frac{7x-6}{(x-2)(x+3)}\d x \\
+  &=\frac{x^2}{2}-x+\frac{8}{5}\ln |x-2|+\frac{27}{5}\ln|x+3|+C. 
+\end{align*}
+\end{example}
+
+Now suppose that $x^2+bx+c$ doesn't factor. Again we can use long
+division to ensure that the numerator has degree less than 2, then we
+complete the square.
+
+\begin{example} 
+Evaluate $\int \frac{x+1}{x^2+4x+8}\d x$. The quadratic denominator
+does not factor. We could complete the square and use a trigonometric
+substitution, but it is simpler to rearrange the integrand:
+\[
+  \int \frac{x+1}{x^2+4x+8}\d x = \int \frac{x+2}{x^2+4x+8}\d x -
+  \int \frac{1}{x^2+4x+8}\d x.
+\]
+The first integral is an easy substitution problem, using $u=x^2+4x+8$:
+\[
+  \int \frac{x+2}{x^2+4x+8}\d x=\frac{1}{2}\int \frac{\d u}{u}=
+  \frac{1}{2}\ln|x^2+4x+8|.
+\]
+For the second integral we complete the square:
+\[
+  x^2+4x+8=(x+2)^2+4=4\left(\left(\frac{x+2}{2}\right)^2+1\right),
+\]
+making the integral
+\[
+  \frac{1}{4}\int \frac{1}{\left(\frac{x+2}{2}\right)^2+1}\d x.
+\]
+Using $u=\frac{x+2}{2}$ we get
+\[
+  \frac{1}{4}\int \frac{1}{\left(\frac{x+2}{2}\right)^2+1}\d x=
+  \frac{1}{4}\int \frac{2}{u^2+1}\d x=
+  \frac{1}{2}\arctan\left(\frac{x+2}{2}\right).
+\]
+The final answer is now 
+\[
+  \int \frac{x+1}{x^2+4x+8}\d x=\frac{1}{2}\ln|x^2+4x+8|-
+  \frac{1}{2}\arctan\left(\frac{x+2}{2}\right)+C.
+\]
+\end{example}
+
+% Too nasty?
+\begin{example}
+Evaluate $\int \frac{x}{x^2+x+1}\d x$. We have seen that this
+quadratic does not factor. We complete the square:
+\[
+  x^2+x+1=x^2+x+\frac{1}{4} + 1 -\frac{1}{4}=x^2+x+\frac{1}{4}+\frac{3}{4}=
+  \left(x+\frac{1}{2}\right)^2+\frac{3}{4}.
+\]
+Now factor out $3/4$:
+\[
+  \frac{3}{4}\left(\frac{4}{3}\left(x+\frac{1}{2}\right)^2+1\right)
+  =\frac{3}{4}\left(\left(\frac{2}{\sqrt{3}}x+\frac{1}{\sqrt3}\right)^2+1\right).
+\]
+This can be done as a rather messy trigonometric substitution problem,
+but it is easier to do a bit more rewriting:
+\[
+  \int \frac{x}{x^2+x+1}\d x=\int\frac{x+(1/2)}{x^2+x+1}\d x-
+  \int\frac{1/2}{x^2+x+1}\d x.
+\]
+Now the first integral is an easy substitution, using $u=x^2+x+1$:
+\[
+  \int \frac{x+(1/2)}{x^2+x+1}\d x=\frac{1}{2}\int \frac{\d u}{u}=
+  \frac{1}{2}\ln|x^2+x+1|.
+\]
+The second integral is 
+\[
+  \frac{1}{2}\int\frac{\d x}{x^2+x+1}=
+  \frac{1}{2}\int\frac{1}{(3/4)((2x/\sqrt3+1/\sqrt3)^2+1)}\d x.
+\]
+Using $u=2x/\sqrt3+1/\sqrt3$ this becomes
+\[
+  \frac{1}{\sqrt3}\int\frac{\d u}{u^2+1}=\frac{1}{\sqrt3}\arctan(u)=
+  \frac{1}{\sqrt3}\arctan\left(\frac{2}{\sqrt3}x+\frac{1}{\sqrt3}\right).
+\]
+Thus the final answer is
+\[
+  \int \frac{x}{x^2+x+1}\d x = \frac{1}{2}\ln|x^2+x+1|-
+  \frac{1}{\sqrt3}\arctan\left(\frac{2}{\sqrt3}x+\frac{1}{\sqrt3}\right)+C.
+\]
+\end{example}
+
+\end{document}

@@ -16,6 +16,8 @@ We can now integrate a large class of functions.
 \end{abstract}
 \maketitle
 
+\section{Basics of polynomial and rational functions}
+
 In this course, we are attempting to learn to work with as many
 functions as possible. A basic class of functions are \textit{polynomial functions}:
 
@@ -25,7 +27,7 @@ functions as possible. A basic class of functions are \textit{polynomial functio
   \[
   f(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1 x + a_0
   \]
-  where the $a_i$'s are all constants (called the \dfn{coefficients})
+  where the $a_k$'s are all constants (called the \dfn{coefficients})
   and $n$ is a whole number (called the \dfn{degree} when $n\ne
   0$). The domain of a polynomial function is $(-\infty,\infty)$.
 \end{definition}
@@ -37,236 +39,506 @@ functions as possible. A basic class of functions are \textit{polynomial functio
     \choice[correct]{$f(x) = -9$}
     \choice[correct]{$f(x) = 3x+1$}
     \choice{$f(x) = x^{1/2}-x +8$}
+    \choice{$f(x) = -4x^{-3}+5x^{-1}+7-18x^2$}
     \choice[correct]{$f(x) = (x+1)(x-1)+e^x - e^x $}
     \choice{$f(x) = \frac{x^2 - 3x + 2}{x-2}$}
     \choice[correct]{$f(x) = x^7-32x^6-\pi x^3+45/84$}
   \end{selectAll}
 \end{question}
 
+As we will see, there is a fact about polynomials that is of critical
+importance for this section:
+\begin{quote}
+  \textbf{Polynomials are equal as functions if and only if their
+    coefficients are equal.}
+\end{quote}
+
+\begin{question}
+  Given two polynomials equal as functions:
+  \[
+  6x^5+a_4 x^4 -x^2 + a_0 = a_5 x^5 - 24 x^4 + a_3 x^3 + a_2 x^2 - 5
+  \]
+  What are $a_0$, $a_1$, $a_2$, $a_3$, $a_4$, $a_5$?
+  \begin{prompt}
+    \begin{itemize}
+    \item $a_0 = \answer{-5}$
+    \item $a_1 = \answer{0}$
+    \item $a_2 = \answer{-1}$
+    \item $a_3 = \answer{0}$
+    \item $a_4 = \answer{-24}$
+    \item $a_5 = \answer{6}$
+    \end{itemize}
+  \end{prompt}
+\end{question}
+
+In the world of mathematics, polynomials are a generalization of
+``integers,'' and rational numbers are fractions of integers. This
+brings us to our next definition:
+
+\begin{definition}
+  A \dfn{rational function} in the variable $x$ is a function the form
+  \[
+  f(x) = \frac{p(x)}{q(x)}
+  \]
+  where $p$ and $q$ are polynomial functions. The domain of a rational
+  function is all real numbers except for where the denominator is
+  equal to zero.
+\end{definition}
+
+\begin{question}
+  Which of the following are rational functions?
+  \begin{selectAll}
+    \choice[correct]{$f(x) = 0$}
+    \choice[correct]{$f(x) = \frac{3x+1}{x^2-4x+5}$}
+    \choice{$f(x)=e^x$}
+    \choice{$f(x)=\frac{\sin(x)}{\cos(x)}$}
+    \choice[correct]{$f(x) = -4x^{-3}+5x^{-1}+7-18x^2$}
+    \choice{$f(x) = x^{1/2}-x +8$}
+    \choice{$f(x)=\frac{\sqrt{x}}{x^3-x}$}
+  \end{selectAll}
+  \begin{feedback}
+    All polynomials can be thought of as rational functions.
+  \end{feedback}
+\end{question}
+
+
+\section{Denominators with distinct linear factors}
+
+
 We are already skilled at working with polynomials, we can
-differentiate and integrate any polynomial function.
-
-A \dfn{rational function} is a fraction with polynomials in the
-numerator and denominator.  For example,
-\[
-  \frac{x^3}{x^2+x-6},
-  \qquad
-  \frac{1}{(x-3)^2},
-  \qquad
-  \frac{x^2+1}{x^2-1},
-\] 
-are all rational functions of $x$.  There is a general technique
-called ``partial fractions''\index{partial fractions} that, in
-principle, allows us to integrate any rational function.  The
-algebraic steps in the technique are rather cumbersome if the
-polynomial in the denominator has degree more than 2, and the
-technique requires that we factor the denominator, something that is
-not always possible.  However, in practice one does not often run
-across rational functions with high degree polynomials in the
-denominator for which one has to find the antiderivative function.  So
-we shall explain how to find the antiderivative of a rational function
-only when the denominator is a quadratic polynomial $ax^2+bx+c$.
-
-We should mention a special type of rational function that we already
-know how to integrate: If the denominator has the form $(ax+b)^n$,
-the substitution $u=ax+b$ will always work.  The denominator becomes
-$u^n$, and each $x$ in the numerator is replaced by $(u-b)/a$, and
-$\d x=\d u/a$. While it may be tedious to complete the integration if the
-numerator has high degree, it is merely a matter of algebra.
+differentiate and integrate any polynomial function. Being able to
+integrate \textit{any} rational function is the next logical step in
+our (rather ambitious) quest to integrate \textit{all}
+functions. Let's dig right in with an example.
 
 \begin{example}
-Find $\int\frac{x^3}{(3-2x)^5}\d x$. Using the substitution 
-$u=3-2x$ we get
+  Compute:
+  \[
+  \int \frac{1}{x^2-1} \d x
+  \]
+  \begin{explanation}
+    We will suppose that there are numbers $A$ and $B$ such that
+    \[
+    \frac{A}{x-1} + \frac{B}{x+1} = \frac{1}{x^2-1}.
+    \]
+    Clearing denominators, we find
+    \[
+    A(x+1) + B(x-1) = 1.
+    \]
+    Expanding the left-hand side, we find a polynomial equal (as a
+    function!) to the constant polynomial $1$
+    \[
+    (A+ B)x + (A-B) = 1
+    \]
+    Since \textbf{polynomials are equal as functions if and only if
+      their coefficients are equal}, we may rewrite this as
+    \textbf{two} equations:
+    \begin{align*}
+      A+B &= 0 &\text{(the coefficients for $x$)}\\
+      A-B &= 1 &\text{(the coefficients for the constant)}
+    \end{align*}
+    Solving these three equations for $A$ and $B$ we find
+    \begin{itemize}
+    \item $A = \answer[given]{1/2}$,
+    \item $B = \answer[given]{-1/2}$.
+    \end{itemize} 
+    From this we can now rewrite our integral as
+    \begin{align*}
+      \int \frac{1}{x^2-1} \d x &=  \int \frac{1/2}{x-1} + \frac{-1/2}{x+1} \d x\\
+      &= (1/2)\ln|x-1| + (-1/2)\ln|x+1|+ C.
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+What we have seen is part of a general technique of integration called
+``partial fractions''\index{partial fractions} that, in principle,
+allows us to integrate any rational function.
+
+\subsection{The general technique for distinct linear factors}
+
+Suppose you wish to compute
+\[
+\int \frac{p(x)}{q(x)} \d x
+\]
+where $p$ and $q$ are both polynomial functions, the degree of $p$ is
+less than the degree of $q$, and $q$ factors into $n$
+\textbf{distinct} linear factors:
+\[
+q(x) = (x-r_1) (x-r_2) \cdots (x-r_n),
+\]
+then we can \textbf{always} write
+\[
+\frac{p(x)}{q(x)}  = \frac{A_1}{(x-r_1)} + \frac{A_2}{(x-r_2)} + \cdots + \frac{A_n}{(x-r_n)}. 
+\]
+The right-hand side of the equation above is easy to antidifferentiate,
+as we can integrate it term-by-term and
+\[
+\int \frac{A_k}{(x-r_k)} \d x = A \ln(x-r_k) + C,
+\]
+hence
+\[
+\int \frac{p(x)}{q(x)} \d x = \sum_{k=1}^n A_k \ln|x-r_k| +C.
+\]
+
+
+
+
+
+
+
+
+\section{Denominators with repeated linear factors}
+
+Here we work as we did before, except we add an extra variable for
+each of the repeated factors. Let's do an example.
+
+\begin{example}
+  Compute:
+  \[
+  \int \frac{1}{(x-1)(x+2)^2} \d x
+  \]
+  \begin{explanation}
+    We will suppose that there are numbers $A$, $B$, and $C$ such that
+    \[
+    \frac{A}{x-1} + \frac{B}{x+2} + \frac{C}{(x+2)^2} = \frac{1}{(x-1)(x+2)^2}
+    \]
+    Clearing denominators, we find
+    \[
+    A(x+2)^2 + B(x-1)(x+2) + C(x-1) = 1.
+    \]
+    Expanding the left-hand side, we find a polynomial equal (as a
+    function!) to the constant polynomial $1$
+    \[
+    (A+B)x^2 + (4A+B+C)x + (4A-2B-C) = 1
+    \]
+    Since \textbf{polynomials are equal as functions if and only if
+      their coefficients are equal}, we may rewrite this as
+    \textbf{three} equations:
+    \begin{align*}
+      A+B &= 0 &\text{(the coefficients for $x^2$)}\\
+      4A+B+C &= 0 &\text{(the coefficients for $x$)}\\
+      4A-2B-C &= 1 &\text{(the coefficients for the constant)}
+    \end{align*}
+    Solving these three equations for $A$, $B$ and $C$ we find
+    \begin{itemize}
+    \item $A = \answer[given]{1/9}$,
+    \item $B = \answer[given]{-1/9}$,
+    \item $C = \answer[given]{-1/3}$.
+    \end{itemize}
+    From this we can now rewrite our integral as
+    \begin{align*}
+      \int\frac{1}{(x-1)(x+2)^2}\d x&= \int \frac{1/9}{x-1}+ \frac{-1/9}{x+2} + \frac{-1/3}{(x+2)^2}\d x\\
+      &= \int \frac{1/9}{x-1}\d x + \int \frac{-1/9}{x+2}\d x + \int \frac{-1/3}{(x+2)^2}\d x,\\
+      &= \frac{1}{9}\ln|x-1| -\frac{1}{9}\ln|x+2| +\frac{1}{3(x+2)}+C.
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+
+
+\subsection{The general technique for repeated linear factors}
+
+Suppose you wish to compute
+\[
+\int \frac{p(x)}{q(x)} \d x
+\]
+where $p$ and $q$ are both polynomial functions, the degree of $p$ is
+less than the degree of $q$, and $q$ factors into $n$
+\textbf{repeated} linear factors:
+\[
+q(x) = (x-r)^n,
+\]
+then we can \textbf{always} write
+\[
+\frac{p(x)}{q(x)}  = \frac{A_1}{(x-r)} + \frac{A_2}{(x-r)^2} + \cdots + \frac{A_n}{(x-r)^n}. 
+\]
+The right-hand side of the equation above is easy to
+antidifferentiate, as we can integrate it term-by-term and
 \begin{align*}
-  \int\frac{x^3}{(3-2x)^5}\d x
-  &=\frac{1}{-2}\int \frac{\left(\frac{u-3}{-2}\right)^3}{u^5}\d u
-  =\frac{1}{16}\int \frac{u^3-9u^2+27u-27}{u^5}\d u \\
-  &=\frac{1}{16}\int u^{-2}-9u^{-3}+27u^{-4}-27u^{-5}\d u \\
-  &=\frac{1}{16}\left(\frac{u^{-1}}{-1}-\frac{9u^{-2}}{-2}+\frac{27u^{-3}}{-3}
-  -\frac{27u^{-4}}{-4}\right)+C \\
-  &=\frac{1}{16}\left(\frac{(3-2x)^{-1}}{-1}-\frac{9(3-2x)^{-2}}{-2}+
-  \frac{27(3-2x)^{-3}}{-3}
-  -\frac{27(3-2x)^{-4}}{-4}\right)+C \\
-  &=-\frac{1}{16(3-2x)}+\frac{9}{32(3-2x)^2}-\frac{9}{16(3-2x)^3}+\frac{27}{64(3-2x)^4}+C
+  \int \frac{A_1}{(x-r)} \d x &= A_1 \ln|x-r| + C,\\
+  \int \frac{A_k}{(x-r)^k} \d x &= \frac{A_k}{(1-k)(x-r)^{k-1}}+ C, &\text{(if $k>1$)}
 \end{align*}
-\end{example}
-
-We now proceed to the case in which the denominator is a quadratic
-polynomial.  We can always factor out the coefficient of $x^2$ and put
-it outside the integral, so we can assume that the denominator has the
-form $x^2+bx+c$.  There are three possible cases, depending on how
-the quadratic factors: either $x^2+bx+c=(x-r)(x-s)$,
-$x^2+bx+c=(x-r)^2$, or it doesn't factor. We can use the quadratic
-formula to decide which of these we have, and to factor the quadratic
-if it is possible.
-
-\begin{example}
-Determine whether $x^2+x+1$ factors, and factor it if possible.
-The quadratic formula tells us that $x^2+x+1=0$ when
+hence
 \[
-x=\frac{-1\pm\sqrt{1-4}}{2}.
+\int \frac{p(x)}{q(x)} \d x = A_1 \ln|x-r|  + \sum_{k=2}^n \frac{A_k}{(1-k)(x-r)^{k-1}} + C.
 \]
-Since there is no square root of $-3$, this quadratic does not factor.
-\end{example}
 
-\begin{example}
-Determine whether $x^2-x-1$ factors, and factor it if possible.
-The quadratic formula tells us that $x^2-x-1=0$ when
-\[
-x=\frac{1\pm\sqrt{1+4}}{2}=\frac{1\pm\sqrt{5}}{2}.
-\]
-Therefore
-\[
-  x^2-x-1=\left(x-\frac{1+\sqrt{5}}{2}\right)\left(x-\frac{1-\sqrt{5}}{2}\right).
-\]
-\end{example}
 
-If $x^2+bx+c=(x-r)^2$ then we have the special case we have already
-seen, that can be handled with a substitution. The other two cases
-require different approaches.
 
-If  $x^2+bx+c=(x-r)(x-s)$, we have an integral of the form
-\[
-\int{p(x)\over (x-r)(x-s)}\d x
-\]
-where $p(x)$ is a polynomial. The first step is to make sure that
-$p(x)$ has degree less than $2$.
+
+
+
+\section{Denominators with distinct quadratic factors}
+
+Here is a fact about polynomials:
+
+\begin{theorem}[The Fundamental Theorem of Algebra]\index{Fundamental Theorem of Algebra}
+  Every polynomial of the form
+  \[
+  a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0
+  \]
+  where the $a_i$'s are real (or even complex!) numbers and $a_n \ne 0$ has exactly
+  $n$ (possibly repeated) complex roots.
+\end{theorem}
+
+Remember, a \dfn{root} is where a polynomial is zero. The theorem
+above is a deep fact of mathematics. The great mathematician Gauss
+%(spelled Gau\ss\ for fancy people)
+proved the theorem in 1799 for his doctoral thesis. This fact can be
+used to show the following:
+\begin{quote}
+  \textbf{Every polynomial function will factor as a product of linear
+    terms and quadratic terms over the real numbers.}
+\end{quote}
+
+So now let's work an example where the denominator of our rational
+function has distinct quadratic factors.
 
 \begin{example}
-Rewrite $\int \frac{x^3}{(x-2)(x+3)}\d x$ in terms of an integral
-with a numerator that has degree less than 2. To do this we use 
-\url{http://en.wikipedia.org/wiki/Polynomial_long_division}long
-division of polynomials  to 
-discover that
-\[
-  \frac{x^3}{(x-2)(x+3)}=\frac{x^3}{x^2+x-6}=x-1+\frac{7x-6}{x^2+x-6}=
-  x-1+\frac{7x-6}{(x-2)(x+3)},
-\]
-so 
-\[
-  \int \frac{x^3}{(x-2)(x+3)}\d x=\int x-1\d x +\int \frac{7x-6}{(x-2)(x+3)}\d x.
-\]
-The first integral is easy, so only the second requires some work.
-\end{example}
+  Compute:
+  \[
+  \int\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\d x
+  \]
+  \begin{explanation}
+    We will suppose that there are numbers $A$, $B$, and $C$ such that
+    \[
+    \frac{A}{x+1} + \frac{Bx+C}{x^2+6x+11} = \frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}.
+    \]
+    Clearing denominators, we find
+    \[
+    A(x^2+6x+11) + (Bx+C)(x+1) = 7x^2+31x+54.
+    \]
+    Expanding the left-hand side, we find a polynomial equal (as a
+    function!) to the polynomial $7x^2+31x+54$
+    \[
+    (A+B)x^2 + (6A+B+C)x + (11A+C) = 7x^2+31x+54.
+    \]
+    Since \textbf{polynomials are equal as functions if and only if
+      their coefficients are equal}, we may rewrite this as
+    \textbf{three} equations:
+    \begin{align*}
+      A+B &= 7 &\text{(the coefficients for $x^2$)}\\
+      6A+B+C &= 31 &\text{(the coefficients for $x$)}\\
+      11A+C &= 54 &\text{(the coefficients for the constant)}
+    \end{align*}
+    Solving these three equations for $A$, $B$ and $C$ we find
+    \begin{itemize}
+    \item $A = \answer[given]{5}$,
+    \item $B = \answer[given]{2}$,
+    \item $C = \answer[given]{-1}$.
+    \end{itemize}
+    From this we can now rewrite our integral as
+    \[
+    \int\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\d x = \int\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11} \d x\\
+    \]
+    The first term of this new integrand is easy to evaluate. We find
+    \[
+    \int \frac{5}{x+1} \d x = 5\ln|x+1|+C.
+    \]
+    The second term is not hard, but takes several steps and uses
+    substitution techniques.
 
-Now consider the following simple algebra of fractions:
-\[
-  \frac{A}{x-r}+\frac{B}{x-s}=\frac{A(x-s)+B(x-r)}{(x-r)(x-s)}=
-  \frac{(A+B)x-As-Br}{(x-r)(x-s)}.
-\]
-That is, adding two fractions with constant numerator and denominators
-$(x-r)$ and $(x-s)$ produces a fraction with denominator $(x-r)(x-s)$
-and a polynomial of degree less than 2 for the numerator. We want to
-reverse this process: starting with a single fraction, we want to
-write it as a sum of two simpler fractions. An example should make it
-clear how to proceed.
-
-\begin{example} Evaluate $\int \frac{x^3}{(x-2)(x+3)}\d x$.  We start by
-writing $\frac{7x-6}{(x-2)(x+3)}$ as the sum of two fractions.  We
-want to end up with
-\[
-\frac{7x-6}{(x-2)(x+3)}=\frac{A}{x-2}+\frac{B}{x+3}.
-\]
-If we go ahead and add the fractions on the right hand side we get
-\[
-\frac{7x-6}{(x-2)(x+3)}=\frac{(A+B)x+3A-2B}{(x-2)(x+3)}.
-\]
-So all we need to do is find $A$ and $B$ so that $7x-6=(A+B)x+3A-2B$,
-which is to say, we need $7=A+B$ and $-6=3A-2B$. This is a problem
-you've seen before: solve a system of two equations in two
-unknowns. There are many ways to proceed; here's one: If $7=A+B$ then
-$B=7-A$ and so $-6=3A-2B=3A-2(7-A)=3A-14+2A=5A-14$. This is easy to
-solve for $A$: $A= 8/5$, and then $B=7-A=7-8/5=27/5$. Thus
-\[
-  \int \frac{7x-6}{(x-2)(x+3)}\d x=
-  \int \frac{8}{5}\frac{1}{x-2}+\frac{27}{5}\frac{1}{x+3}\d x=
-  \frac{8}{5}\ln |x-2|+\frac{27}{5}\ln|x+3|+C.
-\]
-The answer to the original problem is now
+    The integrand $\frac{2x-1}{x^2+6x+11}$ has a quadratic in the
+    denominator and a linear term in the numerator. This leads us to
+    try substitution. Let
+    \begin{align*}
+      g &= x^2+6x+11,\\
+      \d g  &= (2x+6)\d x.
+    \end{align*}
+    However, the numerator is $2x-1$, not $2x+6$! We can bypass this
+    difficulty by adding ``$0$'' in the form of ``$7-7$.''
 \begin{align*}
-  \int \frac{x^3}{(x-2)(x+3)}\d x
-  &=\int x-1\d x +\int \frac{7x-6}{(x-2)(x+3)}\d x \\
-  &=\frac{x^2}{2}-x+\frac{8}{5}\ln |x-2|+\frac{27}{5}\ln|x+3|+C. 
+  \frac{2x-1}{x^2+6x+11} &= \frac{2x-1+7-7}{x^2+6x+11} \\
+  &= \frac{2x+6}{x^2+6x+11} - \frac{7}{x^2+6x+11}.
 \end{align*}
+We can now integrate the first term with substitution, leading to
+\[
+\int \frac{2x+6}{x^2+6x+11} \d x = \ln|x^2+6x+11| + C.
+\]
+The final term can be integrated using arctangent. First, complete the
+square in the denominator:
+\[
+\frac{7}{x^2+6x+11} = \frac{7}{(x+3)^2+2}.
+\]
+then use a substitution of $g = x+3$ to find
+\[
+\int \frac{7}{x^2+6x+11}\d x = \frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+C.
+\]
+Let's start at the beginning and put all of the steps together.
+\begin{align*}
+\int&\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\d x = \int\left(\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11}\right)\d x \\
+			&= \int\frac{5}{x+1}\d x  + \int\frac{2x+6}{x^2+6x+11}\d x -\int\frac{7}{x^2+6x+11}\d x \\
+			&= 5\ln|x+1|+ \ln|x^2+6x+11| -\frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+C.
+\end{align*}
+  \end{explanation}
 \end{example}
 
-Now suppose that $x^2+bx+c$ doesn't factor. Again we can use long
-division to ensure that the numerator has degree less than 2, then we
-complete the square.
 
-\begin{example} 
-Evaluate $\int \frac{x+1}{x^2+4x+8}\d x$. The quadratic denominator
-does not factor. We could complete the square and use a trigonometric
-substitution, but it is simpler to rearrange the integrand:
-\[
-  \int \frac{x+1}{x^2+4x+8}\d x = \int \frac{x+2}{x^2+4x+8}\d x -
-  \int \frac{1}{x^2+4x+8}\d x.
-\]
-The first integral is an easy substitution problem, using $u=x^2+4x+8$:
-\[
-  \int \frac{x+2}{x^2+4x+8}\d x=\frac{1}{2}\int \frac{\d u}{u}=
-  \frac{1}{2}\ln|x^2+4x+8|.
-\]
-For the second integral we complete the square:
-\[
-  x^2+4x+8=(x+2)^2+4=4\left(\left(\frac{x+2}{2}\right)^2+1\right),
-\]
-making the integral
-\[
-  \frac{1}{4}\int \frac{1}{\left(\frac{x+2}{2}\right)^2+1}\d x.
-\]
-Using $u=\frac{x+2}{2}$ we get
-\[
-  \frac{1}{4}\int \frac{1}{\left(\frac{x+2}{2}\right)^2+1}\d x=
-  \frac{1}{4}\int \frac{2}{u^2+1}\d x=
-  \frac{1}{2}\arctan\left(\frac{x+2}{2}\right).
-\]
-The final answer is now 
-\[
-  \int \frac{x+1}{x^2+4x+8}\d x=\frac{1}{2}\ln|x^2+4x+8|-
-  \frac{1}{2}\arctan\left(\frac{x+2}{2}\right)+C.
-\]
-\end{example}
+\subsection{The general technique for distinct quadratic factors}
 
-% Too nasty?
+Suppose you wish to compute
+\[
+\int \frac{p(x)}{q(x)} \d x
+\]
+where $p$ and $q$ are both polynomial functions, the degree of $p$ is
+less than the degree of $q$, and $q$ factors into $n$
+\textbf{distinct} irreducible quadratic factors:
+\[
+q(x) = (a_1x^2 + b_1 x + c_1) (a_2x^2 + b_2 x + c_2)\cdots  (a_nx^2 + b_n x + c_n) 
+\]
+then we can \textbf{always} write
+\[
+\frac{p(x)}{q(x)}  = \frac{A_1x+B_1}{a_1x^2 + b_1 x + c_1} + \frac{A_2x+B_2}{(a_2x^2 + b_2 x + c_2)} + \cdots + \frac{A_nx+B_n}{(a_nx^2 + b_n x + c_n)}. 
+\]
+The right-hand side of the equation can be antidifferentiated, though it is not always ``easy.''
+
+
+
+
+
+
+
+\section{Denominators with repeated quadratic factors}
+
+For completeness sake, we will work a problem with repeated quadratic factors.
+
 \begin{example}
-Evaluate $\int \frac{x}{x^2+x+1}\d x$. We have seen that this
-quadratic does not factor. We complete the square:
-\[
-  x^2+x+1=x^2+x+\frac{1}{4} + 1 -\frac{1}{4}=x^2+x+\frac{1}{4}+\frac{3}{4}=
-  \left(x+\frac{1}{2}\right)^2+\frac{3}{4}.
-\]
-Now factor out $3/4$:
-\[
-  \frac{3}{4}\left(\frac{4}{3}\left(x+\frac{1}{2}\right)^2+1\right)
-  =\frac{3}{4}\left(\left(\frac{2}{\sqrt{3}}x+\frac{1}{\sqrt3}\right)^2+1\right).
-\]
-This can be done as a rather messy trigonometric substitution problem,
-but it is easier to do a bit more rewriting:
-\[
-  \int \frac{x}{x^2+x+1}\d x=\int\frac{x+(1/2)}{x^2+x+1}\d x-
-  \int\frac{1/2}{x^2+x+1}\d x.
-\]
-Now the first integral is an easy substitution, using $u=x^2+x+1$:
-\[
-  \int \frac{x+(1/2)}{x^2+x+1}\d x=\frac{1}{2}\int \frac{\d u}{u}=
-  \frac{1}{2}\ln|x^2+x+1|.
-\]
-The second integral is 
-\[
-  \frac{1}{2}\int\frac{\d x}{x^2+x+1}=
-  \frac{1}{2}\int\frac{1}{(3/4)((2x/\sqrt3+1/\sqrt3)^2+1)}\d x.
-\]
-Using $u=2x/\sqrt3+1/\sqrt3$ this becomes
-\[
-  \frac{1}{\sqrt3}\int\frac{\d u}{u^2+1}=\frac{1}{\sqrt3}\arctan(u)=
-  \frac{1}{\sqrt3}\arctan\left(\frac{2}{\sqrt3}x+\frac{1}{\sqrt3}\right).
-\]
-Thus the final answer is
-\[
-  \int \frac{x}{x^2+x+1}\d x = \frac{1}{2}\ln|x^2+x+1|-
-  \frac{1}{\sqrt3}\arctan\left(\frac{2}{\sqrt3}x+\frac{1}{\sqrt3}\right)+C.
-\]
+  Compute
+  \[
+  \int \frac{1}{x^5 + 2x^3  + x}\d x
+  \]
+  \begin{explanation}
+    Start by factoring the denominator
+    \[
+    x^5 + 2x^3  + x = x(x^2+1)^2.
+    \]
+    We will suppose that there are numbers $A$, $B$, $C$, $D$, and $E$
+    such that
+    \[
+    \frac{A}{x} + \frac{Bx+C}{x^2+1} + \frac{Dx+E}{(x^2+1)^2} = \frac{1}{x(x^2+1)^2}.
+    \]
+    Clearing denominators, we find
+    \[
+    A(x^2+1)^2 + (Bx+C)(x^3+x)+ (Dx+E)(x) = 1
+    \]
+    Expanding the left-hand side, we find a polynomial equal (as a
+    function!) to the polynomial $7x^2+31x+54$
+    \[
+    (A+B)^4 +  Cx^3 (2A+B+D)x^2 + (C+E)x + A = 1.
+    \]
+    Since \textbf{polynomials are equal as functions if and only if
+      their coefficients are equal}, we may rewrite this as
+    \textbf{five} equations:
+    \begin{align*}
+      A+B &= 0 &\text{(the coefficients for $x^4$)}\\
+      C &= 0 &\text{(the coefficients for $x^3$)}\\
+      2A+B+D &= 0 &\text{(the coefficients for $x^2$)}\\
+      C+E &= 0 &\text{(the coefficients for $x$)}\\
+      A &= 1 &\text{(the coefficients for the constant)}
+    \end{align*}
+    Solving these three equations for $A$, $B$, $C$, $D$, and $E$ we find
+    \begin{itemize}
+    \item $A = \answer[given]{1}$,
+    \item $B = \answer[given]{-1}$,
+    \item $C = \answer[given]{0}$,
+    \item $D = \answer[given]{-1}$,
+    \item $E = \answer[given]{0}$.
+    \end{itemize}
+    From this we can now rewrite our integral as
+    \[
+    \int \frac{1}{x^5 + 2x^3  + x}\d x =\int \frac{1}{x} + \frac{-x}{x^2+1} + \frac{-x}{(x^2+1)^2}\d x
+    \]
+    Each term of this new integrand is easy to evaluate, write
+    \begin{align*}
+      \int \frac{1}{x} \d x &= \ln|x| + C,\\
+      \int \frac{-x}{x^2+1} \d x &= \frac{-\ln|x^2+1|}{2} +C,\\
+      \int \frac{-x}{(x^2+1)^2} \d x &= \frac{1}{2(x^2+1)}+C.
+    \end{align*}
+    So
+    \[
+    \int \frac{1}{x^5 + 2x^3  + x}\d x =\ln|x| + \frac{-\ln|x^2+1|}{2} + \frac{1}{2(x^2+1)}+C.
+    \]
+  \end{explanation}
 \end{example}
+
+
+
+\subsection{The general technique for repeated quadratic factors}
+Suppose you wish to compute
+\[
+\int \frac{p(x)}{q(x)} \d x
+\]
+where $p$ and $q$ are both polynomial functions, the degree of $p$ is
+less than the degree of $q$, and $q$ factors into $n$
+\textbf{distinct} irreducible quadratic factors:
+\[
+q(x) = (ax^2 + b x + c)^n 
+\]
+then we can \textbf{always} write
+\[
+\frac{p(x)}{q(x)}  = \frac{A_1x+B_1}{ax^2 + bx + c} + \frac{A_2x+B_2}{(ax^2 + bx + c)^2} + \cdots + \frac{A_nx+B_n}{(ax^2 + b x + c)^n}. 
+\]
+The right-hand side of the equation can be antidifferentiated, though it is not always ``easy.''
+
+
+\section{Reducing rational functions}
+
+When computing
+\[
+\int \frac{p(x)}{q(x)} \d x
+\]
+all of the techniques above rely on the fact that the degree of $p$ is
+less than the degree of $q$. What if this is not the case? Use
+\index{long-division}long-division.
+
+\begin{example}
+  Compute:
+  \[
+  \int \frac{x^3}{(x-1)(x+1)} \d x
+  \]
+  \begin{explanation}
+    \begin{center}%%BADBAD
+      \begin{tikzpicture}[]
+        \node at (0,0) {
+          $x-5\,\begin{array}[b]{@{}r@{}r} 
+          3x-2 &\\ 
+          \cline{1-1}
+          \Bigg)\begin{array}[t]{@{}l@{}} 3x^2-17x+1\\ 
+            3x^2-15x \\ 
+            \divrule{0}{8}  ~~~~~~~-2x+1 \\
+            ~~~~~~~-2x+10\\
+            \divrule{5}{8}
+            ~~~~~~~~~~~~~~~~~-9
+          \end{array}
+          \end{array}
+          $
+        };
+      \end{tikzpicture}
+    \end{center}
+  \end{explanation}
+\end{example}
+    
+
+
+As with many other problems in calculus, it is important to remember
+that one is not expected to ``see'' the final answer immediately after
+seeing the problem. Rather, given the initial problem, we break it
+down into smaller problems that are easier to solve. The final answer
+is a combination of the answers of the smaller problems.
+
+
+
+
+
+The algebraic steps in the technique
+are rather cumbersome if the polynomial in the denominator has degree
+more than 2, and the technique requires that we factor the
+denominator, something that is not always possible.  However, in
+practice one does not often run across rational functions with high
+degree polynomials in the denominator for which one has to find the
+antiderivative function.  So we shall explain how to find the
+antiderivative of a rational function only when the denominator is a
+quadratic polynomial $ax^2+bx+c$.
+
 
 \end{document}

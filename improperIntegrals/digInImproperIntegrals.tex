@@ -1,0 +1,242 @@
+\documentclass{ximera}
+\acknowledgement{https://github.com/APEXCalculus}
+
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Improper Integrals}
+
+\begin{document}
+\begin{abstract}
+  We can use limits to integrate functions on unbounded domains or functions with unbounded range.
+\end{abstract}
+\maketitle
+
+We begin this section by considering the following definite integrals:
+\begin{itemize}
+\item	$ \int_0^{100}\frac1{1+x^2} \d x \approx 1.5608,$
+\item	$ \int_0^{1000}\frac1{1+x^2} \d x \approx 1.5698,$
+\item	$ \int_0^{10,000}\frac1{1+x^2} \d x \approx 1.5707.$
+\end{itemize}
+
+Notice how the integrand is $1/(1+x^2)$ in each integral. As the upper bound gets larger, one would expect the ``area under the curve'' would also grow. While the definite integrals do increase in value as the upper bound grows, they are not  increasing by much. 
+
+\begin{question}
+
+\[
+\int_0^b \frac{1}{1+x^2} \d x =  \answer{\arctan(b)}
+\]
+
+\begin{hint}
+	$\int \frac{1}{1+x^2} \d x = \arctan(x)+C$, so $\int_0^b \frac{1}{1+x^2} \d x = \arctan(b) -\arctan(0) = \arctan(b)$.
+\end{hint}
+\end{question}
+
+As $b \rightarrow \infty$, $\arctan(b) \rightarrow \pi/2.$ Therefore it seems that as the upper bound $b$ grows, the value of the definite integral $ \int_0^b\frac{1}{1+x^2}\ dx$ approaches $\pi/2 \approx 1.5708$. This should strike the reader as being a bit amazing: even though the curve extends ``to infinity,'' it has a finite amount of area underneath it.
+
+%BADBAD Graph
+
+%\mfigure{.75}{Graphing $\ds f(x)=\frac{1}{1+x^2}$.}{fig:improper1}{figures/figimproper1}
+
+When we defined the definite integral $\int_a^b f(x) \d x$, we made two stipulations:
+	\begin{enumerate}
+	\item		The interval over which we integrated, $[a,b]$, was a finite interval, and
+	\item		The function $f(x)$ was continuous on $[a,b]$ (ensuring that the range of $f$ was finite).
+	\end{enumerate}
+	
+In this section we consider integrals where one or both of the above conditions do not hold. Such integrals are called \textbf{improper integrals.}
+
+\section{Improper Integrals with unbounded domains}
+
+\begin{definition}
+
+\begin{enumerate}
+
+\item		Let $f$ be a continuous function on $[a,\infty)$.
+
+\[
+\int_a^\infty f(x) \d x \text{ is defined to be } \lim_{b\to\infty}\int_a^b f(x) \d x
+\]
+
+\item		Let $f$ be a continuous function on $(-\infty,b]$.
+\[
+\int_{-\infty}^b f(x) \d x \text{ is defined to be } \lim_{a\to-\infty}\int_a^b f(x) \d x
+\]
+
+\item		Let $f$ be a continuous function on $(-\infty,\infty)$. Let $c$ be any real number.
+\[
+\int_{-\infty}^\infty f(x) \d x  \text{ is defined to be } \lim_{a\to-\infty}\int_a^c f(x) \d x  +  \lim_{b\to\infty}\int_c^b f(x) \d x
+\]
+\end{enumerate}
+\end{definition}
+
+A question to the thoughtful reader:  Suppose that the improper integral $\int_{-\infty}^\infty f(x) \d x$ exists.  Why does it not matter which $c$ you choose to split the integral up at?
+
+An improper integral is said to \textbf{converge} if its corresponding limit exists; otherwise, it \textbf{diverges}. The improper integral in part $3$ converges if and only if both of its limits exist.
+
+
+\begin{example}	
+	Evaluate the following improper integral.  If it diverges, write $DNE$.
+	
+	\[
+	\int_1^\infty \frac{1}{x^2} \d x = \answer{1}
+	\]
+	
+	\begin{hint}
+		\[
+		\int_1^\infty \frac{1}{x^2} \d x = \lim_{b \to \infty} \int_1^b \frac{1}{x^2} \d x
+		\]
+	\end{hint}
+	\begin{hint}
+		\begin{align*}
+		 \lim_{b \to \infty} \int_1^b \frac{1}{x^2} \d x &=  \lim_{b \to \infty} \eval{\frac{-1}{x}}_1^b \\
+		 	&=  \lim_{b \to \infty} 1 - \frac{1}{b}\\
+			&= 1
+		\end{align*}
+	\end{hint}
+\end{example}
+
+\begin{example}	
+	Evaluate the following improper integral.  If it diverges, write $DNE$.
+	
+	\[
+	\int_{\sqrt{2}}^\infty \frac{1}{x\sqrt{x^2-1}} \d x = \answer{\frac{\pi}{3}}
+	\]
+	
+	\begin{hint}
+		\[
+		\int_{\sqrt{2}}^\infty \frac{1}{x\sqrt{x^2-1}} \d x = \lim_{b \to \infty} \int_{\sqrt{2}}^b \frac{1}{x\sqrt{x^2-1}}\d x
+		\]
+	\end{hint}
+	\begin{hint}
+		\begin{align*}
+		 \lim_{b \to \infty} \int_{\sqrt{2}}^b\frac{1}{x\sqrt{x^2-1}} \d x &=  \lim_{b \to \infty} \eval{\arcsec(x)}_{\sqrt{2}}^b \\
+		 	&=  \lim_{b \to \infty} \arcsec(b) - \arcsec(\sqrt{2})\\
+			&= \frac{\pi}{2} - \frac{\pi}{6}\\
+			&=\frac{\pi}{3}
+		\end{align*}
+	\end{hint}
+\end{example}
+
+\begin{example}	
+	Evaluate the following improper integral.  If it diverges, write $DNE$.
+	
+	\[
+	\int_{1}^\infty \frac{1}{\sqrt{x}} \d x = \answer{DNE}
+	\]
+	
+	\begin{hint}
+		\[
+		\int_{1}^\infty \frac{1}{\sqrt{x}} \d x = \lim_{b \to \infty} \int_{1}^b \frac{1}{\sqrt{x}} \d x 
+		\]
+	\end{hint}
+	
+	\begin{hint}
+		\begin{align*}
+		 \lim_{b \to \infty} \int_{1}^b \frac{1}{\sqrt{x}} \d x  &=  \lim_{b \to \infty} 2\sqrt{x} \eval{1}^b \\
+		 	&=  \lim_{b \to \infty} 2\sqrt{b}  -2\\
+			&= \infty
+		\end{align*}
+		
+		The integral failed to converge, so the answer is DNE.
+	\end{hint}
+\end{example}
+
+\section{Improper integration with Unbounded Range}
+We have just considered definite integrals where the interval of integration was unbounded. We now consider another type of improper integration, where the range of the integrand is unbounded.
+
+\begin{definition}
+Let $f(x)$ be a continuous function on $[a,b]$ except at $c$, $a\leq c\leq b$, where $x=c$ is a vertical asymptote of $f$. Define
+\[
+\int_a^b f(x)\d x = \lim_{t\to c^-}\int_a^t f(x)\d x + \lim_{t\to c^+}\int_t^b f(x)\d x
+\]
+\end{definition}
+
+\begin{example}	
+	Evaluate the following improper integral.  If it diverges, write $DNE$.
+	
+	\[
+	\int_{0}^1 \frac{1}{\sqrt{x}} \d x = \answer{2}
+	\]
+	
+	\begin{hint}
+		\[
+		\int_{0}^1 \frac{1}{\sqrt{x}} \d x = \lim_{a \to 0} \int_{a}^1 \frac{1}{\sqrt{x}} \d x 
+		\]
+	\end{hint}
+	
+	\begin{hint}
+		\begin{align*}
+		 \lim_{a \to 0} \int_{a}^1 \frac{1}{\sqrt{x}} \d x  &=  \lim_{a \to 0}  \eval{2\sqrt{x}}_a^1 \\
+		 	&=  \lim_{b \to \infty} 2-2\sqrt{a}\\
+			&= 2
+		\end{align*}
+		\end{hint}
+		
+		\begin{feedback}
+			Isn't it quite surprising that the area bounded by a curve which has a vertical asymptote can be finite?
+		\end{feedback}
+\end{example}
+
+\begin{example}	
+	Evaluate the following improper integral.  If it diverges, write $DNE$.
+	
+	\[
+	\int_{-1}^1 \frac{1}{x^2} \d x = \answer{DNE}
+	\]
+	
+	\begin{hint}
+		\[
+		\int_{-1}^1 \frac{1}{\sqrt{x}} \d x = \lim_{a \to 0} \int_{0}^1 \frac{1}{x^2} \d x  + \lim_{b \to 0} \int_{-1}^b \frac{1}{x^2} \d x
+		\]
+	\end{hint}
+	
+	\begin{hint}
+		Let us evaluate these limits one at a time.
+		
+		\begin{align*}
+		 \lim_{a \to 0} \int_{a}^1 \frac{1}{x^2} \d x  &=  \lim_{a \to 0} \eval{\frac{-1}{x}}_a^1 \\
+		 	&=  \lim_{a \to 0} \frac{1}{a}-1\\
+			&= \infty
+		\end{align*}
+		
+		We can stop here:  since one limit was infinite, the integral is divergent.  So the answer is DNE.
+		\end{hint}
+\end{example}
+
+In the last example, what would have happened if we had not noticed the vertical asymptote in the integrand at $x=0$?
+
+We probably would have blindly computed:
+
+\begin{align*}
+\int_{-1}^1\frac1{x^2}\ dx &= -\frac1x\Big|_{-1}^1\\
+			&= -1 - (1)\\
+			&=-2
+\end{align*}
+
+But the integrand is always positive, so this answer of $-2$ is complete nonsense! 
+
+What is a practical example of an improper integral?  Sometimes in the real world it is useful to compute using infinity because we are interested in limiting behavior, or because we want to measure something which is ``effectively'' infinite in some way (really really large).
+
+\begin{example}
+	Given two objects of mass $A$ and $B$ in kilograms, the force of gravity acting between them at a distance of $x$ meters is $F(x) = G\frac{AB}{x^2}$, where $G$ is a universal constant.  About much work is done by moving these objects from a distance of $1 \unit{m}$ to a distance far enough away that the force of gravity acting on them can be disregarded?
+	
+	\[
+	\textrm{Work} = \answer{GAB}
+	\]
+	
+	\begin{hint}
+		We can approximate ``really, really far away'' with ``infinitely far away''.
+	\end{hint}
+	
+	\begin{hint}
+		\begin{align*}
+			\textrm{Work} &= \int_1^\infty G\frac{AB}{x^2} \d x\\
+				&= GAB \lim_{b \to \infty} \eval{-\frac{1}{x}}_1^b\\
+				&=GAB \lim_{b \to \infty} 1 - \frac{1}{b}\\
+				&=GAB
+		\end{align*}
+	\end{hint}
+\end{example}
+
+\end{document}

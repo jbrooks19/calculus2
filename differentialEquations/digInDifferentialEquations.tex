@@ -84,6 +84,34 @@ Differential equations are one of the most practical objects of mathematical stu
 	\end{hint}	
 \end{question}
 
+We have already seen, and solved, a particular kind of differential equation in this course.  Namely a solution $F$ to the differential equation $y' = f(x)$ is just an antiderivative of $f$!  We know the ``general solution'' of this differential equation is just $F(x)+C$, as long as the domain of $f$ is an interval.  We can use this idea to solve differential equations of the form $y^{(n)} = f(x)$, by just repeatedly integrating.
+
+\begin{example}
+Let's find the general solution to the differential equation $y'' =  x$, and then find the particular solution which passes through the points $(0,1)$ and $(1,2)$.
+
+Since $y'' = x$, we know that $y' = \int x \d x$. 
+
+ Thus $y' = \frac{1}{2} x^2 + C_1$ for some constant $C_1}$.  
+ 
+Now this further implies that $y = \int \frac{1}{2} x^2 + C_1 \d x$, so 
+we must have that $y = \frac{1}{6}x^3+C_1x+C_2$, for some constant $C_2$.
+
+This is the general solution of the differential equation.  We have shown that every solution is of the form $y = \frac{1}{6}x^3+C_1x+C_2$.
+
+Now to find the particular solution we are interested in, we can just solve a system of equations.
+
+We find that the only solution to this differential equation passing through $(0,1)$ and $(1,2)$ is 
+
+\[
+y = \answer{\frac{1}{6}x^3+\frac{5}{6}x+1}
+\]
+
+\begin{hint}
+	Substituting $(0,1)$ into the equation yields $C_2 = 1$, and then substituting $(1,2)$ into the equation one can solve for $C_1$ to find $C_1 = \frac{5}{6}$
+\end{hint}
+
+
+\end{example}
 
 
 

@@ -1,0 +1,90 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Differential Equations}
+
+\begin{document}
+\begin{abstract}
+	Differential equations ask you to find functions whose derivatives are constrained
+\end{abstract}
+\maketitle
+
+\begin{question}
+Which of the following functions satisfy 
+
+\[
+\frac{\d^{ \hspace{0.8mm} 4} f}{\d x^4} = f(x)
+\]
+
+for all real $x$?
+
+\begin{multipleChoice}
+\choice[correct]{$f(x) = \sin(x)$}
+\choice{$f(x) = x^2$}
+\choice[correct]{$f(x) = e^x$}
+\choice[correct]{$f(x) = e^{-x}$}
+\choice{$f(x) = \tan(x)$}
+\end{multipleChoice}
+
+\end{question}
+
+The equation $\frac{\d^{ \hspace{0.8mm} 4} f}{\d x^4} = f(x)$ is an example of a \textbf{differential equation}.  
+
+\begin{definition}
+	A \textbf{differential equation} is an equation involving an unknown function and its derivatives.  A \textbf{solution} of a differential equation is any function which satisfies the equation.  The \textbf{complete solution} of a differential equation is a description of all of the functions which satisfy it.
+\end{definition}
+
+For example, $f(x) = 2\cos(x)$ is a solution to the differential equation $\frac{\d^{ \hspace{0.8mm} 4} f}{\d x^4} = f(x)$ because if you differentiate $2\cos(x)$ four times, you get back $2\cos(x)$.
+
+It turns out that the complete solution to this differential equation is $c_1\sin(x)+c_2\cos(x)+c_3e^x+c_4e^{-x}$.  In other words, every solution to this differential equation can be written in this form.  You should check that these are all solutions (for example $f(x) = \sin(x)+3\cos(x)-7e^x+\pi e^{-x}$ is a solution).  Proving that these are \textbf{all} of the solutions is beyond the scope of this course.
+
+Differential equations are one of the most practical objects of mathematical study.  They appear constantly in every field of science and engineering.  They are a powerful way to model many diverse situations.
+
+\begin{question}
+	Imagine that a glass of water has initial temperature $5^\circ \unit{C}$, and that the ambient temperature is $22^\circ \unit{C}$.  The water will warm up over time.  Assume that the rate of change in the temperature of the water is directly proportional to the difference between the current water temperature and the ambient temperature.  Which of the following differential equations must be satisfied by the function $H(t)$ which measures the temperature of the water with respect to time?
+	
+	\begin{multipleChoice}
+		\choice{$y' = 5+\frac{y}{22}$}
+		\choice[correct]{$y' = k(22-y)$ for some $k>0$}
+		\choice{$y' = k(y-22)$ for some $k>0$}
+		\choice{$y' = k(5-y)$ for some $k>0$}
+		\choice{$y' = k(y-5)$ for some $k>0$}
+	\end{multipleChoice}
+	
+	\begin{hint}
+		This is just a straight translation job.  ``The rate of change in the temperature of the water" is $y'$.  ``Directly proportional to" means that it is equal to some constant (say $k$) times whatever it is proportional to.  ``The difference between the current water temperature and the ambient temperature" is either $22-y$ or $y-22$, since $y$ is the temperature of the water and $22$ is the ambient temperature.   Think about which we should choose before looking at the next hint.  Will it be $y'=k(22-y)$ or $y'=k(y-22)$ where $k>0$?
+	\end{hint}
+	
+	\begin{hint}
+		Since the temperature of the water is increasing over time, we want $y'>0$.  Since the temperature will be increasing (and it is reasonable to assume it never surpasses the ambient temperature!)  $22-y$ is positive.  So we can conclude that $y' = k(22-y)$ for some $k>0$.  
+	\end{hint}
+
+	\begin{feedback}
+		The differential equation does not involve the number $5$.  If we wanted to incorporate that piece of data into our model we could ask ``Which solution(s) to this differential equation satisfy $H(0) = 5$"?  This is known as an \textbf{initial value problem}. 
+	\end{feedback}
+\end{question} 
+
+\begin{question}
+	One can approximate the force of gravity as constant near the Earth.  So the acceleration of a falling object is a constant $g>0$.  If $h(t)$ is the height of an object at time $t$, which differential equation must $h$ satisfy?
+	
+	\begin{multipleChoice}
+		\choice{y' = g}
+		\choice{y=-g}
+		\choice[correct]{y''=-g}
+		\choice{y'' = g}
+		\choice{y'' = -gy}
+	\end{multipleChoice}
+	
+	\begin{hint}
+		The acceleration of an object is the second derivative of its position, so the differential equation should say the second derivative ($y''$) is constant.  Should it be a positive of negative constant?
+	\end{hint}
+	\begin{hint}
+		A falling object will fall quicker and quicker, so the second derivative of its height should be negative.  Thus $y''=g$ is the correct answer.
+	\end{hint}	
+\end{question}
+
+
+
+
+\end{document}

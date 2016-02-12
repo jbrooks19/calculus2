@@ -123,7 +123,7 @@ functions. Let's dig right in with an example.
     \]
     Clearing denominators, we find
     \[
-    A(x+1) + B(x-1) = 1.
+    A\answer[given]{(x+1)} + B\answer[given]{(x-1)} = 1.
     \]
     Expanding the left-hand side, we find a polynomial equal (as a
     function!) to the constant polynomial $1$
@@ -134,8 +134,8 @@ functions. Let's dig right in with an example.
       their coefficients are equal}, we may rewrite this as
     \textbf{two} equations:
     \begin{align*}
-      A+B &= 0 &\text{(the coefficients for $x$)}\\
-      A-B &= 1 &\text{(the coefficients for the constant)}
+      \answer[given]{A+B} &= 0 &\text{(the coefficients for $x$)}\\
+      \answer[given]{A-B} &= 1 &\text{(the coefficients for the constant)}
     \end{align*}
     Solving these three equations for $A$ and $B$ we find
     \begin{itemize}
@@ -204,7 +204,7 @@ each of the repeated factors. Let's do an example.
     \]
     Clearing denominators, we find
     \[
-    A(x+2)^2 + B(x-1)(x+2) + C(x-1) = 1.
+    A\answer[given]{(x+2)^2} + B\answer[given]{(x-1)(x+2)} + C\answer[given]{(x-1)} = 1.
     \]
     Expanding the left-hand side, we find a polynomial equal (as a
     function!) to the constant polynomial $1$
@@ -215,9 +215,9 @@ each of the repeated factors. Let's do an example.
       their coefficients are equal}, we may rewrite this as
     \textbf{three} equations:
     \begin{align*}
-      A+B &= 0 &\text{(the coefficients for $x^2$)}\\
-      4A+B+C &= 0 &\text{(the coefficients for $x$)}\\
-      4A-2B-C &= 1 &\text{(the coefficients for the constant)}
+      \answer[given]{A+B} &= 0 &\text{(the coefficients for $x^2$)}\\
+      \answer[given]{4A+B+C} &= 0 &\text{(the coefficients for $x$)}\\
+      \answer[given]{4A-2B-C} &= 1 &\text{(the coefficients for the constant)}
     \end{align*}
     Solving these three equations for $A$, $B$ and $C$ we find
     \begin{itemize}
@@ -227,7 +227,7 @@ each of the repeated factors. Let's do an example.
     \end{itemize}
     From this we can now rewrite our integral as
     \begin{align*}
-      \int\frac{1}{(x-1)(x+2)^2}\d x&= \int \frac{1/9}{x-1}+ \frac{-1/9}{x+2} + \frac{-1/3}{(x+2)^2}\d x\\
+      \int&\frac{1}{(x-1)(x+2)^2}\d x= \int \frac{1/9}{x-1}+ \frac{-1/9}{x+2} + \frac{-1/3}{(x+2)^2}\d x\\
       &= \int \frac{1/9}{x-1}\d x + \int \frac{-1/9}{x+2}\d x + \int \frac{-1/3}{(x+2)^2}\d x,\\
       &= \frac{1}{9}\ln|x-1| -\frac{1}{9}\ln|x+2| +\frac{1}{3(x+2)}+C.
     \end{align*}
@@ -306,7 +306,7 @@ function has distinct quadratic factors.
     \]
     Clearing denominators, we find
     \[
-    A(x^2+6x+11) + (Bx+C)(x+1) = 7x^2+31x+54.
+    A\answer[given]{(x^2+6x+11)} + (Bx+C)\answer[given]{(x+1)} = 7x^2+31x+54.
     \]
     Expanding the left-hand side, we find a polynomial equal (as a
     function!) to the polynomial $7x^2+31x+54$
@@ -317,9 +317,9 @@ function has distinct quadratic factors.
       their coefficients are equal}, we may rewrite this as
     \textbf{three} equations:
     \begin{align*}
-      A+B &= 7 &\text{(the coefficients for $x^2$)}\\
-      6A+B+C &= 31 &\text{(the coefficients for $x$)}\\
-      11A+C &= 54 &\text{(the coefficients for the constant)}
+      \answer[given]{A+B} &= 7 &\text{(the coefficients for $x^2$)}\\
+      \answer[given]{6A+B+C} &= 31 &\text{(the coefficients for $x$)}\\
+      \answer[given]{11A+C} &= 54 &\text{(the coefficients for the constant)}
     \end{align*}
     Solving these three equations for $A$, $B$ and $C$ we find
     \begin{itemize}
@@ -366,10 +366,18 @@ then use a substitution of $g = x+3$ to find
 \]
 Let's start at the beginning and put all of the steps together.
 \begin{align*}
-\int&\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\d x = \int\left(\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11}\right)\d x \\
-			&= \int\frac{5}{x+1}\d x  + \int\frac{2x+6}{x^2+6x+11}\d x -\int\frac{7}{x^2+6x+11}\d x \\
-			&= 5\ln|x+1|+ \ln|x^2+6x+11| -\frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+C.
+  \int&\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\d x \\
+  &= \int\left(\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11}\right)\d x
 \end{align*}
+breaking this integral up we find
+\begin{align*}
+  = \int\frac{5}{x+1}\d x  &+ \int\frac{2x+6}{x^2+6x+11}\d x\\
+  &-\int\frac{7}{x^2+6x+11}\d x
+\end{align*}
+and antidifferentiating we find
+\[
+  = 5\ln|x+1|+ \ln|x^2+6x+11|-\frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+C.
+\]
   \end{explanation}
 \end{example}
 
@@ -388,7 +396,7 @@ q(x) = (a_1x^2 + b_1 x + c_1) (a_2x^2 + b_2 x + c_2)\cdots  (a_nx^2 + b_n x + c_
 \]
 then we can \textbf{always} write
 \[
-\frac{p(x)}{q(x)}  = \frac{A_1x+B_1}{a_1x^2 + b_1 x + c_1} + \frac{A_2x+B_2}{(a_2x^2 + b_2 x + c_2)} + \cdots + \frac{A_nx+B_n}{(a_nx^2 + b_n x + c_n)}. 
+\frac{p(x)}{q(x)}  = \frac{A_1x+B_1}{a_1x^2 + b_1 x + c_1} + \cdots + \frac{A_nx+B_n}{(a_nx^2 + b_n x + c_n)}. 
 \]
 The right-hand side of the equation can be antidifferentiated, though it is not always ``easy.''
 
@@ -419,7 +427,7 @@ For completeness sake, we will work a problem with repeated quadratic factors.
     \]
     Clearing denominators, we find
     \[
-    A(x^2+1)^2 + (Bx+C)(x^3+x)+ (Dx+E)(x) = 1
+    A\answer[given]{(x^2+1)^2} + (Bx+C)\answer[given]{(x^3+x)}+ (Dx+E)\answer[given]{(x)} = 1
     \]
     Expanding the left-hand side, we find a polynomial equal (as a
     function!) to the polynomial $7x^2+31x+54$
@@ -430,11 +438,11 @@ For completeness sake, we will work a problem with repeated quadratic factors.
       their coefficients are equal}, we may rewrite this as
     \textbf{five} equations:
     \begin{align*}
-      A+B &= 0 &\text{(the coefficients for $x^4$)}\\
-      C &= 0 &\text{(the coefficients for $x^3$)}\\
-      2A+B+D &= 0 &\text{(the coefficients for $x^2$)}\\
-      C+E &= 0 &\text{(the coefficients for $x$)}\\
-      A &= 1 &\text{(the coefficients for the constant)}
+      \answer[given]{A+B} &= 0 &\text{(the coefficients for $x^4$)}\\
+      \answer[given]{C} &= 0 &\text{(the coefficients for $x^3$)}\\
+      \answer[given]{2A+B+D} &= 0 &\text{(the coefficients for $x^2$)}\\
+      \answer[given]{C+E} &= 0 &\text{(the coefficients for $x$)}\\
+      \answer[given]{A} &= 1 &\text{(the coefficients for the constant)}
     \end{align*}
     Solving these three equations for $A$, $B$, $C$, $D$, and $E$ we find
     \begin{itemize}
@@ -455,9 +463,10 @@ For completeness sake, we will work a problem with repeated quadratic factors.
       \int \frac{-x}{(x^2+1)^2} \d x &= \frac{1}{2(x^2+1)}+C.
     \end{align*}
     So
-    \[
-    \int \frac{1}{x^5 + 2x^3  + x}\d x =\ln|x| + \frac{-\ln|x^2+1|}{2} + \frac{1}{2(x^2+1)}+C.
-    \]
+    \begin{align*}
+    \int &\frac{1}{x^5 + 2x^3  + x}\d x \\
+    &=\ln|x| + \frac{-\ln|x^2+1|}{2} + \frac{1}{2(x^2+1)}+C.
+    \end{align*}
   \end{explanation}
 \end{example}
 
@@ -494,27 +503,31 @@ less than the degree of $q$. What if this is not the case? Use
 \begin{example}
   Compute:
   \[
-  \int \frac{x^3}{(x-1)(x+1)} \d x
+  \int \frac{x^3+1}{x^2-1} \d x
   \]
   \begin{explanation}
+    We start by using long-division to reduce the numerator:
     \begin{center}%%BADBAD
       \begin{tikzpicture}[]
         \node at (0,0) {
-          $x-5\,\begin{array}[b]{@{}r@{}r} 
-          3x-2 &\\ 
+          $x^2-0x-1\,\begin{array}[b]{@{}r@{}r} 
+          x &\\ 
           \cline{1-1}
-          \Bigg)\begin{array}[t]{@{}l@{}} 3x^2-17x+1\\ 
-            3x^2-15x \\ 
-            \divrule{0}{8}  ~~~~~~~-2x+1 \\
-            ~~~~~~~-2x+10\\
-            \divrule{5}{8}
-            ~~~~~~~~~~~~~~~~~-9
+          \Bigg)\begin{array}[t]{@{}l@{}} x^3+0x^2+0x+1\\ 
+            x^3+0x^2-x \\ 
+            \divrule{0}{8}  ~~~~~~~x+1
           \end{array}
           \end{array}
           $
         };
       \end{tikzpicture}
     \end{center}
+    Now our integral becomes
+    \[
+    \int \frac{x^3+1}{x^2-1}\d x = \int x+ \frac{x+1}{x^2-1}\d x
+    \]
+    From here, we can use our techniques from before to complete the
+    computation.
   \end{explanation}
 \end{example}
     
@@ -525,20 +538,4 @@ that one is not expected to ``see'' the final answer immediately after
 seeing the problem. Rather, given the initial problem, we break it
 down into smaller problems that are easier to solve. The final answer
 is a combination of the answers of the smaller problems.
-
-
-
-
-
-The algebraic steps in the technique
-are rather cumbersome if the polynomial in the denominator has degree
-more than 2, and the technique requires that we factor the
-denominator, something that is not always possible.  However, in
-practice one does not often run across rational functions with high
-degree polynomials in the denominator for which one has to find the
-antiderivative function.  So we shall explain how to find the
-antiderivative of a rational function only when the denominator is a
-quadratic polynomial $ax^2+bx+c$.
-
-
 \end{document}

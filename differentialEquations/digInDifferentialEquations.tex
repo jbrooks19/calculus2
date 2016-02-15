@@ -2,47 +2,78 @@
 
 \input{../preamble.tex}
 
-\title[Dig-In:]{Differential Equations}
+
+\outcome{Identify a differential equation.}
+\outcome{Verify a solution to a differential equation.}
+\outcome{Compute a general solution to a differential equation via integration.}
+\outcome{Solve initial value problems.}
+\outcome{Determine the order of a differential equation.}
+
+
+\title[Dig-In:]{Differential equations}
 
 \begin{document}
 \begin{abstract}
-	Differential equations ask you to find functions whose derivatives are constrained
+  Differential equations show you relationships between rates of
+  functions.
 \end{abstract}
 \maketitle
 
-\begin{question}
-Which of the following functions satisfy 
-
+A \textit{differential equation}\index{differential equation} is
+simply an equation with a derivative in it. Here is an example:
 \[
-\frac{\d^{ \hspace{0.8mm} 4} f}{\d x^4} = f(x)
+a\cdot f''(x) + b\cdot f'(x) + c\cdot f(x) = g(x). 
 \]
-
-for all real $x$?
-
-\begin{multipleChoice}
-\choice[correct]{$f(x) = \sin(x)$}
-\choice{$f(x) = x^2$}
-\choice[correct]{$f(x) = e^x$}
-\choice[correct]{$f(x) = e^{-x}$}
-\choice{$f(x) = \tan(x)$}
-\end{multipleChoice}
-
+\begin{question}
+  What is a differential equation?
+  \begin{multipleChoice}
+    \choice{An equation that you take the derivative of.}
+    \choice[correct]{An equation that relates the rate of a function to other values.}
+    \choice{It is a formula for the slope of a tangent line at a given point.}  
+  \end{multipleChoice}
 \end{question}
 
-The equation $\frac{\d^{ \hspace{0.8mm} 4} f}{\d x^4} = f(x)$ is an example of a \textbf{differential equation}.  
+When a mathematician solves a differential equation, they are finding
+\textit{functions} satisfying the equation.
+\begin{question}
+  Which of the following functions solve the differential equation
+  \[
+  f^{(4)}(x) = f(x)?
+  \]
+  \begin{hint}
+    Remember, $f^{(4)}$ is the fourth derivative of $f$.
+  \end{hint}
+  \begin{selectAll}
+    \choice[correct]{$f(x) = \sin(x)$}
+    \choice{$f(x) = x^2$}
+    \choice[correct]{$f(x) = e^x$}
+    \choice[correct]{$f(x) = e^{-x}$}
+    \choice{$f(x) = \tan(x)$}
+  \end{selectAll}
+\end{question}
 
-\begin{definition}
-	A \textbf{differential equation} is an equation involving an unknown function and its derivatives.  A \textbf{solution} of a differential equation is any function which satisfies the equation.  The \textbf{complete solution} of a differential equation is a description of all of the functions which satisfy it.
-\end{definition}
 
-For example, $f(x) = 2\cos(x)$ is a solution to the differential equation $\frac{\d^{ \hspace{0.8mm} 4} f}{\d x^4} = f(x)$ because if you differentiate $2\cos(x)$ four times, you get back $2\cos(x)$.
+It turns out that the complete solution to this differential equation
+is $c_1\sin(x)+c_2\cos(x)+c_3e^x+c_4e^{-x}$.  In other words, every
+solution to this differential equation can be written in this form.
+You should check that these are all solutions (for example $f(x) =
+\sin(x)+3\cos(x)-7e^x+\pi e^{-x}$ is a solution).  Proving that these
+are \textbf{all} of the solutions is beyond the scope of this course.
 
-It turns out that the complete solution to this differential equation is $c_1\sin(x)+c_2\cos(x)+c_3e^x+c_4e^{-x}$.  In other words, every solution to this differential equation can be written in this form.  You should check that these are all solutions (for example $f(x) = \sin(x)+3\cos(x)-7e^x+\pi e^{-x}$ is a solution).  Proving that these are \textbf{all} of the solutions is beyond the scope of this course.
-
-Differential equations are one of the most practical objects of mathematical study.  They appear constantly in every field of science and engineering.  They are a powerful way to model many diverse situations.
+Differential equations are one of the most practical objects of
+mathematical study.  They appear constantly in every field of science
+and engineering.  They are a powerful way to model many diverse
+situations.
 
 \begin{question}
-	Imagine that a glass of water has initial temperature $5^\circ \unit{C}$, and that the ambient temperature is $22^\circ \unit{C}$.  The water will warm up over time.  Assume that the rate of change in the temperature of the water is directly proportional to the difference between the current water temperature and the ambient temperature.  Which of the following differential equations must be satisfied by the function $H(t)$ which measures the temperature of the water with respect to time?
+  Imagine that a glass of water has initial temperature $5^\circ
+  \unit{C}$, and that the ambient temperature is $22^\circ \unit{C}$.
+  The water will warm up over time.  Assume that the rate of change in
+  the temperature of the water is directly proportional to the
+  difference between the current water temperature and the ambient
+  temperature.  Which of the following differential equations must be
+  satisfied by the function $H(t)$ which measures the temperature of
+  the water with respect to time?
 	
 	\begin{multipleChoice}
 		\choice{$y' = 5+\frac{y}{22}$}
@@ -53,7 +84,7 @@ Differential equations are one of the most practical objects of mathematical stu
 	\end{multipleChoice}
 	
 	\begin{hint}
-		This is just a straight translation job.  ``The rate of change in the temperature of the water" is $y'$.  ``Directly proportional to" means that it is equal to some constant (say $k$) times whatever it is proportional to.  ``The difference between the current water temperature and the ambient temperature" is either $22-y$ or $y-22$, since $y$ is the temperature of the water and $22$ is the ambient temperature.   Think about which we should choose before looking at the next hint.  Will it be $y'=k(22-y)$ or $y'=k(y-22)$ where $k>0$?
+	  This is just a straight translation job.  ``The rate of change in the temperature of the water" is $y'$.  ``Directly proportional to" means that it is equal to some constant (say $k$) times whatever it is proportional to.  ``The difference between the current water temperature and the ambient temperature" is either $22-y$ or $y-22$, since $y$ is the temperature of the water and $22$ is the ambient temperature.   Think about which we should choose before looking at the next hint.  Will it be $y'=k(22-y)$ or $y'=k(y-22)$ where $k>0$?
 	\end{hint}
 	
 	\begin{hint}
@@ -91,7 +122,7 @@ Let's find the general solution to the differential equation $y'' =  x$, and the
 
 Since $y'' = x$, we know that $y' = \int x \d x$. 
 
- Thus $y' = \frac{1}{2} x^2 + C_1$ for some constant $C_1}$.  
+ Thus $y' = \frac{1}{2} x^2 + C_1$ for some constant $C_1$.  
  
 Now this further implies that $y = \int \frac{1}{2} x^2 + C_1 \d x$, so 
 we must have that $y = \frac{1}{6}x^3+C_1x+C_2$, for some constant $C_2$.

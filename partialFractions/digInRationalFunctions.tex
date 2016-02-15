@@ -145,7 +145,7 @@ functions. Let's dig right in with an example.
     From this we can now rewrite our integral as
     \begin{align*}
       \int \frac{1}{x^2-1} \d x &=  \int \frac{1/2}{x-1} + \frac{-1/2}{x+1} \d x\\
-      &= (1/2)\ln|x-1| + (-1/2)\ln|x+1|+ C.
+      &= (1/2)\ln|x-1| + (-1/2)\ln|x+1|+ K.
     \end{align*}
   \end{explanation}
 \end{example}
@@ -173,11 +173,11 @@ then we can \textbf{always} write
 The right-hand side of the equation above is easy to antidifferentiate,
 as we can integrate it term-by-term and
 \[
-\int \frac{A_k}{(x-r_k)} \d x = A \ln(x-r_k) + C,
+\int \frac{A_k}{(x-r_k)} \d x = A \ln(x-r_k) + K,
 \]
 hence
 \[
-\int \frac{p(x)}{q(x)} \d x = \sum_{k=1}^n A_k \ln|x-r_k| +C.
+\int \frac{p(x)}{q(x)} \d x = \sum_{k=1}^n A_k \ln|x-r_k| +K.
 \]
 
 
@@ -229,7 +229,7 @@ each of the repeated factors. Let's do an example.
     \begin{align*}
       \int&\frac{1}{(x-1)(x+2)^2}\d x= \int \frac{1/9}{x-1}+ \frac{-1/9}{x+2} + \frac{-1/3}{(x+2)^2}\d x\\
       &= \int \frac{1/9}{x-1}\d x + \int \frac{-1/9}{x+2}\d x + \int \frac{-1/3}{(x+2)^2}\d x,\\
-      &= \frac{1}{9}\ln|x-1| -\frac{1}{9}\ln|x+2| +\frac{1}{3(x+2)}+C.
+      &= \frac{1}{9}\ln|x-1| -\frac{1}{9}\ln|x+2| +\frac{1}{3(x+2)}+K.
     \end{align*}
   \end{explanation}
 \end{example}
@@ -255,12 +255,12 @@ then we can \textbf{always} write
 The right-hand side of the equation above is easy to
 antidifferentiate, as we can integrate it term-by-term and
 \begin{align*}
-  \int \frac{A_1}{(x-r)} \d x &= A_1 \ln|x-r| + C,\\
-  \int \frac{A_k}{(x-r)^k} \d x &= \frac{A_k}{(1-k)(x-r)^{k-1}}+ C, &\text{(if $k>1$)}
+  \int \frac{A_1}{(x-r)} \d x &= A_1 \ln|x-r| + K,\\
+  \int \frac{A_k}{(x-r)^k} \d x &= \frac{A_k}{(1-k)(x-r)^{k-1}}+ K, &\text{(if $k>1$)}
 \end{align*}
 hence
 \[
-\int \frac{p(x)}{q(x)} \d x = A_1 \ln|x-r|  + \sum_{k=2}^n \frac{A_k}{(1-k)(x-r)^{k-1}} + C.
+\int \frac{p(x)}{q(x)} \d x = A_1 \ln|x-r|  + \sum_{k=2}^n \frac{A_k}{(1-k)(x-r)^{k-1}} + K.
 \]
 
 
@@ -333,7 +333,7 @@ function has distinct quadratic factors.
     \]
     The first term of this new integrand is easy to evaluate. We find
     \[
-    \int \frac{5}{x+1} \d x = 5\ln|x+1|+C.
+    \int \frac{5}{x+1} \d x = 5\ln|x+1|+K.
     \]
     The second term is not hard, but takes several steps and uses
     substitution techniques.
@@ -353,7 +353,7 @@ function has distinct quadratic factors.
 \end{align*}
 We can now integrate the first term with substitution, leading to
 \[
-\int \frac{2x+6}{x^2+6x+11} \d x = \ln|x^2+6x+11| + C.
+\int \frac{2x+6}{x^2+6x+11} \d x = \ln|x^2+6x+11| + K.
 \]
 The final term can be integrated using arctangent. First, complete the
 square in the denominator:
@@ -362,7 +362,7 @@ square in the denominator:
 \]
 then use a substitution of $g = x+3$ to find
 \[
-\int \frac{7}{x^2+6x+11}\d x = \frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+C.
+\int \frac{7}{x^2+6x+11}\d x = \frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+K.
 \]
 Let's start at the beginning and put all of the steps together.
 \begin{align*}
@@ -376,7 +376,7 @@ breaking this integral up we find
 \end{align*}
 and antidifferentiating we find
 \[
-  = 5\ln|x+1|+ \ln|x^2+6x+11|-\frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+C.
+  = 5\ln|x+1|+ \ln|x^2+6x+11|-\frac{7}{\sqrt{2}}\arctan\left(\frac{x+3}{\sqrt{2}}\right)+K.
 \]
   \end{explanation}
 \end{example}
@@ -458,14 +458,14 @@ For completeness sake, we will work a problem with repeated quadratic factors.
     \]
     Each term of this new integrand is easy to evaluate, write
     \begin{align*}
-      \int \frac{1}{x} \d x &= \ln|x| + C,\\
-      \int \frac{-x}{x^2+1} \d x &= \frac{-\ln|x^2+1|}{2} +C,\\
-      \int \frac{-x}{(x^2+1)^2} \d x &= \frac{1}{2(x^2+1)}+C.
+      \int \frac{1}{x} \d x &= \ln|x| + K,\\
+      \int \frac{-x}{x^2+1} \d x &= \frac{-\ln|x^2+1|}{2} +K,\\
+      \int \frac{-x}{(x^2+1)^2} \d x &= \frac{1}{2(x^2+1)}+K.
     \end{align*}
     So
     \begin{align*}
     \int &\frac{1}{x^5 + 2x^3  + x}\d x \\
-    &=\ln|x| + \frac{-\ln|x^2+1|}{2} + \frac{1}{2(x^2+1)}+C.
+    &=\ln|x| + \frac{-\ln|x^2+1|}{2} + \frac{1}{2(x^2+1)}+K.
     \end{align*}
   \end{explanation}
 \end{example}

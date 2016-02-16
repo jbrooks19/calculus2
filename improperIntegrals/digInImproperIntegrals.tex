@@ -336,15 +336,42 @@ complete nonsense! \textbf{Be on the lookout for vertical asymptotes!}
     has a vertical asymptote at $x = 0$. Thus, write with me
     \begin{align*}
     \int_0^1 \ln(x) \d x &=\lim_{\answer[given]{t}\to 0^+} \int_t^1 \ln(x) \d x \\
-    &= \lim_{t\to 0^+} \eval{\answer[given]{\frac{1}{x}}}_t^1 \\
-    &= \lim_{t\to 0^+} \left(\answer[given]{1-1/t}\right) \\
-    &= -\infty.
+    &= \lim_{t\to 0^+} \eval{\answer[given]{x \ln(x)-x}}_t^1 \\
+    &= \lim_{t\to 0^+} \left(\answer[given]{-1 -t \ln(t) +t}\right) \\
+    &= -1.
     \end{align*}
-    Hence the integral does not exist.
   \end{explanation}
 \end{example}
 
+Compare our last example to
+\[
+\int_{-\infty}^0 e^x \d x.
+\]
+This is equal to
+\begin{align*}
+  \int_{-\infty}^0 e^x \d x &= \lim_{a\to -\infty} \int_a^0 e^x \d x\\
+  &= \lim_{a\to-\infty}\eval{e^x}_{a}^0 \\
+  &= \lim_{a\to-\infty}\left(e^0 - e^a\right) \\
+  &=1.
+\end{align*}
 
+
+\begin{question}
+  Is it an accident that
+  \[
+  \left|\int_{-\infty}^0 e^x \d x \right|= \left| \int_0^1 \ln(x)\d x \right|?
+  \]
+  \begin{prompt}
+  \begin{multipleChoice}
+    \choice{yes}
+    \choice[correct]{no}
+  \end{multipleChoice}
+  \begin{feedback}
+    Since $\ln(x)$ is the inverse function of $e^x$, these integrals
+    are computing the same geometric area.
+  \end{feedback}
+  \end{prompt}
+\end{question}
 
 
 What is a practical example of an improper integral?  Sometimes in the

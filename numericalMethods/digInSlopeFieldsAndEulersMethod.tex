@@ -32,32 +32,52 @@ solution.
   Consider the solution $y$ to the differential equation $y'=x+y$
   which passes through the point $(1,2)$.  Is $y$ increasing or
   decreasing at $x=1$?
+  \begin{prompt}
   \begin{multipleChoice}
-    \choice[correct]{Increasing}
-    \choice{Decreasing}
+    \choice[correct]{increasing}
+    \choice{decreasing}
   \end{multipleChoice}
+  \end{prompt}
   \begin{hint}
     By definition, a solution to this differential equation which
-    passes through $(1,2)$ must have $y(1)=2$, and $y'(1) = 1+y(1) =
-    1+2=3$.  This is positive, so the function is increasing at $x=1$
+    passes through $(1,2)$ must have $y(1)=2$, and
+    \begin{align*}
+      y'(1) &= 1+y(1)\\
+      &=1+2\\
+      &=3.
+    \end{align*}
+    This is positive, so the function is increasing at $x=1$.
   \end{hint}
 \end{question}
+In fact, we can say more. The differential equation
+\[
+y' = x+y
+\]
+tells us the \textbf{slope} of any solution passing through a given
+point.
+\begin{question}
+  Consider the solution $y$ to the differential equation $y'=x+y$
+  which passes through the point $(1,-2)$. What is the slope of the
+  solution $y$ at $x=1?$
+    \begin{hint}
+    By definition, a solution to this differential equation which
+    passes through $(1,-2)$ must have $y(1)=-2$, and
+    \begin{align*}
+      y'(1) &= 1+y(-1)\\
+      &= 1-2=-1.
+    \end{align*}
+    Hence the slope is $-1$ at $x=1$.
+    \end{hint}
+    \begin{prompt}
+      The slope of $y$ at $x=1$ is $\answer{-1}$.
+    \end{prompt}
+\end{question}
 
-Here is an idea for getting a graphical understanding of the solutions
-to this differential equation:
-
-\begin{itemize}
-	\item Pick a regular grid of points.
-	\item At each point, compute the slope given by the differential equation
-	\item At each point, make a short line segment with that slope
-\end{itemize}
-
-\begin{definition}
-	A \dfn{slope field} is a graphical aid to understanding a differential equation, formed by following the three steps above.
-\end{definition}
-
-The slope field for the differential equation $y' = x+y$ looks like this:
-
+Given a differential equation, say $y'=x+y$, we can pick points in the
+plane and compute what the slope of a solution at those points will
+be. Repeating this process, we can generate a \textit{slope field}.
+The slope field for the differential equation $y' = x+y$ looks like
+this:
 \begin{image}
 {\def\length{sqrt(1+(x+y)^2)}
 \begin{tikzpicture}
@@ -73,7 +93,22 @@ The slope field for the differential equation $y' = x+y$ looks like this:
 \end{tikzpicture}}
 \end{image}
 
-Here is the same slope field, with a few solutions to the differential equation also graphed.
+Let's be explicit:
+\begin{definition}
+  A \dfn{slope field}, also called a \dfn{direction field}, is a
+  graphical aid for understanding a differential equation, formed by:
+  \begin{itemize}
+	\item Choosing a grid of points.
+	\item At each point, computing the slope given by the
+          differential equation, using the $x$ and $y$-values of the
+          point.
+	\item At each point, drawing a short line segment with that
+          slope.
+\end{itemize}
+\end{definition}
+
+Here is the slope field for the differential equation $y'=x+y$, with a
+few solutions of the differential equation also graphed.
 
 \begin{image}
 {\def\length{sqrt(1+(x+y)^2)}
@@ -87,26 +122,79 @@ Here is the same slope field, with a few solutions to the differential equation 
     ] 
     \addplot3 [penColor, quiver={u={1/\length}, v={(x+y)/(\length)},scale arrows=.2},samples=20] {0};
     \addplot[penColor,very thick]{e^x-x-1};
-     \addplot[penColor,very thick]{-e^x-x-1};
-     \addplot[penColor,very thick]{2*e^x-x-1};
-
+    \addplot[penColor,very thick]{.2*e^x-x-1};
+    \addplot[penColor,very thick]{-e^x-x-1};
+    \addplot[penColor,very thick]{-.2*e^x-x-1};
+    \addplot[penColor,very thick]{-3*e^x-x-1};
+    \addplot[penColor,very thick]{2*e^x-x-1};
+    \addplot[penColor2,very thick]{-x-1};
 ]  \end{axis}
 \end{tikzpicture}}
 \end{image}
+Notice that the slope field suggests one solution to this differential
+equation, which is a straight line.
 
 \begin{question}
-Notice that the slope field clearly suggests one solution to this differential equation, which is a straight line.
+  Of the solutions shown in the slope field above, what is the formula
+  for the linear solution?
+  \begin{prompt}
+    \[
+    y = \answer{-1-x}
+    \]
+  \end{prompt}
+\end{question}
 
-This solution is 
 
+
+\section{Autonomous differential equations}
+
+
+Consider the following differential equations
 \[
-y = \answer{-1-x}
+y' = x^3,\qquad y'=(y+1)(y-2), \qquad y'= x+y.
 \]
 
-\begin{hint}
-The equation of this line is $y = -x-1$
-\end{hint}
+The first differential equation, $y' = x^3$, is rather easy to solve,
+we simply integrate both sides. This type of differential equation is
+called a \dfn{pure-time differential equation}. Pure-time differential
+equations express the derivative of the solution explicitly as a
+function of an independent variable. We can symbolically describe a
+pure-time differential equation as
+\[
+\dd[y]{x} = f(x).
+\]
+
+On the other hand, the second differential equation, $y'=(y+1)(y-2)$
+does not involve the independent variable, $x$, at all!  Such
+differential equations are called \textit{autonomous} differential
+equations.
+
+\begin{definition}
+  A differential equation that does not involve the independent
+  variable is called an \dfn{autonomous differential equation}. We can
+  symbolically write
+  \[
+  \dd[y]{x} = f(y)
+  \]
+  to express an autonomous differential equation.
+\end{definition}
+
+Finally the third differential equation, $y'= x+y$, expresses $y'$ as
+a function of both $y$ and the independent variable $x$. Such a
+differential equation is called a \dfn{nonautonomous differential
+  equation}. We can symbolically describe  a nonautonomous differential equation as
+\[
+\dd[y]{x} = f(x,y).
+\]
+\begin{question}
+  Which of the following are autonomous differential equations?
+  \begin{selectAll}
+    \choice[correct]{$f' = 7\cdot f$}
+    \choice{MORE}
+  \end{selectAll}
 \end{question}
+
+
 
 \begin{question}
 Consider the differential equation $y' = (y+1)(2-y)$, whose slope field is given below.  Which of the following statements appear to be true?
@@ -134,8 +222,6 @@ Consider the differential equation $y' = (y+1)(2-y)$, whose slope field is given
 	\choice{Every solution has a vertical tangent line at $x=0$}
 \end{multipleChoice}
 \end{question}
-
-The differential equation $y'=(y+1)(y-2)$ does not involve the independent variable at all.  Such differential equations are called \dfn{autonomous} differential equations.
 
 The constant functions $f(x) = -1$ and $f(x)  =2$ are solutions to this differential equation.  In fact, for any autonomous differential equation $y'  = A(y)$, 
 where $A$ is a function of $y$, if $A(C) = 0$, then $y = C$ will be a constant solution to the differential equation.  
@@ -244,8 +330,10 @@ Then $f(x_k) \approx y_k$, and so $f(T) \approx y_{n}$.
 
 \end{definition}
 
-%BADBAD Picture
-	
+BADBAD Picture HERE???
+
+
+
 \begin{question}
 $f$ is a solution to 
 

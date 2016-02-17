@@ -1,0 +1,232 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Understand what a slope field is.}
+\outcome{Understand what a slope field tells us about a differential equation.}
+\outcome{Define an autonomous differential equation.}
+\outcome{Understand and use Euler's method.}
+\outcome{Sketch slope fields.}
+\outcome{Find equilibrium solutions.}
+
+\title[Dig-In:]{Euler's method}
+
+\begin{document}
+\begin{abstract}
+Something
+\end{abstract}
+\maketitle
+
+
+\section{Slope Fields}
+
+We cannot (yet) solve the differential equation
+
+\[
+y' = x+y
+\]
+
+We do know some things about the solutions however.
+
+\begin{question}
+	Consider the solution $f$ to the differential equation $y'=x+y$ which passes through the point $(1,2)$.   Is $f$ increasing or decreasing at $x=1$?
+	
+	\begin{multipleChoice}
+		\choice[correct]{Increasing}
+		\choice{Decreasing}
+	\end{multipleChoice}
+	
+	\begin{hint}
+		By definition, a solution to this differential equation which passes through $(1,2)$ must have $f(1)=2$, and $f'(1) = 1+f(1) = 1+2=3$.  
+		This is positive, so the function is increasing at $x=1$
+	\end{hint}
+\end{question}
+
+Here is an idea for getting a graphical understanding of the solutions to this differential equation:
+
+\begin{itemize}
+	\item Pick a regular grid of points.
+	\item At each point, compute the slope given by the differential equation
+	\item At each point, make a short line segment with that slope
+\end{itemize}
+
+\begin{definition}
+	A \dfn{slope field} is a graphical aid to understanding a differential equation, formed by following the three steps above.
+\end{definition}
+
+The slope field for the differential equation $y' = x+y$ looks like this:
+
+\begin{image}
+{\def\length{sqrt(1+(x+y)^2)}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=-3, xmax=3,ymin=-3,ymax=3,domain=-3:3,view={0}{90},
+      axis lines =center, xlabel=$x$, ylabel=$y$,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+    ] 
+    \addplot3 [penColor, quiver={u={1/\length}, v={(x+y)/(\length)},scale arrows=.2},samples=20] {0};
+]  \end{axis}
+\end{tikzpicture}}
+\end{image}
+
+Here is the same slope field, with a few solutions to the differential equation also graphed.
+
+\begin{image}
+{\def\length{sqrt(1+(x+y)^2)}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=-3, xmax=3,ymin=-3,ymax=3,domain=-3:3,view={0}{90},
+      axis lines =center, xlabel=$x$, ylabel=$y$,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+    ] 
+    \addplot3 [penColor, quiver={u={1/\length}, v={(x+y)/(\length)},scale arrows=.2},samples=20] {0};
+    \addplot[penColor,very thick]{e^x-x-1};
+     \addplot[penColor,very thick]{-e^x-x-1};
+     \addplot[penColor,very thick]{2*e^x-x-1};
+
+]  \end{axis}
+\end{tikzpicture}}
+\end{image}
+
+\begin{question}
+Notice that the slope field clearly suggests one solution to this differential equation, which is a straight line.
+
+This solution is 
+
+\[
+y = \answer{-1-x}
+\]
+
+\begin{hint}
+The equation of this line is $y = -x-1$
+\end{hint}
+\end{question}
+
+\begin{question}
+Consider the differential equation $y' = (y+1)(2-y)$, whose slope field is given below.  Which of the following statements appear to be true?
+
+\begin{image}
+{\def\length{sqrt(1+((y+1)*(2-y))^2)}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=-3, xmax=3,ymin=-3,ymax=3,domain=-3:3,view={0}{90},
+      axis lines =center, xlabel=$x$, ylabel=$y$,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+    ] 
+    \addplot3 [penColor, quiver={u={1/\length}, v={((y+1)*(2-y))/(\length)},scale arrows=.2},samples=20] {0};
+]  \end{axis}
+\end{tikzpicture}}
+\end{image}
+
+\begin{multipleChoice}
+	\choice[correct]{The solution passing through the origin has $\lim_{x \to \infty} f(x) = 2$}
+	\choice{The solution passing through $(0,3)$ has $\lim_{x \to \infty} f(x) = \infty$}
+	\choice[correct]{The solution passing through $(0,-3)$ is always decreasing}
+	\choice[correct]{There are two solutions which are constant functions}
+	\choice{Every solution has a vertical tangent line at $x=0$}
+\end{multipleChoice}
+\end{question}
+
+The differential equation $y'=(y+1)(y-2)$ does not involve the independent variable at all.  Such differential equations are called \dfn{autonomous} differential equations.
+
+The constant functions $f(x) = -1$ and $f(x)  =2$ are solutions to this differential equation.  In fact, for any autonomous differential equation $y'  = A(y)$, 
+where $A$ is a function of $y$, if $A(C) = 0$, then $y = C$ will be a constant solution to the differential equation.  
+These constant solutions are also known as \dfn{equilibrium} solutions.
+
+\begin{question}
+Consider the autonomous differential equation $y'=\cos(y)$.  Which of the following are equilibrium solutions?
+
+\begin{multipleChoice}
+\choice{$0$}
+\choice[correct]{$\frac{\pi}{2}$}
+\choice{$\pi$}
+\end{multipleChoice}
+\end{question}
+
+\section{Euler's Method}
+
+In science and mathematics, finding exact solutions to differential equations is not always possible.
+We have already seen that slope fields give us a powerful way to understand the qualitative features of solutions.
+Sometimes we need a more precise quantitative understanding, i.e. we would like numerical approximations of the solutions.
+
+\begin{example}
+Suppose you have set up the following differential equation
+\[
+y' = x+y
+\]
+
+While one can solve this differential equation, we cannot solve it
+\textit{yet}. 
+
+If we know that $f$ solves this differential equation, and $f(0) = 1$, how might we go about approximating $f(1)$?
+
+One idea is to repeatedly use linear approximation.
+
+Let us approximate just using the two subintervals $[0,\frac{1}{2}]$ and $[\frac{1}{2},1]$.
+
+Since $f'(0) = \answer{1}$, we know that $f(\frac{1}{2}) \approx 1+\answer{1} \cdot \frac{1}{2} = \answer{\frac{3}{2}}$ by linear approximation.
+
+But now, we have $f'(\frac{1}{2}) \approx \frac{1}{2}+\frac{3}{2} = 2$ so $f(1) \approx  f(\frac{1}{2})+\frac{1}{2} \cdot 2 \approx \answer{\frac{5}{2}}$.
+
+This approximation could be improved by using more subintervals
+\end{example}
+
+We will now formalize the method of using repeated linear approximation to approximate solutions to differential equations, and call it \dfn{Euler's Method}.
+
+\begin{definition}[Euler's Method]
+Consider a differential equation of the form $y' = R(x,y)$, where $R$ is a function of two variables.
+
+If $f$ satisfies the initial value problem $f(a) = b$, and we want to approximate $f(T)$, then we follow this procedure:
+
+\begin{itemize}
+	\item Decide how many subintervals you want to divide the interval $[a,T]$ into.  Call this number $n$.
+	\item Let $x_k = a+\frac{T-a}{n}k$ for $k=0,1,2,...,n-1$ be the left endpoints of the subintervals.
+	\item Let $y_0 = b$
+	\item Iteratively define $y_{k+1} = y_k+A(x_k,y_k)\frac{T-a}{n}$ 
+\end{itemize}
+
+Then $f(x_k) \approx y_k$, and so $f(T) \approx y_{n}$.
+
+\end{definition}
+
+%BADBAD Picture
+	
+\begin{question}
+$f$ is a solution to 
+
+\[
+y'=x+y
+\]
+
+with initial condition $f(0)=1$.  We want to approximate $f(2)$.  
+
+Using the notation from the definition, we have 
+
+\[
+A(x,y) = \answer{x+y}
+\]
+Fill out the following table for Euler's method using $4$ subintervals.
+
+	\[
+\begin{array}{l|l|l}
+k & x_k & y_k \\ \hline
+0 & 0   & 1 \\
+1 & 0.5 & \answer{1.5} \\
+2 & \answer{1} & \answer{2.5}  \\
+3 & 1.5 & 4.25 \\
+4 & 2 & \answer{7.125} \\
+\end{array}
+\]
+
+	Thus $f(2) \approx \answer{7.125}$
+
+\end{question}	
+
+
+\end{document}

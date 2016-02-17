@@ -161,7 +161,7 @@ equations express the derivative of the solution explicitly as a
 function of an independent variable. We can symbolically describe a
 pure-time differential equation as
 \[
-\dd[y]{x} = f(x).
+\dd[y]{x} = F(x).
 \]
 
 On the other hand, the second differential equation, $y'=(y+1)(y-2)$
@@ -174,7 +174,7 @@ equations.
   variable is called an \dfn{autonomous differential equation}. We can
   symbolically write
   \[
-  \dd[y]{x} = f(y)
+  \dd[y]{x} = F(y)
   \]
   to express an autonomous differential equation.
 \end{definition}
@@ -293,6 +293,12 @@ Five slope fields are shown below.
 \item \wordChoice{\choice{pure time} \choice[correct]{autonomous} \choice{ neither}}
 \item \wordChoice{\choice{pure time} \choice{autonomous} \choice[correct]{ neither}}
 \end{enumerate}
+
+\begin{hint}
+	If a differential equation is pure-time, then all of the slopes will be the same on each vertical line.
+	
+	If a differential equation is autonomous, then all of the slopes will be the same on each horizontal line.
+\end{hint}
 \end{question}
 
 
@@ -420,22 +426,22 @@ This approximation could be improved by using more subintervals
 We will now formalize the method of using repeated linear approximation to approximate solutions to differential equations, and call it \dfn{Euler's Method}.
 
 \begin{definition}[Euler's Method]
-Consider a differential equation of the form $y' = R(x,y)$, where $R$ is a function of two variables.
+Consider a differential equation of the form $y' = F(x,y)$, where $F$ is a function of two variables.
 
-If $f$ satisfies the initial value problem $f(a) = b$, and we want to approximate $f(T)$, then we follow this procedure:
+If a solution $f$  to this differential equation satisfies the initial value problem $f(a) = b$, and we want to approximate $f(T)$, then we follow this procedure:
 
 \begin{itemize}
 	\item Decide how many subintervals you want to divide the interval $[a,T]$ into.  Call this number $n$.
 	\item Let $x_k = a+\frac{T-a}{n}k$ for $k=0,1,2,...,n-1$ be the left endpoints of the subintervals.
 	\item Let $y_0 = b$
-	\item Iteratively define $y_{k+1} = y_k+A(x_k,y_k)\frac{T-a}{n}$ 
+	\item Iteratively define $y_{k+1} = y_k+F(x_k,y_k)\frac{T-a}{n}$ 
 \end{itemize}
 
 Then $f(x_k) \approx y_k$, and so $f(T) \approx y_{n}$.
 
 \end{definition}
 
-BADBAD Picture HERE???
+%BADBAD Picture HERE???
 
 
 
@@ -451,7 +457,7 @@ with initial condition $f(0)=1$.  We want to approximate $f(2)$.
 Using the notation from the definition, we have 
 
 \[
-A(x,y) = \answer{x+y}
+F(x,y) = \answer{x+y}
 \]
 Fill out the following table for Euler's method using $4$ subintervals.
 

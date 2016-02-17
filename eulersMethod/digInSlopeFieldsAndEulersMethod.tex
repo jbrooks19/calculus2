@@ -9,40 +9,42 @@
 \outcome{Sketch slope fields.}
 \outcome{Find equilibrium solutions.}
 
-\title[Dig-In:]{Euler's method}
+\title[Dig-In:]{Slope fields and Euler's method}
 
 \begin{document}
 \begin{abstract}
-Something
+We describe numerical and graphical methods for understanding
+differential equations.
 \end{abstract}
 \maketitle
 
 
-\section{Slope Fields}
+\section{Slope fields}
 
-We cannot (yet) solve the differential equation
-
+We cannot (yet!) solve the differential equation
 \[
 y' = x+y
 \]
-
-We do know some things about the solutions however.
+However, from the equation alone, we can describe some facts about the
+solution.
 
 \begin{question}
-	Consider the solution $f$ to the differential equation $y'=x+y$ which passes through the point $(1,2)$.   Is $f$ increasing or decreasing at $x=1$?
-	
-	\begin{multipleChoice}
-		\choice[correct]{Increasing}
-		\choice{Decreasing}
-	\end{multipleChoice}
-	
-	\begin{hint}
-		By definition, a solution to this differential equation which passes through $(1,2)$ must have $f(1)=2$, and $f'(1) = 1+f(1) = 1+2=3$.  
-		This is positive, so the function is increasing at $x=1$
-	\end{hint}
+  Consider the solution $y$ to the differential equation $y'=x+y$
+  which passes through the point $(1,2)$.  Is $y$ increasing or
+  decreasing at $x=1$?
+  \begin{multipleChoice}
+    \choice[correct]{Increasing}
+    \choice{Decreasing}
+  \end{multipleChoice}
+  \begin{hint}
+    By definition, a solution to this differential equation which
+    passes through $(1,2)$ must have $y(1)=2$, and $y'(1) = 1+y(1) =
+    1+2=3$.  This is positive, so the function is increasing at $x=1$
+  \end{hint}
 \end{question}
 
-Here is an idea for getting a graphical understanding of the solutions to this differential equation:
+Here is an idea for getting a graphical understanding of the solutions
+to this differential equation:
 
 \begin{itemize}
 	\item Pick a regular grid of points.
@@ -148,6 +150,53 @@ Consider the autonomous differential equation $y'=\cos(y)$.  Which of the follow
 \choice{$\pi$}
 \end{multipleChoice}
 \end{question}
+
+
+
+
+In Figure~\ref{figure:slopeFieldExer}, we see a slope field for a
+differential equation. If $f(2)=4$, what is your best guess for
+$f(5)$?
+
+$\answer[given]{3}$
+
+In Figure~\ref{figure:slopeFieldExer}, we see a slope field for a
+differential equation. If $f(1)=1.1$, what is your best guess for
+$f(5)$?
+$\answer[given]{3}$
+
+
+{\def\length{sqrt(1+(-y^2+4*y-3)^2)}
+\begin{tikzpicture}
+  \begin{axis}[
+      xmin=0, xmax=5,ymin=0,ymax=5,domain=0:5,view={0}{90},
+      axis lines =center, xlabel=$x$, ylabel=$y$,
+      every axis y label/.style={at=(current axis.above origin),anchor=south},
+      every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      axis on top,
+    ] 
+    \addplot3 [penColor, quiver={u={1/\length}, v={(-y^2 +4*y - 3)/(\length)},scale arrows=.2},samples=20] {0};
+  \end{axis}
+\end{tikzpicture}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Euler's Method}
 

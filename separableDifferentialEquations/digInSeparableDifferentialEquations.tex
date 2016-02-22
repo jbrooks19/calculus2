@@ -11,173 +11,229 @@
 
 \begin{document}
 \begin{abstract}
-	Separable differential equations are those in which the dependent and independent variables can be separated on opposite sides of the equation.
+  Separable differential equations are those in which the dependent and independent variables can be separated on opposite sides of the equation.
 \end{abstract}
 \maketitle
 
-\begin{definition}
-	A \dfn{separable differential equation} is a differential equation which can be written in the form 
-	
-	\[
-		g(y) y' = h(x)
-	\]
-	
-	In other words, the independent variable ($x$) and the dependent variable ($y$) can be placed on \textbf{separate} sides of the equals sign.
-\end{definition}
-
-\begin{question}
-	Which of the following are separable differential equations?  Select all that apply.
-	
-\begin{selectAll}
-	\choice[correct]{$y' = y/x$}
-	\choice{$y'  = \sqrt{x^2+y^2}$}
-	\choice[correct]{$\cos(y)y' = \frac{x}{1+y}$}
-	\choice[correct]{$y' = y$}
-	\choice{$y' = \sin(x+y)$}
-\end{selectAll}
-\end{question}
+In this section we will see that the phrase
+\begin{quote}
+  Divide and Conquor
+\end{quote}
+is literally true (with the mathematical definition of ``divide'') in
+the context of differential equations. Rather than talk about math,
+let's just show you what we're getting at.
 
 \begin{example}
-	The reason we care about separable differential equations is that we have a good way to try and solve them.  
-		
-	\begin{align*}
-		g(y)y'  &= h(x)\\
-		\int g(y) y' \d x &= \int h(x) \d x\\
-		\int g(y) \d y &= \int h(x) \d x
-	\end{align*}
-	
-	Let's see this strategy in action, and try to solve the differential equation $y' = \frac{x}{y^2}$.
-	
-	Write with me:
-	
-	First we separate the variables
-	
-	\[
-	\answer{y^2} y' = \answer{x}
-	\]
-	
-	Then we integrate both sides with respect to $x$
-	
-	\begin{align*}
-	\int y^2 y' \d x &= \int x \d x\\
-	\int y^2 \d y &= \int x \d x\\
-	\answer{\frac{1}{3} y^3} &= \answer{\frac{1}{2}x^2}+C\\
-	y &= \sqrt[3]{\answer{\frac{3}{2}x^2}+3C}
-	\end{align*}
-	
-	Since $3C$ could be any constant we like, we can rewrite the general solution to this differential equation as 
-	
-	\[
-	y = \sqrt[3]{\frac{3}{2}x^2+C}
-	\]
-	
-	We can check that all of these functions really are solutions to the differential equation:
-	
-	\begin{align*}
-		\frac{\d y}{\d x} &= \ddx \sqrt[3]{\frac{3}{2}x^2+C}\\
-			&=(\frac{3}{2}x^2+C)^{-\frac{2}{3}} x\\
-			&= \frac{x}{(\sqrt[3]{\frac{3}{2}x^2+C})^2}\\
-			&= \frac{x}{y^2}
-	\end{align*}
+  Solve the differential equation
+  \[
+  y'(x) = x\cdot y(x)^2
+  \]
+  where $y(0)= 5$.
+  \begin{explanation}
+    We're going to divide an conqur, literally. Divide both sides of
+    \[
+    y'(x) = x\cdot y(x)^2
+    \]
+    by $y(x)^2$ to find
+    \[
+    \frac{y'(x)}{y(x)^2} = \answer[given]{x}.
+    \]
+    Now integrate both sides with respect to $x$
+    \begin{align*}
+      \int \frac{y'(x)}{y(x)^2} \d x &= \int x \d x,\\
+      \frac{-1}{y(x)} &= \answer[given]{\frac{x^2}{2}}+C
+    \end{align*}
+    and solve for $y(x)$ to find
+    \[
+    y(x) = \answer[given]{\frac{-1}{\frac{x^2}{2}+C}}.
+    \]
+    Since $y(0) =5$ we write
+    \begin{align*}
+    5&= y(0)\\
+    &=\frac{-1}{C}
+    \end{align*}
+    So $C= -1/5$. Our final answer is
+    \[
+    y(x) = \frac{-1}{\frac{x^2}{2} \answer[given]{-\frac{1}{5}}}.
+    \]
+  \end{explanation}
+\end{example}
+
+Now that we've seen an example, let's give discuss this in general.
+
+\begin{definition}
+  A \dfn{separable differential equation} is a differential equation
+  which can be written in the form
+  \[
+  G(y) y' = H(x)
+  \]
+  In other words, the independent variable $x$ and the function $y$
+  can be placed on \textbf{separate} sides of the equals sign.
+\end{definition}
+
+\begin{warning}
+  Calculus has lots of different notation. Each of these expressions
+  means exactly the same thing:
+  \begin{itemize}
+  \item $y' = r\cdot y(1-y)$
+  \item $y'(x) = r\cdot y(x)(1-y(x))$
+  \item $\dd[y]{x} = r \cdot y(1-y)$
+  \item $\dd{x} y(x) = r\cdot y(x) (1-y(x))$
+  \end{itemize}
+  We will work with all the notation above.
+\end{warning}
+
+\begin{question}
+  Which of the following are separable differential equations?  Select all that apply.
+  \begin{selectAll}
+    \choice[correct]{$y' = y/x$}
+    \choice{$y' = \sqrt{x^2+y^2}$}
+    \choice[correct]{$\cos(y(x))y'(x) = \frac{x}{1+y(x)}$}
+    \choice[correct]{$\dd[y]{x} = y+5$}
+    \choice{$y'(x) = \sin(x+y(x))$}
+    \choice{$\dd[y]{x} + x^2 y= x$}
+    \choice{$\dd{x} y(x) = \sin(x) y(x) - \cos(x)$}
+    \choice[correct]{$\dd{x} y(x) = -5 y(x)^{1/3}$}
+  \end{selectAll}
+  \begin{hint}
+    To be a separable differential equation, we must collect $y$ and
+    $y'$ on one side, and $x$ on the other. Typically, you will do
+    this with multiplication or division.
+  \end{hint}
+\end{question}
+
+The reason we care about separable differential equations is that:
+\begin{enumerate}
+\item Separable differential equations help model many real-world contexts.
+\item Separable differential equations are solvable by humans.
+\end{enumerate}
+The basic ideas is if
+\[
+y'G(y) = H(x)
+\]
+then we can integrate both sides, writing
+\begin{align*}
+  G(y)y'  &= H(x)\\
+  \int G(y) y' \d x &= \int H(x) \d x\\
+  \int G(y) \d y &= \int H(x) \d x
+\end{align*}
+If we can symbolically compute these integrals, then we can solve for
+$y$.
+
+
+
+\begin{example}
+  
+  \begin{align*}
+    g(y)y'  &= h(x)\\
+    \int g(y) y' \d x &= \int h(x) \d x\\
+    \int g(y) \d y &= \int h(x) \d x
+  \end{align*}
+  Let's see this strategy in action, and try to solve the differential equation $y' = \frac{x}{y^2}$.
+  Write with me:
+  First we separate the variables
+  \[
+  \answer{y^2} y' = \answer{x}
+  \]
+  
+  Then we integrate both sides with respect to $x$
+  
+  \begin{align*}
+    \int y^2 y' \d x &= \int x \d x\\
+    \int y^2 \d y &= \int x \d x\\
+    \answer{\frac{1}{3} y^3} &= \answer{\frac{1}{2}x^2}+C\\
+    y &= \sqrt[3]{\answer{\frac{3}{2}x^2}+3C}
+  \end{align*}
+  
+  Since $3C$ could be any constant we like, we can rewrite the general solution to this differential equation as 
+  
+  \[
+  y = \sqrt[3]{\frac{3}{2}x^2+C}
+  \]
+  
+  We can check that all of these functions really are solutions to the differential equation:
+  
+  \begin{align*}
+    \frac{\d y}{\d x} &= \ddx \sqrt[3]{\frac{3}{2}x^2+C}\\
+    &=(\frac{3}{2}x^2+C)^{-\frac{2}{3}} x\\
+    &= \frac{x}{(\sqrt[3]{\frac{3}{2}x^2+C})^2}\\
+    &= \frac{x}{y^2}
+  \end{align*}
 \end{example}
 
 
 In the last example, it worked out that we could solve for $y$ as a function of $x$.  This is not always the case.
 
 \begin{example}
-	Consider the separable differential equation
-	
-	\[
-	\cos(y) y' = x
-	\]
-	
-	Integrating both sides yields
-	
-	\begin{align*}
-		\int \cos(y) y' \d x = \int x \d x\\
-		\int \cos(y) \d y = \int x \d x\\
-		\sin(y) = \frac{1}{2}x^2+C
-	\end{align*}
-	
-	This shows that any function satisfying the differential equation must satisfy this relation.  We call such a relation that a solution to a differential equation must satisfy a \dfn{implicit solution of a differential equation}.
-	
+  Consider the separable differential equation
+  \[
+  \cos(y) y' = x
+  \]
+  Integrating both sides yields
+  \begin{align*}
+    \int \cos(y) y' \d x = \int x \d x\\
+    \int \cos(y) \d y = \int x \d x\\
+    \sin(y) = \frac{1}{2}x^2+C
+  \end{align*}
+  This shows that any function satisfying the differential equation
+  must satisfy this relation.  We call such a relation that a solution
+  to a differential equation must satisfy a \dfn{implicit solution of a differential equation}.	
 \end{example}
 
 \begin{example}	
-One really important example of a separable differential equation is the \dfn{logistic equation}:
-
+One really important example of a separable differential equation is
+the \dfn{logistic equation}:
 \[
 y' = ry(1-y)
 \]
-
 This equation comes up frequently in population modeling.  
 
 \begin{question}
-	Which of the following are equilibrium solutions to this differential equation?
-	
-\begin{multipleChoice}
-\choice[correct]{$y = 0$}
-\choice{$y = r$}
-\choice[correct]{$y = 1$}
-\end{multipleChoice}
+  Which of the following are equilibrium solutions to this differential equation?
+  \begin{multipleChoice}
+    \choice[correct]{$y = 0$}
+    \choice{$y = r$}
+    \choice[correct]{$y = 1$}
+  \end{multipleChoice}
 \end{question}
-
 Let us solve this equation together.  First we separate the differential equation:
 \[
 \answer{\frac{1}{y(1-y)}} y'  = r
 \]
-
 Now we integrate both sides with respect to $x$
-
 \[
 \int \frac{1}{y(1-y)} y' \d x =\int r \d x
 \]
-
 now using variable substitution we get
-
 \[
 \int \answer{\frac{1}{y(1-y)}} \d y = \int r \d x
 \]
-
 We need to use partial fraction decomposition to solve this integral.
-
 We have
-
 \[
 \frac{1}{y(1-y)} = \frac{\answer{1}}{y}+\frac{\answer{1}}{1-y}
 \]
-
 So we get
-
 \[
 \int \frac{1}{y} + \frac{1}{1-y} \d y = \int r \d x
 \]
-
 This yields
-
 \[
 \ln(|y|) -  \ln(|1-y|)  = rx+C_1
 \]
-
-
 Now we can solve for $y$:
-
 \begin{align*}
 \ln(|y|) -  \ln(|1-y|)  &= rx+C_1\\
 \ln(|\frac{y}{1-y}|) &= rx+C_1\\
 |\frac{y}{1-y}| &= e^{rx+C_1}\\
 \end{align*}
-
 At this point, we can write $e^{rx+C_1} = e^{C_1} e^{rx}$.  We get $\frac{y}{1-y} = \pm e^{C_1} e^{rx}$.  If we rename $\pm e^{C_1}$ to be $C_2$, then we get
-
 \begin{align*}
-\frac{y}{1-y} &=  C_2e^{rx}\\
-\frac{1-y}{y} &= C_3e^{-rx} \textrm{ where $C_3  =\frac{1}{C_2}$}\\
-\frac{1}{y} &= 1+C_3e^{-rx}\\
-y &= \frac{1}{1+C_3e^{-rx}}
+  \frac{y}{1-y} &=  C_2e^{rx}\\
+  \frac{1-y}{y} &= C_3e^{-rx} \textrm{ where $C_3  =\frac{1}{C_2}$}\\
+  \frac{1}{y} &= 1+C_3e^{-rx}\\
+  y &= \frac{1}{1+C_3e^{-rx}}
 \end{align*}
-
-
 So this is the general solution to the logistic equation!
 \end{example}
 

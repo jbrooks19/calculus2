@@ -10,35 +10,104 @@
 \end{abstract}
 \maketitle
 
-A ``sequence'' of numbers is just a list of numbers.  For example,
-here is a list of numbers:
+Let's get to the heart of the matter:
+
+\begin{definition}
+  A \dfn{sequence} (of things) is an ordered list of things.
+\end{definition}
+
+In our class, we're mostly talking about a sequence of real numbers.
+For example, here is a sequence, meaning an ordered list of numbers:
 \[
 1,1, 2, 3, 5, 8, 13, 21, \ldots
 \]
 Note that numbers in the list can repeat.  And consider those little
 dots at the end!  The dots ``\ldots'' signify that the list keeps
-going, and going, and going, forever.  Presumably the sequence
-continues by following the pattern that the first few ``terms''
-suggest.  But what's that pattern?
+going, and going, and going, forever.
 
-\begin{warning}
-  Maybe you are feeling that this formality is unnecessary, or even
-  ridiculous; why can't we just list off a few terms and pick up on
-  the pattern intuitively?  As we'll see later, that might be very
-  hard to do!  There might be very different, but equally reasonable,
-  patterns that start the same way.
+Sequences are written down in a few different, but equivalent,
+ways; you might see a sequence written as
+\begin{align*}
+  & a_1, a_2,  a_3, \ldots, \\
+  & a_n \\
+  & \left(a_n\right)_{n \in \N}, \\
+  & \left\{a_n\right\}_{n=1}^\infty, \\
+  & \left\{f(n)\right\}_{n=1}^\infty, \quad \text{or} \\
+  & \left(f(n)\right)_{n \in \N},
+\end{align*}
+depending on which author you read, here $\N=\{1,2,3,\ldots\}$.  Worse, depending on the
+situation, the same author (and this author) might use various
+notations for a sequence!  We will usually write $(a_n)$ if I want to
+speak of the sequence as a whole and write $a_n$ if we are speaking of
+a specific element in the sequence.
 
-  To resolve this ambiguity, it is perhaps not so ridiculous to
-  introduce the formalism of ``functions.''  Functions provide a nice
-  language for associating numbers (terms) to other numbers
-  (indices).
-\end{warning}
 
-%\youtube{http://www.youtube.com/watch?v=-o5GtOQD1GY}
+\begin{question}
+  Considering the sequence
+  \[
+  1, 2, 4, 8, 16, \dots
+  \]
+  what number comes next?
+  \begin{multipleChoice}
+    \choice{$32$}
+    \choice{$31$}
+    \choice{$18$}
+    \choice[correct]{there is no way to know}
+  \end{multipleChoice}
+  \begin{feedback}
+    Sequences need to be defined by a ``rule.'' Without such a rule,
+    it is difficult, if not impossible, to say which element comes
+    next.
+  \end{feedback}
+\end{question}
 
-To make this talk of ``patterns'' less ambiguous, it is useful to
-think of a sequence as a function. We have up until now dealt with
-functions whose domains are the real numbers, or a subset of the real
+\begin{example}
+  Let $a_n = 2^{n-1}$.  Write down $a_1$, $a_2$, $a_3$, $a_4$, $a_5$,
+  $a_6$.
+  \begin{explanation}
+    Just use the formula to see:
+    \begin{align*}
+      a_1 &= \answer[given]{1}\\
+      a_2 &= \answer[given]{2}\\
+      a_3 &= \answer[given]{4}\\
+      a_4 &= \answer[given]{8}\\
+      a_5 &= \answer[given]{16}\\
+      a_6 &= \answer[given]{32}
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+
+\begin{example}
+  Consider a circle with $n$ points on it. Let $b_n$ be the maximum
+  number of regions produced by connecting these points with
+  chords. Write down $b_1$, $b_2$, $b_3$, $b_4$, $b_5$, $b_6$.
+  \begin{explanation}
+    There is only one way to solve this problem: start drawing
+    pictures and counting regions.
+    \begin{itemize}
+      \item \begin{tikzpicture}      
+            \tkzDefPoint(0,0){O} %% origin
+            \tkzDefPoint(1,0){A} %% (1,0)
+            \tkzDrawCircle[color=penColor,very thick](O,A)
+            \tkzDrawPoint[color=penColor,fill=penColor](A)
+            \end{tikzpicture}
+      \item \begin{tikzpicture}      
+            \tkzDefPoint(0,0){O} %% origin
+            \tkzDefPoint(1,0){A} %% (1,0)
+            \tkzDefPoint(-1,0){B} %% (1,0)
+            \tkzDrawCircle[color=penColor,very thick](O,A)
+            \tkzDrawPoint[color=penColor,fill=penColor](A)
+            \tkzDrawPoint[color=penColor,fill=penColor](B)
+            \tkzDrawSegment[color=penColor,very thick](A,B)
+            \end{tikzpicture}
+    \end{itemize}
+  \end{explanation}
+\end{example}
+
+
+
+
 numbers, like $f(x)=\sin (1/x)$.
 
 A real-valued function with domain the natural numbers
@@ -50,41 +119,8 @@ domain is the non-negative integers, $\Z^{\ge0}=\{0,1,2,3,\ldots\}$.  The range 
 allowed to be the real numbers; in symbols, the function $f\colon
 \N\to\R$ is a sequence.
 
-Sequences are written down in a few different, but equivalent,
-ways; you might see a sequence written as
-\begin{align*}
-  & a_1, a_2,  a_3, \ldots, \\
-  & a_n \\
-  & \left(a_n\right)_{n \in \N}, \\
-  & \left\{a_n\right\}_{n=1}^\infty, \\
-  & \left\{f(n)\right\}_{n=1}^\infty, \quad \mbox{or} \\
-  & \left(f(n)\right)_{n \in \N},
-\end{align*}
-depending on which author you read.  Worse, depending on the
-situation, the same author (and this author) might use various
-notations for a sequence!  In this textbook, I will usually write
-$(a_n)$ if I want to speak of the sequence as a whole (think
-\textit{gestalt}) and I will write $a_n$ if I am speaking of a
-specific term in the sequence.
 
-Let's summarize the preceding discussion in the following definition.
-\begin{definition}\index{sequence} A \dfn{sequence}
-  $(a_n)$ is, formally speaking, a real-valued function with domain
-  \[
-  \{ n \in \Z : n \geq N \},\quad \mbox{for some integer $N$.}
-  \]
-  Stated more humbly, a sequence assigns a real number to the
-  integers starting with an index $N$.
 
-  The ``outputs'' of a sequence are the \dfn{terms} of the
-  sequence; the ``$n^{th}$ term'' is the real number that the
-  sequence associates to the natural number $n$, and is usually
-  written $a_n$. \index{sequence!term} The $n$ in the phrase
-  ``$n^{th}$ term'' is called an
-  \dfn{index}\index{sequence!index}; the plural of index is
-  either indices or indexes, depending on who you ask.  The first
-  index $N$ is called the \dfn{initial index}
-\end{definition} 
 
 Recall that the natural numbers $\N$ are the counting numbers $1, 2,
 3, 4, \ldots$.  If we want our sequence to start at zero, we use
@@ -122,7 +158,7 @@ subsection{Defining sequences by giving a rule}
 Just as real-valued functions were usually expressed by a formula, we
 will most often encounter sequences that can be expressed by a
 formula.  In the Introduction to this textbook, we saw the sequence
-given by the rule $\ds a_i=f(i)=1-1/2^i$.  Other examples are easy to
+given by the rule $a_i=f(i)=1-1/2^i$.  Other examples are easy to
 cook up, like
 \begin{align*}
   a_i &={i\over i+1}, \\
@@ -135,7 +171,7 @@ functions with domain $\R$ or $\N$, though occasionally the given
 formula will make sense only for integers.  We'll address the
 idea of a real-valued function ``filling in'' the gaps between the
 terms of a sequence when we look at graphs in
-Section~\xrefn{section:graphs}.
+%Section~\xrefn{section:graphs}.
 
 \begin{warning}
   A common misconception is to confuse the sequence with the rule for
@@ -154,12 +190,12 @@ same value to each point in the domain.
 
 \begin{definition}
   Suppose $(a_n)$ and $(b_n)$ are sequences starting at $1$.  These
-  sequences are \defnword{equal}\index{sequence!equality} if for all
+  sequences are \dfn{equal}\index{sequence!equality} if for all
   natural numbers $n$, we have $a_n = b_n$.
 
   More generally, two sequences $(a_n)$ and $(b_n)$ are
-  \defnword{equal} if they have the same initial index $N$, and for
-  every integer $n \geq N$, the $n^{\nth}$ terms have the same value, that is,
+  \dfn{equal} if they have the same initial index $N$, and for
+  every integer $n \geq N$, the $n$th terms have the same value, that is,
   \[
   a_n = b_n \quad \mbox{for all $n \geq N$.}
   \]
@@ -185,7 +221,7 @@ $$
 and the rule that $a_n = a_{n-1} - a_{n-3}$.  Compute $a_5$.
 \end{example}
 
-\begin{worked-solution}
+\begin{explanation}
   First we compute $a_4$.  Substituting $4$ for $n$ in the rule $a_n = a_{n-1} - a_{n-3}$, we find
 $$
 a_4 = a_{4-1} - a_{4-3} = a_3 - a_1.
@@ -197,55 +233,55 @@ $$
 a_5 = a_{5-1} - a_{5-3} = a_4 - a_2.
 $$
 We just computed $a_4 = 9$; we were given $a_2 = 3$.  Therefore $a_5 = 9 - 3 = 6$.
-\end{worked-solution}
+\end{explanation}
 
 \youtube{http://www.youtube.com/watch?v=Krqi7UGJV5o}
 
 \begin{question}
-  Consider the sequence \(a_{n}\) defined recursively by the
+  Consider the sequence $a_{n}$ defined recursively by the
   rule \[a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}\] and
-  the facts that \(a_0 = -3\) and \(a_1 = 5\).  What is \(a_4\)?
+  the facts that $a_0 = -3$ and $a_1 = 5$.  What is $a_4$?
 
     \begin{hint}
-      We have been told the first two terms of the sequence, namely \(a_0 = -3\) and \(a_1 = 5\).
+      We have been told the first two terms of the sequence, namely $a_0 = -3$ and $a_1 = 5$.
     \end{hint}
     \begin{hint}
-      We also have a rule \(a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}\) which lets us compute the third term \(a_2\) using these first two terms \(a_0\) and \(a_1\).
+      We also have a rule $a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}$ which lets us compute the third term $a_2$ using these first two terms $a_0$ and $a_1$.
     \end{hint}
     \begin{hint}
-      To compute \(a_2\), we set \(n = 2\) in the recursive rule \(a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}\).  This gives us \(a_2 = {a_{2-1}} {a_{2-2}} + 3 \, {a_{2-1}} - {a_{2-2}}\).
+      To compute $a_2$, we set $n = 2$ in the recursive rule $a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}$.  This gives us $a_2 = {a_{2-1}} {a_{2-2}} + 3 \, {a_{2-1}} - {a_{2-2}}$.
     \end{hint}
     \begin{hint}
-      Plugging \(a_{2-1} = a_{1} = 5\) and \(a_{2-2} = a_{0} = -3\) into the rule, we learn \(a_2 = 3\).
+      Plugging $a_{2-1} = a_{1} = 5$ and $a_{2-2} = a_{0} = -3$ into the rule, we learn $a_2 = 3$.
     \end{hint}
     \begin{hint}
-      To compute \(a_3\), we set \(n = 3\) in the recursive rule \(a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}\), giving \(a_3 = {a_{3-1}} {a_{3-2}} + 3 \, {a_{3-1}} - {a_{3-2}}\).
+      To compute $a_3$, we set $n = 3$ in the recursive rule $a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}$, giving $a_3 = {a_{3-1}} {a_{3-2}} + 3 \, {a_{3-1}} - {a_{3-2}}$.
     \end{hint}
     \begin{hint}
-      To evaluate that, we will have to know \(a_{3-1} = a_{2}\), but we just found out that \(a_{2} = 3\).
+      To evaluate that, we will have to know $a_{3-1} = a_{2}$, but we just found out that $a_{2} = 3$.
     \end{hint}
     \begin{hint}
-      Plugging \(a_{3-1} = 3\) and \(a_{3-2} = a_{1} = 5\) into the rule, we find \(a_3 = 19\).
+      Plugging $a_{3-1} = 3$ and $a_{3-2} = a_{1} = 5$ into the rule, we find $a_3 = 19$.
     \end{hint}
     \begin{hint}
-      To compute \(a_4\), we set \(n = 4\) in the recursive rule \(a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}\), giving \(a_4 = {a_{4-1}} {a_{4-2}} + 3 \, {a_{4-1}} - {a_{4-2}}\).
+      To compute $a_4$, we set $n = 4$ in the recursive rule $a_n = {a_{n-1}} {a_{n-2}} + 3 \, {a_{n-1}} - {a_{n-2}}$, giving $a_4 = {a_{4-1}} {a_{4-2}} + 3 \, {a_{4-1}} - {a_{4-2}}$.
     \end{hint}
     \begin{hint}
-      To evaluate that, we will have to know \(a_{4-1} = a_{3}\), but we just found out that \(a_{3} = 19\).
+      To evaluate that, we will have to know $a_{4-1} = a_{3}$, but we just found out that $a_{3} = 19$.
     \end{hint}
     \begin{hint}
-      Plugging \(a_{4-1} = 19\) and \(a_{4-2} = a_{2} = 3\) into the rule, we learn \(a_4 = 111\).
+      Plugging $a_{4-1} = 19$ and $a_{4-2} = a_{2} = 3$ into the rule, we learn $a_4 = 111$.
     \end{hint}
     \begin{hint}
-      So we conclude \(a_4 = 111\).
+      So we conclude $a_4 = 111$.
     \end{hint}
 
     \begin{multipleChoice}
-      \choice[correct]{\(111\)}
-      \choice{\(176201\)}
-      \choice{\(-40\)}
-      \choice{\(-654016\)}
-      \choice{\(2522\)}
+      \choice[correct]{$111$}
+      \choice{$176201$}
+      \choice{$-40$}
+      \choice{$-654016$}
+      \choice{$2522$}
     \end{multipleChoice}
 
 \end{question}
@@ -259,13 +295,13 @@ is a definition.
 
 \youtube{https://www.youtube.com/watch?v=WOF5kkVekUY}
 
-%{Mathematically, the word \defnword{family}
+%{Mathematically, the word \dfn{family}
 %  does not have an entirely precise definition; a family of things is
-%  a \defnword{collection} or a \defnword{set} of things, but family
+%  a \dfn{collection} or a \dfn{set} of things, but family
 %  also has a connotation of some sort of relatedness.} 
 
 \begin{definition}
-  An \defnword{arithmetic progression} (sometimes called an arithmetic
+  An \dfn{arithmetic progression} (sometimes called an arithmetic
   sequence)\index{arithmetic progression} is a sequence where each
   term differs from the next by the same, fixed quantity.
 \end{definition}
@@ -288,7 +324,7 @@ Alternatively, we could describe an arithmetic progression
 recursively, by giving a starting value $a_1$, and using the rule that
 $a_{n} = a_{n-1} + m$.
 
-%\marginnote{Why are arithmetic progressions called \textit{arithmetic?}  Note that every term is the \defnword{arithmetic mean}, that is, the \defnword{average}, of its two neighbors.}
+%\marginnote{Why are arithmetic progressions called \textit{arithmetic?}  Note that every term is the \dfn{arithmetic mean}, that is, the \dfn{average}, of its two neighbors.}
 
 An arithmetic progression can decrease; for instance,
 $$
@@ -303,28 +339,28 @@ is an arithmetic progression.
       In an arithmetic progression, there is a common difference between any two neighboring terms.
     \end{hint}
     \begin{hint}
-      For instance, the difference between \(-3\) and \(-1\) is \(-2\).
+      For instance, the difference between $-3$ and $-1$ is $-2$.
     \end{hint}
     \begin{hint}
-      Can \(3,  1,  -1,  -4,  -6,  -8 \) be the beginning of an arithmetic progression?  No, because the difference most between of those terms is \(-2\), but \(-1\) and \(-4\) break the pattern, with difference \(-3\), not \(-2\).
+      Can $3,  1,  -1,  -4,  -6,  -8 $ be the beginning of an arithmetic progression?  No, because the difference most between of those terms is $-2$, but $-1$ and $-4$ break the pattern, with difference $-3$, not $-2$.
     \end{hint}
     \begin{hint}
-      Can \(3,  1,  -1,  -3,  -4,  -6 \) be the beginning of an arithmetic progression?  No, because the difference between most of those terms is \(-2\), but \(-3\) and \(-4\) break the pattern, with difference \(-1\), not \(-2\).
+      Can $3,  1,  -1,  -3,  -4,  -6 $ be the beginning of an arithmetic progression?  No, because the difference between most of those terms is $-2$, but $-3$ and $-4$ break the pattern, with difference $-1$, not $-2$.
     \end{hint}
     \begin{hint}
-      Can \(3,  1,  -1,  -3,  -5,  -8 \) be the beginning of an arithmetic progression?  No, because the difference between most of those terms is \(-2\), but \(-5\) and \(-8\) break the pattern, with difference \(-3\), not \(-2\).
+      Can $3,  1,  -1,  -3,  -5,  -8 $ be the beginning of an arithmetic progression?  No, because the difference between most of those terms is $-2$, but $-5$ and $-8$ break the pattern, with difference $-3$, not $-2$.
     \end{hint}
     \begin{hint}
-      Can \(3,  1,  -1,  -3,  -5,  -7 \) be the beginning of an arithmetic progression?  Yes, because the difference between each neighboring pair of terms is \(-2\).  For example, 
-      \(\left(-1\right) - \left(1\right) = \left(-3\right) - \left(-1\right) = \left(-5\right) - \left(-3\right) = -2\).
+      Can $3,  1,  -1,  -3,  -5,  -7 $ be the beginning of an arithmetic progression?  Yes, because the difference between each neighboring pair of terms is $-2$.  For example, 
+      $\left(-1\right) - \left(1\right) = \left(-3\right) - \left(-1\right) = \left(-5\right) - \left(-3\right) = -2$.
     \end{hint}
 
     \begin{multipleChoice}
-      \choice[correct]{\(3,\quad 1,\quad -1,\quad -3,\quad -5,\quad -7,\quad\ldots \)}
-      \choice{\(3,\quad 0,\quad -2,\quad -4,\quad -6,\quad -8,\quad\ldots \)}
-      \choice{\(3,\quad 1,\quad 0,\quad -2,\quad -4,\quad -6,\quad\ldots \)}
-      \choice{\(3,\quad 1,\quad -1,\quad -4,\quad -6,\quad -8,\quad\ldots \)}
-      \choice{\(3,\quad 1,\quad -1,\quad -3,\quad -4,\quad -6,\quad\ldots \)}
+      \choice[correct]{$3,\quad 1,\quad -1,\quad -3,\quad -5,\quad -7,\quad\ldots $}
+      \choice{$3,\quad 0,\quad -2,\quad -4,\quad -6,\quad -8,\quad\ldots $}
+      \choice{$3,\quad 1,\quad 0,\quad -2,\quad -4,\quad -6,\quad\ldots $}
+      \choice{$3,\quad 1,\quad -1,\quad -4,\quad -6,\quad -8,\quad\ldots $}
+      \choice{$3,\quad 1,\quad -1,\quad -3,\quad -4,\quad -6,\quad\ldots $}
     \end{multipleChoice}
 
 \end{question}
@@ -339,7 +375,7 @@ The second family we consider are geometric progressions.
 \youtube{https://www.youtube.com/watch?v=1z8QKFFU3Hc}
 
 \begin{definition}
-  A \defnword{geometric progression} (sometimes called a geometric
+  A \dfn{geometric progression} (sometimes called a geometric
   sequence)\index{geometric progression} is a sequence where the ratio
   between subsequent terms is the same, fixed quantity.
 \end{definition}
@@ -363,7 +399,7 @@ recursively, by giving a starting value $a_1$, and using the rule that
 $a_{n} = r \cdot a_{n-1}$.
 
 \begin{remark}
-Why are geometric progressions called \textit{geometric?}  Note that every term is the \defnword{geometric mean} of its two neighbors.  The geometric mean of two numbers $a$ and $b$ is defined to be $\sqrt{ab}$.
+Why are geometric progressions called \textit{geometric?}  Note that every term is the \dfn{geometric mean} of its two neighbors.  The geometric mean of two numbers $a$ and $b$ is defined to be $\sqrt{ab}$.
 
 Of course, that raises another question: why is the geometric mean called \textit{geometric?}  One geometric interpretation of the geometric mean of $a$ and $b$ is this: the geometric mean is the side length of a square whose area is equal to that of the rectangle having side lengths $a$ and $b$.
 \end{remark}
@@ -381,28 +417,28 @@ the ratio between subsequent terms is one half, and each term is smaller than th
       In a geometric progression, there is a common ratio between any two neighboring terms.
     \end{hint}
     \begin{hint}
-      For instance, the ratio between \(-64\) and \(16\) is \(-4\).
+      For instance, the ratio between $-64$ and $16$ is $-4$.
     \end{hint}
     \begin{hint}
-      Can \(1,  -4,  16,  -48,  192,  -768 \) be the beginning of a geometric progression?  No, because the ratio between most of those terms is \(-4\), but \(16\) and \(-48\) break the pattern: the ratio \(\displaystyle\displaystyle\frac{-48}{16}\) is -3, not -4.
+      Can $1,  -4,  16,  -48,  192,  -768 $ be the beginning of a geometric progression?  No, because the ratio between most of those terms is $-4$, but $16$ and $-48$ break the pattern: the ratio $\displaystyle\displaystyle\frac{-48}{16}$ is -3, not -4.
     \end{hint}
     \begin{hint}
-      Can \(1,  -4,  16,  -64,  320,  -1280 \) be the beginning of a geometric progression?  No, because the ratio between most of those terms is \(-4\), but \(-64\) and \(320\) break the pattern: the ratio \(\displaystyle\displaystyle\frac{320}{-64}\) is -5, not -4.
+      Can $1,  -4,  16,  -64,  320,  -1280 $ be the beginning of a geometric progression?  No, because the ratio between most of those terms is $-4$, but $-64$ and $320$ break the pattern: the ratio $\displaystyle\displaystyle\frac{320}{-64}$ is -5, not -4.
     \end{hint}
     \begin{hint}
-      Can \(1,  -4,  16,  -64,  256,  -1280 \) be the beginning of a geometric progression?  No, because the ratio between most of those terms is \(-4\), but \(256\) and \(-1280\) break the pattern: the ratio \(\displaystyle\displaystyle\frac{-1280}{256}\) is -5, not -4.
+      Can $1,  -4,  16,  -64,  256,  -1280 $ be the beginning of a geometric progression?  No, because the ratio between most of those terms is $-4$, but $256$ and $-1280$ break the pattern: the ratio $\displaystyle\displaystyle\frac{-1280}{256}$ is -5, not -4.
     \end{hint}
     \begin{hint}
-      Can \(1,  -4,  16,  -64,  256,  -1024 \) be the beginning of a geometric progression?  Yes, because the ratio between each neighboring pair of terms is \(-4\).  For example, 
-      \(\displaystyle\displaystyle\frac{16}{-4} = \displaystyle\displaystyle\frac{-64}{16} = \displaystyle\displaystyle\frac{256}{-64} = -4\).
+      Can $1,  -4,  16,  -64,  256,  -1024 $ be the beginning of a geometric progression?  Yes, because the ratio between each neighboring pair of terms is $-4$.  For example, 
+      $\displaystyle\displaystyle\frac{16}{-4} = \displaystyle\displaystyle\frac{-64}{16} = \displaystyle\displaystyle\frac{256}{-64} = -4$.
     \end{hint}
 
     \begin{multipleChoice}
-      \choice[correct]{\(1,\quad -4,\quad 16,\quad -64,\quad 256,\quad -1024,\quad\ldots \)}
-      \choice{\(1,\quad -5,\quad 20,\quad -80,\quad 320,\quad -1280,\quad\ldots \)}
-      \choice{\(1,\quad -4,\quad 20,\quad -80,\quad 320,\quad -1280,\quad\ldots \)}
-      \choice{\(1,\quad -4,\quad 16,\quad -48,\quad 192,\quad -768,\quad\ldots \)}
-      \choice{\(1,\quad -4,\quad 16,\quad -64,\quad 320,\quad -1280,\quad\ldots \)}
+      \choice[correct]{$1,\quad -4,\quad 16,\quad -64,\quad 256,\quad -1024,\quad\ldots $}
+      \choice{$1,\quad -5,\quad 20,\quad -80,\quad 320,\quad -1280,\quad\ldots $}
+      \choice{$1,\quad -4,\quad 20,\quad -80,\quad 320,\quad -1280,\quad\ldots $}
+      \choice{$1,\quad -4,\quad 16,\quad -48,\quad 192,\quad -768,\quad\ldots $}
+      \choice{$1,\quad -4,\quad 16,\quad -64,\quad 320,\quad -1280,\quad\ldots $}
     \end{multipleChoice}
 
 
@@ -470,14 +506,17 @@ a_n = \displaystyle\begin{cases} a_{n-1} / 2 & \mbox{ if $a_{n-1}$ is even, and 
 Does this always happen?  Is it true that no matter which positive
 integer you start with, if you apply the half-if-even, $3x+1$-if-odd
 rule, you end up getting stuck in the ``4, 2, 1, \ldots'' loop?  That
-this is true is the \defnword{Collatz conjecture}; it has been
+this is true is the \dfn{Collatz conjecture}; it has been
 verified for all starting values below $5 \times 2^{60}$.  Nobody has
 found a value which doesn't return to one, but for all anybody knows
 there \textit{might} well be a very large initial value which doesn't
 return to one; nobody knows either way.  It is an unsolved
-problem\sidenote{This is not the last unsolved problem we will
+problem
+
+
+This is not the last unsolved problem we will
   encounter in this course.  There are many things which humans do not
-  understand.} in mathematics.
+  understand. in mathematics.
 
 
 

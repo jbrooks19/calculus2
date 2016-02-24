@@ -17,7 +17,7 @@
 
 In this section we will see that the phrase
 \begin{quote}
-  Divide and Conquor
+  Divide and Conquer
 \end{quote}
 is literally true (with the mathematical definition of ``divide'') in
 the context of differential equations. Rather than talk about math,
@@ -30,7 +30,7 @@ let's just show you what we're getting at.
   \]
   where $y(0)= 5$.
   \begin{explanation}
-    We're going to divide an conqur, literally. Divide both sides of
+    We're going to divide an conquer, literally. Divide both sides of
     \[
     y'(x) = x\cdot y(x)^2
     \]
@@ -103,13 +103,13 @@ Now that we've seen an example, let's give discuss this in general.
 \end{question}
 
 The reason we care about separable differential equations is that:
-\begin{enumerate}
+\begin{itemize}
 \item Separable differential equations help model many real-world contexts.
 \item Separable differential equations are solvable by humans.
-\end{enumerate}
+\end{itemize}
 The basic ideas is if
 \[
-g(y)y' = H(x)
+G(y)y' = H(x)
 \]
 then we can integrate both sides, writing
 \begin{align*}
@@ -118,51 +118,318 @@ then we can integrate both sides, writing
   \int G(y) \d y &= \int H(x) \d x
 \end{align*}
 If we can symbolically compute these integrals, then we can solve for
-$y$.
+$y$. It is now time to work some examples. 
 
 
+\subsection{Proportional reasoning}
+
+In this example, we will show the power of knowing that one quantity
+is proportional to another.
 
 \begin{example}
-  Suppose that 
-  \begin{align*}
-    g(y)y'  &= h(x)\\
-    \int g(y) y' \d x &= \int h(x) \d x\\
-    \int g(y) \d y &= \int h(x) \d x
-  \end{align*}
-  Let's see this strategy in action, and try to solve the differential equation $y' = \frac{x}{y^2}$.
-  Write with me:
-  First we separate the variables
-  \[
-  \answer{y^2} y' = \answer{x}
-  \]
-  
-  Then we integrate both sides with respect to $x$
-  
-  \begin{align*}
-    \int y^2 y' \d x &= \int x \d x\\
-    \int y^2 \d y &= \int x \d x\\
-    \answer{\frac{1}{3} y^3} &= \answer{\frac{1}{2}x^2}+C\\
-    y &= \sqrt[3]{\answer{\frac{3}{2}x^2}+3C}
-  \end{align*}
-  
-  Since $3C$ could be any constant we like, we can rewrite the general solution to this differential equation as 
-  
-  \[
-  y = \sqrt[3]{\frac{3}{2}x^2+C}
-  \]
-  
-  We can check that all of these functions really are solutions to the differential equation:
-  
-  \begin{align*}
-    \frac{\d y}{\d x} &= \ddx \sqrt[3]{\frac{3}{2}x^2+C}\\
-    &=(\frac{3}{2}x^2+C)^{-\frac{2}{3}} x\\
-    &= \frac{x}{(\sqrt[3]{\frac{3}{2}x^2+C})^2}\\
-    &= \frac{x}{y^2}
-  \end{align*}
+  A snowball has a radius of $2$ inches. After $1.5$ hours, it has a
+  radius of $1$ inch. Assume
+  \begin{itemize}
+  \item the radius changes at rate proportional to the snowball's
+    surface area, and
+  \item the surface area is proportional to the square of the
+    snowball's radius.
+  \end{itemize}
+  When is the radius of the snowball $0.1$ inches?
+  \begin{explanation}
+    We'll do this by setting up a differential equation. Let $r$ be
+    the radius of the snowball. From the statement of the problem we
+    have
+    \[
+    \dd[r]{t} = k_1 \cdot \text{(surface area)}
+    \]
+    and
+    \[
+    \text{(surface area)} = k_2 \cdot r^2,
+    \]
+    hence
+    \[
+    \dd[r]{t} = k_1 \cdot k_2 \cdot r^2.
+    \]
+    Letting $K = k_1\cdot k_2$ we now can write
+    \[
+    \dd[r]{t} = K\cdot r^2.
+    \]
+    We now have a differential equation. Let's divide and
+    conquer. Write with me
+    \[
+    \frac{1}{r^2}\dd[r]{t} = K
+    \]
+    integrating both sides with respect to $t$ we find
+    \begin{align*}
+      \int \frac{1}{r^2}\dd[r]{t}\d t &= \int K \d t\\
+      \int \frac{1}{r^2}\d r &= \int K \d t\\
+      \frac{-1}{r} &= K\cdot t+C\\
+      \frac{1}{r} &= -K\cdot t- C\\
+      r &= \frac{1}{-K\cdot t- C}.
+    \end{align*}
+    We know that $r(0) = 2$, so let's put that information to use
+    \begin{align*}
+      2 &= r(0)\\
+      2 &= \frac{1}{-K\cdot 0- C}\\
+      2 &= \frac{1}{- C}\\
+      C &= -1/2.
+    \end{align*}
+    We also know that $r(1.5) = 1$. Again write with me, noting that
+    $1.5 = 3/2$
+    \begin{align*}
+    1 &= r(3/2)\\
+    1 &= \frac{1}{-K\cdot 3/2 +1/2}\\
+    -K\cdot 3/2 +1/2 &=1\\
+    -K\cdot 3 +1 &=2\\
+    -K\cdot 3 &=1\\
+    K &=-1/3.
+    \end{align*}
+    Hence
+    \[
+    r(t) = \frac{1}{t/3+1/2}.
+    \]
+    To find when the radius is $0.1$ inches, solve
+    \[
+    0.1 = \frac{1}{t/3+1/2}
+    \]
+    and we find $t$ is $28.5$ hours.
+  \end{explanation}
+\end{example}
+Some things to note about our last example:
+\begin{itemize}
+\item It was solved \textit{without} using the formula for the surface area
+of a sphere. For us, it was sufficient to know that the surface area
+of a sphere is proportional to the square of the radius.
+\item Our solution, $r(t) = \frac{1}{t/3+1/2}$ can be plotted in the
+  slope field determined by $r'=(-1/3)r^2$:
+  \begin{image}
+    {\def\length{sqrt(1+((-1/3)*y^2)^2)}
+      \begin{tikzpicture}
+        \begin{axis}[
+            xmin=0, xmax=6,ymin=0,ymax=6,domain=0:6,view={0}{90},
+            axis lines =center, xlabel=$t$, ylabel=$r$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            axis on top,
+          ] 
+          \addplot3 [penColor, quiver={u={1/\length}, v={((-1/3)*y^2)/(\length)},scale arrows=.2},samples=20] {0};
+          \addplot[penColor,very thick]{1/((x/3)+1/2)};
+        ]  \end{axis}
+        \end{tikzpicture}}
+  \end{image}
+\end{itemize}
+\begin{question}
+  Which of the following are equilibrium solutions to the differential equation $r'=(-1/3)r^2$?
+  \begin{multipleChoice}
+    \choice[correct]{$r = 0$}
+    \choice{$r = 1$}
+    \choice{$r = t$}
+    \choice{$t = 0$}
+    \choice{$t = 1$}
+  \end{multipleChoice}
+\end{question}
+
+
+
+
+
+\subsection{Exponential and logistic growth}
+
+In the science fiction television series \index{Star Trek}\textit{Star
+  Trek}, a \dfn{tribble} is an alien species that is furry, spherical
+(radius $\approx 5$ inches), that essentially does nothing but eat and
+reproduce.
+
+\begin{example}
+  Mr.\ Spock claims that there are $1771561$ tribbles aboard the space
+  station K7, ``assuming one tribble, multiplying with an average
+  litter of ten, producing a new generation every twelve hours over a
+  period of three days.'' Explain Mr.\ Spock's computation.
+  \begin{explanation}
+    Perhaps Mr.\ Spock used an exponential differential equation to
+    model this.  Letting $P$ be the population of tribbles at time $t$
+    (in hours), it makes sense that the rate that the population is
+    growing is proportional to the size of the population; this is the
+    definition of an exponential model. Write with me
+    \[
+    P' = k P.
+    \]
+    Ah, this is a separable differential equation. Let's solve it:
+    \begin{align*}
+      P' &= k P\\
+      \frac{P'}{P} &= k\\
+      \int \frac{P'}{P} \d t &= \int k\d t\\
+      \ln(P) &= k\cdot t + C.
+    \end{align*}
+    However we also know that $P(0) = 1$. Write with me
+    \begin{align*}
+      P(0) &= 1\\
+      \ln(P(0)) &= k\cdot 0 + C\\
+      \ln(1) &= C\\
+      0 &=C.
+    \end{align*}
+    After $12$ hours, we should have $11$ tribbles. So 
+    \[
+    P(12) = 11,
+    \]
+    and we may write
+    \begin{align*}
+    P(12) &= 11\\
+    \ln(P(12)) &= k\cdot 12\\
+    \ln(11) &= k\cdot 12\\
+    \frac{\ln(11)}{12} &= k.
+    \end{align*}
+    Hence we can model the population growth with
+    \begin{align*}
+      \ln(P(t)) &= \frac{\ln(11)}{12}\cdot t\\
+      P(t) &= e^{\frac{\ln(11)}{12} \cdot t}\\
+      P(t) &= 11^{t/12}.
+    \end{align*}
+    Checking this with Mr.\ Spock's computation, we see that
+    \begin{align*}
+      P(72) &= 11^{72/12}\\
+      &= 11^6\\
+      &=1771561.
+    \end{align*}
+    just as Mr.\ Spock stated.
+  \end{explanation}
 \end{example}
 
+If we graph the solution to the differential equation representing the
+population of tribbles that we found above
+\begin{image}
+  \begin{tikzpicture}
+      \begin{axis}[
+          xmin=0, xmax=100,domain=0:100,clip=false,width=4in,height=2in,
+          axis lines =center, xlabel=$t$, ylabel=$P$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          axis on top,
+        ] 
+        \addplot[penColor,very thick,smooth]{e^(.2*x)};
+      ]  \end{axis}
+      \end{tikzpicture}
+\end{image}
+we see that some time after $72$ hours, the growth rate of the
+tribbles explodes. In reality this would be an \textbf{ecological
+  disaster}. Exponential growth can be scary.
 
-In the last example, it worked out that we could solve for $y$ as a function of $x$.  This is not always the case.
+Now we will see a model of population growth with environmental
+limitations. Suppose that the birthrate of the tribbles is limited by
+how much food and space is available. This gets us to the idea of \textit{carrying capacity}
+
+\begin{definition}
+  The \dfn{carrying capacity} of a biological system is the maximum
+  population that can be sustained indefinitely with the given
+  resources.
+\end{definition}
+
+Let's work an example involving this concept:
+
+\begin{example}
+Suppose that the carrying capacity of tribbles aboard a space station
+is $1000$ tribbles, we start with $1$ tribble, and that growth rate
+(per tribble) is $10$ tribbles every twelve hours. Model this
+population with a differential equation.
+\begin{explanation}
+  First, note that the population of tribbles is proportional to the
+  \textbf{product} $P$ and $1000-P$. This makes sense as when $P$ is
+  small, the growth rate should be small; and when $1000-P$ is small,
+  the growth rate should also be small. Write with me
+  \[
+  \dd[P]{t}  = k \cdot P (1000-P)
+  \]
+  Ah! This is a separable differential equation. Let's solve it:
+  \begin{align*}
+    \dd[P]{t}  &= k \cdot P (1000-P)\\
+    \frac{1}{P (1000-P)}\dd[P]{t}  &= k \\
+    \int \frac{1}{P (1000-P)}\dd[P]{t}\d t  &= \int k\d t \\
+    \int \frac{1}{P (1000-P)} \d P  &= \int k\d t \\
+    \frac{1}{1000}\ln\left(\frac{P}{1000-P}\right)  &= k\cdot t + C.
+  \end{align*}
+  However we also know that $P(0) = 1$. Write with me
+  \begin{align*}
+      P(0) &= 1\\
+      \frac{1}{1000}\ln\left(\frac{P(0)}{1000-P(0)}\right)  &= k\cdot 0 + C\\
+      \frac{1}{1000}\ln\left(\frac{1}{999}\right)  &= C\\
+      \frac{-\ln(999)}{1000}  &= C.
+  \end{align*}
+  After $12$ hours, we should have $11$ tribbles. So 
+  \[
+  P(12) = 11,
+  \]
+  and we may write
+  \begin{align*}
+    \frac{1}{1000}\ln\left(\frac{P(12)}{1000-P(12)}\right) &= k\cdot 12-\frac{\ln(999)}{1000}\\
+    \ln\left(\frac{11}{989}\right) &= k\cdot 12000-\ln(999) \\
+    \frac{\ln(10989)-\ln(989)}{12000} &= k.
+  \end{align*}
+  Hence we can model the population growth with
+  \begin{align*}
+    \frac{1}{1000}\ln\left(\frac{P(t)}{1000-P(t)}\right)  &= \frac{\ln(10989)-\ln(989)}{12000}\cdot t - \frac{\ln(999)}{1000}\\
+    \ln\left(\frac{P(t)}{1000-P(t)}\right)  &= \frac{\ln(10989)-\ln(989)}{12}\cdot t - \ln(999)\\
+    \frac{P(t)}{1000-P(t)}  &= \left(\frac{10989}{989}\right)^{t/12}\cdot \frac{1}{999}
+  \end{align*}
+  Solving for $P(t)$ we find
+  \[
+  P(t) = \frac{\left(\frac{10989}{989}\right)^{t/12}\cdot \frac{1000}{999}}{1+\left(\frac{10989}{989}\right)^{t/12}\cdot \frac{1}{999}}.
+  \]
+  If we graph this solution, we see a nice ``S-curve''
+  \begin{image}
+  \begin{tikzpicture}
+      \begin{axis}[
+          xmin=0, xmax=60,domain=0:60,clip=false,width=4in,height=2in,
+          axis lines =center, xlabel=$t$, ylabel=$P$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          axis on top,
+        ] 
+        \addplot[penColor,very thick,smooth]{1000*(1-999/(999+(407/989)^(x/12)*3^(x/4)))};
+      ]  \end{axis}
+      \end{tikzpicture}
+\end{image}
+  \end{explanation}
+\end{example}
+
+In our last example we used the differential equation
+\[
+P' = k\cdot P(A-P)
+\]
+This is called the \dfn{logistic differential equation} where $k$ and
+$A$ are constants. Let's examine a slope field for this model with
+some reasonable values of $k$ and $A$:
+ \begin{image}
+    {\def\length{sqrt(1+((.6*y*(2-y))^2)}
+      \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3, xmax=3,ymin=-3,ymax=3,domain=-3:3,view={0}{90},
+            axis lines =center, xlabel=$t$, ylabel=$r$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            axis on top,
+          ] 
+          \addplot3 [penColor, quiver={u={1/\length}, v={(.6*y*(2-y))/(\length)},scale arrows=.2},samples=20] {0};
+        ]  \end{axis}
+        \end{tikzpicture}}
+  \end{image}
+\begin{question}
+  Which of the following are equilibrium solutions to the differential equation above?
+  \begin{selectAll}
+    \choice[correct]{$P = 0$}
+    \choice{$P = 1$}
+    \choice[correct]{$P = 2$}
+    \choice{$P = t$}
+  \end{selectAll}
+\end{question}
+
+
+
+\subsection{Predator-prey model}
+
+
+In the previous examples, it worked out that we could solve for $y$ as a
+function of $x$.  This is not always the case.
 
 \begin{example}
   Consider the separable differential equation

@@ -87,19 +87,105 @@ a specific element in the sequence.
     pictures and counting regions.
     \begin{itemize}
       \item \begin{tikzpicture}      
-            \tkzDefPoint(0,0){O} %% origin
-            \tkzDefPoint(1,0){A} %% (1,0)
+            \tkzDefPoint(0,0){O} 
+            \tkzDefPoint(1,0){A} 
             \tkzDrawCircle[color=penColor,very thick](O,A)
             \tkzDrawPoint[color=penColor,fill=penColor](A)
-            \end{tikzpicture}
+      \end{tikzpicture}
       \item \begin{tikzpicture}      
-            \tkzDefPoint(0,0){O} %% origin
-            \tkzDefPoint(1,0){A} %% (1,0)
-            \tkzDefPoint(-1,0){B} %% (1,0)
+            \tkzDefPoint(0,0){O} 
+            \tkzDefPoint(1,0){A} 
+            \tkzDefPoint(-1,0){B}
             \tkzDrawCircle[color=penColor,very thick](O,A)
             \tkzDrawPoint[color=penColor,fill=penColor](A)
             \tkzDrawPoint[color=penColor,fill=penColor](B)
-            \tkzDrawSegment[color=penColor,very thick](A,B)
+            \tkzDrawSegment[color=penColor](A,B)
+      \end{tikzpicture}
+      \item \begin{tikzpicture}      
+            \tkzDefPoint(0,0){O} 
+            \tkzDefPoint(1,0){A} 
+            \tkzDefPoint(-.6,.8){B}
+            \tkzDefPoint(-.6,-.8){C}
+            \tkzDrawCircle[color=penColor,very thick](O,A)
+            \tkzDrawPoint[color=penColor,fill=penColor](A)
+            \tkzDrawPoint[color=penColor,fill=penColor](B)
+            \tkzDrawPoint[color=penColor,fill=penColor](C)
+            \tkzDrawSegment[color=penColor](A,B)
+            \tkzDrawSegment[color=penColor](A,C)
+            \tkzDrawSegment[color=penColor](B,C)
+      \end{tikzpicture}
+      \item \begin{tikzpicture}      
+            \tkzDefPoint(0,0){O} 
+            \tkzDefPoint(.6,.8){A} 
+            \tkzDefPoint(-.6,.8){B}
+            \tkzDefPoint(-.6,-.8){C}
+            \tkzDefPoint(.6,-.8){D}
+            \tkzDrawCircle[color=penColor,very thick](O,A)
+            \tkzDrawPoint[color=penColor,fill=penColor](A)
+            \tkzDrawPoint[color=penColor,fill=penColor](B)
+            \tkzDrawPoint[color=penColor,fill=penColor](C)
+            \tkzDrawPoint[color=penColor,fill=penColor](D)
+            \tkzDrawSegment[color=penColor](A,B)
+            \tkzDrawSegment[color=penColor](A,C)
+            \tkzDrawSegment[color=penColor](A,D)
+            \tkzDrawSegment[color=penColor](B,C)
+            \tkzDrawSegment[color=penColor](B,D)
+            \tkzDrawSegment[color=penColor](C,D)
+      \end{tikzpicture}
+        \item \begin{tikzpicture}      
+            \tkzDefPoint(0,0){O} 
+            \tkzDefPoint(1,0){A} 
+            \tkzDefPoint(.27,.96){B}
+            \tkzDefPoint(-.8,.6){C}
+            \tkzDefPoint(-.8,-.6){D}
+            \tkzDefPoint(.33,-.95){E}
+            \tkzDrawCircle[color=penColor,very thick](O,A)
+            \tkzDrawPoint[color=penColor,fill=penColor](A)
+            \tkzDrawPoint[color=penColor,fill=penColor](B)
+            \tkzDrawPoint[color=penColor,fill=penColor](C)
+            \tkzDrawPoint[color=penColor,fill=penColor](D)
+            \tkzDrawPoint[color=penColor,fill=penColor](E)
+            \tkzDrawSegment[color=penColor](A,B)
+            \tkzDrawSegment[color=penColor](A,C)
+            \tkzDrawSegment[color=penColor](A,D)
+            \tkzDrawSegment[color=penColor](A,E)
+            \tkzDrawSegment[color=penColor](B,C)
+            \tkzDrawSegment[color=penColor](B,D)
+            \tkzDrawSegment[color=penColor](B,E)
+            \tkzDrawSegment[color=penColor](C,D)
+            \tkzDrawSegment[color=penColor](C,E)
+            \tkzDrawSegment[color=penColor](D,E)
+        \end{tikzpicture}
+        \item \begin{tikzpicture}      
+            \tkzDefPoint(0,0){O} 
+            \tkzDefPoint(1,0){A} 
+            \tkzDefPoint(0,1){B}
+            \tkzDefPoint(-.8,.6){C}
+            \tkzDefPoint(-.8,-.6){D}
+            \tkzDefPoint(0,-1){E}
+            \tkzDefPoint(.7,-.71){F}
+            \tkzDrawCircle[color=penColor,very thick](O,A)
+            \tkzDrawPoint[color=penColor,fill=penColor](A)
+            \tkzDrawPoint[color=penColor,fill=penColor](B)
+            \tkzDrawPoint[color=penColor,fill=penColor](C)
+            \tkzDrawPoint[color=penColor,fill=penColor](D)
+            \tkzDrawPoint[color=penColor,fill=penColor](E)
+            \tkzDrawPoint[color=penColor,fill=penColor](F)
+            \tkzDrawSegment[color=penColor](A,B)
+            \tkzDrawSegment[color=penColor](A,C)
+            \tkzDrawSegment[color=penColor](A,D)
+            \tkzDrawSegment[color=penColor](A,E)
+            \tkzDrawSegment[color=penColor](A,F)
+            \tkzDrawSegment[color=penColor](B,C)
+            \tkzDrawSegment[color=penColor](B,D)
+            \tkzDrawSegment[color=penColor](B,E)
+            \tkzDrawSegment[color=penColor](B,F)
+            \tkzDrawSegment[color=penColor](C,D)
+            \tkzDrawSegment[color=penColor](C,E)
+            \tkzDrawSegment[color=penColor](C,F)
+            \tkzDrawSegment[color=penColor](D,E)
+            \tkzDrawSegment[color=penColor](D,F)
+            \tkzDrawSegment[color=penColor](E,F)
             \end{tikzpicture}
     \end{itemize}
   \end{explanation}

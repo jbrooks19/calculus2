@@ -315,7 +315,7 @@ tribbles explodes. In reality this would be an \textbf{ecological
 
 Now we will see a model of population growth with environmental
 limitations. Suppose that the birthrate of the tribbles is limited by
-how much food and space is available. This gets us to the idea of \textit{carrying capacity}
+how much food and space is available. This gets us to the idea of \textit{carrying capacity}.
 
 \begin{definition}
   The \dfn{carrying capacity} of a biological system is the maximum
@@ -343,9 +343,12 @@ population with a differential equation.
     \dd[P]{t}  &= k \cdot P (1000-P)\\
     \frac{1}{P (1000-P)}\dd[P]{t}  &= k \\
     \int \frac{1}{P (1000-P)}\dd[P]{t}\d t  &= \int k\d t \\
-    \int \answer[given]{\frac{1}{P (1000-P)}} \d P  &= \int k\d t \\
-    \frac{1}{1000}\ln\left(\answer[given]{\frac{P}{1000-P}}\right)  &= k\cdot t + C.
+    \int \answer[given]{\frac{1}{P (1000-P)}} \d P  &= \int k\d t.
   \end{align*}
+  Use partial fraction decomposition to compute the antiderivative:
+  \[
+    \frac{1}{1000}\ln\left(\answer[given]{\frac{P}{1000-P}}\right)   = k\cdot t + C.
+  \]
   However we also know that $P(0) = \answer[given]{1}$. Write with me
   \begin{align*}
       \frac{1}{1000}\ln\left(\frac{P(0)}{1000-P(0)}\right)  &= k\cdot 0 + C\\

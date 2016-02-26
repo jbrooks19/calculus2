@@ -197,7 +197,7 @@ a specific element in the sequence.
             \end{tikzpicture} We see that $b_6 = \answer[given]{31}$
     \end{itemize}
     While we have made no real argument that these are the maximum
-    number of regions, we belive that if the young mathematician draws
+    number of regions, we believe that if the young mathematician draws
     more pictures they will be convinced.
   \end{explanation}
 \end{example}
@@ -429,7 +429,7 @@ a_{n-1} + m$.
 \begin{remark}
 Why are arithmetic sequences called \textit{arithmetic}?  Note that
 every term is the \dfn{arithmetic mean} or \dfn{average} of its two
-neighbors.  The aritmetic mean of two numbers $a$ and $b$ is defined
+neighbors.  The arithmetic mean of two numbers $a$ and $b$ is defined
 to be $\frac{a+b}{2}$.
 \end{remark}
 
@@ -444,7 +444,7 @@ to be $\frac{a+b}{2}$.
     \choice[correct]{$a_n = 5$}
     \choice{$a_n = \left(\frac{1}{3}\right)\cdot a_{n-1}$ where $a_1 = 10$}
     \choice[correct]{$a_n = \frac{4n^2+n-14}{n+2}$}
-    \choice{$a_n = 2^{n\cdot \cos(2\pi n + pi))}$} 
+    \choice{$a_n = 2^{n\cdot \cos(2\pi n + \pi))}$} 
     \choice{$a_n = \cos(\pi/2^n)$}
     \choice{$a_n = \cos(\pi n -5)$}
     \choice[correct]{$a_n = n\cdot \cos(2\pi n) +4$}
@@ -452,10 +452,8 @@ to be $\frac{a+b}{2}$.
 \end{question}
 
 
-\subsection{Arithmetic sequences in the wild}
-
-
-BADBAD HERE!!!!
+%\subsection{Arithmetic sequences in the wild}
+%BADBAD it would be good to have examples...
 
 
 \section{Geometric sequences}
@@ -545,7 +543,7 @@ side lengths $a$ and $b$.
 \end{remark}
 
 \begin{question}
-  Which of the following sequences are arithmetic sequences for
+  Which of the following sequences are geometric sequences for
   $n=1,2,3,\dots$?
   \begin{selectAll}
     \choice{$a_n = -3n + 5$}
@@ -553,7 +551,7 @@ side lengths $a$ and $b$.
     \choice[correct]{$a_n = 5$}
     \choice[correct]{$a_n = \left(\frac{1}{3}\right)\cdot a_{n-1}$ where $a_1 = 10$}
     \choice{$a_n = \frac{4n^2+n-14}{n+2}$}
-    \choice[correct]{$a_n = 2^{n\cdot \cos(2\pi n + pi))}$} 
+    \choice[correct]{$a_n = 2^{n\cdot \cos(2\pi n + \pi))}$} 
     \choice{$a_n = \cos(\pi/2^n)$}
     \choice{$a_n = \cos(\pi n -5)$}
     \choice{$a_n = n\cdot \cos(2\pi n) +4$}
@@ -562,24 +560,183 @@ side lengths $a$ and $b$.
 
 \subsection{Geometric sequences in the wild}
 
+Let's start with a geometric interpretation.
 
+\begin{example}
+  Consider a unit square. Cut the square into two equal regions. Let
+  $a_1$ be the area of one of the regions. Cut the other region into
+  two equal regions and let $a_2$ be the area of one of these
+  regions. Continue on \textit{ad-infinitium}:
+  \begin{image}
+    \begin{tikzpicture}[scale=3]
+      \tkzDefPoint(0,0){A} 
+      \tkzDefPoint(1,0){B} 
+      \tkzDefPoint(1,1){C}
+      \tkzDefPoint(0,1){D}
+      \draw[penColor,very thick] (A)--(B)--(C)--(D)--cycle;
+
+      \tkzDefPoint(.5,1){D} 
+      \tkzDefPoint(.5,0){E} 
+      \draw[penColor,very thick] (D)--(E);
+
+      \tkzDefPoint(.5,.5){F} 
+      \tkzDefPoint(1,.5){G} 
+      \draw[penColor,very thick] (F)--(G);
+
+      \tkzDefPoint(.75,1){H} 
+      \tkzDefPoint(.75,.5){I} 
+      \draw[penColor,very thick] (H)--(I);
+
+      \tkzDefPoint(.75,.75){J} 
+      \tkzDefPoint(1,.75){K} 
+      \draw[penColor,very thick] (J)--(K);
+
+      \tkzDefPoint(.875,.75){L} 
+      \tkzDefPoint(.875,1){M} 
+      \draw[penColor,very thick] (L)--(M);
+
+      \tkzDefPoint(.875,.875){N} 
+      \tkzDefPoint(1,.875){O} 
+      \draw[penColor,very thick] (N)--(O);
+
+      \node at (.25,.5) {$a_1$};
+      \node at (.75,.25) {$a_2$};
+      \node at (.6125,.75) {$a_3$};
+      \node at (.875,.6125) {$a_4$};
+    \end{tikzpicture}
+  \end{image}
+  Find formulas, both explicit and recursive, for $a_n$.
+  \begin{explanation}
+    From the picture, and our knowledge of area, we know $a_1 = 1/2$
+    and that every area is half of the previous area. Hence this is a
+    geometric sequence with explicit formula $a_n = \left(\frac{1}{2}\right)^{n}$
+    and recursive formula $a_1 = 1/2$ and $a_n =
+    \left(\frac{1}{2}\right)a_{n-1}$.
+  \end{explanation}
+\end{example}
+
+Here is an example with a real-world context:
+
+\begin{example}
+  Suppose that when a ``super-ball'' is dropped from some height, it
+  bounces to $90\%$ of the original height. Let $b_1$ be the height
+  the ball bounces after it is dropped from a height of $3$
+  meters. Let $b_2$ be the height the ball bounces next, and so on.
+  Find formulas, both explicit and recursive, for $b_n$.
+  \begin{explanation}
+    The first bounce has a height of
+    \[
+    b_1 = 0.9\cdot 3
+    \]
+    and the second bounce has a height of $b_2 = 0.9^2 \cdot 3$. To
+    compute the height of each bounce, once simply multiplies the
+    previous by $0.9$, and hence this is a geometric sequence with
+    explicit formula $b_n = 0.9^n\cdot 3$ and recursive formula $b_1 =
+    0.9\cdot 3$ and $b_n = 0.9\cdot b_{n-1}$.
+  \end{explanation}
+\end{example}
+
+
+Here is an example that is at the foundations of our number system:
+
+\begin{example}
+  Consider the number
+  \[
+  \frac{1}{3} = 0.3333333333\dots
+  \]
+  Let $p_1$ be the value of the digit to the right of the decimal
+  point. Let $p_2$ be the value of the next digit to the right, and so
+  on. Find formulas, both explicit and recursive, for $p_n$
+  \begin{explanation}
+    The first digit to the right of the decimal point is $3$ and its
+    value is $p_1 = 0.3$. The next digit has a value of $b_2 =
+    0.03$. The next digit has a value of $b_3 = 0.003$. To find the
+    value of each digit, we multiply the previous digit by
+    $\frac{1}{10}$. Hence this is a geometric sequence with explicit
+    formula $p_n = \left(\frac{1}{10}\right)^n\cdot 3$ and recursive
+    formula $p_1 =0.3$ and $p_n = \left(\frac{1}{10}\right)\cdot
+    p_{n-1}$.
+  \end{explanation}
+\end{example}
+
+
+Here is an example related to finances:
+\begin{example}
+  Suppose you have $93$ cents in your bank account and you earn
+  $2.25\%$ interest per year. Let $m_n$ be the amount of money in your
+  account after $n$ years. Find formulas, both explicit and recursive,
+  for $m_n$.
+  \begin{explanation}
+    After one year, your bank account has $m_1 = 1.0225\cdot 93$ cents
+    in it. To find the amount in each successive year, you multiply
+    again by $1.0225$. Hence this is a geometric sequence with
+    explicit formula $m_n = 1.0225^n\cdot 93$ and recursive formula
+    $m_1 =1.0225\cdot 93$ and $m_n = 1.0225\cdot m_{n-1}$.
+  \end{explanation}
+\end{example}
 
 
 \section{Unsolved mysteries}
 
+In this section we will discuss two open-problems in mathematics.
+
 \subsection{Perfect numbers}
 
+The notion of a perfect number is over two-thousand years old.
 
-\subsection{Collatz}
+\begin{definition}
+  A whole number $P$ is a \dfn{perfect number} if the sum of the
+  positive divisors less than $P$ is equal to $P$.
+\end{definition}
+The number $6$ is perfect, since the positive divisors less than $6$
+are $1$, $2$, and $3$; and $1+2+3 = 6$.  Here we list the first nine
+perfect numbers:
+\begin{align*}
+P_1 &= 6\\
+P_2 &= 28\\
+P_3 &= 496\\
+P_4 &= 8128\\
+P_5 &= 33550336\\
+P_6 &= 8589869056\\
+P_7 &= 137438691328\\
+P_8 &= 2305843008139952128\\
+P_9 &= 2658455991569831744654692615953842176
+\end{align*}
+For a complete list, see
+\url{http://en.wikipedia.org/wiki/List_of_perfect_numbers}.  Note,
+every number in the list above is even, hence we are lead to a question:
+
+
+\begin{question}
+  Are there any odd perfect numbers?
+  \begin{prompt}
+    \begin{multipleChoice}
+      \choice{yes}
+      \choice{no}
+      \choice[correct]{nobody knows}
+    \end{multipleChoice}
+  \end{prompt}
+\end{question}
+
+Nobody knows the answer to this question. In 2012, Ochem and Rao
+published the result that there are no odd perfect numbers less than
+$10^{1500}$. This is an \textbf{enormous} number, and it cannot be put
+in perspective. Consider this: It is estimated that the mass of the
+\textbf{universe} is less than $10^{61}$ kilograms, and $10^{1500}$ is
+unfathomably larger.
+
+\subsection{Collatz sequences}
 
 Here is a fun sequence with which to amuse your friends---or distract
 your enemies.  Let's start our sequence with $a_1 = 6$.  Subsequent
 terms are defined using the rule
-$$
-a_n = \begin{cases} a_{n-1} / 2 & \text{ if $a_{n-1}$ is even, and } \\
-3 \, a_{n-1} + 1 & \text{ if $a_{n-1}$ is odd.}
+\[
+a_n =
+\begin{cases}
+  a_{n-1} / 2 &\text{if $a_{n-1}$ is even,} \\
+  3a_{n-1} + 1 &\text{if $a_{n-1}$ is odd.}
 \end{cases}
-$$
+\]
 Let's compute $a_2$.  Since $a_1$ is even, we follow the instructions
 in the first line, to find that $a_2 = a_1/2 = 3$. To compute $a_3$,
 note that $a_2$ is odd so we follow the instruction in the second
@@ -622,7 +779,7 @@ and then it repeats ``4, 2, 1, 4, 2, 1, \ldots'' just like before.
 
 If you think you have an argument that answers the Collatz conjecture, I challenge you to try your hand at the $5x+1$ conjecture, that is, use the rule
 \[
-a_n = \displaystyle\begin{cases} a_{n-1} / 2 & \text{ if $a_{n-1}$ is even, and } \\
+a_n = \begin{cases} a_{n-1} / 2 & \text{ if $a_{n-1}$ is even, and } \\
 5 \, a_{n-1} + 1 & \text{ if $a_{n-1}$ is odd.}
 \end{cases}
 \]

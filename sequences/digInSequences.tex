@@ -369,11 +369,11 @@ is a definition.
   Here is an example of an arithmetic sequence:
   \begin{image}
   \begin{tikzpicture}[node distance=1.5cm]
-    \node (a1) {$10$,};
-    \node (a2) [right of=a1] {$14$,};
-    \node (a3) [right of=a2] {$18$,};
-    \node (a4) [right of=a3] {$22$,};
-    \node (a5) [right of=a4] {$26$,};
+    \node (a1) {$-5$,};
+    \node (a2) [right of=a1] {$-1$,};
+    \node (a3) [right of=a2] {$3$,};
+    \node (a4) [right of=a3] {$7$,};
+    \node (a5) [right of=a4] {$11$,};
     \node (a6) [right of=a5] {$\ldots$};
 
     \path[->] (a1) edge [bend left=20] node[above]{$+4$} (a2);
@@ -383,8 +383,8 @@ is a definition.
     \path[->] (a5) edge [bend left=20] node[above]{$+4$} (a6);
   \end{tikzpicture}
   \end{image}
-  This sequence is given by the function $a_n=\answer[given]{4n+6}$,
-  or the recursive rule $a_1 = \answer[given]{10}$ and $a_{i+1} = a_i
+  This sequence is given by the function $a_n=\answer[given]{4n-9}$,
+  or the recursive rule $a_1 = \answer[given]{-5}$ and $a_{i+1} = a_i
   + \answer[given]{4}$. Each term differs from the previous by four.
 \end{example}
 
@@ -447,11 +447,17 @@ to be $\frac{a+b}{2}$.
 \end{question}
 
 
+\subsection{Arithmetic sequences in the wild}
+
+
+BADBAD HERE!!!!
+
 
 \section{Geometric sequences}
 
 
-The second family we consider are ``geometric'' sequences.
+The second family of sequences we consider are ``geometric''
+sequences.
 
 \begin{definition}
   A \dfn{geometric sequence} (sometimes called a geometric
@@ -459,13 +465,11 @@ The second family we consider are ``geometric'' sequences.
   ratio between subsequent elements is constant.
 \end{definition}
 
-
-
 \begin{example}
   Here is an example of a geometric sequence:
   \begin{image}
     \begin{tikzpicture}[node distance=1.5cm]
-    \node (a1) {$10,$};
+    \node (a1) {$10$,};
     \node (a2) [right of=a1] {$30$,};
     \node (a3) [right of=a2] {$90$,};
     \node (a4) [right of=a3] {$270$,};
@@ -479,25 +483,45 @@ The second family we consider are ``geometric'' sequences.
     \path[->] (a5) edge [bend left=20] node[above] {$\times 3$} (a6);
   \end{tikzpicture}
   \end{image}
-  This sequence is given by the function $a_n=\answer[given]{-2n + 19}$, or
-  the recursive rule $a_1 = \answer[given]{17}$ and $a_{i+1} = a_i +
-  \answer[given]{(-2)}$. Each term differs from the previous by negative
-  two.
+  This sequence is given by the function $a_n=\answer[given]{10\cdot
+    3^{n-1}}$, or the recursive rule $a_1 = \answer[given]{10}$ and
+  $a_{i+1} = \answer[given]{3}\cdot a_i$. Each term differs from the
+  previous by a multiple of three.
 \end{example}
+
+A geometric sequence can also decrease as it progresses.
+
 \begin{example}
-  An example of a geometric sequence is the sequence $(a_n)$ starting
-  $$
-  a_1 = 10, \quad a_2 = 30, \quad a_3 = 90, \quad a_4 = 270, \quad\ldots
-  $$
-  and given by the rule $a_n = 10 \cdot 3^{n-1}$.  Each term is three
-  times the preceding term.
+  Here is an example of a geometric sequence:
+  \begin{image}
+    \begin{tikzpicture}[node distance=1.5cm]
+    \node (a1) {$\frac{7}{5}$,};
+    \node (a2) [right of=a1] {$\frac{7}{10}$,};
+    \node (a3) [right of=a2] {$\frac{7}{20}$,};
+    \node (a4) [right of=a3] {$\frac{7}{40}$,};
+    \node (a5) [right of=a4] {$\frac{7}{80}$,};
+    \node (a6) [right of=a5] {$\ldots$};
+
+    \path[->] (a1) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a2);
+    \path[->] (a2) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a3);
+    \path[->] (a3) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a4);
+    \path[->] (a4) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a5);
+    \path[->] (a5) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a6);
+  \end{tikzpicture}
+  \end{image}
+  This sequence is given by the function $a_n=\answer[given]{\left(\frac{7}{5}\right)\cdot
+    \left(\frac{1}{2}\right)^{n-1}}$, or the recursive rule $a_1 = \answer[given]{\frac{7}{5}}$ and
+  $a_{i+1} = \answer[given]{\left(\frac{1}{2}\right)}\cdot a_i$. Each term differs from the
+  previous by a multiple of one-half.
 \end{example}
+
+
 
 In general, a geometric sequence in which the ratio between
 subsequent terms is $r$ can be written as
-$$
+\[
 a_n = a_1 \cdot r^{n-1}.
-$$
+\]
 Alternatively, we could describe a geometric sequence
 recursively, by giving a starting value $a_1$, and using the rule that
 $a_{n} = r \cdot a_{n-1}$.
@@ -515,45 +539,10 @@ length of a square whose area is equal to that of the rectangle having
 side lengths $a$ and $b$.
 \end{remark}
 
-A geometric sequence needn't be increasing.  For instance, in the following geometric sequence
-$$
-\frac{7}{5}, \quad \frac{7}{10}, \quad \frac{7}{20}, \quad \frac{7}{40}, \quad \frac{7}{80}, \quad \frac{7}{160}, \quad\ldots
-$$
-the ratio between subsequent terms is one half, and each term is smaller than the previous.
 
-\begin{question}
-  Which of the following could be the initial terms of a geometric sequence?
-              
-    \begin{hint}
-      In a geometric sequence, there is a common ratio between any two neighboring terms.
-    \end{hint}
-    \begin{hint}
-      For instance, the ratio between $-64$ and $16$ is $-4$.
-    \end{hint}
-    \begin{hint}
-      Can $1,  -4,  16,  -48,  192,  -768 $ be the beginning of a geometric sequence?  No, because the ratio between most of those terms is $-4$, but $16$ and $-48$ break the pattern: the ratio $\displaystyle\displaystyle\frac{-48}{16}$ is -3, not -4.
-    \end{hint}
-    \begin{hint}
-      Can $1,  -4,  16,  -64,  320,  -1280 $ be the beginning of a geometric sequence?  No, because the ratio between most of those terms is $-4$, but $-64$ and $320$ break the pattern: the ratio $\displaystyle\displaystyle\frac{320}{-64}$ is -5, not -4.
-    \end{hint}
-    \begin{hint}
-      Can $1,  -4,  16,  -64,  256,  -1280 $ be the beginning of a geometric sequence?  No, because the ratio between most of those terms is $-4$, but $256$ and $-1280$ break the pattern: the ratio $\displaystyle\displaystyle\frac{-1280}{256}$ is -5, not -4.
-    \end{hint}
-    \begin{hint}
-      Can $1,  -4,  16,  -64,  256,  -1024 $ be the beginning of a geometric sequence?  Yes, because the ratio between each neighboring pair of terms is $-4$.  For example, 
-      $\displaystyle\displaystyle\frac{16}{-4} = \displaystyle\displaystyle\frac{-64}{16} = \displaystyle\displaystyle\frac{256}{-64} = -4$.
-    \end{hint}
-
-    \begin{multipleChoice}
-      \choice[correct]{$1,\quad -4,\quad 16,\quad -64,\quad 256,\quad -1024,\quad\ldots $}
-      \choice{$1,\quad -5,\quad 20,\quad -80,\quad 320,\quad -1280,\quad\ldots $}
-      \choice{$1,\quad -4,\quad 20,\quad -80,\quad 320,\quad -1280,\quad\ldots $}
-      \choice{$1,\quad -4,\quad 16,\quad -48,\quad 192,\quad -768,\quad\ldots $}
-      \choice{$1,\quad -4,\quad 16,\quad -64,\quad 320,\quad -1280,\quad\ldots $}
-    \end{multipleChoice}
+\subsection{Geometric sequences in the wild}
 
 
-\end{question}
 
 
 \section{Unsolved mysteries}

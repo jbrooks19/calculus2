@@ -1,150 +1,159 @@
 \documentclass{ximera}
 
-\title{Limits}
+\input{../preamble.tex}
 
-\newcommand{\defnword}[1]{\textbf{#1}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\nth}{\mbox{th}}
-\renewcommand{\index}[1]{}
+\outcome{Recognize sequences as functions.}
+\outcome{Know terminology for sequences.}
+\outcome{Understand growth rates of basic sequences.}
+\outcome{Apply the monotone convergence theorem.}
+\outcome{Compute limits of sequences.}
+\outcome{Graph sequences.}
+
+\title[Dig-In:]{Sequences as functions}
 
 \begin{document}
-
 \begin{abstract}
-  Limits address the question ``What happens after a while?''
+  A function from positive integers to the real numbers is a sequence.
 \end{abstract}
-
 \maketitle
 
-START WITH FXN
-
 Let's summarize the preceding discussion in the following definition.
-\begin{definition}\index{sequence} A \dfn{sequence}
-  $(a_n)$ is, formally speaking, a real-valued function with domain
+\begin{definition}
+  A \dfn{sequence} $(a_n)$ is, formally speaking, a real-valued
+  function with domain
   \[
-  \{ n \in \Z : n \geq N \},\quad \mbox{for some integer $N$.}
+  \{ n \in \Z : n \geq N \},\quad \text{for some integer $N$}
   \]
-  Stated more humbly, a sequence assigns a real number to the
-  integers starting with an index $N$.
-
-  The ``outputs'' of a sequence are the \dfn{terms} of the
-  sequence; the ``$n^{th}$ term'' is the real number that the
-  sequence associates to the natural number $n$, and is usually
-  written $a_n$. \index{sequence!term} The $n$ in the phrase
-  ``$n^{th}$ term'' is called an
-  \dfn{index}\index{sequence!index}; the plural of index is
-  either indices or indexes, depending on who you ask.  The first
-  index $N$ is called the \dfn{initial index}
+  where $\Z = \{\dots, -5,-4,-3,-2,-1,0,1,2,3,4,5,\dots,\}$ is the set
+  of \dfn{integers}.
 \end{definition}
 
+Stated more humbly, a sequence assigns a real number to the integers
+starting with an index $N$.
 
+\begin{example}
+  EXAMPLE OF SEQ WITH INTGER DOMAIN
+\end{example}
 
+When thought of as a function, the ``outputs'' of a sequence are the
+\dfn{elements} of the sequence; the ``$n$th element'' is the real
+number that the sequence associates to the natural number $n$, and is
+usually written $a_n$. \index{sequence!element} The $n$ in the phrase
+``$n$th element'' is called an \dfn{index}\index{sequence!index}; the
+plural of index is either indices or indexes, depending on who you
+ask.  The first index $N$ is called the \dfn{initial index}.
 
 
 We've seen a lot of sequences, and already there are a few things we
 might notice.  For instance, the arithmetic progression
-$$
+\[
 1,\quad 8,\quad 15,\quad 22,\quad 29,\quad 36,\quad 43,\quad 50,\quad 57,\quad 64,\quad 71,\quad 78,\quad 85,\quad 92,\quad \ldots
-$$
+\]
 just keeps getting bigger and bigger.  No matter how large a number
 you think of, if I add enough $7$'s to $1$, eventually I will surpass
-the giant number you thought of.  On the other hand, the terms in a geometric progression where each term is half the previous term, namely
-$$
+the giant number you thought of.  On the other hand, the elements in a
+geometric progression where each element is half the previous element,
+namely
+\[
 \frac{1}{2},\quad \frac{1}{4},\quad \frac{1}{8},\quad \frac{1}{16},\quad \frac{1}{32},\quad \frac{1}{64},\quad \frac{1}{128},\quad \frac{1}{256},\quad \frac{1}{512},\quad \frac{1}{1024},\quad \ldots ,
-$$
+\]
 are getting closer and closer to zero.  No matter how close you stand
-near but not at zero, eventually this geometric sequence gets even closer than you
-are to zero.
+near but not at zero, eventually this geometric sequence gets even
+closer than you are to zero.
 
-\youtube{https://www.youtube.com/watch?v=PRTjvMA2nCY}
+%\youtube{https://www.youtube.com/watch?v=PRTjvMA2nCY}
 
 These two sequences have very different stories.  One shoots off to
 infinity; the other zooms in towards zero.  Mathematics is not just
 about numbers; mathematics provides tools for talking about the
 qualitative features of the numbers we deal with.  What about the two
-sequences we just considered?  They are qualitatively very different.  The first ``goes to''
-infinity; the second ``goes to'' zero.
+sequences we just considered?  They are qualitatively very different.
+The first ``goes to'' infinity; the second ``goes to'' zero.
 
 In short, given a sequence, it is helpful to be able to say something
 qualitative about it; we may want to address the question such as
 ``what happens after a while?'' Formally, when faced with a sequence,
 we are interested in the limit
-$$\lim_{i\to \infty} f(i) = \lim_{i\to\infty} a_i.$$
-In Calculus One, we studied a similar question about
-$$\lim_{x\to\infty} f(x)$$
-when $x$ is a variable taking on real values; now, in Calculus Two, we
-simply want to restrict the ``input'' values to be integers. No
-significant difference is required in the definition of limit, except
-that we specify, perhaps implicitly, that the variable is an integer.
+\[
+\lim_{i\to \infty} f(i) = \lim_{i\to\infty} a_i.
+\]
+Earlier you've studied a similar question about
+\[
+\lim_{x\to\infty} f(x)
+\]
+when $x$ is a variable taking on real values; now, we simply want to
+restrict the ``input'' values to be integers. No significant
+difference is required in the definition of limit, except that we
+specify, perhaps implicitly, that the variable is an integer.
 
-\begin{definition} \relax\index{limit of a sequence}
+\begin{definition}\index{limit of a sequence}
 \label{definition:limit-of-a-sequence}
 Suppose that $\left(a_n\right)$ is a sequence.
-To say that $\displaystyle\lim_{n\to \infty}a_n=L$ is to say that \\
+To say that $\lim_{n\to \infty}a_n=L$ is to say that \\
 \null\quad for every $\epsilon>0$, \\
 \null\quad\quad there is an $N > 0$, \\
 \null\quad so that whenever $n>N$, \\
 \null\quad\quad we have $|a_n-L|<\epsilon$. \\
 If $\displaystyle\lim_{n\to\infty}a_n=L$ we say that the sequence
-\defnword{converges}\index{convergent
+\dfn{converges}\index{convergent
   sequence}\index{sequence!convergent}.  If there is no finite value $L$ so
 that $\displaystyle\lim_{n\to\infty}a_n = L$, then we say that the limit
-\defnword{does not exist}, or equivalently that the sequence
-\defnword{diverges}\index{divergent sequence}\index{sequence!divergent}.
+\dfn{does not exist}, or equivalently that the sequence
+\dfn{diverges}\index{divergent sequence}\index{sequence!divergent}.
 \end{definition} 
 
 \begin{question}
-  To say that the sequence \(a_n\) converges to \(L\) means what?  In other words, what is the definition of the statement \(\displaystyle\lim_{n \to \infty} a_n = L\)?
+  To say that the sequence $a_n$ converges to $L$ means what?  In other words, what is the definition of the statement $\displaystyle\lim_{n \to \infty} a_n = L$?
 
     \begin{hint}
-      We are trying to make precise the idea that, eventually, all the terms of the sequence \(a_n\) are as close as we want to \(L\).
+      We are trying to make precise the idea that, eventually, all the elements of the sequence $a_n$ are as close as we want to $L$.
     \end{hint}
     \begin{hint}
-      To measure closeness to \(L\), we will use a positive real number \(\epsilon\).
+      To measure closeness to $L$, we will use a positive real number $\epsilon$.
     \end{hint}
     \begin{hint}
-      We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number \(\epsilon\).
+      We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number $\epsilon$.
     \end{hint}
     \begin{hint}
-      In other words, the definition will begin ``For every positive real number \(\epsilon > 0\)\ldots''
+      In other words, the definition will begin ``For every positive real number $\epsilon > 0$\ldots''
     \end{hint}
     \begin{hint}
       We now must make precise the idea of ``eventually'' close.
     \end{hint}
     \begin{hint}
-      We use a whole number \(N\) to capture the idea of ``sufficiently large'' values of \(n\).
+      We use a whole number $N$ to capture the idea of ``sufficiently large'' values of $n$.
     \end{hint}
     \begin{hint}
-      Specifically, the definition will begin ``For every positive real number \(\epsilon > 0\), there exists an \(N \in \mathbb{N}\)\ldots''
+      Specifically, the definition will begin ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$\ldots''
     \end{hint}
     \begin{hint}
-      The ``sufficiently large'' value of \(n\) is any value which is at least as large as \(N\).
+      The ``sufficiently large'' value of $n$ is any value which is at least as large as $N$.
     \end{hint}
     \begin{hint}
-      So we will only consider those \(n\) for which \(n \geq N\).
+      So we will only consider those $n$ for which $n \geq N$.
     \end{hint}
     \begin{hint}
-      Thus the definition goes ``For every positive real number \(\epsilon > 0\), there exists an \(N \in \mathbb{N}\) so that whenever \(n \geq N\)\ldots''
+      Thus the definition goes ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$\ldots''
     \end{hint}
     \begin{hint}
-      What happens ``eventually'' is that terms of the sequence are close to \(L\).  How close?  Within \(\epsilon\).
+      What happens ``eventually'' is that elements of the sequence are close to $L$.  How close?  Within $\epsilon$.
     \end{hint}
     \begin{hint}
-      The quantity \(|a_n - L|\) is the distance between \(a_n\) and \(L\).
+      The quantity $|a_n - L|$ is the distance between $a_n$ and $L$.
     \end{hint}
     \begin{hint}
-      To say that \(a_n\) is within \(\epsilon\) of \(L\) is to say that \(|a_n - L| < \epsilon\).
+      To say that $a_n$ is within $\epsilon$ of $L$ is to say that $|a_n - L| < \epsilon$.
     \end{hint}
     \begin{hint}
-      Therefore the definition is ``For every positive real number \(\epsilon > 0\) there exists an \(N \in \mathbb{N}\) so that whenever \(n \geq N\), we have \( |a_n - L| < \epsilon \).''
+      Therefore the definition is ``For every positive real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.''
     \end{hint}
 
     \begin{multipleChoice}
-      \choice[correct]{For every positive real number \(\epsilon > 0\) there exists an \(N \in \mathbb{N}\) so that whenever \(n \geq N\), we have \( |a_n - L| < \epsilon \).}
-      \choice{For every real number \(\epsilon > 0\) there exists an \(N \in \mathbb{N}\) so that \( |a_N - L| < \epsilon \).}
-      \choice{For every real number \(\epsilon \in \mathbb{R}\) there exists an \(N \in \mathbb{N}\) so that whenever \(n \geq N\), we have \( |a_n - L| < \epsilon \).}
-      \choice{For every whole number \(N > 0\) there exists a positive real number \(\epsilon > 0\) so that whenever \(n \geq N\), we have \( |a_n - L| < \epsilon \).}
-      \choice{For every whole number \(N > 0\) there exists a real number \(\epsilon \in \mathbb{R}\) so that whenever \(n \geq N\), we have \( |a_n - L| < \epsilon \).}
+      \choice[correct]{For every positive real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
+      \choice{For every real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that $ |a_N - L| < \epsilon $.}
+      \choice{For every real number $\epsilon \in \mathbb{R}$ there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
+      \choice{For every whole number $N > 0$ there exists a positive real number $\epsilon > 0$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
+      \choice{For every whole number $N > 0$ there exists a real number $\epsilon \in \mathbb{R}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
     \end{multipleChoice}
               
 
@@ -177,7 +186,7 @@ a function.
 Since $\displaystyle\lim_{x\to\infty}(1/x)=0$, it is
 clear that also $\displaystyle\lim_{n\to\infty}(1/n)=0$; in other words, the sequence of numbers
 $${1\over1},\quad {1\over2},\quad {1\over3},\quad {1\over4},\quad {1\over5},\quad {1\over6},\quad \ldots$$
-get closer and closer to 0, or more precisely, as close as you want to get to zero, after a while, all the terms in the sequence are that close.
+get closer and closer to 0, or more precisely, as close as you want to get to zero, after a while, all the elements in the sequence are that close.
 
 More precisely, no matter what $\epsilon > 0$ we pick, we can find an
 $N$ big enough so that, whenever $n > N$, we have that $1/n$ is within
@@ -190,36 +199,36 @@ $0 < 1/n < 0.17$.
 \youtube{https://www.youtube.com/watch?v=lCW8BBBQRyc}
 
 \begin{question}
-  Consider the sequence given by the rule \[b_{n} = \displaystyle\displaystyle\frac{ 3 \, n + 9 }{ 4 \, n + 20 }.\]  For which value of \(N\) is it the case that whenever \(n \geq N\) we have that \(b_{n}\) is within \(1/50\) of \(3/4\)?
+  Consider the sequence given by the rule \[b_{n} = \displaystyle\displaystyle\frac{ 3 \, n + 9 }{ 4 \, n + 20 }.\]  For which value of $N$ is it the case that whenever $n \geq N$ we have that $b_{n}$ is within $1/50$ of $3/4$?
 
     \begin{hint}
       There can only be one right answer.
     \end{hint}
     \begin{hint}
-      So the answer is either \(N = 69\) or ``none of these.''
+      So the answer is either $N = 69$ or ``none of these.''
     \end{hint}
     \begin{hint}
-      Note that \(b_{69} = \displaystyle\frac{27}{37}\).
+      Note that $b_{69} = \displaystyle\frac{27}{37}$.
     \end{hint}
     \begin{hint}
-      Consequently, \(\left| b_{69} - \displaystyle \displaystyle\frac{3}{4} \right| = \displaystyle\frac{3}{148} \geq \displaystyle\frac{1}{50}\).
+      Consequently, $\left| b_{69} - \displaystyle \displaystyle\frac{3}{4} \right| = \displaystyle\frac{3}{148} \geq \displaystyle\frac{1}{50}$.
     \end{hint}
     \begin{hint}
       So the answer must be ``none of these.''
     \end{hint}
 
     \begin{multipleChoice}
-      \choice[correct]{None of these choices for \(N\) is large enough.}
-      \choice{\(N = 69 \)}
-      \choice{\(N = 67 \)}
-      \choice{\(N = 65 \)}
-      \choice{\(N = 63 \)}
+      \choice[correct]{None of these choices for $N$ is large enough.}
+      \choice{$N = 69 $}
+      \choice{$N = 67 $}
+      \choice{$N = 65 $}
+      \choice{$N = 63 $}
     \end{multipleChoice}
 
 \end{question}
 
 But it is important to note that the converse of this theorem is not
-true; \label{sidenote:raining-converse}the \defnword{converse} of a
+true; \label{sidenote:raining-converse}the \dfn{converse} of a
 statement is what you get when you swap the assumption and the
 conclusion; the converse of ``if it is raining, then it is cloudy'' is
 the statement ``if it is cloudy, then it is raining.''  Which of those
@@ -228,7 +237,7 @@ statements is true?.
 To show the converse is not true, it is enough to provide a single
 example where it fails.  Here's the counterexample.  Recall an
 instance of (a potential) general rule being broken is called a
-\defnword{counterexample}.  This is a popular term among
+\dfn{counterexample}.  This is a popular element among
 mathematicians and philosophers.
 
 \begin{example}
@@ -257,17 +266,17 @@ exists---you'll just have to figure out another way to compute it.
 \section{New from old}
 
 Given a sequence, one way to build a new sequence is to start with the
-old sequence, but then throw away a whole bunch of terms.  For
+old sequence, but then throw away a whole bunch of elements.  For
 instance, if we started with the sequence of perfect squares
 $$
 1,\quad 4,\quad 9,\quad 16,\quad 25,\quad 36,\quad 49,\quad 64,\quad 81,\quad\ldots
 $$
-we could throw away all the odd-indexed terms, and be left with
+we could throw away all the odd-indexed elements, and be left with
 $$
 4,\quad 16,\quad 36,\quad 64,\quad 100,\quad 144,\quad 196,\quad 256,\quad 324,\quad 400,\quad 484,\quad\ldots
 $$
 We say that this latter sequence is a
-\defnword{subsequence}\index{sequence!subsequence}\index{subsequence}
+\dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
 of the original sequence.  Here is a precise definition.
 
 \begin{definition}
@@ -275,20 +284,20 @@ of the original sequence.  Here is a precise definition.
   $$
   N \leq n_1 < n_2 < n_3 < n_4 < n_5 < \cdots 
   $$
-  Then the sequence $(b_i)$ given by $b_i = a_{n_i}$ is said to be a \defnword{subsequence}\index{sequence!subsequence}\index{subsequence}
+  Then the sequence $(b_i)$ given by $b_i = a_{n_i}$ is said to be a \dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
   of the sequence $a_n$.
 \end{definition}
 
 \youtube{http://www.youtube.com/watch?v=OYRRFRzf12o}
 
 Limits are telling the story of ``what happens'' to a sequence.  If
-the terms of a sequence can be made as close as desired to a limiting
+the elements of a sequence can be made as close as desired to a limiting
 value $L$, then the subsequence must share that same fate.
 
 \begin{theorem}
   \label{theorem:subsequence-same-limit}
   If $(b_i)$ is a subsequence of the convergent sequence $(a_n)$, then
-  $\ds\lim_{i \to \infty} b_i = \ds\lim_{n \to \infty} a_n$.
+  $\lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n$.
 \end{theorem}
 
 Of course, just because a subsequence converges does not mean that the
@@ -299,17 +308,17 @@ but we'll discuss it briefly now.
 Find a convergent subsequence of the sequence $(a_n)$ given by the rule $a_n = (-1)^n$.
 \end{example}
 
-\begin{solution}
+\begin{explanation}
 Note that the sequence $(a_n)$ does not converge.  But by considering the sequence of indexes $n_i = 2 \cdot i$, we can build a subsequence
 $$
 b_i = a_{n_i} = a_{2i} = (-1)^{2i} = 1,
 $$
 which is a constant sequence, so it converges to 1.
-\end{solution}
+\end{explanation}
 
 There are other subsequences of $a_n = (-1)^n$ which converge but do
 \textit{not} converge to one.  For instance, the subsequence of odd
-indexed terms is the constant sequence $c_n = -1$, which converges to
+indexed elements is the constant sequence $c_n = -1$, which converges to
 $-1$.  For that matter, the fact that there are convergent
 subsequences with distinct limits perhaps explains why the original
 sequence $(a_n)$ does not converge.  Let's formalize this.
@@ -319,24 +328,25 @@ sequence $(a_n)$ does not converge.  Let's formalize this.
 
   Suppose $(b_i)$ and $(c_i)$ are convergent subsequences of the sequence $(a_n)$, but
   $$
-  \ds\lim_{i \to \infty} b_i \neq \ds\lim_{i \to \infty} c_i.
+  \lim_{i \to \infty} b_i \neq \lim_{i \to \infty} c_i.
   $$
   Then the sequence $(a_n)$ does not converge.
 \end{corollary}
 
 \begin{proof}
-  Suppose, on the contrary, the sequence $(a_n)$ did converge.  Then
-  by Theorem~\xrefn{theorem:subsequence-same-limit}, the subsequence
+  Suppose, on the contrary, the sequence $(a_n)$ did converge.  Then,
+  since all subsequences approach the same limit, the subsequence
   $(b_i)$ would converge, too, and
   $$
-  \ds\lim_{i \to \infty} b_i = \ds\lim_{n \to \infty} a_n.
+  \lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n.
   $$
-  Again by Theorem~\xrefn{theorem:subsequence-same-limit}, the subsequence
+  Again %by Theorem~\xrefn{theorem:subsequence-same-limit},
+  the subsequence
   $(c_i)$ would converge, too, and
   $$
-  \ds\lim_{i \to \infty} c_i = \ds\lim_{n \to \infty} a_n.
+  \lim_{i \to \infty} c_i = \lim_{n \to \infty} a_n.
   $$
-  But then $\ds\lim_{i \to \infty} b_i = \ds\lim_{i \to \infty} c_i$,
+  But then $\lim_{i \to \infty} b_i = \lim_{i \to \infty} c_i$,
   which is exactly what we are supposing doesn't happen!  To avoid
   this contradiction, it must be that our original assumption that
   $(a_n)$ converged was incorrect; in short, the sequence $(a_n)$ does
@@ -356,18 +366,15 @@ sequences.  Here is some of that terminology.
 probably hope that sequence is an increasing sequence!)
 
 \begin{definition}
-  A sequence is called
-  \defnword{increasing}\index{sequence!increasing} (or sometimes
-  \defnword{strictly increasing}) if $\ds a_n<a_{n+1}$ for all $n$.
-  It is called {\dfont
-    non-decreasing\index{sequence!non-decreasing}\/} if $\ds a_n\le
-  a_{n+1}$ for all $n$.
+  A sequence is called \dfn{increasing}\index{sequence!increasing} (or
+  sometimes \dfn{strictly increasing}) if $ a_n<a_{n+1}$ for all $n$.
+  It is called \dfn{nondecreasing}\index{sequence!nondecreasing} if $
+  a_n\le a_{n+1}$ for all $n$.
 
-  Similarly a sequence is {\dfont
-    decreasing\index{sequence!decreasing}\/} (or, by some people,
-  \defnword{strictly decreasing}) if $\ds a_n>a_{n+1}$ for all $n$ and
-  {\dfont non-increasing\index{sequence!non-increasing}\/} if $\ds
-  a_n\ge a_{n+1}$ for all $n$.
+  Similarly a sequence is \dfn{decreasing}\index{sequence!decreasing}
+  (or, by some people, \dfn{strictly decreasing}) if $ a_n>a_{n+1}$
+  for all $n$ and \dfn{nonincreasing}\index{sequence!nonincreasing} if
+  $ a_n\ge a_{n+1}$ for all $n$.
 \end{definition}
 To make matters worse, the people who insist on saying ``strictly
 increasing'' may---much to everybody's confusion---insist on calling a
@@ -380,20 +387,19 @@ either increasing or decreasing; to talk about this situation without
 constantly saying ``either increasing or decreasing,'' we can make up
 a single word to cover both cases.
 \begin{definition}
-  If a sequence is increasing, non-decreasing, decreasing, or
-  non-increasing, it is said to be {\dfont
-    monotonic\index{sequence!monotonic}\/}.
+  If a sequence is increasing, nondecreasing, decreasing, or
+  nonincreasing, it is said to be \dfn{monotonic}\index{sequence!monotonic}.
 \end{definition}
 
 \youtube{https://www.youtube.com/watch?v=FMaKP0hmytU}
 
 Let's see some examples of sequences which are monotonic.
 \begin{example}
-The sequence $\ds a_n = {2^n-1\over2^n}$ which starts
+The sequence $ a_n = {2^n-1\over2^n}$ which starts
 $$
   {1\over2},\quad {3\over4},\quad {7\over8},\quad {15\over16},\quad \ldots,
 $$
-is increasing.  On the other hand, the sequence $\ds b_n = {n+1\over n}$, which starts
+is increasing.  On the other hand, the sequence $ b_n = {n+1\over n}$, which starts
 $$ 
   {2\over1},\quad{3\over2},\quad{4\over3},\quad{5\over4},\quad\ldots,
 $$
@@ -410,28 +416,28 @@ is decreasing.
       Looking at available choices, mostly these sequences are increasing.
     \end{hint}
     \begin{hint}
-      For example, \(12 < 13\).
+      For example, $12 < 13$.
     \end{hint}
     \begin{hint}
-      Can \(5,  11,  16,  12,  18,  22 \) be the beginning of a monotonic sequence?  No, because mostly these terms are increasing, but \(16\) and \(12\) break the pattern.
+      Can $5,  11,  16,  12,  18,  22 $ be the beginning of a monotonic sequence?  No, because mostly these terms are increasing, but $16$ and $12$ break the pattern.
     \end{hint}
     \begin{hint}
-      Can \(5,  11,  16,  22,  16,  22 \) be the beginning of a monotonic sequence?  No, because mostly these terms are increasing, but \(22\) and \(16\) break the pattern.
+      Can $5,  11,  16,  22,  16,  22 $ be the beginning of a monotonic sequence?  No, because mostly these terms are increasing, but $22$ and $16$ break the pattern.
     \end{hint}
     \begin{hint}
-      Can \(5,  6,  10,  12,  15,  10 \) be the beginning of a monotonic sequence?  No, because mostly these terms are increasing, but \(15\) and \(10\) break the pattern.
+      Can $5,  6,  10,  12,  15,  10 $ be the beginning of a monotonic sequence?  No, because mostly these terms are increasing, but $15$ and $10$ break the pattern.
     \end{hint}
     \begin{hint}
-      Can \(5,  11,  12,  13,  15,  16 \) possibly be the beginning of a monotonic sequence?  Yes, because this portion of the sequence is increasing, so it is possible that the rest of sequence continues that pattern.
+      Can $5,  11,  12,  13,  15,  16 $ possibly be the beginning of a monotonic sequence?  Yes, because this portion of the sequence is increasing, so it is possible that the rest of sequence continues that pattern.
     \end{hint}
 
 
     \begin{multipleChoice}
-      \choice[correct]{\(5,\quad 11,\quad 12,\quad 13,\quad 15,\quad 16,\quad\ldots \)}
-      \choice{\(5,\quad 3,\quad 6,\quad 8,\quad 12,\quad 15,\quad\ldots \)}
-      \choice{\(5,\quad 10,\quad 4,\quad 10,\quad 15,\quad 19,\quad\ldots \)}
-      \choice{\(5,\quad 11,\quad 16,\quad 12,\quad 18,\quad 22,\quad\ldots \)}
-      \choice{\(5,\quad 11,\quad 16,\quad 22,\quad 16,\quad 22,\quad\ldots \)}
+      \choice[correct]{$5,\quad 11,\quad 12,\quad 13,\quad 15,\quad 16,\quad\ldots $}
+      \choice{$5,\quad 3,\quad 6,\quad 8,\quad 12,\quad 15,\quad\ldots $}
+      \choice{$5,\quad 10,\quad 4,\quad 10,\quad 15,\quad 19,\quad\ldots $}
+      \choice{$5,\quad 11,\quad 16,\quad 12,\quad 18,\quad 22,\quad\ldots $}
+      \choice{$5,\quad 11,\quad 16,\quad 22,\quad 16,\quad 22,\quad\ldots $}
       
     \end{multipleChoice}
     
@@ -445,76 +451,76 @@ small.
 
 \begin{definition}
   \label{definition:sequence-bounded}
-  A sequence $(a_n)$ is \defnword{bounded
-    above}\index{sequence!bounded above} if there is some number
-$M$ so that for all $n$, we have $\ds a_n\le M$.  Likewise, a sequence
-$(a_n)$ is {\dfont bounded below\index{sequence!bounded below}\/} if
-there is some number $M$ so that for every $n$, we have $\ds a_n\ge M$.
+  A sequence $(a_n)$ is \dfn{bounded above}\index{sequence!bounded
+    above} if there is some number $M$ so that for all $n$, we have $
+  a_n\le M$.  Likewise, a sequence $(a_n)$ is \dfn{bounded
+    below}\index{sequence!bounded below} if there is some number $M$
+  so that for every $n$, we have $ a_n\ge M$.
 
 If a sequence is both bounded above and bounded below, the sequence is said
-to be {\dfont bounded\index{sequence!bounded}\/}.
+to be \dfn{bounded}\index{sequence!bounded}.
 \end{definition}
 
 \youtube{https://www.youtube.com/watch?v=FC4TCSk-O24}
 
 \begin{question}
-  To say that the sequence \(a_n\) is ``bounded below'' is to say what?
+  To say that the sequence $a_n$ is ``bounded below'' is to say what?
 
     \begin{hint}
-      The definition begins by asserting the existence of some bound \(M\).
+      The definition begins by asserting the existence of some bound $M$.
     \end{hint}
     \begin{hint}
-      The bound is a real number, meaning \(M \in \mathbb{R}\).
+      The bound is a real number, meaning $M \in \mathbb{R}$.
     \end{hint}
     \begin{hint}
-      So the definition begins ``there exists an \(M \in \mathbb{R}\)\ldots''
+      So the definition begins ``there exists an $M \in \mathbb{R}$\ldots''
     \end{hint}
     \begin{hint}
       The bound must hold for all terms in the sequence.
     \end{hint}
     \begin{hint}
-      So we will assert something for all indexes \(n \in \mathbb{N}\).
+      So we will assert something for all indexes $n \in \mathbb{N}$.
     \end{hint}
     \begin{hint}
-      The definition begins ``there exists an \(M \in \mathbb{R}\), so that for all \(n \in \mathbb{N}\), \ldots''
+      The definition begins ``there exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, \ldots''
     \end{hint}
     \begin{hint}
-      For a particular term \(a_n\) to be bounded below by \(M\) just means that \(a_n \geq M\).
+      For a particular term $a_n$ to be bounded below by $M$ just means that $a_n \geq M$.
     \end{hint}
     \begin{hint}
-      Altogether then, being bounded below means ``there exists an \(M \in \mathbb{R}\), so that for all \(n \in \mathbb{N}\), we have \(a_n \geq M\).''  Sometimes you might see this ending with \( a_n > M \), but that is a difference which does not affect which sequences are bounded below.
+      Altogether then, being bounded below means ``there exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \geq M$.''  Sometimes you might see this ending with $ a_n > M $, but that is a difference which does not affect which sequences are bounded below.
       
     \end{hint}
     
     \begin{multipleChoice}
-      \choice[correct]{There exists an \(M \in \mathbb{R}\), so that for all \(n \in \mathbb{N}\), we have \(a_n \geq M\).}
-      \choice{There exists an \(n \in \mathbb{N}\), so that for all \(M \in \mathbb{R}\), we have \(a_n \geq M\).}
-      \choice{For all \(M \in \mathbb{R}\), there exists an \(n \in \mathbb{N}\), so that \(a_n \geq M\).}
-      \choice{For all \(n \in \mathbb{N}\), there exists an \(M \in \mathbb{R}\), so that \(a_n \geq M\).}
-      \choice{There exists an \(M \in \mathbb{R}\), so that for all \(n \in \mathbb{N}\), we have \(a_n \leq M\).}
+      \choice[correct]{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \geq M$.}
+      \choice{There exists an $n \in \mathbb{N}$, so that for all $M \in \mathbb{R}$, we have $a_n \geq M$.}
+      \choice{For all $M \in \mathbb{R}$, there exists an $n \in \mathbb{N}$, so that $a_n \geq M$.}
+      \choice{For all $n \in \mathbb{N}$, there exists an $M \in \mathbb{R}$, so that $a_n \geq M$.}
+      \choice{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \leq M$.}
     \end{multipleChoice}
 
 \end{question}
             
-If a sequence $\ds
+If a sequence $
 \{a_n\}_{n=0}^\infty$ is increasing or non-decreasing it is bounded
-below (by $\ds a_0$), and if it is decreasing or non-increasing it is
-bounded above (by $\ds a_0$).
+below (by $ a_0$), and if it is decreasing or non-increasing it is
+bounded above (by $ a_0$).
 
 \begin{question}
-  Consider the sequence \(b_{n} = -n^{2} + 5 \, n - 5\).  Is the sequence bounded above?  Bounded below?
+  Consider the sequence $b_{n} = -n^{2} + 5 \, n - 5$.  Is the sequence bounded above?  Bounded below?
 
     \begin{hint}
-      Consider the coefficient on \(n^{2}\) in \(b_{n} = -n^{2} + 5 \, n - 5\), which is \(-1\).
+      Consider the coefficient on $n^{2}$ in $b_{n} = -n^{2} + 5 \, n - 5$, which is $-1$.
     \end{hint}
     \begin{hint}
-      Since the leading term's coefficient is negative, when \(n\) is large, \(b_{n}\) is very negative.
+      Since the leading term's coefficient is negative, when $n$ is large, $b_{n}$ is very negative.
     \end{hint}
     \begin{hint}
       Consequently, the sequence is not bounded below.
     \end{hint}
     \begin{hint}
-      At least for \(n\) large, the sequence is decreasing.
+      At least for $n$ large, the sequence is decreasing.
     \end{hint}
     \begin{hint}
       Consequently, the sequence is bounded above.
@@ -546,26 +552,31 @@ necessarily describe the number to which they converge.
 
 \youtube{https://www.youtube.com/watch?v=BmHt0-r_8IQ}
 
-We will not prove this theorem in the textbook.\sidenote{Proving this
-  theorem is, honestly, the purview of a course in \textit{analysis},
-  the theoretical underpinnings of calculus.  That's not to say it
-  couldn't be done in this course, but I intend this to be a ``first
-  glance'' at sequences---so much will be left unsaid.} Nevertheless,
-it is not hard to believe: suppose that a sequence is increasing and
-bounded, so each term is larger than the one before, yet never larger
-than some fixed value $M$. The terms must then get closer and closer
-to some value between $\ds a_0$ and $M$. It certainly need not be $M$,
-since $M$ may be a ``too generous'' upper bound; the limit will be the
-smallest number that is above\sidenote{This concept of the ``smallest
-  number above all the terms'' is an incredibly important one; it is
-  the idea of a
-  \href{http://en.wikipedia.org/wiki/Least-upper-bound_property}{least
-    upper bound} that underlies the real numbers.} all of the terms
-$\ds a_n$.  Let's try an example!
+We will not prove this theorem in the textbook.
+
+%% \sidenote{Proving this theorem is, honestly, the purview of a course
+%%   in \textit{analysis}, the theoretical underpinnings of calculus.
+%%   That's not to say it couldn't be done in this course, but I intend
+%%   this to be a ``first glance'' at sequences---so much will be left
+%%   unsaid.}
+
+Nevertheless, it is not hard to believe: suppose that a sequence is
+increasing and bounded, so each term is larger than the one before,
+yet never larger than some fixed value $M$. The terms must then get
+closer and closer to some value between $ a_0$ and $M$. It certainly
+need not be $M$, since $M$ may be a ``too generous'' upper bound; the
+limit will be the smallest number that is above
+
+%% \sidenote{This concept of the ``smallest number above all the terms''
+%%   is an incredibly important one; it is the idea of a
+%%   \href{http://en.wikipedia.org/wiki/Least-upper-bound_property}{least
+%%     upper bound} that underlies the real numbers.}
+
+all of the terms $ a_n$.  Let's try an example!
 
 \begin{example}
   \label{example:sequence-bounded}
-  All of the terms $\ds (2^i-1)/2^i$ are less than 2, and the sequence
+  All of the terms $ (2^i-1)/2^i$ are less than 2, and the sequence
   is increasing.  As we have seen, the limit of the sequence is 1---1
   is the smallest number that is bigger than all the terms in the
   sequence.  Similarly, all of the terms $(n+1)/n$ are bigger than
@@ -577,18 +588,21 @@ $\ds a_n$.  Let's try an example!
 
 We don't actually need to know that a sequence is monotonic to apply
 this theorem---it is enough to know that the sequence is
-``eventually'' monotonic,\sidenote{After all, the limit only depends on
-  what is happening after some large index, so throwing away the
-  beginning of a sequence won't affect its convergence or its limit.}
-that is, that at some point it becomes increasing or decreasing.  For
-example, the sequence $10$, $9$, $8$, $15$, $3$, $21$, $4$, $3/4$,
-$7/8$, $15/16$, $31/32,\ldots$ is not increasing, because among the
-first few terms it is not. But starting with the term $3/4$ it is
-increasing, so if the pattern continues and the sequence is bounded,
-the theorem tells us that the ``tail'' $3/4, 7/8, 15/16, 31/32,\ldots$
-converges.  Since convergence depends only on what happens as $n$ gets
-large, adding a few terms at the beginning can't turn a convergent
-sequence into a divergent one.
+``eventually'' monotonic,
+
+%% \sidenote{After all, the limit only depends on what is happening after
+%%   some large index, so throwing away the beginning of a sequence won't
+%%   affect its convergence or its limit.}
+
+that is, that at some point
+it becomes increasing or decreasing.  For example, the sequence $10$,
+$9$, $8$, $15$, $3$, $21$, $4$, $3/4$, $7/8$, $15/16$, $31/32,\ldots$
+is not increasing, because among the first few terms it is not. But
+starting with the term $3/4$ it is increasing, so if the pattern
+continues and the sequence is bounded, the theorem tells us that the
+``tail'' $3/4, 7/8, 15/16, 31/32,\ldots$ converges.  Since convergence
+depends only on what happens as $n$ gets large, adding a few terms at
+the beginning can't turn a convergent sequence into a divergent one.
 
 \begin{example}
 \label{example:nth-root-of-n}
@@ -602,7 +616,7 @@ You may be worried about my saying that $\log 3 > 1$.  If
   Since $3 > e$, we may conclude that $\log 3 > 1$.
 \end{warning}
 
-\begin{worked-solution}
+\begin{explanation}
   We might first show that this sequence is decreasing, that is, we show
   that for all $n$,
   $$
@@ -623,7 +637,7 @@ You may be worried about my saying that $\log 3 > 1$.  If
   But it does seem that this sequence perhaps is decreasing after the
   first few terms.  Can we justify this?
 
-  Yes!  Consider the real function $\ds f(x)=x^{1/x}$ when $x\ge1$.
+  Yes!  Consider the real function $ f(x)=x^{1/x}$ when $x\ge1$.
   We compute the derivative---perhaps via ``logarithmic differentiation''---to find
   $$
   f'(x)=\frac{x^{1/x} \, (1-\log x)}{x^2}.
@@ -632,17 +646,17 @@ You may be worried about my saying that $\log 3 > 1$.  If
 
   Since all terms of the sequence are positive, the sequence is
   decreasing and bounded when $n \ge 3$, and so the sequence converges.
-\end{worked-solution}
+\end{explanation}
 
-\marginnote{As it happens, you could compute the limit in
-  Example~\xrefn{example:nth-root-of-n}, but our given solution shows that
-  it converges even without knowing the limit!}
+%% \marginnote{As it happens, you could compute the limit in
+%%   Example~\xrefn{example:nth-root-of-n}, but our given explanation shows that
+%%   it converges even without knowing the limit!}
 
 \begin{example}
-Show that the sequence $a_n = \ds\frac{n!}{n^n}$ converges.
+Show that the sequence $a_n = \frac{n!}{n^n}$ converges.
 \end{example}
 
-\begin{solution}
+\begin{explanation}
   Let's get an idea of what is going on by computing the first few terms.
 % print(join(['a_' + str(k) + '=' + latex(f(x=k)) + ' ' + '\\approx ' + str(n(f(x=k),digits=5)) for k in range(1,9)],',\quad '))
 \begin{align*}
@@ -650,7 +664,7 @@ a_1&= 1,\quad a_2= \frac{1}{2},\quad a_3= \frac{2}{9} \approx 0.22222,\quad a_4=
 a_5&= \frac{24}{625} \approx 0.038400, \quad a_6= \frac{5}{324} \approx 0.015432, \\
 a_7&= \frac{720}{117649} \approx 0.0061199,\quad a_8= \frac{315}{131072} \approx 0.0024033.
 \end{align*}
-  The sequence appears to be decreasing.  To formally show this, we would need to show $\ds a_{n+1}< a_n$, but we will instead show that
+  The sequence appears to be decreasing.  To formally show this, we would need to show $a_{n+1}< a_n$, but we will instead show that
 $$
 \frac{a_{n+1}}{a_n} < 1,
 $$
@@ -666,9 +680,8 @@ canceling nicely.  In particular,
   Note that the sequence is bounded below, since every term is positive.
 
   Because the sequence is decreasing and bounded below, it converges.
-  Indeed, Exercise~\xrefn{exercise:factorial-limit} asks you to
-  compute the limit.
-\end{solution}
+  Indeed, an EXERCISE BADBAD asks you to compute the limit.
+\end{explanation}
 
 These sorts of arguments involving the ratio of subsequent terms will
 come up again in a big way when we consider the ratio test.  Stay
@@ -677,34 +690,34 @@ tuned!
 \subsection{Sample problem}
 
 \begin{question}
-  Consider the sequence \(a_{n}\).  Suppose you know that for all \(n > 1\), \[ -6 \leq a_{n} \leq 0 \] and \(a_{1} = 2\), and \(a_{2} = -1\), and that the sequence is nonincreasing.  Does the sequence converge?
+  Consider the sequence $a_{n}$.  Suppose you know that for all $n > 1$, \[ -6 \leq a_{n} \leq 0 \] and $a_{1} = 2$, and $a_{2} = -1$, and that the sequence is nonincreasing.  Does the sequence converge?
 
     \begin{hint}
       Since the sequence is nonincreasing, the sequence is monotone.
     \end{hint}
     \begin{hint}
-      Since for all \(n \geq 1\), we have \(a_{n} \geq -6\), the sequence is bounded below.
+      Since for all $n \geq 1$, we have $a_{n} \geq -6$, the sequence is bounded below.
     \end{hint}
     \begin{hint}
-      So by the Monotone Convergence Theorem, the sequence converges to some value; let us call it \(L\).
+      So by the Monotone Convergence Theorem, the sequence converges to some value; let us call it $L$.
     \end{hint}
     \begin{hint}
       Now consider the direction in which the sequence is heading.
     \end{hint}
     \begin{hint}
-      Since the sequence is nonincreasing, for all \(n \geq 2\), we have  \(-6 \leq a_{n} \leq -1\).
+      Since the sequence is nonincreasing, for all $n \geq 2$, we have  $-6 \leq a_{n} \leq -1$.
     \end{hint}
     \begin{hint}
-      The limit \(L\) must be in that interval as well.
+      The limit $L$ must be in that interval as well.
     \end{hint}
     \begin{hint}
-      Therefore the sequence converges to a value \(L\) so that \(-6 \leq L \leq -1\).
+      Therefore the sequence converges to a value $L$ so that $-6 \leq L \leq -1$.
     \end{hint}
 
     \begin{multipleChoice}
-      \choice[correct]{Yes, with limit between \(-6\) and \(-1\).}
+      \choice[correct]{Yes, with limit between $-6$ and $-1$.}
       \choice{No, the sequence does not converge.}
-      \choice{Yes, with limit between \(-1\) and \(0\).}
+      \choice{Yes, with limit between $-1$ and $0$.}
     \end{multipleChoice}
     
 \end{question}

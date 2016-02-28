@@ -22,7 +22,7 @@ Let's summarize the preceding discussion in the following definition.
   A \dfn{sequence} $(a_n)$ is, formally speaking, a real-valued
   function with domain
   \[
-  \{ n \in \Z : n \geq N \},\quad \text{for some integer $N$}
+  \{ n \in \Z : n \ge N \},\quad \text{for some integer $N$}
   \]
   where $\Z = \{\dots, -5,-4,-3,-2,-1,0,1,2,3,4,5,\dots,\}$ is the set
   of \dfn{integers}.
@@ -30,10 +30,6 @@ Let's summarize the preceding discussion in the following definition.
 
 Stated more humbly, a sequence assigns a real number to the integers
 starting with an index $N$.
-
-\begin{example}
-  EXAMPLE OF SEQ WITH INTGER DOMAIN
-\end{example}
 
 When thought of as a function, the ``outputs'' of a sequence are the
 \dfn{elements} of the sequence; the ``$n$th element'' is the real
@@ -43,318 +39,251 @@ usually written $a_n$. \index{sequence!element} The $n$ in the phrase
 plural of index is either indices or indexes, depending on who you
 ask.  The first index $N$ is called the \dfn{initial index}.
 
-
-We've seen a lot of sequences, and already there are a few things we
-might notice.  For instance, the arithmetic progression
-\[
-1,\quad 8,\quad 15,\quad 22,\quad 29,\quad 36,\quad 43,\quad 50,\quad 57,\quad 64,\quad 71,\quad 78,\quad 85,\quad 92,\quad \ldots
-\]
-just keeps getting bigger and bigger.  No matter how large a number
-you think of, if I add enough $7$'s to $1$, eventually I will surpass
-the giant number you thought of.  On the other hand, the elements in a
-geometric progression where each element is half the previous element,
-namely
-\[
-\frac{1}{2},\quad \frac{1}{4},\quad \frac{1}{8},\quad \frac{1}{16},\quad \frac{1}{32},\quad \frac{1}{64},\quad \frac{1}{128},\quad \frac{1}{256},\quad \frac{1}{512},\quad \frac{1}{1024},\quad \ldots ,
-\]
-are getting closer and closer to zero.  No matter how close you stand
-near but not at zero, eventually this geometric sequence gets even
-closer than you are to zero.
-
-%\youtube{https://www.youtube.com/watch?v=PRTjvMA2nCY}
-
-These two sequences have very different stories.  One shoots off to
-infinity; the other zooms in towards zero.  Mathematics is not just
-about numbers; mathematics provides tools for talking about the
-qualitative features of the numbers we deal with.  What about the two
-sequences we just considered?  They are qualitatively very different.
-The first ``goes to'' infinity; the second ``goes to'' zero.
-
-In short, given a sequence, it is helpful to be able to say something
-qualitative about it; we may want to address the question such as
-``what happens after a while?'' Formally, when faced with a sequence,
-we are interested in the limit
-\[
-\lim_{i\to \infty} f(i) = \lim_{i\to\infty} a_i.
-\]
-Earlier you've studied a similar question about
-\[
-\lim_{x\to\infty} f(x)
-\]
-when $x$ is a variable taking on real values; now, we simply want to
-restrict the ``input'' values to be integers. No significant
-difference is required in the definition of limit, except that we
-specify, perhaps implicitly, that the variable is an integer.
-
-\begin{definition}\index{limit of a sequence}
-\label{definition:limit-of-a-sequence}
-Suppose that $\left(a_n\right)$ is a sequence.
-To say that $\lim_{n\to \infty}a_n=L$ is to say that \\
-\null\quad for every $\epsilon>0$, \\
-\null\quad\quad there is an $N > 0$, \\
-\null\quad so that whenever $n>N$, \\
-\null\quad\quad we have $|a_n-L|<\epsilon$. \\
-If $\displaystyle\lim_{n\to\infty}a_n=L$ we say that the sequence
-\dfn{converges}\index{convergent
-  sequence}\index{sequence!convergent}.  If there is no finite value $L$ so
-that $\displaystyle\lim_{n\to\infty}a_n = L$, then we say that the limit
-\dfn{does not exist}, or equivalently that the sequence
-\dfn{diverges}\index{divergent sequence}\index{sequence!divergent}.
-\end{definition} 
-
 \begin{question}
-  To say that the sequence $a_n$ converges to $L$ means what?  In other words, what is the definition of the statement $\displaystyle\lim_{n \to \infty} a_n = L$?
-
-    \begin{hint}
-      We are trying to make precise the idea that, eventually, all the elements of the sequence $a_n$ are as close as we want to $L$.
-    \end{hint}
-    \begin{hint}
-      To measure closeness to $L$, we will use a positive real number $\epsilon$.
-    \end{hint}
-    \begin{hint}
-      We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number $\epsilon$.
-    \end{hint}
-    \begin{hint}
-      In other words, the definition will begin ``For every positive real number $\epsilon > 0$\ldots''
-    \end{hint}
-    \begin{hint}
-      We now must make precise the idea of ``eventually'' close.
-    \end{hint}
-    \begin{hint}
-      We use a whole number $N$ to capture the idea of ``sufficiently large'' values of $n$.
-    \end{hint}
-    \begin{hint}
-      Specifically, the definition will begin ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$\ldots''
-    \end{hint}
-    \begin{hint}
-      The ``sufficiently large'' value of $n$ is any value which is at least as large as $N$.
-    \end{hint}
-    \begin{hint}
-      So we will only consider those $n$ for which $n \geq N$.
-    \end{hint}
-    \begin{hint}
-      Thus the definition goes ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$\ldots''
-    \end{hint}
-    \begin{hint}
-      What happens ``eventually'' is that elements of the sequence are close to $L$.  How close?  Within $\epsilon$.
-    \end{hint}
-    \begin{hint}
-      The quantity $|a_n - L|$ is the distance between $a_n$ and $L$.
-    \end{hint}
-    \begin{hint}
-      To say that $a_n$ is within $\epsilon$ of $L$ is to say that $|a_n - L| < \epsilon$.
-    \end{hint}
-    \begin{hint}
-      Therefore the definition is ``For every positive real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.''
-    \end{hint}
-
-    \begin{multipleChoice}
-      \choice[correct]{For every positive real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
-      \choice{For every real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that $ |a_N - L| < \epsilon $.}
-      \choice{For every real number $\epsilon \in \mathbb{R}$ there exists an $N \in \mathbb{N}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
-      \choice{For every whole number $N > 0$ there exists a positive real number $\epsilon > 0$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
-      \choice{For every whole number $N > 0$ there exists a real number $\epsilon \in \mathbb{R}$ so that whenever $n \geq N$, we have $ |a_n - L| < \epsilon $.}
-    \end{multipleChoice}
-              
-
-  The definition of limit can be written as if it were poetry with
-  line breaks and all.  Like the best of poems, it deserves to be
-  memorized, performed, internalized.  Humanity struggled for millenia
-  to find the wisdom contained in this definition.
+  What explicit formula (as a function) corresponds to the sequence
+  $a_n = -n/2+3$ for $n=1,2,3,\dots$?
+  \begin{prompt}
+    \[
+    a(x) = \answer[given]{-x/2 + 3}
+    \]
+  \end{prompt}
 \end{question}
 
-\begin{warning}
-  In the case that $\lim_{n \to \infty} a_n = \infty$, we say that
-  $(a_n)$ diverges, or perhaps more precisely, we say $(a_n)$ diverges to
-  infinity.  The only time we say that a sequence converges is when
-  the limit exists and is equal to a \textit{finite} value.
-\end{warning}
-
-\youtube{https://www.youtube.com/watch?v=0UCRZAsIkXM}
-
-One way to compute the limit of a sequence is to compute the limit of
-a function.
-\begin{theorem}
-  \label{theorem:compute-limit-of-sequence-via-function}
-  Let $f(x)$ be a real-valued function.  If $a_n = f(n)$ defines a
-  sequence $(a_n)$ and if $\displaystyle\lim_{x\to\infty}f(x)=L$ in the sense of Calculus
-  One, then $\displaystyle\lim_{n\to\infty} a_n=L$ as well.
-\end{theorem}
-
-\begin{example}
-\label{example:find-n-for-epsilon}
-Since $\displaystyle\lim_{x\to\infty}(1/x)=0$, it is
-clear that also $\displaystyle\lim_{n\to\infty}(1/n)=0$; in other words, the sequence of numbers
-$${1\over1},\quad {1\over2},\quad {1\over3},\quad {1\over4},\quad {1\over5},\quad {1\over6},\quad \ldots$$
-get closer and closer to 0, or more precisely, as close as you want to get to zero, after a while, all the elements in the sequence are that close.
-
-More precisely, no matter what $\epsilon > 0$ we pick, we can find an
-$N$ big enough so that, whenever $n > N$, we have that $1/n$ is within
-$\epsilon$ of the claimed limit, zero.  This can be made concrete:
-let's suppose we set $\epsilon = 0.17$.  What is a suitable choice for
-$N$ in response?  If we choose $N = 5$, then whenever $n > 5$ we have
-$0 < 1/n < 0.17$.
-\end{example}
-
-\youtube{https://www.youtube.com/watch?v=lCW8BBBQRyc}
-
 \begin{question}
-  Consider the sequence given by the rule \[b_{n} = \displaystyle\displaystyle\frac{ 3 \, n + 9 }{ 4 \, n + 20 }.\]  For which value of $N$ is it the case that whenever $n \geq N$ we have that $b_{n}$ is within $1/50$ of $3/4$?
-
-    \begin{hint}
-      There can only be one right answer.
-    \end{hint}
-    \begin{hint}
-      So the answer is either $N = 69$ or ``none of these.''
-    \end{hint}
-    \begin{hint}
-      Note that $b_{69} = \displaystyle\frac{27}{37}$.
-    \end{hint}
-    \begin{hint}
-      Consequently, $\left| b_{69} - \displaystyle \displaystyle\frac{3}{4} \right| = \displaystyle\frac{3}{148} \geq \displaystyle\frac{1}{50}$.
-    \end{hint}
-    \begin{hint}
-      So the answer must be ``none of these.''
-    \end{hint}
-
-    \begin{multipleChoice}
-      \choice[correct]{None of these choices for $N$ is large enough.}
-      \choice{$N = 69 $}
-      \choice{$N = 67 $}
-      \choice{$N = 65 $}
-      \choice{$N = 63 $}
-    \end{multipleChoice}
-
+  What explicit formula (as a function) corresponds to the sequence
+  $a_n = 6\left(\frac{2}{5}\right)^{n+2}$ for $n=1,2,3,\dots$??
+  \begin{prompt}
+    \[
+    a(x) = \answer[given]{6\left(\frac{2}{5}\right)^{x+2}}
+    \]
+  \end{prompt}
 \end{question}
 
-But it is important to note that the converse of this theorem is not
-true; \label{sidenote:raining-converse}the \dfn{converse} of a
-statement is what you get when you swap the assumption and the
-conclusion; the converse of ``if it is raining, then it is cloudy'' is
-the statement ``if it is cloudy, then it is raining.''  Which of those
-statements is true?.
 
-To show the converse is not true, it is enough to provide a single
-example where it fails.  Here's the counterexample.  Recall an
-instance of (a potential) general rule being broken is called a
-\dfn{counterexample}.  This is a popular element among
-mathematicians and philosophers.
+Since sequences can be conceptualized as functions, and calculus is
+used to study functions, we can now apply our knowledge of calculus to
+sequences!
 
-\begin{example}
-  Consider the sequence $(a_n)$ given by the rule $a_n = f(n)=\sin(n\pi)$.  This is the sequence
-$$
-  \sin(0\pi),\quad \sin(1\pi),\quad\sin(2\pi),\quad\sin(3\pi),\quad\ldots,
-$$
-which is just the sequence $0, 0, 0, 0, \ldots$ since $\sin(n\pi)=0$
-whenever $n$ is an integer.  Since the sequence is just the constant sequence, we have
-$$
-\lim_{n\to\infty} f(n)= \lim_{n\to\infty} 0 = 0. 
-$$But $\displaystyle\lim_{x\to\infty}f(x)$, when $x$ is real, does not exist: as $x$ gets
-bigger and bigger, the values $\sin(x\pi)$ do not get closer and
-closer to a single value, but instead oscillate between $-1$ and $1$.
-\end{example} 
+\section{Plotting sequences}
 
-Here's some general advice. If you want to know $\displaystyle\lim_{n\to\infty}
-a_n$, you might first think of a function $f(x)$ where $a_n = f(n)$,
-and then attempt to compute $\displaystyle\lim_{x\to\infty}f(x)$.  If the limit
-of the function exists, then it is equal to the limit of the sequence.
-But, if for some reason $\displaystyle\lim_{x\to\infty}f(x)$ does not exist, it
-may nevertheless still be the case that $\displaystyle\lim_{n\to\infty}f(n)$
-exists---you'll just have to figure out another way to compute it.
+Here we plot sequences as points. Later, we will see another
+interpretation.
 
+\subsection{Plots of arithmetic sequences}
 
-\section{New from old}
+Recall that arithmetic sequences are those where the difference
+between neighboring elements is constant.  Arithmetic sequences are
+analogues of lines.  Consider a basic example:
+\begin{image}
+  \begin{tikzpicture}[node distance=1.5cm]
+    \node (a1) {$-5$,};
+    \node (a2) [right of=a1] {$-1$,};
+    \node (a3) [right of=a2] {$3$,};
+    \node (a4) [right of=a3] {$7$,};
+    \node (a5) [right of=a4] {$11$,};
+    \node (a6) [right of=a5] {$\ldots$};
+    
+    \path[->] (a1) edge [bend left=20] node[above]{$+4$} (a2);
+    \path[->] (a2) edge [bend left=20] node[above]{$+4$} (a3);
+    \path[->] (a3) edge [bend left=20] node[above]{$+4$} (a4);
+    \path[->] (a4) edge [bend left=20] node[above]{$+4$} (a5);
+    \path[->] (a5) edge [bend left=20] node[above]{$+4$} (a6);
+  \end{tikzpicture}
+\end{image}
 
-Given a sequence, one way to build a new sequence is to start with the
-old sequence, but then throw away a whole bunch of elements.  For
-instance, if we started with the sequence of perfect squares
-$$
-1,\quad 4,\quad 9,\quad 16,\quad 25,\quad 36,\quad 49,\quad 64,\quad 81,\quad\ldots
-$$
-we could throw away all the odd-indexed elements, and be left with
-$$
-4,\quad 16,\quad 36,\quad 64,\quad 100,\quad 144,\quad 196,\quad 256,\quad 324,\quad 400,\quad 484,\quad\ldots
-$$
-We say that this latter sequence is a
-\dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
-of the original sequence.  Here is a precise definition.
+Check out a graph of the sequence:
 
-\begin{definition}
-  Suppose $(a_n)$ is a sequence with initial index $N$, and suppose we have a sequence of integers $(n_i)$ so that
-  $$
-  N \leq n_1 < n_2 < n_3 < n_4 < n_5 < \cdots 
-  $$
-  Then the sequence $(b_i)$ given by $b_i = a_{n_i}$ is said to be a \dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
-  of the sequence $a_n$.
-\end{definition}
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:6,xmin=0,xmax=6,ymin=-9,ymax=15,
+            width=4in,
+            height=2in,
+            axis lines =middle, xlabel=$n$, ylabel=$a$,
+            xtick={1,2,...,5},
+            ytick={-5,-1,...,11},
+            yticklabels={$a_1 = -5$,$a_2=-1$,$a_3=3$,$a_4=7$,$a_5=11$},
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            %axis on top,
+          ]
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(1,-5)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(2,-1)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(3,3)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(4,7)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(5,11)};  %% closed hole  
+        \end{axis}
+\end{tikzpicture}
+\end{image}
 
-\youtube{http://www.youtube.com/watch?v=OYRRFRzf12o}
+Here is an arithmetic sequence that decreases as its index increases.
 
-Limits are telling the story of ``what happens'' to a sequence.  If
-the elements of a sequence can be made as close as desired to a limiting
-value $L$, then the subsequence must share that same fate.
+\begin{image}
+  \begin{tikzpicture}[node distance=1.5cm]
+    \node (a1) {$17$,};
+    \node (a2) [right of=a1] {$15$,};
+    \node (a3) [right of=a2] {$13$,};
+    \node (a4) [right of=a3] {$11$,};
+    \node (a5) [right of=a4] {$9$,};
+    \node (a6) [right of=a5] {$\ldots$};
 
-\begin{theorem}
-  \label{theorem:subsequence-same-limit}
-  If $(b_i)$ is a subsequence of the convergent sequence $(a_n)$, then
-  $\lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n$.
-\end{theorem}
+    \path[->] (a1) edge [bend left=20] node[above]{$-2$} (a2);
+    \path[->] (a2) edge [bend left=20] node[above]{$-2$} (a3);
+    \path[->] (a3) edge [bend left=20] node[above]{$-2$} (a4);
+    \path[->] (a4) edge [bend left=20] node[above]{$-2$} (a5);
+    \path[->] (a5) edge [bend left=20] node[above]{$-2$} (a6);
+  \end{tikzpicture}
+\end{image}
 
-Of course, just because a subsequence converges does not mean that the
-larger sequence converges, too.  We'll see this again in more detail,
-but we'll discuss it briefly now.
+Here we see a graph:
 
-\begin{example}
-Find a convergent subsequence of the sequence $(a_n)$ given by the rule $a_n = (-1)^n$.
-\end{example}
-
-\begin{explanation}
-Note that the sequence $(a_n)$ does not converge.  But by considering the sequence of indexes $n_i = 2 \cdot i$, we can build a subsequence
-$$
-b_i = a_{n_i} = a_{2i} = (-1)^{2i} = 1,
-$$
-which is a constant sequence, so it converges to 1.
-\end{explanation}
-
-There are other subsequences of $a_n = (-1)^n$ which converge but do
-\textit{not} converge to one.  For instance, the subsequence of odd
-indexed elements is the constant sequence $c_n = -1$, which converges to
-$-1$.  For that matter, the fact that there are convergent
-subsequences with distinct limits perhaps explains why the original
-sequence $(a_n)$ does not converge.  Let's formalize this.
-
-\begin{corollary}
-  \label{corollary:different-subsequences-then-diverge}
-
-  Suppose $(b_i)$ and $(c_i)$ are convergent subsequences of the sequence $(a_n)$, but
-  $$
-  \lim_{i \to \infty} b_i \neq \lim_{i \to \infty} c_i.
-  $$
-  Then the sequence $(a_n)$ does not converge.
-\end{corollary}
-
-\begin{proof}
-  Suppose, on the contrary, the sequence $(a_n)$ did converge.  Then,
-  since all subsequences approach the same limit, the subsequence
-  $(b_i)$ would converge, too, and
-  $$
-  \lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n.
-  $$
-  Again %by Theorem~\xrefn{theorem:subsequence-same-limit},
-  the subsequence
-  $(c_i)$ would converge, too, and
-  $$
-  \lim_{i \to \infty} c_i = \lim_{n \to \infty} a_n.
-  $$
-  But then $\lim_{i \to \infty} b_i = \lim_{i \to \infty} c_i$,
-  which is exactly what we are supposing doesn't happen!  To avoid
-  this contradiction, it must be that our original assumption that
-  $(a_n)$ converged was incorrect; in short, the sequence $(a_n)$ does
-  not converge.
-\end{proof}
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:6,xmin=0,xmax=6,ymin=7,ymax=19,
+            width=4in,
+            height=2in,
+            xtick={1,2,...,5},
+            ytick={17,15,...,9},
+            yticklabels={$a_1 = 17$,$a_2=15$,$a_3=13$,$a_4=11$,$a_5=9$},
+            axis lines =middle, xlabel=$n$, ylabel=$a$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            %axis on top,
+          ]
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(1,17)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(2,15)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(3,13)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(4,11)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(5,9)};  %% closed hole  
+        \end{axis}
+\end{tikzpicture}
+\end{image}
 
 
-\section{Features of sequences}
+\begin{question}
+  What type of curve do arithmetic sequences correspond to?
+  \begin{multipleChoice}
+    \choice[correct]{lines}
+    \choice{parabolas}
+    \choice{exponential functions}
+    \choice{impossible to say}
+  \end{multipleChoice}
+  \begin{feedback}
+    Since the average growth rate of a line is constant, regardless of
+    the size of the interval chosen, arithmetic sequences correspond to
+    lines.
+  \end{feedback}
+\end{question}
+
+
+\subsection{Plots of geometric sequences}
+
+Recall that geometric sequences are those where the ratio between
+neighboring elements is constant.  When this ratio is positive, a
+geometric sequence corresponds to an exponential function. Consider a
+basic example:
+\begin{image}
+    \begin{tikzpicture}[node distance=1.5cm]
+    \node (a1) {$10$,};
+    \node (a2) [right of=a1] {$30$,};
+    \node (a3) [right of=a2] {$90$,};
+    \node (a4) [right of=a3] {$270$,};
+    \node (a5) [right of=a4] {$810$,};
+    \node (a6) [right of=a5] {$\ldots$};
+
+    \path[->] (a1) edge [bend left=20] node[above] {$\times 3$} (a2);
+    \path[->] (a2) edge [bend left=20] node[above] {$\times 3$} (a3);
+    \path[->] (a3) edge [bend left=20] node[above] {$\times 3$} (a4);
+    \path[->] (a4) edge [bend left=20] node[above] {$\times 3$} (a5);
+    \path[->] (a5) edge [bend left=20] node[above] {$\times 3$} (a6);
+  \end{tikzpicture}
+\end{image}
+Let's see a graph 
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:6,xmin=0,xmax=6,ymin=-100,ymax=900,
+            width=4in,
+            height=2in,
+            xtick={1,2,...,5},
+            ytick={10,30,90,270,810},
+            yticklabels={},%$a_1 = 10$,$a_2=30$,$a_3=90$,$a_4=270$,$a_5=810$},
+            axis lines =middle, xlabel=$n$, ylabel=$a$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            %axis on top,
+          ]
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(1,10)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(2,30)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(3,90)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(4,270)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(5,810)};  %% closed hole  
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+
+If the common ratio of a geometric sequence is between $0$ and $1$, a
+geometric sequence will decrease as it progresses.
+
+\begin{image}
+  \begin{tikzpicture}[node distance=1.5cm]
+    \node (a1) {$\frac{7}{5}$,};
+    \node (a2) [right of=a1] {$\frac{7}{10}$,};
+    \node (a3) [right of=a2] {$\frac{7}{20}$,};
+    \node (a4) [right of=a3] {$\frac{7}{40}$,};
+    \node (a5) [right of=a4] {$\frac{7}{80}$,};
+    \node (a6) [right of=a5] {$\ldots$};
+    
+    \path[->] (a1) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a2);
+    \path[->] (a2) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a3);
+    \path[->] (a3) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a4);
+    \path[->] (a4) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a5);
+    \path[->] (a5) edge [bend left=20] node[above] {$\times\frac{1}{2}$} (a6);
+  \end{tikzpicture}
+\end{image}
+Let's see a graph 
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:6,xmin=0,xmax=6,ymin=0,ymax=2,
+            width=4in,
+            height=2in,
+            xtick={1,2,...,5},
+            ytick={1.4,.7,.35,.175,.0875},
+            yticklabels={},%$a_1 = 10$,$a_2=30$,$a_3=90$,$a_4=270$,$a_5=810$},
+            axis lines =middle, xlabel=$n$, ylabel=$a$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            %axis on top,
+          ]
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(1,7/5)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(2,7/10)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(3,7/20)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(4,7/40)};  %% closed hole          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(5,7/80)};  %% closed hole  
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+
+Positive base increasing
+positive base decreasing
+
+negative base increasing
+negative base decreasing
+
+
+\subsection{Plots of other sequences}
+
+sine/cos
+
+10 plus  geometric seq
+
+
 
 \subsection{Monotonicity}
 
@@ -485,19 +414,19 @@ to be \dfn{bounded}\index{sequence!bounded}.
       The definition begins ``there exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, \ldots''
     \end{hint}
     \begin{hint}
-      For a particular term $a_n$ to be bounded below by $M$ just means that $a_n \geq M$.
+      For a particular term $a_n$ to be bounded below by $M$ just means that $a_n \ge M$.
     \end{hint}
     \begin{hint}
-      Altogether then, being bounded below means ``there exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \geq M$.''  Sometimes you might see this ending with $ a_n > M $, but that is a difference which does not affect which sequences are bounded below.
+      Altogether then, being bounded below means ``there exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \ge M$.''  Sometimes you might see this ending with $ a_n > M $, but that is a difference which does not affect which sequences are bounded below.
       
     \end{hint}
     
     \begin{multipleChoice}
-      \choice[correct]{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \geq M$.}
-      \choice{There exists an $n \in \mathbb{N}$, so that for all $M \in \mathbb{R}$, we have $a_n \geq M$.}
-      \choice{For all $M \in \mathbb{R}$, there exists an $n \in \mathbb{N}$, so that $a_n \geq M$.}
-      \choice{For all $n \in \mathbb{N}$, there exists an $M \in \mathbb{R}$, so that $a_n \geq M$.}
-      \choice{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \leq M$.}
+      \choice[correct]{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \ge M$.}
+      \choice{There exists an $n \in \mathbb{N}$, so that for all $M \in \mathbb{R}$, we have $a_n \ge M$.}
+      \choice{For all $M \in \mathbb{R}$, there exists an $n \in \mathbb{N}$, so that $a_n \ge M$.}
+      \choice{For all $n \in \mathbb{N}$, there exists an $M \in \mathbb{R}$, so that $a_n \ge M$.}
+      \choice{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \le M$.}
     \end{multipleChoice}
 
 \end{question}
@@ -539,135 +468,223 @@ bounded above (by $ a_0$).
 \end{question}
 
 
-\subsection{Monotone convergence}
 
-inally, with all this new terminology we can state an important
-theorem.
 
-\begin{theorem} If the sequence $a_n$ is bounded and monotonic, then
-  $\lim_{n \to \infty} a_n$ exists.  \label{thm:bounded-monotonic}
-\end{theorem}
-In short, bounded monotonic sequences converge---though we can't
-necessarily describe the number to which they converge.
 
-\youtube{https://www.youtube.com/watch?v=BmHt0-r_8IQ}
+\section{Limits of sequences}
 
-We will not prove this theorem in the textbook.
+Since sequences are essentially \dfn{discrete}, meaning that the points
+are separate and distinct, the notion of a ``limit at a point'' cannot
+be made to really make sense. However, limits at \textit{infinity} are
+a different story.
 
-%% \sidenote{Proving this theorem is, honestly, the purview of a course
-%%   in \textit{analysis}, the theoretical underpinnings of calculus.
-%%   That's not to say it couldn't be done in this course, but I intend
-%%   this to be a ``first glance'' at sequences---so much will be left
-%%   unsaid.}
 
-Nevertheless, it is not hard to believe: suppose that a sequence is
-increasing and bounded, so each term is larger than the one before,
-yet never larger than some fixed value $M$. The terms must then get
-closer and closer to some value between $ a_0$ and $M$. It certainly
-need not be $M$, since $M$ may be a ``too generous'' upper bound; the
-limit will be the smallest number that is above
+We've seen a lot of sequences, and already there are a few things we
+might notice.  For instance, the arithmetic progression
+\[
+1,\quad 8,\quad 15,\quad 22,\quad 29,\quad 36,\quad 43,\quad 50,\quad 57,\quad 64,\quad 71,\quad 78,\quad 85,\quad 92,\quad \ldots
+\]
+just keeps getting bigger and bigger.  No matter how large a number
+you think of, if I add enough $7$'s to $1$, eventually I will surpass
+the giant number you thought of.  On the other hand, the elements in a
+geometric progression where each element is half the previous element,
+namely
+\[
+\frac{1}{2},\quad \frac{1}{4},\quad \frac{1}{8},\quad \frac{1}{16},\quad \frac{1}{32},\quad \frac{1}{64},\quad \frac{1}{128},\quad \frac{1}{256},\quad \frac{1}{512},\quad \frac{1}{1024},\quad \ldots ,
+\]
+are getting closer and closer to zero.  No matter how close you stand
+near but not at zero, eventually this geometric sequence gets even
+closer than you are to zero.
 
-%% \sidenote{This concept of the ``smallest number above all the terms''
-%%   is an incredibly important one; it is the idea of a
-%%   \href{http://en.wikipedia.org/wiki/Least-upper-bound_property}{least
-%%     upper bound} that underlies the real numbers.}
+%\youtube{https://www.youtube.com/watch?v=PRTjvMA2nCY}
 
-all of the terms $ a_n$.  Let's try an example!
+These two sequences have very different stories.  One shoots off to
+infinity; the other zooms in towards zero.  Mathematics is not just
+about numbers; mathematics provides tools for talking about the
+qualitative features of the numbers we deal with.  What about the two
+sequences we just considered?  They are qualitatively very different.
+The first ``goes to'' infinity; the second ``goes to'' zero.
 
-\begin{example}
-  \label{example:sequence-bounded}
-  All of the terms $ (2^i-1)/2^i$ are less than 2, and the sequence
-  is increasing.  As we have seen, the limit of the sequence is 1---1
-  is the smallest number that is bigger than all the terms in the
-  sequence.  Similarly, all of the terms $(n+1)/n$ are bigger than
-  $1/2$, and the limit is 1---1 is the largest number that is smaller
-  than the terms of the sequence.
-\end{example}
+In short, given a sequence, it is helpful to be able to say something
+qualitative about it; we may want to address the question such as
+``what happens after a while?'' Formally, when faced with a sequence,
+we are interested in the limit
+\[
+\lim_{i\to \infty} f(i) = \lim_{i\to\infty} a_i.
+\]
+Earlier you've studied a similar question about
+\[
+\lim_{x\to\infty} f(x)
+\]
+when $x$ is a variable taking on real values; now, we simply want to
+restrict the ``input'' values to be integers. No significant
+difference is required in the definition of limit, except that we
+specify, perhaps implicitly, that the variable is an integer.
 
-\youtube{https://www.youtube.com/watch?v=SySsJ9S6g6c}
+\begin{definition}\index{limit of a sequence}
+\label{definition:limit-of-a-sequence}
+Suppose that $\left(a_n\right)$ is a sequence.
+To say that $\lim_{n\to \infty}a_n=L$ is to say that \\
+\null\quad for every $\epsilon>0$, \\
+\null\quad\quad there is an $N > 0$, \\
+\null\quad so that whenever $n>N$, \\
+\null\quad\quad we have $|a_n-L|<\epsilon$. \\
+If $\lim_{n\to\infty}a_n=L$ we say that the sequence
+\dfn{converges}\index{convergent
+  sequence}\index{sequence!convergent}.  If there is no finite value $L$ so
+that $\lim_{n\to\infty}a_n = L$, then we say that the limit
+\dfn{does not exist}, or equivalently that the sequence
+\dfn{diverges}\index{divergent sequence}\index{sequence!divergent}.
+\end{definition} 
 
-We don't actually need to know that a sequence is monotonic to apply
-this theorem---it is enough to know that the sequence is
-``eventually'' monotonic,
+\begin{question}
+  To say that the sequence $a_n$ converges to $L$ means what?  In other words, what is the definition of the statement $\lim_{n \to \infty} a_n = L$?
 
-%% \sidenote{After all, the limit only depends on what is happening after
-%%   some large index, so throwing away the beginning of a sequence won't
-%%   affect its convergence or its limit.}
+    \begin{hint}
+      We are trying to make precise the idea that, eventually, all the elements of the sequence $a_n$ are as close as we want to $L$.
+    \end{hint}
+    \begin{hint}
+      To measure closeness to $L$, we will use a positive real number $\epsilon$.
+    \end{hint}
+    \begin{hint}
+      We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number $\epsilon$.
+    \end{hint}
+    \begin{hint}
+      In other words, the definition will begin ``For every positive real number $\epsilon > 0$\ldots''
+    \end{hint}
+    \begin{hint}
+      We now must make precise the idea of ``eventually'' close.
+    \end{hint}
+    \begin{hint}
+      We use a whole number $N$ to capture the idea of ``sufficiently large'' values of $n$.
+    \end{hint}
+    \begin{hint}
+      Specifically, the definition will begin ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$\ldots''
+    \end{hint}
+    \begin{hint}
+      The ``sufficiently large'' value of $n$ is any value which is at least as large as $N$.
+    \end{hint}
+    \begin{hint}
+      So we will only consider those $n$ for which $n \ge N$.
+    \end{hint}
+    \begin{hint}
+      Thus the definition goes ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$ so that whenever $n \ge N$\ldots''
+    \end{hint}
+    \begin{hint}
+      What happens ``eventually'' is that elements of the sequence are close to $L$.  How close?  Within $\epsilon$.
+    \end{hint}
+    \begin{hint}
+      The quantity $|a_n - L|$ is the distance between $a_n$ and $L$.
+    \end{hint}
+    \begin{hint}
+      To say that $a_n$ is within $\epsilon$ of $L$ is to say that $|a_n - L| < \epsilon$.
+    \end{hint}
+    \begin{hint}
+      Therefore the definition is ``For every positive real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that whenever $n \ge N$, we have $ |a_n - L| < \epsilon $.''
+    \end{hint}
 
-that is, that at some point
-it becomes increasing or decreasing.  For example, the sequence $10$,
-$9$, $8$, $15$, $3$, $21$, $4$, $3/4$, $7/8$, $15/16$, $31/32,\ldots$
-is not increasing, because among the first few terms it is not. But
-starting with the term $3/4$ it is increasing, so if the pattern
-continues and the sequence is bounded, the theorem tells us that the
-``tail'' $3/4, 7/8, 15/16, 31/32,\ldots$ converges.  Since convergence
-depends only on what happens as $n$ gets large, adding a few terms at
-the beginning can't turn a convergent sequence into a divergent one.
+    \begin{multipleChoice}
+      \choice[correct]{For every positive real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that whenever $n \ge N$, we have $ |a_n - L| < \epsilon $.}
+      \choice{For every real number $\epsilon > 0$ there exists an $N \in \mathbb{N}$ so that $ |a_N - L| < \epsilon $.}
+      \choice{For every real number $\epsilon \in \mathbb{R}$ there exists an $N \in \mathbb{N}$ so that whenever $n \ge N$, we have $ |a_n - L| < \epsilon $.}
+      \choice{For every whole number $N > 0$ there exists a positive real number $\epsilon > 0$ so that whenever $n \ge N$, we have $ |a_n - L| < \epsilon $.}
+      \choice{For every whole number $N > 0$ there exists a real number $\epsilon \in \mathbb{R}$ so that whenever $n \ge N$, we have $ |a_n - L| < \epsilon $.}
+    \end{multipleChoice}
+              
 
-\begin{example}
-\label{example:nth-root-of-n}
-Show that the sequence $(a_n)$ given by $a_n = n^{1/n}$ converges.
-\end{example}
+  The definition of limit can be written as if it were poetry with
+  line breaks and all.  Like the best of poems, it deserves to be
+  memorized, performed, internalized.  Humanity struggled for millenia
+  to find the wisdom contained in this definition.
+\end{question}
 
 \begin{warning}
-You may be worried about my saying that $\log 3 > 1$.  If
-  $\log$ were the common (base~10) logarithm, this would be wrong, but
-  as far as I'm concerned, there is only one log, the natural log.
-  Since $3 > e$, we may conclude that $\log 3 > 1$.
+  In the case that $\lim_{n \to \infty} a_n = \infty$, we say that
+  $(a_n)$ diverges, or perhaps more precisely, we say $(a_n)$ diverges to
+  infinity.  The only time we say that a sequence converges is when
+  the limit exists and is equal to a \textit{finite} value.
 \end{warning}
 
-\begin{explanation}
-  We might first show that this sequence is decreasing, that is, we show
-  that for all $n$,
-  $$
-  n^{1/n} > (n+1)^{1/(n+1)}.
-  $$
-  But this isn't true!  Take a look
-  \begin{align*}
-    a_1 &= 1, \\
-    a_2 &= \sqrt{2} \approx 1.4142, \\
-    a_3 &= \sqrt[3]{3} \approx 1.4422, \\
-    a_4 &= \sqrt[4]{4} \approx 1.4142, \\
-    a_5 &= \sqrt[5]{5} \approx 1.3797, \\
-    a_6 &= \sqrt[6]{6} \approx 1.3480, \\
-    a_7 &= \sqrt[7]{7} \approx 1.3205, \\
-    a_8 &= \sqrt[8]{8} \approx 1.2968, \mbox{ and}\\
-    a_9 &= \sqrt[9]{9} \approx 1.2765. \\
-  \end{align*}
-  But it does seem that this sequence perhaps is decreasing after the
-  first few terms.  Can we justify this?
+\youtube{https://www.youtube.com/watch?v=0UCRZAsIkXM}
 
-  Yes!  Consider the real function $ f(x)=x^{1/x}$ when $x\ge1$.
-  We compute the derivative---perhaps via ``logarithmic differentiation''---to find
-  $$
-  f'(x)=\frac{x^{1/x} \, (1-\log x)}{x^2}.
-  $$
-  Note that when $x\ge 3$, the derivative $f'(x)$ is negative.  Since the function $f$ is decreasing, we can conclude that the sequence is decreasing---well, at least for $n \geq 3$.
+One way to compute the limit of a sequence is to compute the limit of
+a function.
+\begin{theorem}
+  \label{theorem:compute-limit-of-sequence-via-function}
+  Let $f(x)$ be a real-valued function.  If $a_n = f(n)$ defines a
+  sequence $(a_n)$ and if $\lim_{x\to\infty}f(x)=L$ in the sense of Calculus
+  One, then $\lim_{n\to\infty} a_n=L$ as well.
+\end{theorem}
 
-  Since all terms of the sequence are positive, the sequence is
-  decreasing and bounded when $n \ge 3$, and so the sequence converges.
-\end{explanation}
 
-%% \marginnote{As it happens, you could compute the limit in
-%%   Example~\xrefn{example:nth-root-of-n}, but our given explanation shows that
-%%   it converges even without knowing the limit!}
+
+\begin{question}
+  Consider the sequence given by the rule \[b_{n} = \frac{ 3 \, n + 9 }{ 4 \, n + 20 }.\]  For which value of $N$ is it the case that whenever $n \ge N$ we have that $b_{n}$ is within $1/50$ of $3/4$?
+
+    \begin{hint}
+      There can only be one right answer.
+    \end{hint}
+    \begin{hint}
+      So the answer is either $N = 69$ or ``none of these.''
+    \end{hint}
+    \begin{hint}
+      Note that $b_{69} = \frac{27}{37}$.
+    \end{hint}
+    \begin{hint}
+      Consequently, $\left| b_{69} -  \frac{3}{4} \right| = \frac{3}{148} \ge \frac{1}{50}$.
+    \end{hint}
+    \begin{hint}
+      So the answer must be ``none of these.''
+    \end{hint}
+
+    \begin{multipleChoice}
+      \choice[correct]{None of these choices for $N$ is large enough.}
+      \choice{$N = 69 $}
+      \choice{$N = 67 $}
+      \choice{$N = 65 $}
+      \choice{$N = 63 $}
+    \end{multipleChoice}
+
+\end{question}
+
+But it is important to note that the converse of this theorem is not
+true; \label{sidenote:raining-converse}the \dfn{converse} of a
+statement is what you get when you swap the assumption and the
+conclusion; the converse of ``if it is raining, then it is cloudy'' is
+the statement ``if it is cloudy, then it is raining.''  Which of those
+statements is true?.
+
+To show the converse is not true, it is enough to provide a single
+example where it fails.  Here's the counterexample.  Recall an
+instance of (a potential) general rule being broken is called a
+\dfn{counterexample}.  This is a popular element among
+mathematicians and philosophers.
 
 \begin{example}
-Show that the sequence $a_n = \frac{n!}{n^n}$ converges.
-\end{example}
+  Consider the sequence $(a_n)$ given by the rule $a_n = f(n)=\sin(n\pi)$.  This is the sequence
+$$
+  \sin(0\pi),\quad \sin(1\pi),\quad\sin(2\pi),\quad\sin(3\pi),\quad\ldots,
+$$
+which is just the sequence $0, 0, 0, 0, \ldots$ since $\sin(n\pi)=0$
+whenever $n$ is an integer.  Since the sequence is just the constant sequence, we have
+$$
+\lim_{n\to\infty} f(n)= \lim_{n\to\infty} 0 = 0. 
+$$But $\lim_{x\to\infty}f(x)$, when $x$ is real, does not exist: as $x$ gets
+bigger and bigger, the values $\sin(x\pi)$ do not get closer and
+closer to a single value, but instead oscillate between $-1$ and $1$.
+\end{example} 
+
+Here's some general advice. If you want to know $\lim_{n\to\infty}
+a_n$, you might first think of a function $f(x)$ where $a_n = f(n)$,
+and then attempt to compute $\lim_{x\to\infty}f(x)$.  If the limit
+of the function exists, then it is equal to the limit of the sequence.
+But, if for some reason $\lim_{x\to\infty}f(x)$ does not exist, it
+may nevertheless still be the case that $\lim_{n\to\infty}f(n)$
+exists---you'll just have to figure out another way to compute it.
+
+\section{Monotone convergence}
 
 \begin{explanation}
-  Let's get an idea of what is going on by computing the first few terms.
-% print(join(['a_' + str(k) + '=' + latex(f(x=k)) + ' ' + '\\approx ' + str(n(f(x=k),digits=5)) for k in range(1,9)],',\quad '))
-\begin{align*}
-a_1&= 1,\quad a_2= \frac{1}{2},\quad a_3= \frac{2}{9} \approx 0.22222,\quad a_4= \frac{3}{32} \approx 0.093750, \\
-a_5&= \frac{24}{625} \approx 0.038400, \quad a_6= \frac{5}{324} \approx 0.015432, \\
-a_7&= \frac{720}{117649} \approx 0.0061199,\quad a_8= \frac{315}{131072} \approx 0.0024033.
-\end{align*}
-  The sequence appears to be decreasing.  To formally show this, we would need to show $a_{n+1}< a_n$, but we will instead show that
-$$
-\frac{a_{n+1}}{a_n} < 1,
-$$
 which amounts to the same thing.  It is helpful trick here to think of
 the ratio between subsequent terms, since the factorials end up
 canceling nicely.  In particular,
@@ -690,36 +707,157 @@ tuned!
 \subsection{Sample problem}
 
 \begin{question}
-  Consider the sequence $a_{n}$.  Suppose you know that for all $n > 1$, \[ -6 \leq a_{n} \leq 0 \] and $a_{1} = 2$, and $a_{2} = -1$, and that the sequence is nonincreasing.  Does the sequence converge?
-
-    \begin{hint}
-      Since the sequence is nonincreasing, the sequence is monotone.
-    \end{hint}
-    \begin{hint}
-      Since for all $n \geq 1$, we have $a_{n} \geq -6$, the sequence is bounded below.
-    \end{hint}
-    \begin{hint}
-      So by the Monotone Convergence Theorem, the sequence converges to some value; let us call it $L$.
-    \end{hint}
-    \begin{hint}
-      Now consider the direction in which the sequence is heading.
-    \end{hint}
-    \begin{hint}
-      Since the sequence is nonincreasing, for all $n \geq 2$, we have  $-6 \leq a_{n} \leq -1$.
-    \end{hint}
-    \begin{hint}
-      The limit $L$ must be in that interval as well.
-    \end{hint}
-    \begin{hint}
-      Therefore the sequence converges to a value $L$ so that $-6 \leq L \leq -1$.
-    \end{hint}
-
-    \begin{multipleChoice}
-      \choice[correct]{Yes, with limit between $-6$ and $-1$.}
-      \choice{No, the sequence does not converge.}
-      \choice{Yes, with limit between $-1$ and $0$.}
-    \end{multipleChoice}
-    
+  Consider the sequence $a_{n}$.  Suppose you know that for all $n >
+  1$,
+  \[
+  -6 \le a_{n} \le 0
+  \]
+  and $a_{1} = 2$, and $a_{2} = -1$, and that the sequence is
+  nonincreasing.  Does the sequence converge?
+  \begin{hint}
+    Since the sequence is nonincreasing, the sequence is monotone.
+  \end{hint}
+  \begin{hint}
+    Since for all $n \ge 1$, we have $a_{n} \ge -6$, the sequence is
+    bounded below.
+  \end{hint}
+  \begin{hint}
+    So by the Monotone Convergence Theorem, the sequence converges to
+    some value; let us call it $L$.
+  \end{hint}
+  \begin{hint}
+    Now consider the direction in which the sequence is heading.
+  \end{hint}
+  \begin{hint}
+    Since the sequence is nonincreasing, for all $n \ge 2$, we have
+    $-6 \le a_{n} \le -1$.
+  \end{hint}
+  \begin{hint}
+    The limit $L$ must be in that interval as well.
+  \end{hint}
+  \begin{hint}
+    Therefore the sequence converges to a value $L$ so that $-6 \le L
+    \le -1$.
+  \end{hint}
+  \begin{multipleChoice}
+    \choice[correct]{Yes, with limit between $-6$ and $-1$.}
+    \choice{No, the sequence does not converge.}
+    \choice{Yes, with limit between $-1$ and $0$.}
+  \end{multipleChoice}
 \end{question}
+
+
+
+
+\section{Derivatives}
+
+arithmetic vs geometric.
+
+logarithmic derivative
+
+
+L'H\^opital
+
+\section{Integrals}
+
+
+
+
+
+
+
+\section{New from old}
+
+Given a sequence, one way to build a new sequence is to start with the
+old sequence, but then throw away a whole bunch of elements.  For
+instance, if we started with the sequence of perfect squares
+$$
+1,\quad 4,\quad 9,\quad 16,\quad 25,\quad 36,\quad 49,\quad 64,\quad 81,\quad\ldots
+$$
+we could throw away all the odd-indexed elements, and be left with
+$$
+4,\quad 16,\quad 36,\quad 64,\quad 100,\quad 144,\quad 196,\quad 256,\quad 324,\quad 400,\quad 484,\quad\ldots
+$$
+We say that this latter sequence is a
+\dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
+of the original sequence.  Here is a precise definition.
+
+\begin{definition}
+  Suppose $(a_n)$ is a sequence with initial index $N$, and suppose we have a sequence of integers $(n_i)$ so that
+  $$
+  N \le n_1 < n_2 < n_3 < n_4 < n_5 < \cdots 
+  $$
+  Then the sequence $(b_i)$ given by $b_i = a_{n_i}$ is said to be a \dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
+  of the sequence $a_n$.
+\end{definition}
+
+\youtube{http://www.youtube.com/watch?v=OYRRFRzf12o}
+
+Limits are telling the story of ``what happens'' to a sequence.  If
+the elements of a sequence can be made as close as desired to a limiting
+value $L$, then the subsequence must share that same fate.
+
+\begin{theorem}
+  \label{theorem:subsequence-same-limit}
+  If $(b_i)$ is a subsequence of the convergent sequence $(a_n)$, then
+  $\lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n$.
+\end{theorem}
+
+Of course, just because a subsequence converges does not mean that the
+larger sequence converges, too.  We'll see this again in more detail,
+but we'll discuss it briefly now.
+
+\begin{example}
+Find a convergent subsequence of the sequence $(a_n)$ given by the rule $a_n = (-1)^n$.
+\end{example}
+
+\begin{explanation}
+Note that the sequence $(a_n)$ does not converge.  But by considering the sequence of indexes $n_i = 2 \cdot i$, we can build a subsequence
+$$
+b_i = a_{n_i} = a_{2i} = (-1)^{2i} = 1,
+$$
+which is a constant sequence, so it converges to 1.
+\end{explanation}
+
+There are other subsequences of $a_n = (-1)^n$ which converge but do
+\textit{not} converge to one.  For instance, the subsequence of odd
+indexed elements is the constant sequence $c_n = -1$, which converges to
+$-1$.  For that matter, the fact that there are convergent
+subsequences with distinct limits perhaps explains why the original
+sequence $(a_n)$ does not converge.  Let's formalize this.
+
+\begin{corollary}
+  \label{corollary:different-subsequences-then-diverge}
+
+  Suppose $(b_i)$ and $(c_i)$ are convergent subsequences of the sequence $(a_n)$, but
+  $$
+  \lim_{i \to \infty} b_i \neq \lim_{i \to \infty} c_i.
+  $$
+  Then the sequence $(a_n)$ does not converge.
+\end{corollary}
+
+\begin{proof}
+  Suppose, on the contrary, the sequence $(a_n)$ did converge.  Then,
+  since all subsequences approach the same limit, the subsequence
+  $(b_i)$ would converge, too, and
+  $$
+  \lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n.
+  $$
+  Again %by Theorem~\xrefn{theorem:subsequence-same-limit},
+  the subsequence
+  $(c_i)$ would converge, too, and
+  $$
+  \lim_{i \to \infty} c_i = \lim_{n \to \infty} a_n.
+  $$
+  But then $\lim_{i \to \infty} b_i = \lim_{i \to \infty} c_i$,
+  which is exactly what we are supposing doesn't happen!  To avoid
+  this contradiction, it must be that our original assumption that
+  $(a_n)$ converged was incorrect; in short, the sequence $(a_n)$ does
+  not converge.
+\end{proof}
+
+
+
+
 
 \end{document}

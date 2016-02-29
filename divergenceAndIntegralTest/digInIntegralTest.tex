@@ -208,9 +208,81 @@ p \geq \answer{1}
 \end{question}
 
 
+\section{Estimating Series Using Improper Integrals}
 
+Another cool application of this graphical viewpoint on series involves estimating series.
 
+We cannot yet compute $\sum_1^\infty \frac{1}{k^2}$ exactly, and we will not learn how to do so in this course.
 
+Say we wanted to \textbf{approximate} this sum within an error of $\frac{1}{100}$.  How many terms should we sum?  Is it enough to sum the first ten terms?  The first hundred?
+
+Let $L = \sum_1^\infty \frac{1}{k^2}$.  We want to find a number $N$ where we can be sure that $L - \sum_1^N \frac{1}{k^2} < \frac{1}{100}$.  Now, $L - \sum_1^N \frac{1}{k^2}$  can be rewritten as $R_n = \sum_{N+1}^\infty \frac{1}{k^2}$.  We can see from a picture that  $R_n < \int_N^\infty \frac{1}{x^2} \d x$ (note that we need the red rectangles here:  there are two different ways to have rectangles correspond to a series!).  So if we can choose an $N$ for which $\int_N^\infty \frac{1}{x^2} \d x < \frac{1}{100}$, we will be sure that we have summed enough terms in the series to get to within $\frac{1}{100}$.
+
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:6,xmin=0,xmax=6,ymin=0,ymax=2,
+            width=4in,
+            height=2in,
+            xtick={1,2,...,5},
+            xticklabels={$N$,$N+1$,$N+2$, $N+3$, $N+4$, $N+5$},
+            ytick = {},
+            yticklabels = {,,},
+            axis lines =middle, xlabel=$n$, ylabel=$a$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            %axis on top,
+          ]
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(1,7/5)};  %% closed hole
+		\addplot [draw=penColor, fill = fillp] plot coordinates {(1,0) (2,0) (2, 7/5) (1,7/5) (1, 0)};          
+          		\addplot [draw=penColor, fill = filln] plot coordinates {(1,0) (2,0) (2, 7/10) (1,7/10) (1, 0)};          
+
+	\addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(2,7/10)};  %% closed hole
+		\addplot [draw=penColor, fill = fillp] plot coordinates {(2,0) (3,0) (3, 7/10) (2,7/10) (2, 0)};          
+                    	\addplot [draw=penColor, fill = filln] plot coordinates {(2,0) (3,0) (3, 7/20) (2,7/20) (2, 0)};          
+
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(3,7/20)};  %% closed hole
+          	\addplot [draw=penColor, fill = fillp] plot coordinates {(3,0) (4,0) (4, 7/20) (3,7/20) (3, 0)};          
+          		\addplot [draw=penColor, fill = filln] plot coordinates {(3,0) (4,0) (4, 7/40) (3,7/40) (3, 0)};          
+
+          
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(4,7/40)};  %% closed hole        
+          	\addplot [draw=penColor, fill = fillp] plot coordinates {(4,0) (5,0) (5, 7/40) (4,7/40) (4, 0)};          
+          		\addplot [draw=penColor, fill = filln] plot coordinates {(4,0) (5,0) (5, 7/80) (4,7/80) (4, 0)};          
+
+	          \addplot [draw=penColor,very thick, domain=0.5:6] {(14/5)*2^(-x)};
+
+ 
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+
+\begin{question}
+	What is the least natural number $N$ with $\int_N^\infty \frac{1}{x^2} \d x < \frac{1}{100}$?
+	
+		\[
+			N = \answer{101}
+		\]
+		
+		\begin{hint}
+			\begin{align*}
+				\int_N^\infty \frac{1}{x^2} \d x &< \frac{1}{100}\\
+				\lim_{b \to \infty} \int_N^b \frac{1}{x^2} \d x &< \frac{1}{100}\\
+				\lim_{b \to \infty} \eval{-\frac{1}{x}}_N^b& < \frac{1}{100}\\
+				\lim_{b \to \infty} \frac{1}{N} - \frac{1}{b}& < \frac{1}{100}\\
+				\frac{1}{N} &< \frac{1}{100}\\
+				N&>100
+			\end{align*}
+			
+			
+			So we need $N$ to be at least $101$.
+		\end{hint}
+\end{question}
+
+This shows that if we sum $101$ terms of the series $\sum_1^\infty \frac{1}{k^2}$, we will get within $\frac{1}{100}$ of the true answer.
+
+It turns out this series actually converges to $\frac{\pi^2}{6}$ (finding this uses advanced concepts like Fourier Analysis).  Using a computer to sum the first $101$ terms we get $\sum_1^101 \frac{1}{k^2} \approx 1.6350$, while $\frac{\pi^2}{6} \approx 1.6449 $.  Their difference is just barely less than $\frac{1}{100}$.
 
 \end{document}
 

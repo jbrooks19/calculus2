@@ -1,0 +1,110 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{The Divergence Test}
+
+\begin{document}
+\begin{abstract}
+If an infinite sum converges, then its terms must tend to zero.
+\end{abstract}
+\maketitle
+
+
+\begin{question}
+If we have a sequence $a_k$, $k=0,1,2, \dots $ we know how to generate the sequence of partial sum $S_n = \sum_0^n a_k$.
+
+What about going backwards?
+
+For instance, if I know that $S_n = 3-\frac{4}{n+1}$ is the sequence of partial sums for some series $a_k$, can you find a formula for $a_k$?
+
+\[
+a_0 = \answer{-1}
+\]
+
+\[
+a_k = \answer{\frac{4}{k+1} - \frac{4}{k}} \text{when $k>0$}
+\]
+
+\[
+\sum_0^\infty a_k = \answer{3}
+\]
+
+
+\begin{hint}
+$S_0 = a_0$, so $a_0 = 3-\frac{4}{0+1} = -1$.
+\end{hint}
+
+\begin{hint}
+$S_k = a_0+a_1+ \dots +a_{k-1}+a_k = S_{k-1}+a_k$.  So $a_k = S_k - S_{k-1}$
+\end{hint}
+
+\begin{hint}
+Thus $a_k = (3-\frac{4}{k+1})  - (3-\frac{4}{k}) = \frac{4}{k+1} - \frac{4}{k}$
+\end{hint}
+
+
+\begin{hint}
+ $\sum_0^\infty a_k $ is defined as the limit of its sequence of partial sums.  Thus it is equal to $\lim_{n \to \infty} 3-\frac{4}{n+1} = 3$
+\end{hint}
+
+\end{question}
+
+\begin{explanation}
+In the last question, we used the key idea that if $a_k$ is a sequence, and $S_n = \sum_0^n a_k $ is its sequence of partial sums, then $a_k = S_k-S_{k-1}$.
+
+Suppose that $\sum_0^\infty a_k$ converges to $L$.  Then we can use this equation to learn something about the sequence $a_k$.
+
+\begin{align*}
+	a_k &= S_k-S_{k-1}\\
+	\lim_{k \to \infty} a_k &= \lim_{k \to \infty} S_k -  \lim_{k \to \infty} S_{k-1}\\
+	\lim_{k \to \infty} a_k &= \answer{L} - \answer{L}\\
+	\lim_{k \to \infty} a_k &= \answer{0}
+\end{align*}
+
+\begin{hint}
+	$\lim_{k \to \infty} S_{k}$ is the definition of $\sum_0^\infty a_k$, so it is equal to $L$.  $S_{k-1}$ is the same sequence, just shifted by one slot, so it has the same limit of $L$.  Thus their difference is $0$.  So $\lim_{k \to \infty} a_k = 0$.
+\end{hint}
+\end{explanation}
+
+We have just proven the following theorem:
+
+\begin{theorem}[Divergence Test]
+	If $\sum_0^\infty a_k$ is a convergent series, then $\lim_{k \to \infty} a_k = 0$.  In words ``The sequence of terms of any convergent series must tend to zero''.
+\end{theorem}
+
+\begin{question}
+Which of the following statements are true?  Mark all that apply.
+
+\begin{multipleChoice}
+	\choice[correct]{If $\sum_0^\infty a_k$ is convergent, then $\lim_{k \to \infty} a_k = 0$ }
+	\choice{If $a_k \to 0$ as $k \to \infty$, then $\sum_0^\infty a_k$ is convergent}
+	\choice{If $\sum_0^\infty a_k$ is divergent, then $\lim_{k \to \infty} a_k \neq 0$ }
+	\choice[correct]{If  $\lim_{k \to \infty} a_k \neq 0$, then $\sum_0^\infty a_k$ is divergent}
+\end{multipleChoice}
+
+
+\begin{warning}
+This question is important!  Mistakes in this logic are among the most common mistakes made by calculus students answering questions about sequences and series.
+\end{warning}
+
+\end{question}
+
+\begin{question}
+	We say that a series ``passes the divergence test'' if its sequence of terms tends to zero.  Which of the following series pass the divergence test?
+
+\begin{multipleChoice}
+	\choice[correct]{$\sum_3^\infty \frac{1}{\ln{ n }}$}
+	\choice{$\sum_0^\infty \sin(n)$}
+	\choice[correct]{$\sum_0^\infty \frac{\sin(n)}{n^2}$}
+	\choice[correct]{$\sum_5^\infty \frac{n+7}{n+6} - \frac{\sin(n)}{n}$}
+	\choice{$\sum_0^\infty \frac{2n}{n - 5}$}
+\end{multipleChoice}
+
+\end{question}
+
+
+
+\end{document}
+
+

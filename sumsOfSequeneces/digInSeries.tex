@@ -16,6 +16,112 @@ A series is summation of a sequence.
 \maketitle
 
 
+Let's jump right in:
+
+
+\begin{definition}
+  A \dfn{series} is a sum of an infinte sequence.
+\end{definition}
+
+Believe it or not, you have been working with series for a long
+time. Consider the number
+\[
+\frac{1}{3} = 0.3333333333\dots
+\]
+this is the infinite sum of the geometric sequence
+$(a_n)_{n=1}^\infty$ where $a_n = 3\cdot 10^{n}$, as
+\begin{align*}
+  \sum_{n=1}^\infty 3\cdot \frac{1}{10^{n}} &= 0.3 + 0.03+0.003+ 0.0003+ 0.00003+ \dots\\
+  &=\frac{1}{3}.
+\end{align*}
+We can sum other geometric series as well. Consider
+\[
+\sum_{n=1}^\infty \left(\frac{1}{4}\right)^n =
+\frac{1}{4} + \left(\frac{1}{4}\right)^2 + \left(\frac{1}{4}\right)^3 + \left(\frac{1}{4}\right)^4 + \cdots 
+\]
+A very clever method of summing this sequence is as follows, consider
+an equilateral triangle with area $1$
+\begin{image}
+  \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
+    \tkzDefPoint(0,1){A1} 
+    \tkzDefPoint(-.58,0){A2}
+    \tkzDefPoint(.58,0){A3}
+    \draw[penColor,very thick] (A1)--(A2)--(A3)--cycle;
+  \end{tikzpicture}
+\end{image}
+We can break this triangle into $4$ congruent triangles, each of area
+$1/4$:
+\begin{image}
+  \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
+    \tkzDefPoint(0,1){A1} 
+    \tkzDefPoint(-.58,0){A2}
+    \tkzDefPoint(.58,0){A3}
+    \draw[penColor,very thick] (A1)--(A2)--(A3)--cycle;
+
+    \tkzDefPoint(0,0){B1} 
+    \tkzDefPoint(-.29,.5){B2}
+    \tkzDefPoint(.29,.5){B3}
+    \draw[penColor,fill=fill1,very thick] (B1)--(B2)--(B3)--cycle;
+  \end{tikzpicture}
+\end{image}
+
+\begin{image}
+  \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
+    \tkzDefPoint(0,1){A1} 
+    \tkzDefPoint(-.58,0){A2}
+    \tkzDefPoint(.58,0){A3}
+    \draw[penColor,very thick] (A1)--(A2)--(A3)--cycle;
+
+    \tkzDefPoint(0,0){B1} 
+    \tkzDefPoint(-.29,.5){B2}
+    \tkzDefPoint(.29,.5){B3}
+    \draw[penColor,fill=fill1,very thick] (B1)--(B2)--(B3)--cycle;
+
+    \tkzDefPoint(0,.5){C1} 
+    \tkzDefPoint(-.14,.75){C2}
+    \tkzDefPoint(.14,.75){C3}
+    \draw[penColor,fill=fill1,very thick] (C1)--(C2)--(C3)--cycle;
+  \end{tikzpicture}
+\end{image}
+
+
+\begin{image}
+  \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
+    \tkzDefPoint(0,1){A1} 
+    \tkzDefPoint(-.58,0){A2}
+    \tkzDefPoint(.58,0){A3}
+    \draw[penColor,very thick] (A1)--(A2)--(A3)--cycle;
+
+    \tkzDefPoint(0,0){B1} 
+    \tkzDefPoint(-.29,.5){B2}
+    \tkzDefPoint(.29,.5){B3}
+    \draw[penColor,fill=fill1,very thick] (B1)--(B2)--(B3)--cycle;
+
+    \tkzDefPoint(0,.5){C1} 
+    \tkzDefPoint(-.14,.75){C2}
+    \tkzDefPoint(.14,.75){C3}
+    \draw[penColor,fill=fill1,very thick] (C1)--(C2)--(C3)--cycle;
+
+    \tkzDefPoint(0,.75){D1} 
+    \tkzDefPoint(-.07,.875){D2}
+    \tkzDefPoint(.07,.875){D3}
+    \draw[penColor,fill=fill1,very thick] (D1)--(D2)--(D3)--cycle;
+
+    \tkzDefPoint(0,.875){E1} 
+    \tkzDefPoint(-.04,.94){E2}
+    \tkzDefPoint(.04,.94){E3}
+    \draw[penColor,fill=fill1,very thick] (E1)--(E2)--(E3)--cycle;
+
+    \tkzDefPoint(0,.94 ){F1} 
+    \tkzDefPoint(-.02,.97){F2}
+    \tkzDefPoint(.02,.97){F3}
+    \draw[penColor,fill=fill1,very thick] (F1)--(F2)--(F3)--cycle;
+  \end{tikzpicture}
+\end{image}
+
+
+
+
 Given the sequence $(a_n) = (1/2^n) = 1/2, 1/4, 1/8, \ldots$, consider
 the following sums:
 \[

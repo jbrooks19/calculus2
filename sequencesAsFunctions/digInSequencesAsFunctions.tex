@@ -810,27 +810,33 @@ much faster than $(a_n)$.
     Let's simplify this a bit, write with me:
     \begin{align*}
       a_n &= \frac{n^3\ln^{9}(n)}{n^4}\\
-      &= \frac{\ln^{9}(n)}{\answer[givne]{n}}.
+      &= \frac{\ln^{9}(n)}{\answer[given]{n}}.
     \end{align*}
     Since
     \[
     (\ln^{9}(n))\ll (n)
     \]
-    we see that $\lim_{n\to \infty}a_n =\answer[given]{0}$.
+    we see that $\lim_{n\to\infty}a_n =\answer[given]{0}$.
   \end{explanation}
 \end{example}
 
-\begin{theorem}[L'H\^{o}pital's Rule]\index{L'H\^opital's Rule} 
-Let $f(x)$ and $g(x)$ be functions that are differentiable near $a$.  If
-\[
-\lim_{x \to a} f(x) = \lim_{x \to a}g(x) = 0 \qquad \text{or} \pm \infty,
-\]
-and $\lim_{x \to a} \frac{f'(x)}{g'(x)}$ exists, and $g'(x) \neq 0$
-for all $x$ near $a$, then 
-\[
-\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}.
-\]
+
+Remember how we used to compute some limits of complex functions by
+exchanging them for simplier functions. The \textit{Squeeze Theorem}
+tells us one situation where this is possible.
+
+\begin{theorem}[Squeeze Theorem]\index{Squeeze Theorem}
+  Suppose that
+  \[
+  g(x) \le f(x) \le h(x)
+  \]
+  for all $x$ close to $a$ but not necessarily equal to $a$. If
+  \[
+  \lim_{x\to a} g(x) = L = \lim_{x\to a} h(x),
+  \] 
+  then $\lim_{x\to a} f(x) = L$.
 \end{theorem}
+
 
 increasing/decreasing with growth rates?
 

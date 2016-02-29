@@ -173,7 +173,7 @@ Here we see a graph:
     \choice{impossible to say}
   \end{multipleChoice}
   \begin{feedback}
-    Since the average growth rate of a line is constant, regardless of
+    Since the average growth rate of a line is constant regardless of
     the size of the interval chosen, arithmetic sequences correspond to
     lines.
   \end{feedback}
@@ -342,15 +342,13 @@ We'd like some terminology with which to describe features we might
 notice about sequences.  Here is some of that terminology.
 
 \begin{definition}
-  A sequence is called \dfn{increasing}\index{sequence!increasing} if
-  $ a_n<a_{n+1}$ for all $n$.  It is called
-  \dfn{nondecreasing}\index{sequence!nondecreasing} if $ a_n\le
-  a_{n+1}$ for all $n$.
-
-  Similarly a sequence is \dfn{decreasing}\index{sequence!decreasing}
-  if $ a_n>a_{n+1}$ for all $n$ and
-  \dfn{nonincreasing}\index{sequence!nonincreasing} if $ a_n\ge
-  a_{n+1}$ for all $n$.
+  A sequence is called
+  \begin{itemize}
+    \item \dfn{increasing} if $a_n<a_{n+1}$ for all $n$,
+    \item \dfn{nondecreasing} if $a_n\le a_{n+1}$ for all $n$,
+    \item \dfn{decreasing} if $a_n>a_{n+1}$ for all $n$,
+    \item \dfn{nonincreasing} if $a_n\ge a_{n+1}$ for all $n$.
+  \end{itemize}
 \end{definition}
 
 Lots of facts are true for sequences which are either increasing or
@@ -368,118 +366,117 @@ cover both cases.
   it is said to be \dfn{monotonic}\index{sequence!monotonic}.
 \end{definition}
 
+\begin{question}
+  If an arithmetic sequence $a_n = m\cdot n + b$ is monotonic, what
+  must be true about $m$ and $b$?
+  \begin{prompt}
+    \begin{quote}
+      The sign of $m$ \wordChoice{\choice{is positive}\choice{is
+          negative}\choice[correct]{does not matter}}, and the sign of $b$ is
+      \wordChoice{\choice{is positive}\choice{is negative}\choice[correct]{does
+          not matter}}
+    \end{quote}
+  \end{prompt}
+  \begin{feedback}
+    An arithmetic sequence is always monotonic, regardless of the
+    values of $m$ and $b$.
+  \end{feedback}
+\end{question}
 
-Let's see some examples of sequences which are monotonic.
+\begin{question}
+  If a geometric sequence $a_n = a_1 \cdot r^{n-1}$ is monotonic, what
+  must be true about $a_1$ and $r$?
+  \begin{prompt}
+    \begin{quote}
+      The sign of $a_1$ \wordChoice{\choice{is positive}\choice{is
+          negative}\choice[correct]{does not matter}}, and the sign of
+      $r$ is \wordChoice{\choice[correct]{is positive}\choice{is
+          negative}\choice{does not matter}}
+    \end{quote}
+  \end{prompt}
+    \begin{feedback}
+    A geometric sequence $a_n = a_1 \cdot r^{n-1}$ is monotonic if and
+    only if the sign of $r$ is positive.
+  \end{feedback}
+\end{question}
+
+Let's see some examples:
 \begin{example}
-The sequence $ a_n = {2^n-1\over2^n}$ which starts
-\[
-  \frac{1}{2},\quad \frac{3}{4},\quad \frac{7}{8},\quad \frac{15}{16},\quad \ldots,
-\]
-is increasing.  On the other hand, the sequence $ b_n = \frac{n+1}{n}$, which starts
-\[ 
-  \frac{2}{1},\quad\frac{3}{2},\quad\frac{4}{3},\quad\frac{5}{4},\quad\ldots,
-\]
-is decreasing.
+  Describe the growth of $a_n = \frac{2^n-1}{2^n}$ for
+  $n=1,2,3,\dots$.
+  \begin{explanation}
+    To do this, check out the difference between two sequencial terms,
+    write with me:
+    \begin{align*}
+    a_{n+1} - a_n &= \answer[given]{\frac{2^{n+1}-1}{2^{n+1}}} - \frac{2^n-1}{2^n}\\
+    &=\frac{2^{n+1}-1 - 2\left(\answer[given]{2^n-1}\right)}{2^{n+1}}\\
+    &=\frac{2^{n+1}-1 - 2^{n+1}+2}{2^{n+1}}\\
+    &=\frac{\answer[given]{1}}{2^{n+1}}.
+    \end{align*}
+    Since $\frac{1}{2^{n+1}}$ is always
+    \wordChoice{\choice[correct]{positive}\choice{negative}\choice{zero}},
+    we see that $(a_n)$ is
+    \wordChoice{\choice[correct]{increasing}\choice{nondecreasing}\choice{decreasing}\choice{nonincreasing}}, and hence is \wordChoice{\choice[correct]{monotonic}\choice{not monotonic}}.
+  \end{explanation}
 \end{example}
 
-BADBAD QUESTION MONOTONIC ANALYTIC
-
+\begin{example}
+  Describe the growth of $a_n = \frac{n+1}{n}$ for $n=1,2,3,\dots$.
+  \begin{explanation}
+    To do this, check out the difference between two sequencial terms,
+    write with me:
+    \begin{align*}
+    a_{n+1} - a_n &= \answer[given]{\frac{(n+1)+1}{n+1}} - \frac{n+1}{n}\\
+    &=\frac{n(n+2) - (n+1)(\answer[given]{n+1})}{n+1}\\
+    &=\frac{n^2+2n - n^2 -2n-1}{n+1}\\
+    &=\frac{\answer[given]{-1}}{n+1}.
+    \end{align*}
+    Since $\frac{-1}{n+1}$ is always
+    \wordChoice{\choice{positive}\choice[correct]{negative}\choice{zero}},
+    we see that $(a_n)$ is
+    \wordChoice{\choice{increasing}\choice{nondecreasing}\choice[correct]{decreasing}\choice{nonincreasing}}, and hence is \wordChoice{\choice[correct]{monotonic}\choice{not monotonic}}.
+  \end{explanation}
+\end{example}
 
 Sometimes we can say that the sequence doesn't get too big or too
-small, in this case we say the sequence is \textit{bounded}
+small, in this case we say the sequence is \textit{bounded}.
 
 \begin{definition}
   \label{definition:sequence-bounded}
-  A sequence $(a_n)$ is \dfn{bounded above}\index{sequence!bounded
-    above} if there is some number $M$ so that for all $n$, we have $
-  a_n\le M$.  Likewise, a sequence $(a_n)$ is \dfn{bounded
-    below}\index{sequence!bounded below} if there is some number $M$
-  so that for every $n$, we have $ a_n\ge M$.
-
-If a sequence is both bounded above and bounded below, the sequence is said
-to be \dfn{bounded}\index{sequence!bounded}.
+  A sequence $(a_n)$ is \dfn{bounded} if there is some number $M$ so
+  that for all $n$, we have $|a_n|\le M$.
 \end{definition}
 
-
-
-
-
 \begin{question}
-  To say that the sequence $a_n$ is ``bounded below'' is to say what?
-
-    \begin{hint}
-      The definition begins by asserting the existence of some bound $M$.
-    \end{hint}
-    \begin{hint}
-      The bound is a real number, meaning $M \in \mathbb{R}$.
-    \end{hint}
-    \begin{hint}
-      So the definition begins ``there exists an $M \in \mathbb{R}$\ldots''
-    \end{hint}
-    \begin{hint}
-      The bound must hold for all terms in the sequence.
-    \end{hint}
-    \begin{hint}
-      So we will assert something for all indexes $n \in \mathbb{N}$.
-    \end{hint}
-    \begin{hint}
-      The definition begins ``there exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, \ldots''
-    \end{hint}
-    \begin{hint}
-      For a particular term $a_n$ to be bounded below by $M$ just means that $a_n \ge M$.
-    \end{hint}
-    \begin{hint}
-      Altogether then, being bounded below means ``there exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \ge M$.''  Sometimes you might see this ending with $ a_n > M $, but that is a difference which does not affect which sequences are bounded below.
-      
-    \end{hint}
-    
+  True or False: If a sequence $(a_n)_{n=0}^\infty$ is nondecreasing
+  it is bounded below by $a_0$.
+  \begin{prompt}
     \begin{multipleChoice}
-      \choice[correct]{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \ge M$.}
-      \choice{There exists an $n \in \mathbb{N}$, so that for all $M \in \mathbb{R}$, we have $a_n \ge M$.}
-      \choice{For all $M \in \mathbb{R}$, there exists an $n \in \mathbb{N}$, so that $a_n \ge M$.}
-      \choice{For all $n \in \mathbb{N}$, there exists an $M \in \mathbb{R}$, so that $a_n \ge M$.}
-      \choice{There exists an $M \in \mathbb{R}$, so that for all $n \in \mathbb{N}$, we have $a_n \le M$.}
+    \choice[correct]{true}
+    \choice{false}
     \end{multipleChoice}
-
-\end{question}
-            
-If a sequence $
-\{a_n\}_{n=0}^\infty$ is increasing or non-decreasing it is bounded
-below (by $ a_0$), and if it is decreasing or non-increasing it is
-bounded above (by $ a_0$).
-
-\begin{question}
-  Consider the sequence $b_{n} = -n^{2} + 5 \, n - 5$.  Is the sequence bounded above?  Bounded below?
-
-    \begin{hint}
-      Consider the coefficient on $n^{2}$ in $b_{n} = -n^{2} + 5 \, n - 5$, which is $-1$.
-    \end{hint}
-    \begin{hint}
-      Since the leading term's coefficient is negative, when $n$ is large, $b_{n}$ is very negative.
-    \end{hint}
-    \begin{hint}
-      Consequently, the sequence is not bounded below.
-    \end{hint}
-    \begin{hint}
-      At least for $n$ large, the sequence is decreasing.
-    \end{hint}
-    \begin{hint}
-      Consequently, the sequence is bounded above.
-    \end{hint}
-    \begin{hint}
-      Altogether then, the sequence is bounded above, but not below.
-    \end{hint}
-
-    \begin{multipleChoice}
-      \choice[correct]{Bounded above, but not bounded below.}
-      \choice{Bounded below, but not bounded above.}
-      \choice{Bounded above and bounded below.}
-      \choice{Bounded neither above nor below.}
-    \end{multipleChoice}
-
+  \end{prompt}
+  \begin{feedback}
+    If a sequence is nondecreasing, then its smallest value is its
+    first element.
+  \end{feedback}
 \end{question}
 
 
+\begin{question}
+  True or False: If a sequence $(a_n)_{n=0}^\infty$ is nonincreasing
+  it is bounded above by $a_0$.
+  \begin{prompt}
+    \begin{multipleChoice}
+    \choice[correct]{true}
+    \choice{false}
+    \end{multipleChoice}
+  \end{prompt}
+  \begin{feedback}
+    If a sequence is nonincreasing, then its largest value is its
+    first element.
+  \end{feedback}
+\end{question}
 
 
 
@@ -490,41 +487,10 @@ are separate and distinct, the notion of a ``limit at a point'' cannot
 be made to really make sense. However, limits at \textit{infinity} are
 a different story.
 
-
-We've seen a lot of sequences, and already there are a few things we
-might notice.  For instance, the arithmetic progression
-\[
-1,\quad 8,\quad 15,\quad 22,\quad 29,\quad 36,\quad 43,\quad 50,\quad 57,\quad 64,\quad 71,\quad 78,\quad 85,\quad 92,\quad \ldots
-\]
-just keeps getting bigger and bigger.  No matter how large a number
-you think of, if I add enough $7$'s to $1$, eventually I will surpass
-the giant number you thought of.  On the other hand, the elements in a
-geometric progression where each element is half the previous element,
-namely
-\[
-\frac{1}{2},\quad \frac{1}{4},\quad \frac{1}{8},\quad \frac{1}{16},\quad \frac{1}{32},\quad \frac{1}{64},\quad \frac{1}{128},\quad \frac{1}{256},\quad \frac{1}{512},\quad \frac{1}{1024},\quad \ldots ,
-\]
-are getting closer and closer to zero.  No matter how close you stand
-near but not at zero, eventually this geometric sequence gets even
-closer than you are to zero.
-
-%\youtube{https://www.youtube.com/watch?v=PRTjvMA2nCY}
-
-These two sequences have very different stories.  One shoots off to
-infinity; the other zooms in towards zero.  Mathematics is not just
-about numbers; mathematics provides tools for talking about the
-qualitative features of the numbers we deal with.  What about the two
-sequences we just considered?  They are qualitatively very different.
-The first ``goes to'' infinity; the second ``goes to'' zero.
-
 In short, given a sequence, it is helpful to be able to say something
 qualitative about it; we may want to address the question such as
-``what happens after a while?'' Formally, when faced with a sequence,
-we are interested in the limit
-\[
-\lim_{i\to \infty} f(i) = \lim_{i\to\infty} a_i.
-\]
-Earlier you've studied a similar question about
+``what happens after a while?''  Earlier you've studied a similar
+question about
 \[
 \lim_{x\to\infty} f(x)
 \]
@@ -536,11 +502,13 @@ specify, perhaps implicitly, that the variable is an integer.
 \begin{definition}\index{limit of a sequence}
 \label{definition:limit-of-a-sequence}
 Suppose that $\left(a_n\right)$ is a sequence.
-To say that $\lim_{n\to \infty}a_n=L$ is to say that \\
+To say that $\lim_{n\to \infty}a_n=L$ is to say that
+\begin{quote}
 \null\quad for every $\epsilon>0$, \\
 \null\quad\quad there is an $N > 0$, \\
 \null\quad so that whenever $n>N$, \\
-\null\quad\quad we have $|a_n-L|<\epsilon$. \\
+\null\quad\quad we have $|a_n-L|<\epsilon$.
+\end{quote}
 If $\lim_{n\to\infty}a_n=L$ we say that the sequence
 \dfn{converges}\index{convergent
   sequence}\index{sequence!convergent}.  If there is no finite value $L$ so
@@ -550,35 +518,36 @@ that $\lim_{n\to\infty}a_n = L$, then we say that the limit
 \end{definition} 
 
 \begin{question}
-  To say that the sequence $a_n$ converges to $L$ means what?  In other words, what is the definition of the statement $\lim_{n \to \infty} a_n = L$?
-
-    \begin{hint}
-      We are trying to make precise the idea that, eventually, all the elements of the sequence $a_n$ are as close as we want to $L$.
-    \end{hint}
-    \begin{hint}
-      To measure closeness to $L$, we will use a positive real number $\epsilon$.
-    \end{hint}
-    \begin{hint}
-      We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number $\epsilon$.
-    \end{hint}
-    \begin{hint}
-      In other words, the definition will begin ``For every positive real number $\epsilon > 0$\ldots''
-    \end{hint}
-    \begin{hint}
-      We now must make precise the idea of ``eventually'' close.
-    \end{hint}
-    \begin{hint}
-      We use a whole number $N$ to capture the idea of ``sufficiently large'' values of $n$.
-    \end{hint}
-    \begin{hint}
-      Specifically, the definition will begin ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$\ldots''
-    \end{hint}
-    \begin{hint}
-      The ``sufficiently large'' value of $n$ is any value which is at least as large as $N$.
-    \end{hint}
-    \begin{hint}
-      So we will only consider those $n$ for which $n \ge N$.
-    \end{hint}
+  To say that the sequence $a_n$ converges to $L$ means what?  In
+  other words, what is the definition of the statement
+  $\lim_{n\to\infty} a_n = L$?
+  \begin{hint}
+    We are trying to make precise the idea that, eventually, all the elements of the sequence $a_n$ are as close as we want to $L$.
+  \end{hint}
+  \begin{hint}
+    To measure closeness to $L$, we will use a positive real number $\epsilon$.
+  \end{hint}
+  \begin{hint}
+    We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number $\epsilon$.
+  \end{hint}
+  \begin{hint}
+    In other words, the definition will begin ``For every positive real number $\epsilon > 0$\ldots''
+  \end{hint}
+  \begin{hint}
+    We now must make precise the idea of ``eventually'' close.
+  \end{hint}
+  \begin{hint}
+    We use a whole number $N$ to capture the idea of ``sufficiently large'' values of $n$.
+  \end{hint}
+  \begin{hint}
+    Specifically, the definition will begin ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$\ldots''
+  \end{hint}
+  \begin{hint}
+    The ``sufficiently large'' value of $n$ is any value which is at least as large as $N$.
+  \end{hint}
+  \begin{hint}
+    So we will only consider those $n$ for which $n \ge N$.
+  \end{hint}
     \begin{hint}
       Thus the definition goes ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$ so that whenever $n \ge N$\ldots''
     \end{hint}
@@ -602,7 +571,7 @@ that $\lim_{n\to\infty}a_n = L$, then we say that the limit
       \choice{For every whole number $N > 0$ there exists a positive real number $\epsilon > 0$ so that whenever $n \ge N$, we have $ |a_n - L| < \epsilon $.}
       \choice{For every whole number $N > 0$ there exists a real number $\epsilon \in \mathbb{R}$ so that whenever $n \ge N$, we have $ |a_n - L| < \epsilon $.}
     \end{multipleChoice}
-              
+    
 
   The definition of limit can be written as if it were poetry with
   line breaks and all.  Like the best of poems, it deserves to be
@@ -611,113 +580,80 @@ that $\lim_{n\to\infty}a_n = L$, then we say that the limit
 \end{question}
 
 \begin{warning}
-  In the case that $\lim_{n \to \infty} a_n = \infty$, we say that
-  $(a_n)$ diverges, or perhaps more precisely, we say $(a_n)$ diverges to
-  infinity.  The only time we say that a sequence converges is when
-  the limit exists and is equal to a \textit{finite} value.
+  In the case that $\lim_{n \to \infty} a_n = \pm\infty$, we say that
+  $(a_n)$ diverges, or perhaps more precisely, we say $(a_n)$ diverges
+  to infinity.  \textbf{The only time we say that a sequence converges
+    is when the limit exists and is equal to a \textit{finite} value}.
 \end{warning}
 
-\youtube{https://www.youtube.com/watch?v=0UCRZAsIkXM}
+%\youtube{https://www.youtube.com/watch?v=0UCRZAsIkXM}
 
 One way to compute the limit of a sequence is to compute the limit of
 a function.
 \begin{theorem}
-  \label{theorem:compute-limit-of-sequence-via-function}
   Let $f(x)$ be a real-valued function.  If $a_n = f(n)$ defines a
-  sequence $(a_n)$ and if $\lim_{x\to\infty}f(x)=L$ in the sense of Calculus
-  One, then $\lim_{n\to\infty} a_n=L$ as well.
+  sequence and if
+  \[
+  \lim_{x\to\infty}f(x)=L
+  \]
+  then $\lim_{n\to\infty} a_n=L$ as well.
 \end{theorem}
 
-
-
-\begin{question}
-  Consider the sequence given by the rule \[b_{n} = \frac{ 3 \, n + 9 }{ 4 \, n + 20 }.\]  For which value of $N$ is it the case that whenever $n \ge N$ we have that $b_{n}$ is within $1/50$ of $3/4$?
-
-    \begin{hint}
-      There can only be one right answer.
-    \end{hint}
-    \begin{hint}
-      So the answer is either $N = 69$ or ``none of these.''
-    \end{hint}
-    \begin{hint}
-      Note that $b_{69} = \frac{27}{37}$.
-    \end{hint}
-    \begin{hint}
-      Consequently, $\left| b_{69} -  \frac{3}{4} \right| = \frac{3}{148} \ge \frac{1}{50}$.
-    \end{hint}
-    \begin{hint}
-      So the answer must be ``none of these.''
-    \end{hint}
-
-    \begin{multipleChoice}
-      \choice[correct]{None of these choices for $N$ is large enough.}
-      \choice{$N = 69 $}
-      \choice{$N = 67 $}
-      \choice{$N = 65 $}
-      \choice{$N = 63 $}
-    \end{multipleChoice}
-
-\end{question}
-
-But it is important to note that the converse of this theorem is not
-true; \label{sidenote:raining-converse}the \dfn{converse} of a
-statement is what you get when you swap the assumption and the
-conclusion; the converse of ``if it is raining, then it is cloudy'' is
-the statement ``if it is cloudy, then it is raining.''  Which of those
-statements is true?.
+\begin{warning}
+It is important to note that the converse of this theorem is not
+true. There are functions $f(x)$ and sequences $(a_n)$ where $a_n
+=f(n)$ and
+\[
+\lim_{x\to\infty}f(x)=\text{DNE} \quad\text{but} \quad \lim_{n\to\infty} a_n = L
+\]
+for some number $L$.
+\end{warning}
 
 To show the converse is not true, it is enough to provide a single
-example where it fails.  Here's the counterexample.  Recall an
-instance of (a potential) general rule being broken is called a
-\dfn{counterexample}.  This is a popular element among
-mathematicians and philosophers.
+example where it fails.  Here's a counterexample:
 
 \begin{example}
-  Consider the sequence $(a_n)$ given by the rule $a_n = f(n)=\sin(n\pi)$.  This is the sequence
-$$
-  \sin(0\pi),\quad \sin(1\pi),\quad\sin(2\pi),\quad\sin(3\pi),\quad\ldots,
-$$
+  Let $(a_n)$ given by the rule $a_n = f(n)=\sin(n\pi)$. Show that
+  \[
+  \lim_{n\to\infty} a_n \ne \lim_{x\to \infty}f(x).
+  \]
+  \begin{explanation}
+  The sequence $(a_n)$ is the sequence
+  \[
+  \sin(0\pi),\, \sin(1\pi),\, \sin(2\pi),\,\sin(3\pi),\,\ldots,
+  \]
 which is just the sequence $0, 0, 0, 0, \ldots$ since $\sin(n\pi)=0$
-whenever $n$ is an integer.  Since the sequence is just the constant sequence, we have
-$$
+whenever $n$ is an integer.  Since the sequence is just the constant
+sequence, we have
+\[
 \lim_{n\to\infty} f(n)= \lim_{n\to\infty} 0 = 0. 
-$$But $\lim_{x\to\infty}f(x)$, when $x$ is real, does not exist: as $x$ gets
-bigger and bigger, the values $\sin(x\pi)$ do not get closer and
+\]
+But $\lim_{x\to\infty}f(x)$, when $x$ is real, does not exist: as $x$
+gets bigger and bigger, the values $\sin(x\pi)$ do not get closer and
 closer to a single value, but instead oscillate between $-1$ and $1$.
-\end{example} 
+  \end{explanation}
+\end{example}
 
 Here's some general advice. If you want to know $\lim_{n\to\infty}
 a_n$, you might first think of a function $f(x)$ where $a_n = f(n)$,
-and then attempt to compute $\lim_{x\to\infty}f(x)$.  If the limit
-of the function exists, then it is equal to the limit of the sequence.
-But, if for some reason $\lim_{x\to\infty}f(x)$ does not exist, it
-may nevertheless still be the case that $\lim_{n\to\infty}f(n)$
-exists---you'll just have to figure out another way to compute it.
+and then attempt to compute $\lim_{x\to\infty}f(x)$.  If the limit of
+the function exists, then it is equal to the limit of the sequence.
+But, if for some reason $\lim_{x\to\infty}f(x)$ does not exist, it may
+nevertheless still be the case that $\lim_{n\to\infty}a_n$ exists,
+you'll just have to figure out another way to compute it.
 
-\section{Monotone convergence}
 
-\begin{explanation}
-which amounts to the same thing.  It is helpful trick here to think of
-the ratio between subsequent terms, since the factorials end up
-canceling nicely.  In particular,
-\begin{align*}
-  {a_{n+1}\over a_n} &= {(n+1)!\over (n+1)^{n+1}}{n^n\over n!} \\
-  &= {(n+1)!\over n!}{n^n\over (n+1)^{n+1}} \\
-  &= {n+1\over n+1}\left({n\over n+1}\right)^n
-  &= \left({n\over n+1}\right)^n < 1.
-\end{align*}
-  Note that the sequence is bounded below, since every term is positive.
+\subsection{Monotone convergence}
 
-  Because the sequence is decreasing and bounded below, it converges.
-  Indeed, an EXERCISE BADBAD asks you to compute the limit.
-\end{explanation}
+We can now state an important theorem.
 
-These sorts of arguments involving the ratio of subsequent terms will
-come up again in a big way when we consider the ratio test.  Stay
-tuned!
-
-\subsection{Sample problem}
-
+\begin{theorem}[Bounded-monotone convergence]
+  If the sequence $a_n$ is bounded and monotonic, then
+  \[
+  \lim_{n \to  \infty} a_n = L
+  \]
+  for some real-number $L$.
+\end{theorem}
 \begin{question}
   Consider the sequence $a_{n}$.  Suppose you know that for all $n >
   1$,
@@ -751,24 +687,157 @@ tuned!
     Therefore the sequence converges to a value $L$ so that $-6 \le L
     \le -1$.
   \end{hint}
+  \begin{prompt}
   \begin{multipleChoice}
     \choice[correct]{Yes, with limit between $-6$ and $-1$.}
     \choice{No, the sequence does not converge.}
     \choice{Yes, with limit between $-1$ and $0$.}
   \end{multipleChoice}
+  \end{prompt}
 \end{question}
 
+In short, bounded monotonic sequences always converge, though we can't
+necessarily describe the number to which they converge.  Let's try
+some examples!
+
+\begin{example}
+  Given the sequence $a_n=\frac{2^n-1}{2^n}$ for $n=1,2,3,\dots$,
+  explain how you know that $\lim_{n\to\infty} a_n$ converges to a
+  finite value.
+  \begin{explanation}
+    To start, from previous work we know that $a_n$ is
+    \wordChoice{\choice[correct]{monotonic}\choice{not monotonic}}.
+    Moreover, all of the elements $a_n = (2^n-1)/2^n$ are less than
+    $2$, and greater than zero. Hence by the bounded-monotone
+    convergence theorem, $\lim_{n\to\infty} a_n$ converges to a finite
+    value.
+  \end{explanation}
+\end{example}
+
+\begin{example}
+  Given the sequence $a_n=\frac{n+1}{n}$ for $n=1,2,3,\dots$,
+  explain how you know that $\lim_{n\to\infty} a_n$ converges to a
+  finite value.
+  \begin{explanation}
+    To start, from previous work we know that $a_n$ is
+    \wordChoice{\choice[correct]{monotonic}\choice{not monotonic}}.
+    Moreover, all of the elements $a_n = (n+1)/n$ are less than $1$,
+    and greater than zero. Hence by the bounded-monotone convergence
+    theorem, $\lim_{n\to\infty} a_n$ converges to a finite value.
+  \end{explanation}
+\end{example}
+
+We don't actually need to know that a sequence is monotonic to apply
+the bounded-monotone convergence theorem. It is enough to know that
+the sequence is ``eventually'' monotonic, that is, that some point it
+becomes increasing or decreasing.
+
+\begin{example}
+Show that the sequence $(a_n)$ given by $a_n = n^{1/n}$ converges.
+\begin{explanation}
+  We might first show that this sequence is decreasing, that is, we show
+  that for all $n$,
+  \[
+  n^{1/n} > (n+1)^{1/(n+1)}.
+  \]
+  But this isn't true!  Take a look
+  \begin{align*}
+    a_1 &= 1, \\
+    a_2 &= \sqrt{2} \approx 1.4142, \\
+    a_3 &= \sqrt[3]{3} \approx 1.4422, \\
+    a_4 &= \sqrt[4]{4} \approx 1.4142, \\
+    a_5 &= \sqrt[5]{5} \approx 1.3797, \\
+    a_6 &= \sqrt[6]{6} \approx 1.3480, \\
+    a_7 &= \sqrt[7]{7} \approx 1.3205, \\
+    a_8 &= \sqrt[8]{8} \approx 1.2968, \\
+    a_9 &= \sqrt[9]{9} \approx 1.2765.
+  \end{align*}
+  But it does seem that this sequence perhaps is decreasing after the
+  first few terms.  Can we justify this?
+
+  Yes!  Consider the real function $f(x)=x^{1/x}$ when $x\ge 1$.  We
+  compute the derivative, perhaps via \index{logarithmic
+    differentiation}logarithmic differentiation, to find
+  \[
+  f'(x)=\answer[given]{\frac{x^{1/x} (1-\ln(x))}{x^2}}.
+  \]
+  Note that when $x\ge 3$, the derivative $f'(x)$ is negative.  Since
+  the function $f$ is decreasing, we can conclude that the sequence is
+  decreasing---well, at least for $n \geq 3$.
+
+  Since all terms of the sequence are positive, the sequence is
+  decreasing and bounded $0\le a_n \le a_3$ when $n \ge 3$, and so the
+  sequence converges.
+\end{explanation}
+\end{example}
 
 
 
-\section{Derivatives}
+\section{Growth rates}
 
-arithmetic vs geometric.
+When dealing with functions of real-numbers, derivatives tell us the
+instantaneous growth rate of a function. Since sequences are essential
+discrete, derivatives cannot really be used. Nevertheless, the idea of
+a growth rate is still very important.
 
-logarithmic derivative
+\begin{definition}
+  Given two sequences $(a_n)$ and $(b_n)$, the notation $(a_n) \ll
+  (b_n)$ means that
+  \[
+  \lim_{n\to\infty} \frac{a_n}{b_n} =
+  0\qquad\text{and}\qquad\lim_{n\to\infty} \frac{b_n}{a_n} =\infty.
+  \]
+\end{definition}
+
+In essence, writing $a_n \ll b_n$ says that the sequence $(b_n)$ grows
+much faster than $(a_n)$.
+
+
+\begin{theorem}[Growth rates of sequences]
+  Let $p,q$ be positive real numbers, and let $b> 1$. We have the
+  following relationship:
+  \[
+  (\ln^p(n))\ll (n^q) \ll (b^n) \ll (n!) \ll (n^n)
+  \]
+\end{theorem}
+
+\begin{example}
+  Let $a_n  = \frac{n^3\ln^{9}(n)}{n^4}$. Compute:
+  \[
+  \lim_{n\to \infty}a_n
+  \]
+  \begin{explanation}
+    Let's simplify this a bit, write with me:
+    \begin{align*}
+      a_n &= \frac{n^3\ln^{9}(n)}{n^4}\\
+      &= \frac{\ln^{9}(n)}{\answer[givne]{n}}.
+    \end{align*}
+    Since
+    \[
+    (\ln^{9}(n))\ll (n)
+    \]
+    we see that $\lim_{n\to \infty}a_n =\answer[given]{0}$.
+  \end{explanation}
+\end{example}
+
+\begin{theorem}[L'H\^{o}pital's Rule]\index{L'H\^opital's Rule} 
+Let $f(x)$ and $g(x)$ be functions that are differentiable near $a$.  If
+\[
+\lim_{x \to a} f(x) = \lim_{x \to a}g(x) = 0 \qquad \text{or} \pm \infty,
+\]
+and $\lim_{x \to a} \frac{f'(x)}{g'(x)}$ exists, and $g'(x) \neq 0$
+for all $x$ near $a$, then 
+\[
+\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}.
+\]
+\end{theorem}
+
+increasing/decreasing with growth rates?
+
 
 
 L'H\^opital
+
 
 \section{Integrals}
 
@@ -776,97 +845,6 @@ L'H\^opital
 
 
 
-
-
-\section{New from old}
-
-Given a sequence, one way to build a new sequence is to start with the
-old sequence, but then throw away a whole bunch of elements.  For
-instance, if we started with the sequence of perfect squares
-$$
-1,\quad 4,\quad 9,\quad 16,\quad 25,\quad 36,\quad 49,\quad 64,\quad 81,\quad\ldots
-$$
-we could throw away all the odd-indexed elements, and be left with
-$$
-4,\quad 16,\quad 36,\quad 64,\quad 100,\quad 144,\quad 196,\quad 256,\quad 324,\quad 400,\quad 484,\quad\ldots
-$$
-We say that this latter sequence is a
-\dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
-of the original sequence.  Here is a precise definition.
-
-\begin{definition}
-  Suppose $(a_n)$ is a sequence with initial index $N$, and suppose we have a sequence of integers $(n_i)$ so that
-  $$
-  N \le n_1 < n_2 < n_3 < n_4 < n_5 < \cdots 
-  $$
-  Then the sequence $(b_i)$ given by $b_i = a_{n_i}$ is said to be a \dfn{subsequence}\index{sequence!subsequence}\index{subsequence}
-  of the sequence $a_n$.
-\end{definition}
-
-\youtube{http://www.youtube.com/watch?v=OYRRFRzf12o}
-
-Limits are telling the story of ``what happens'' to a sequence.  If
-the elements of a sequence can be made as close as desired to a limiting
-value $L$, then the subsequence must share that same fate.
-
-\begin{theorem}
-  \label{theorem:subsequence-same-limit}
-  If $(b_i)$ is a subsequence of the convergent sequence $(a_n)$, then
-  $\lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n$.
-\end{theorem}
-
-Of course, just because a subsequence converges does not mean that the
-larger sequence converges, too.  We'll see this again in more detail,
-but we'll discuss it briefly now.
-
-\begin{example}
-Find a convergent subsequence of the sequence $(a_n)$ given by the rule $a_n = (-1)^n$.
-\end{example}
-
-\begin{explanation}
-Note that the sequence $(a_n)$ does not converge.  But by considering the sequence of indexes $n_i = 2 \cdot i$, we can build a subsequence
-$$
-b_i = a_{n_i} = a_{2i} = (-1)^{2i} = 1,
-$$
-which is a constant sequence, so it converges to 1.
-\end{explanation}
-
-There are other subsequences of $a_n = (-1)^n$ which converge but do
-\textit{not} converge to one.  For instance, the subsequence of odd
-indexed elements is the constant sequence $c_n = -1$, which converges to
-$-1$.  For that matter, the fact that there are convergent
-subsequences with distinct limits perhaps explains why the original
-sequence $(a_n)$ does not converge.  Let's formalize this.
-
-\begin{corollary}
-  \label{corollary:different-subsequences-then-diverge}
-
-  Suppose $(b_i)$ and $(c_i)$ are convergent subsequences of the sequence $(a_n)$, but
-  $$
-  \lim_{i \to \infty} b_i \neq \lim_{i \to \infty} c_i.
-  $$
-  Then the sequence $(a_n)$ does not converge.
-\end{corollary}
-
-\begin{proof}
-  Suppose, on the contrary, the sequence $(a_n)$ did converge.  Then,
-  since all subsequences approach the same limit, the subsequence
-  $(b_i)$ would converge, too, and
-  $$
-  \lim_{i \to \infty} b_i = \lim_{n \to \infty} a_n.
-  $$
-  Again %by Theorem~\xrefn{theorem:subsequence-same-limit},
-  the subsequence
-  $(c_i)$ would converge, too, and
-  $$
-  \lim_{i \to \infty} c_i = \lim_{n \to \infty} a_n.
-  $$
-  But then $\lim_{i \to \infty} b_i = \lim_{i \to \infty} c_i$,
-  which is exactly what we are supposing doesn't happen!  To avoid
-  this contradiction, it must be that our original assumption that
-  $(a_n)$ converged was incorrect; in short, the sequence $(a_n)$ does
-  not converge.
-\end{proof}
 
 
 

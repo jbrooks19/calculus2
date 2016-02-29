@@ -291,7 +291,7 @@ Let's see a graph:
 
 
 
-On the other hand, if the common ration between sucessive elements of
+On the other hand, if the common ration between successive elements of
 a geometric sequence is \textbf{not} positive, then something
 interesting happens. Check out this example:
 \begin{image}
@@ -405,7 +405,7 @@ Let's see some examples:
   Describe the growth of $a_n = \frac{2^n-1}{2^n}$ for
   $n=1,2,3,\dots$.
   \begin{explanation}
-    To do this, check out the difference between two sequencial terms,
+    To do this, check out the difference between two sequential terms,
     write with me:
     \begin{align*}
     a_{n+1} - a_n &= \answer[given]{\frac{2^{n+1}-1}{2^{n+1}}} - \frac{2^n-1}{2^n}\\
@@ -423,7 +423,7 @@ Let's see some examples:
 \begin{example}
   Describe the growth of $a_n = \frac{n+1}{n}$ for $n=1,2,3,\dots$.
   \begin{explanation}
-    To do this, check out the difference between two sequencial terms,
+    To do this, check out the difference between two sequential terms,
     write with me:
     \begin{align*}
     a_{n+1} - a_n &= \answer[given]{\frac{(n+1)+1}{n+1}} - \frac{n+1}{n}\\
@@ -776,26 +776,62 @@ Show that the sequence $(a_n)$ given by $a_n = n^{1/n}$ converges.
 \subsection{The squeeze theorem}
 
 Remember how we used to compute some limits of complex functions by
-exchanging them for simplier functions. The \textit{Squeeze Theorem}
+exchanging them for simpler functions. The \textit{Squeeze Theorem}
 tells us one situation where this is possible.
 
 \begin{theorem}[Squeeze Theorem]\index{Squeeze Theorem}
-  Suppose that
+  Suppose that $(a_n)$, $(b_n)$, and $(c_n)$ are sequences with
   \[
-  g(x) \le f(x) \le h(x)
+  a_n \le b_n \le c_n
   \]
-  for all $x$ close to $a$ but not necessarily equal to $a$. If
+  for all $n$ greater than some index $N$. If
   \[
-  \lim_{x\to a} g(x) = L = \lim_{x\to a} h(x),
+  \lim_{n\to\infty} a_n = L = \lim_{n\to\infty} c_n,
   \] 
-  then $\lim_{x\to a} f(x) = L$.
+  then $\lim_{n\to\infty} b_n = L$.
 \end{theorem}
 
+Let's see an example.
+
+\begin{example}
+  Consider the sequence $(b_n)_{n=1}^{\infty}$ where $b_n =
+  \left(\frac{-1}{2}\right)^n$. Compute:
+  \[
+  \lim_{n\to\infty}b_n
+  \]
+  \begin{explanation}
+    To compute this limit we will use the squeeze theorem. Write with
+    me:
+    \[
+    -\left(\frac{1}{2}\right)^n\le \left(\frac{-1}{2}\right)^n \le \left(\frac{1}{2}\right)^n
+    \]
+    but we know
+    \[
+    \lim_{n\to \infty}\left(-\left(\frac{1}{2}\right)^n\right) = \answer[given]{0}
+    \]
+    and
+    \[
+    \lim_{n\to \infty}\left(\frac{1}{2}\right)^n =\answer[given]{0}.
+    \]
+    Hence by the squeeze theorem, $\lim_{n\to\infty} b_n = \answer[given]{0}$.
+  \end{explanation}
+\end{example}
 
 
+This last result actually gives us a general theorem about geometric
+sequences:
 
-
-
+\begin{theorem}
+  Given a geometric sequence $a_n = a_1 \cdot r^{n-1}$,
+  \[
+  \lim_{n\to\infty} a_n =
+  \begin{cases}
+    0 &\text{if $|r|<1$,}\\
+    1 &\text{if $r=1$,}\\
+    \text{DNE} &\text{if $|r|>1$ or $r=-1$.}
+  \end{cases}
+  \]
+\end{theorem}
 
 
 \section{Growth rates}
@@ -844,18 +880,6 @@ much faster than $(a_n)$.
     we see that $\lim_{n\to\infty}a_n =\answer[given]{0}$.
   \end{explanation}
 \end{example}
-
-
-
-increasing/decreasing with growth rates?
-
-
-
-
-
-
-
-
 
 
 \end{document}

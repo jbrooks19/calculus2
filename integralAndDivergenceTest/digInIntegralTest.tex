@@ -148,8 +148,20 @@ diverges, then so does
 \sum_{k=1}^\infty a_{k+1}
 \]
 since is simply the first sum missing $a_1$ and no single number can
-be responsible for this sum diverging to infinity.  Let's graph
-$a_{k+1}$ with rectangles:
+be responsible for this sum diverging to infinity. This fact can be summed up int he following theorem:
+
+\begin{theorem}[Infinite Nature of Series]
+The convergence or divergence remains unchanged by the addition or
+subtraction of any finite number of terms. That is:
+\begin{enumerate}
+\item A divergent series will remain divergent with the addition or
+  subtraction of any finite number of terms.
+\item A convergent series will remain convergent with the addition or
+  subtraction of any finite number of terms. (Of course, the
+  \emph{sum} will likely change.)
+\end{enumerate}
+\end{theorem}
+Back to the task at hand, let's graph $a_{k+1}$ with rectangles:
 \begin{image}
 \begin{tikzpicture}
 	\begin{axis}[
@@ -237,7 +249,7 @@ This leads us to another interesting observation:
     $a_k = f(k)$.  If $\sum_{k=1}^\infty a_k$ diverges, so does
     $\int_1^\infty f(x) \d x$.
 \end{quote}
-This leads us to the \texttt{integral test}:
+This leads us to the \textit{integral test}:
 \begin{theorem}[Integral Test]
   Let $f$ be continuous, positive, and decreasing on $[1,\infty)$.
     with $a_k = f(k)$ Then either

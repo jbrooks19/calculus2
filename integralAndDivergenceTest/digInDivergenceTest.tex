@@ -2,7 +2,10 @@
 
 \input{../preamble.tex}
 
-\title[Dig-In:]{The Divergence Test}
+\outcome{Use the divergence test to determine that a series diverges.}
+\outcome{Recognize known convergent or divergent series.}
+
+\title[Dig-In:]{The divergence test}
 
 \begin{document}
 \begin{abstract}
@@ -11,8 +14,71 @@ If an infinite sum converges, then its terms must tend to zero.
 \maketitle
 
 
+As one contemplates the behavior of series, a few facts become clear:
+\begin{enumerate}
+\item In order to add an infinite list of nonzero numbers and get a
+  finite result, ``most'' of those numbers must be ``very near'' $0$.
+\item If a series diverges, it means that the sum of an infinite list
+  of numbers is not finite (it may approach $\pm \infty$ or it may
+  oscillate), and:
+  \begin{enumerate}
+  \item The series will still diverge if the first term is removed.
+  \item The series will still diverge if the first $10$ terms are
+    removed.
+  \item The series will still diverge if the first $1,000,000$ terms
+    are removed.
+  \item The series will still diverge if any finite number of terms
+    from anywhere in the series are removed.
+  \end{enumerate}
+\end{enumerate}
+
+These concepts are very important and lie at the heart of the next two
+theorems.
+
+\begin{theorem}[Divergence test]
+  Consider the series
+  \[
+  \sum_{n=1}^\infty a_n.
+  \]
+\begin{enumerate}
+\item If $\sum_{n=1}^\infty a_n$ converges, then $\lim_{n\to\infty}a_n
+  =0$.
+\item If $\lim_{n\to\infty}a_n \neq 0$, then $\sum_{n=1}^\infty a_n$
+  diverges.
+\end{enumerate}
+
+
+Note that the two statements above are really the same. In order to
+converge, the limit of the terms of the sequence must approach $0$; if
+they do not, the series will not converge.
+
+
+\begin{warning}
+  This theorem \emph{does not state} that if $\lim_{n\to\infty} a_n =
+  0$ then $\sum_{n=1}^\infty a_n$ converges.
+  
+\end{warning}
+
+The standard example of
+  this is the Harmonic Series, as given in Key Idea
+  \ref{idea:famous_series}. The Harmonic Sequence, $\{1/n\}$,
+  converges to 0; the Harmonic Series, $\sum_{n=1}^\infty 1/n$,
+  diverges.
+
+
+\theorem{thm:series_behavior}{Infinite Nature of Series}
+{The convergence or divergence remains unchanged by the addition or subtraction of any finite number of terms. That is:
+	\begin{enumerate}
+	\item		A divergent series will remain divergent with the addition or subtraction of any finite number of terms.
+	\item		A convergent series will remain convergent with the addition or subtraction of any finite number of terms. (Of course, the \emph{sum} will likely change.)
+	\end{enumerate}
+}
+
+
+
 \begin{question}
-If we have a sequence $a_k$, $k=0,1,2, \dots $ we know how to generate the sequence of partial sum $S_n = \sum_0^n a_k$.
+If we have a sequence $a_k$, $k=0,1,2, \dots $ we know how to generate
+the sequence of partial sum $S_n = \sum_0^n a_k$.
 
 What about going backwards?
 

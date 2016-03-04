@@ -3,8 +3,9 @@
 \input{../preamble.tex}
 
 \outcome{Use the root test to determine if a series diverges or converges.}
+\outcome{Determine when to use the ratio or root test.}
 
-\title[Dig-In:]{The Root Test}
+\title[Dig-In:]{The root test}
 
 \begin{document}
 \begin{abstract}
@@ -47,7 +48,8 @@ interested you can find a proof online!)
   \]
   Discuss the convergence of this series.
   \begin{explanation}
-    We will attempt to use the root test. Write with me
+    We will attempt to use the root test. Setting
+    $a_k=\frac{k^5}{k^k}$, write with me
     \[
     \lim_{k \to \infty} \sqrt[k]{a_k} = \answer[given]{0}	
     \]
@@ -56,20 +58,110 @@ interested you can find a proof online!)
 	   \choice[correct]{says the series is convergent}
 	   \choice{says the series is divergent}
 	   \choice{gives no information in this case, but we know the series is convergent through some other method}
-	   \choice{gives no information in this case, but we know the series divergent through some other method}
-	 }.		
+	   \choice{gives no information in this case, but we know the series is divergent through some other method}}.		
 	  \begin{hint}
-	    \begin{align*}
+            \begin{align*}
 	      \lim_{k \to \infty} \sqrt[k]{a_k} &= \lim_{k \to \infty} \sqrt[k]{\frac{k^5}{k^k}}\\
 	      &=\lim_{k \to \infty} \frac{(k^{\frac{1}{k}})^5}{k}\\
-	      &=0 \textrm{ since $\lim_{k \to \infty} k^\frac{1}{k} = 1$}
+	      &=0 \quad\text{since $\lim_{k \to \infty} k^\frac{1}{k} = 1$}
 	    \end{align*}
 	    So the series is convergent by the root test.
 	  \end{hint}
   \end{explanation}
 \end{example}
-  
-  Generally the Root test is most useful when you have a lot of powers, and no factorials.  Anytime you see a factorial is a pretty good sign to try the Ratio test.
+
+\begin{example}
+  Consider 
+  \[
+  \sum_{k=3}^\infty \frac{2^k}{k^2}
+  \]
+  Discuss the convergence of this series.
+  \begin{explanation}
+    We will attempt to use the root test. Setting
+    $a_k=\frac{2^k}{k^2}$, write with me
+    \[
+    \lim_{k \to \infty} \sqrt[k]{\frac{2^k}{k^2}} = \answer[given]{2}	
+    \]
+    so the root test
+	  \wordChoice{
+	   \choice{says the series is convergent}
+	   \choice[correct]{says the series is divergent}
+	   \choice{gives no information in this case, but we know the series is convergent through some other method}
+	   \choice{gives no information in this case, but we know the series is divergent through some other method}}.		
+	  \begin{hint}
+            \begin{align*}
+	      \lim_{k \to \infty} \sqrt[k]{a_k} &= \lim_{k \to \infty} \sqrt[k]{\frac{2^k}{k^2}}\\
+	      &=\lim_{k \to \infty} \frac{2}{(k^{1/k})^2}\\
+	      &=2 \quad\text{since $\lim_{k \to \infty} k^\frac{1}{k} = 1$}
+	    \end{align*}
+	    So the series is divergent by the root test.
+	  \end{hint}
+  \end{explanation}
+\end{example}
+
+\begin{example}
+  Consider 
+  \[
+  \sum_{k=1}^\infty \left(\frac{k^2-k}{k^2+k}\right)^k
+  \]
+  Discuss the convergence of this series.
+  \begin{explanation}
+    We will attempt to use the root test. Setting
+    $a_k=\left(\frac{k^2-k}{k^2+k}\right)^k$, write with me
+    \[
+    \lim_{k \to \infty} \sqrt[k]{\left(\frac{k^2-k}{k^2+k}\right)^k} = \answer[given]{1}	
+    \]
+    so the root test
+	  \wordChoice{
+	   \choice{says the series is convergent}
+	   \choice{says the series is divergent}
+	   \choice{gives no information in this case, but we know the series is convergent through some other method}
+	   \choice[correct]{gives no information in this case, but we know the series is divergent through some other method}}.		
+	  \begin{hint}
+            \begin{align*}
+	      \lim_{k \to \infty} \sqrt[k]{a_k} &= \lim_{k \to \infty} \sqrt[k]{\left(\frac{k^2-k}{k^2+k}\right)^k}\\
+	      &=\lim_{k \to \infty}\frac{k^2-k}{k^2+k}\\
+	      &=1
+	    \end{align*}
+	    So the root test gives no information.  However, we know this series diverges by the divergence test.
+	  \end{hint}
+  \end{explanation}
+\end{example}
+
+
+\begin{example}
+  Consider 
+  \[
+  \sum_{k=1}^\infty \frac{1}{k^2}
+  \]
+  Discuss the convergence of this series.
+  \begin{explanation}
+    We will attempt to use the root test. Setting
+    $a_k=\frac{1}{k^2}$, write with me
+    \[
+    \lim_{k \to \infty} \sqrt[k]{\frac{1}{k^2}} = \answer[given]{1}	
+    \]
+    so the root test
+	  \wordChoice{
+	   \choice{says the series is convergent}
+	   \choice{says the series is divergent}
+	   \choice[correct]{gives no information in this case, but we know the series is convergent through some other method}
+	   \choice{gives no information in this case, but we know the series is divergent through some other method}}.		
+	  \begin{hint}
+            \begin{align*}
+	      \lim_{k \to \infty} \sqrt[k]{a_k} &= \lim_{k \to \infty} \sqrt[k]{\frac{1}{k^2}}\\
+	      &=\lim_{k \to \infty}\left(k^{1/k}\right)^{-2}\\
+	      &=1 \quad\text{since $\lim_{k \to \infty} k^\frac{1}{k} = 1$}
+	    \end{align*}
+	    So the root test gives no information.  However, we know
+            this series converges by the $p$-test.
+	  \end{hint}
+  \end{explanation}
+\end{example}
+
+Generally the root test is most useful when you have a lot of powers,
+and no factorials.  Anytime you see a factorial is a pretty good sign
+to try the ratio test.
 
 
 

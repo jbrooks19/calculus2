@@ -1,0 +1,75 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Use the root test to determine if a series diverges or converges}
+
+\title[Dig-In:]{The Root Test}
+
+\begin{document}
+\begin{abstract}
+Some infinite series can be compared to geometric series
+\end{abstract}
+\maketitle
+
+In the Ratio Test section, we learned that it is powerful to recognize that a series is ``approximately'' geometric, because we know how to decide the convergence and divergence of geometric series.  If $\lim_{k \to \infty} \frac{a_{k+1}}{a_k} = r$, then the ``tail'' of the series looks like a geometric series of ratio $r$, and follows the same convergence and divergence behavior.
+
+The Root Test uses the same idea in a slightly different situation
+
+\begin{theorem}[The Root Test]
+	If $\sum a_k$ is an infinite series of positive terms, and $\lim_{k \to \infty} \sqrt[k]{a_k} = r$, then 
+	
+	\begin{itemize}
+		\item If $0 \leq r < 1$, then the series converges.
+		\item If $r>1$, then the series diverges.
+		\item If $r = 1$, then we learn nothing:  the series could diverge or converge.
+	\end{itemize}
+\end{theorem}
+
+Notice that the conclusion of the Root Test follows exactly the same form as the Ratio Test.  It does so for exactly the same reason:
+
+If $\sqrt[k]{a_k} \approx r$ for large $k$, then $a_k \approx r^k$ for large $k$, which exactly says that the tail of $a_k$ looks like a geometric series with ratio $r$.
+
+Again, we do not give a formal proof in this course (but if you are interested you can find a proof online!)
+
+\begin{question}
+	Consider 
+	
+	\[
+	 \sum_4^\infty \frac{k^5}{k^k}
+	\]
+	
+
+	 $\lim_{k \to \infty} \sqrt[k]{a_k} = \answer{0}$	
+	 
+	 So the root test says that the series is
+	 
+	 \begin{multipleChoice}
+		\choice[correct]{The root test says it is convergent}
+		\choice{The root test says it is divergent}
+		\choice{The root test gives no information in this case, but we know it is convergent through some other method}
+		\choice{The root test gives no information in this case, but we know it is divergent through some other method}
+	\end{multipleChoice}	
+	
+	\begin{hint}
+		\begin{align*}
+			\lim_{k \to \infty} \sqrt[k]{a_k} &= \lim_{k \to \infty} \sqrt[k]{\frac{k^5}{k^k}}\\
+				&=\lim_{k \to \infty} \frac{(k^{\frac{1}{k}})^5}{k}\\
+				&=0 \textrm{ since $\lim_{k \to \infty} k^\frac{1}{k} = 1$}
+	\end{align*}
+	
+	So the series is convergent by the root test.
+	\end{hint}
+\end{question}
+
+Generally the Root test is most useful when you have a lot of powers, and no factorials.  Anytime you see a factorial is a pretty good sign to try the Ratio test.
+
+
+
+
+
+
+
+\end{document}
+
+

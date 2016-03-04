@@ -1,0 +1,112 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Use the limit comparison test to determine if a series diverges or converges}
+
+\title[Dig-In:]{The Limit Comparison Test}
+
+\begin{document}
+\begin{abstract}
+We compare infinite series to each other using limits
+\end{abstract}
+\maketitle
+
+Using the Comparison test can be hard, because finding the right sequence of inequalities is difficult.  The Limit Comparison test eliminates this part of the method.
+
+\begin{theorem}[The Limit Comparison Test]
+	Let $\sum a_k$ and $\sum b_k$ be series with positive terms.
+	
+	Let $\lim_{k \to \infty} \frac{a_k}{b_k} = L$ 
+	
+	\begin{itemize}
+		\item If $0<L<\infty$ then either both series converge, or they both diverge
+		\item If $L=0$ and $\sum b_k$ converges, then $\sum a_k$ converges
+		\item If $L=\infty$ and $\sum b_k$ diverges, then $\sum a_k$ diverges
+	\end{itemize}
+\end{theorem}
+
+This should make sense.
+
+	\begin{itemize}
+		\item If $0<L<\infty$ then we have $a_k \approx Lb_k$ for large $k$, so their behavior should be the same.
+		\item If $L=0$ then $a_k$ should be way less than $b_k$.  So if $b_k$ converges, $a_k$ should also converge by the Comparison Test.
+		\item If $L=\infty$, then  $a_k$ should be way greater than $b_k$. So if  $b_k$ diverges, $a_k$ should also diverge by the Comparison Test.
+	\end{itemize}
+
+
+The way we actually use this in practice still involves some creativity:  we have to decide on a "similar" series which we know the convergence properties of.  However, unlike the Comparison test, we can just mechanically take a limit of the ratio of our guess with our original series, instead of having to ''get your hands dirty'' with inequalities.
+
+\begin{question}
+	Consider $\sum_1^\infty \frac{\ln(k)}{k^3}$.
+	
+	Which of the following is the best series to compare this one to?
+	
+	\begin{multipleChoice}
+		\choice{$\sum_1^\infty \frac{1}{k^3}$}
+		\choice[correct]{$\sum_1^\infty \frac{1}{k^2}$}
+		\choice{$\sum_1^\infty \frac{1}{k}$}
+		\choice{$\sum_1^\infty \frac{\ln(k)}{k^2}$}
+	\end{multipleChoice}
+	
+	The series is
+	
+	\begin{multipleChoice}
+		\choice[correct]{convergent}
+		\choice{divergent}
+	\end{multipleChoice}
+	
+	\begin{hint}
+		We should expect that this series will converge, because $\ln(k)$ goes to infinity slower than $k$, so the series is ``no worse'' than the $p$-series with $p=2$.
+	\end{hint}
+	
+	\begin{hint}
+		In the notation of the theorem, let $a_k = \frac{\ln(k)}{k^3}$.
+		
+		We need to choose a $b_k$ which is convergent, so the harmonic series can be eliminated.
+		
+		The option $\sum_1^\infty \frac{\ln(k)}{k^2}$ does not help us because determining its convergence/divergence is just as hard as the problem we are starting with.
+		
+		So it must be either the $p$ series with $p=2$ or $p=3$.
+		
+		The $p$-series with $p=3$ is a poor choice, because we then get $\lim_{k \to \infty} \frac{a_k}{b_k} = \lim_{k \to \infty} (\ln(k)) = \infty$, which will only ever help us determine divergence, not convergence.  So this fails to be helpful.  The Limit Comparison test does not apply because $\sum b_k$ converges (check the conditions again!).
+		
+		So we are left with the only sensible choice as $b_k = \frac{1}{k^2}$.  This also aligns with our intuition about why this series should converge in the first place, in the first hint.
+	\end{hint}
+	
+	\begin{hint}
+		Letting $b_k = \frac{1}{k^2}$ we have
+		
+		\[
+		\lim_{k \to \infty} \frac{a_k}{b_k} = \lim_{k \to \infty} \frac{\ln(k)}{k} = 0
+		\]
+		
+		Since $\sum b_k$ is convergent by the $p$-series test with $p=2$, then the Limit Comparison test applies, and $\sum_1^\infty \frac{\ln(k)}{k^3}$ must also converge.
+	\end{hint}
+\end{question}
+
+The Limit Comparison test is easier to use than the Comparison Test, so why do we even have the Comparison test?  The reason is that, sometimes the Comparison Test is more powerful.  The next question illustrates this.
+
+\begin{question}
+	Consider $\sum_1^\infty \frac{1+\sin(k)}{2^k}$.  What happens when you try to use a comparison with $\sum_1^\infty \frac{1}{2^k}$?  Select all that apply.
+	
+		\begin{selectAll}
+			\choice{The limit comparison test shows that the original series is convergent}
+			\choice{The limit comparison test shows that the original series is divergent}
+			\choice[correct]{The limit comparison test does not apply because the limit in question does not exist}
+			\choice[correct]{The comparison test can be used to show that the original series converges.}
+			\choice[correct]{The comparison test can be used to show that the original series diverges.}
+		\end{selectAll}
+		
+		\begin{hint}
+				$\frac{a_k}{b_k} = 1+\sin(k)$, which does not have a limit as $k \to \infty$, so the limit comparison test does not apply.
+				
+				On the other hand, we can see that $0<1+\sin(k)<2$, so $\frac{1+\sin(k)}{2^k} < \frac{2}{2^k}$, which is a convergent geometric series with $r = \frac{1}{2}<1$ .  Thus the original series converges via the Comparison Test.
+		\end{hint}
+		
+\end{question}
+
+
+\end{document}
+
+

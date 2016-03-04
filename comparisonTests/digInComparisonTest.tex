@@ -1,0 +1,105 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Use the comparison test to determine if a series diverges or converges}
+
+\title[Dig-In:]{The Comparison Test}
+
+\begin{document}
+\begin{abstract}
+We compare infinite series to each other using inequalities
+\end{abstract}
+\maketitle
+
+\begin{question}
+	If  $0 \leq a_k \leq b_k$ for all $k$, which of the following do you think are true?
+	
+	\begin{multipleChoice}
+		\choice[correct]{If $\sum b_k$ converges then $\sum a_k$ converges}
+		\choice{If $\sum a_k$ converges then $\sum b_k$ converges}
+		\choice{If $\sum b_k$ diverges then $\sum a_k$ diverges}
+		\choice[correct]{If $\sum a_k$ diverges then $\sum b_k$ diverges}
+	\end{multipleChoice}
+\end{question}
+
+If you got this question right, you already understand the Comparison Test:
+
+\begin{theorem}[The Comparison Test]
+	Let $\sum a_k$ and $\sum b_k$ be series with positive terms.
+	
+	\begin{itemize}
+		\item If $a_k \leq b_k$ and $\sum a_k$ is divergent, then $\sum b_k$ is divergent
+		\item If $a_k \leq b_k$ and $\sum b_k$ is convergent, then $\sum a_k$ is convergent.
+	\end{itemize}
+\end{theorem}
+
+The proof of this theorem is beyond this course, but it should make intuitive sense.  Making the terms of a convergent series smaller should result in another convergent series.  Making the terms of  divergent series larger should result in another divergent series.
+
+While this theorem is intuitive, its use involves considerable creativity.  You have to:
+
+\begin{itemize}
+	\item Find a simpler series which ``behaves like'' your series 
+	\item Use this simpler series to predict whether the original series converges or diverges
+	\item If you predict your series is convergent, you have to hunt for a simpler series which is also convergent, but all of whom's  terms are larger
+	\item If you predict your series is divergent, you have to hunt for a simpler series which is also divergent, but all whom's terms are smaller
+\end{itemize}
+
+All of these steps (aside from the second) require real insight and creativity.  This is not a ``mechanical'' test.
+
+\begin{question}
+Is $\sum_1^\infty \frac{k}{1+k^3}$ convergent or divergent?  Justify your answer using the Comparison Test.
+
+\begin{multipleChoice}	
+	\choice[correct]{convergent}
+	\choice{divergent}
+\end{multipleChoice}
+
+\begin{hint}
+	Intuitively, we should feel that this should be similar to the series $\sum \frac{k}{k^3} = \sum \frac{1}{k^2}$ since the $1$ should not matter that much.
+	
+	We know $\sum \frac{1}{k^2}$ is convergent by the $p$-series test (which ultimately comes from the integral test).
+	
+	Since we want to prove convergence, we need to find another series whose terms are always \textbf{larger} than our original series, but which converges. 
+\end{hint}
+
+\begin{hint}
+	 $\frac{k}{1+k^3} < \frac{k}{0+k^3}$ since we have made the denominator smaller, which makes the fraction larger.
+	 
+	 Thus $\frac{k}{1+k^3} < \frac{1}{k^2}$.
+	 
+	 Since $\sum \frac{1}{k^2}$ converges, then our original series also converges by the comparison test.
+\end{hint}
+
+\end{question}
+
+\begin{question}
+Is $\sum_1^\infty \frac{k^2}{1+k^3}$ convergent or divergent?  Justify your answer using the Comparison Test.
+
+\begin{multipleChoice}	
+	\choice{convergent}
+	\choice[correct]{divergent}
+\end{multipleChoice}
+
+\begin{hint}
+	Intuitively, we should feel that this should be similar to the series $\sum \frac{k^2}{k^3} = \sum \frac{1}{k}$ since the $1$ should not matter that much.
+	
+	We know $\sum \frac{1}{k}$ is divergent by the $p$-series test (which ultimately comes from the integral test).
+	
+	Since we want to prove divergence, we need to find another series whose terms are always \textbf{smaller} than our original series, but which also diverges.  This requires some creativity. 
+\end{hint}
+
+\begin{hint}
+	 $\frac{k^2}{1+k^3} \geq \frac{k^2}{k^3+k^3}$ since we have made the denominator larger, which makes the fraction smaller. (Note that $k^3 \geq 1$ whenever $k \geq 1$)
+	 
+	 Thus $\frac{k}{1+k^3} \geq \frac{1}{2k}$.
+	 
+	 Since $\sum \frac{1}{2k}$ diverges, then our original series also diverges by the comparison test.
+\end{hint}
+
+\end{question}
+
+
+\end{document}
+
+

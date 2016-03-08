@@ -54,7 +54,7 @@ advantage of a trigonometric identity, usually the \dfn{Pythagorean
           $\int \underbrace{(1-\cos^2(x))^2 \cos^2(x)} \underbrace{\sin(x) \d x}$
         };
         \node at (-.5,-.7) {\small{polynomial in $g$}};
-        \node at (1.8,-.7) {\small{$\d g$}};
+        \node at (1.8,-.7) {\small{``$\d g$''}};
       \end{tikzpicture}
     \end{center}
     Making the substitution
@@ -102,7 +102,7 @@ We have now set ourselves up for an eventual substitution:
       $\int \underbrace{(1-\cos^2(x))^k \cos^m(x)} \underbrace{\sin(x) \d x}$
         };
     \node at (-.5,-.7) {\small{polynomial in $g$}};
-    \node at (1.8,-.7) {\small{$\d g$}};
+    \node at (2,-.7) {\small{``$\d g$''}};
   \end{tikzpicture}
 \end{center}
 so letting $g = \cos(x)$ so $\d g =-\sin(x) \d x$, we have
@@ -151,7 +151,7 @@ We have now set ourselves up for an eventual substitution:
       $\int \underbrace{( \sin^n(x) (1-\sin^{2}(x))^k} \underbrace{\cos(x) \d x}$
         };
     \node at (-.5,-.7) {\small{polynomial in $g$}};
-    \node at (1.8,-.7) {\small{$\d g$}};
+    \node at (1.8,-.7) {\small{``$\d g$''}};
   \end{tikzpicture}
 \end{center}
 so letting $g = \sin(x)$ so $\d g =\cos(x) \d x$, we have 
@@ -209,13 +209,14 @@ Sometimes we need to massage our function into the correct form:
       \int \sin^5 x\d x &=\int \sin^4(x) \sin(x) \d x\\
       &=\int (\sin^2(x))^2 \sin(x) \d x
     \end{align*}
+    Here is what we're thinking:
     \begin{center}%% used center instead of image since there is no reason for a LARGE integral in the text
       \begin{tikzpicture}
         \node at (0,0) {
-          $\int \underbrace{(1-\cos^2)^2} \underbrace{\sin(x) \d x}$
+          $\int \underbrace{(1-\cos^2(x))^2} \underbrace{\sin(x) \d x}$
         };
         \node at (-.5,-.7) {\small{polynomial in $g$}};
-        \node at (1,-.7) {\small{$\d g$}};
+        \node at (1.2,-.7) {\small{``$\d g$''}};
       \end{tikzpicture}
     \end{center}
     Now set $g=\cos x$, $\d g=-\sin x\d x$:
@@ -267,7 +268,7 @@ worth seeing several examples where we use these identities.
           $\int \underbrace{\tan^3(x)(1+\tan^2(x))} \underbrace{\sec^2(x) \d x}$
         };
         \node at (-.5,-.7) {\small{polynomial in $g$}};
-        \node at (1.8,-.7) {\small{$\d g$}};
+        \node at (1.8,-.7) {\small{``$\d g$''}};
       \end{tikzpicture}
     \end{center}
     Making the substitution
@@ -308,7 +309,7 @@ worth seeing several examples where we use these identities.
           $\int \underbrace{(\sec^2(x)-1)^2\sec^4(x)} \underbrace{\sec(x)\tan(x) \d x}$
         };
         \node at (-1,-.7) {\small{polynomial in $g$}};
-        \node at (1.8,-.7) {\small{$\d g$}};
+        \node at (1.8,-.7) {\small{``$\d g$''}};
       \end{tikzpicture}
     \end{center}
     Making the substitution
@@ -352,7 +353,7 @@ completeness sake.
           $\int \underbrace{(\cot^3(x)(\cot^2(x)+1)} \underbrace{\csc^2(x) \d x}$
         };
         \node at (-.5,-.7) {\small{polynomial in $g$}};
-        \node at (1.8,-.7) {\small{$\d g$}};
+        \node at (1.8,-.7) {\small{``$\d g$''}};
       \end{tikzpicture}
     \end{center}
     Making the substitution
@@ -394,7 +395,7 @@ completeness sake.
           $\int \underbrace{(\csc^2(x)-1)\csc^4(x)} \underbrace{\csc(x)\cot(x) \d x}$
         };
         \node at (-1,-.7) {\small{polynomial in $g$}};
-        \node at (1.8,-.7) {\small{$\d g$}};
+        \node at (1.8,-.7) {\small{``$\d g$''}};
       \end{tikzpicture}
     \end{center}
     Making the substitution
@@ -487,8 +488,8 @@ cosecant, tangent, and cotangent.
         \node at (0,0) {
           $\int \underbrace{(1-\sin^2(x))^{-1}} \underbrace{\cos(x) \d x}$
         };
-        \node at (-.4,-.7) {\small{rational function in $g$}};
-        \node at (1.8,-.7) {\small{$\d g$}};
+        \node at (-.6,-.7) {\small{rational function in $g$}};
+        \node at (1.4,-.7) {\small{``$\d g$''}};
       \end{tikzpicture}
     \end{center}
     Set $g =\sin(x)$ so $\d g = \cos(x) \d x$, and write with me

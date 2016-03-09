@@ -40,7 +40,7 @@ Recall the terms of harmonic series come from the harmonic sequence
 $\seq{a_n} = \seq{1/n}$. An important alternating series is the
 \dfn{alternating harmonic series}:
 \[
-\sum_{n=1}^\infty (-1)^{n+1}\frac1n = 1-\frac12+\frac13-\frac14+\frac15-\frac16+\cdots
+\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} = 1-\frac12+\frac13-\frac14+\frac15-\frac16+\cdots
 \]
 
 Geometric series can also be alternating series when $r<0$. For
@@ -87,9 +87,9 @@ converge.
 %% of $S_n$ converge to the same common limit $L$, the sum of the series.
 
 \begin{question}
-  Does the alternating series apply to this series
+  Does the alternating series test apply to this series
   \[
-  \sum_{n=1}^\infty (-1)^{n+1}\frac1n ?
+  \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} ?
   \]
   \begin{prompt}
     \begin{multipleChoice}
@@ -109,9 +109,9 @@ converge.
     \end{feedback}
   \end{prompt}
   \begin{question}
-    Does the alternating series apply to this series
+    Does the alternating series test apply to this series
     \[
-    \sum_{n=1}^\infty (-1)^n\frac{\ln n}{n}?
+    \sum_{n=1}^\infty \frac{(-1)^n\ln n}{n}?
     \]
     \begin{prompt}
       \begin{multipleChoice}
@@ -147,7 +147,7 @@ converge.
       \end{feedback}
     \end{prompt}
     \begin{question}
-      Does the alternating series apply to this series
+      Does the alternating series test apply to this series
       \[
       \sum_{n=1}^\infty (-1)^{n+1}\frac{|\sin n|}{n^2}?
       \]
@@ -189,7 +189,7 @@ Let $\seq{a_n}$ be a sequence that satisfies the hypotheses of the
 alternating series test, and let $S_n$ be the $n$th partial sums and
 sum and let 
 \[
-L = \sum_{n=1}^\infty (-1)^{n}a_n\qquad\text{or}\qquad\sum_{n=1}^\infty (-1)^{n+1}a_n.
+L = \sum_{n=1}^\infty (-1)^{n}a_n\qquad\text{or}\qquad L=\sum_{n=1}^\infty (-1)^{n+1}a_n.
 \]
 Then
 \begin{itemize}
@@ -203,7 +203,7 @@ series.
 Let's see an example:
 
 \begin{example}
-Approximate the sum of the alternating harmonic series with an error less than $10^{-2}$
+Approximate the sum of the alternating harmonic series with an error less than $10^{-2}$.
 \begin{explanation}
   Look at the $(n+1)$th term:
 	\begin{align*}
@@ -377,14 +377,11 @@ sum.
 
 \begin{theorem}[Absolute Convergence]\index{absolute convergence theorem}
   Let $\sum_{n=1}^\infty a_n$ be a series that converges absolutely.
-\begin{itemize}
-\item $\sum_{n=1}^\infty a_n$ converges.  
-\item Let $\seq{b_n}$ be any rearrangement of the sequence
+  Let $\seq{b_n}$ be any rearrangement of the sequence
   $\seq{a_n}$. Then
-	  \[
-          \sum_{n=1}^\infty b_n = \sum_{n=1}^\infty a_n.
-          \]
-\end{itemize}
+  \[
+  \sum_{n=1}^\infty b_n = \sum_{n=1}^\infty a_n.
+  \]
 \end{theorem}
 
 The theorem states that rearranging the terms of an absolutely
@@ -399,7 +396,7 @@ that the sum is any desired value, including $\infty$!
 As an example, consider the alternating harmonic series once more. We
 have stated that
 \[
-\sum_{n=1}^\infty (-1)^{n+1}\frac1n =1-\frac12+\frac13-\frac14+\frac15-\frac16+\frac17\cdots = \ln 2.
+\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} =1-\frac12+\frac13-\frac14+\frac15-\frac16+\frac17\cdots = \ln 2.
 \]
 Consider the rearrangement where every positive term is followed by two negative terms:
 \[

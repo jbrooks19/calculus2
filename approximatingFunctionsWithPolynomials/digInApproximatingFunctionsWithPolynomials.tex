@@ -87,9 +87,10 @@ discuss are called \textit{Taylor polynomials} and \textit{Maclaurin
 \end{definition}
 
 \begin{question}
-  Consider $f(x) = e^x$. Which of the following is a Maclaurin polynomial for $e^x$?
+  Consider $f(x) = e^x$. Which of the following is a Maclaurin
+  polynomial for $e^x$?
   \begin{multipleChoice}
-    \choice{1+x+\frac{x^2}{2!} + \frac{x^3}{3!}+ \frac{x^4}{4!}}
+    \choice{$1+x+\frac{x^2}{2!} + \frac{x^3}{3!}+ \frac{x^4}{4!}$}
   \end{multipleChoice}
 
   Give plot in feedback
@@ -121,8 +122,23 @@ then it makes sense that
 \[
 f(x) = g(x)
 \]
-for all $x$.
-
+for all $x$. The Taylor and Macularin polynomials are ``cooked up'' so
+that their value and the value of their derivatvies equals the value
+of the related function at $x=c$. Check it out, here we see the $3$rd
+Maclaurin polynomial for $f(x) = \sin(x)$:
+\[
+p_3(x) = x - \frac{x^3}{3!} 
+\]
+we see
+\begin{align*}
+  p_3(0) = 0 &= f(0) = \sin(0)\\
+  p_3'(0) = 1 &= f'(1) = \cos(0)\\
+  p_3''(0) = 0 &= f''(0) = -\sin(0)\\
+  p_3'''(0) = -1 &= f'''(0) = -\cos(0)\\
+  p_3^{(4)}(0) = 0 &= f^{(4)}(0) = \sin(0)\\
+  p_3^{(5)}(0) = 0 &\ne f^{(5)}(0) = \cos(0)
+\end{align*}
+Note that in the case of sine, 
 
 
 \section{The mean value theorem strikes again}

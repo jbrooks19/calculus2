@@ -1,0 +1,30 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Power series}
+
+\begin{document}
+\begin{abstract}
+  Infinte series can represent functions.
+\end{abstract}
+\maketitle
+
+If we refuse to truncate a Talor polynomial, we call it a
+\textit{power series}.
+
+\begin{definition}
+  A \dfn{power series} is a series of the form
+  \[
+  \sum_{k=0}^\infty a_k(x-c)^k
+  \]
+  where the $a_k$'s are the \dfn{coefficients} and $c$ is the
+  \dfn{center}.
+\end{definition}
+\begin{align*}
+           e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\\
+       \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots\\
+       \cos(x) &= 1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots\\
+ \frac{1}{1-x} &= 1+ x+ x^2 + x^3 + \cdots \qquad |x|< 1
+\end{align*}
+\end{document}

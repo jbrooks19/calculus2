@@ -372,8 +372,8 @@ where $R_n(x) = \frac{f^{(n+1)}(b)}{(n+1)!}(x-c)^{(n+1)}$.
         domain=5.28:9.42,
         axis lines=center,
         %ticks=none,
-        xtick={6.28,8.75},
-        xticklabels={$c$,},
+        xtick={6.28,6.73,8.75},
+        xticklabels={$c$,$b$,},
         ytickmin=1, ytickmax=0,
         width=6in,
         height=3in,
@@ -386,7 +386,8 @@ where $R_n(x) = \frac{f^{(n+1)}(b)}{(n+1)!}(x-c)^{(n+1)}$.
       \addplot [very thick, penColor2, smooth] {1+(x-2*pi)-(x-2*pi)^3/6};
       \addplot [textColor,dashed] plot coordinates {(6.28,0) (6.28,1)};
       \addplot [textColor,dashed] plot coordinates {(8.75,0) (8.75,1.63)};
-      \addplot [decoration={brace,mirror, raise=.1cm},decorate,thin] plot coordinates {(8.75,.97) (8.75,1.63)};
+      \addplot [decoration={brace,mirror, raise=.1cm},decorate,thin]
+      plot coordinates {(8.75,.97) (8.75,1.63)};
       \node at (axis cs: 8.97,1.25) {$R_n(x)$};
       \node at (axis cs: 8.5,2) {$f$};
       \node at (axis cs: 8.5,1.2) {$p_n$};

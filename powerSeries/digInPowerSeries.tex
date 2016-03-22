@@ -17,9 +17,7 @@
 \maketitle
 
 If we refuse to truncate a Taylor polynomial, and instead allow it to
-be a series (an infinite sum) we call it a \textit{power series}. Here
-are four basic power series (centered at zero) that every
-mathematician knows:
+be a series (an infinite sum) we call it a \textit{power series}. 
 
 \begin{definition}
   A \dfn{power series} is a series of the form
@@ -29,6 +27,10 @@ mathematician knows:
   where the $a_k$'s are the \dfn{coefficients} and $c$ is the
   \dfn{center}.
 \end{definition}
+
+Here are four basic power series (centered at zero) that every
+mathematician knows:
+
 \begin{align*}
            e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\\
        \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots\\
@@ -126,10 +128,12 @@ between $-1$ and $1$ noninclusive.
 Our next theorem tells us what possible scenarios we could encounter
 when investigating convergence of power series:
 
-\begin{theorem}[Convergence of Power Series]\index{convergence of power
-  series}\index{power series!convergence}
-Consider the power series $\sum_{n=0}^\infty a_n(x-c)^n$. Exactly one
-of the following is true: 
+\begin{theorem}[Convergence of Power Series]\index{convergence of power series}\index{power series!convergence}
+  Consider the power series
+  \[
+  \sum_{n=0}^\infty a_n(x-c)^n.
+  \]
+  Exactly one of the following is true:
 \begin{enumerate}
 \item The series converges only at $x=c$.
 \item There is an $R>0$ such that the series converges for all $x$ in	
@@ -254,10 +258,19 @@ point.
 \begin{example}
   Consider the power series:
   \[
-  \sum_{n=1}^\infty \frac{(x-1)^n}{n \cdot 9^n} = \frac{(x-1)}{9} + \frac{(x-1)^2}{2\cdot 9^2} + \frac{(x-1)^3}{3\cdot 9^3} + \cdots\\
+  \sum_{n=0}^\infty n!(x+7)^n = 1 + (x+7) + 2(x+7)^1 + 6(x+7)^3 + \cdots
   \]
   Determine the radius and interval of convergence.
   \begin{explanation}
+    Here we'll use the ratio test, looking at the absolute value of
+    the terms in the series:
+    \[
+    \lim_{n\to\infty} \frac{(n+1)!|x+7|^{n+1}}{n!|x+7|^n}= \lim_{n\to\infty} (n+1)|x+7|
+    \]
+    This limit diverges unless $x=-7$, the center of the power
+    series. The the radius of convergence is $R=0$, and there is no
+    interval of convergence, since the series only converges at a
+    single point.
   \end{explanation}
 \end{example}
 

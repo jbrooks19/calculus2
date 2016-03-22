@@ -40,7 +40,7 @@ mathematician knows:
 
 Using power series we can ``read-off'' properties of functions. For instance:
 \begin{itemize}
-\item We can easily see that $e^0 =1$, $\sin(0)=0$ and $\cos(0) =1$.
+\item We can easily see that $e^0 =1$, $\sin(0)=0$, and $\cos(0) =1$.
 \item Since every power of $x$ in the power series for sine is odd, we
   can see that sine is an odd function. Likewise, since every power of
   $x$ in the power series for cosine is even, we can see cosine is an
@@ -51,15 +51,13 @@ Using power series we can ``read-off'' properties of functions. For instance:
   \]
   are ``easy'' to compute, since they can be rewritten as:
   \begin{align*}
-    \lim_{x\to 0}&\frac{\sin(x)}{x}\\
-    &=\lim_{x\to 0} \frac{x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots}{x}\\
+    \lim_{x\to 0}\frac{\sin(x)}{x} &=\lim_{x\to 0} \frac{x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots}{x}\\
     &=\lim_{x\to 0} \left(1 - \frac{x^2}{3!} + \frac{x^4}{5!} -\frac{x^6}{7!} + \cdots\right)\\
     &=1,
   \end{align*}
   and
   \begin{align*}
-    \lim_{x\to 0} &\frac{\cos(x)-1}{x}\\
-    \lim_{x\to 0} &\frac{1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots-1}{x}\\
+    \lim_{x\to 0} \frac{\cos(x)-1}{x}&=\lim_{x\to 0} \frac{1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots-1}{x}\\
     &=\lim_{x\to 0} \left(-\frac{x}{2!} + \frac{x^3}{4!} -\frac{x^5}{6!} + \cdots\right)\\
     &=0.
   \end{align*}
@@ -82,6 +80,48 @@ Ah! The expression on the right-hand side of the equation above is a
 \index{geometric series}geometric series! As we've learned, geometric
 series only converge when the common ratio (in this case $r$) is
 between $-1$ and $1$ noninclusive.
+
+\begin{question}
+  True or False:
+  \[
+  \frac{4}{3} = \frac{1}{1-(1/4)} = 1 + \left(\frac{1}{4}\right)+ \left(\frac{1}{4}\right)^2+ \left(\frac{1}{4}\right)^3 + \cdots
+  \]
+  \begin{prompt}
+  \begin{multipleChoice}
+    \choice[correct]{true}
+    \choice{false}
+  \end{multipleChoice}
+  \end{prompt}
+  \begin{question}
+    True or False:
+    \[
+    \frac{1}{-3} = \frac{1}{1-4} = 1 + 4+ 4^2+ 4^3 + \cdots
+    \]
+    \begin{prompt}
+      \begin{multipleChoice}
+        \choice{true}
+        \choice[correct]{false}
+      \end{multipleChoice}
+    \end{prompt}
+\end{question}
+\end{question}
+
+Our next theorem tells us what possible scenarios we could encounter
+when investigating convergence of power series:
+
+\begin{theorem}[Convergence of Power Series]\index{convergence of power series}\index{power series!convergence}
+  Consider the power series
+  \[
+  \sum_{n=0}^\infty a_n(x-c)^n.
+  \]
+  Exactly one of the following is true:
+\begin{enumerate}
+\item The series converges only at $x=c$.
+\item There is an $R>0$ such that the series converges for all $x$ in	
+  $(c-R,c+R)$ and diverges for all $x<c-R$ and $x>c+R$.
+\item The series converges for all $x$.
+\end{enumerate}
+\end{theorem}
 
 \begin{question}
   True or False: A power series
@@ -125,29 +165,12 @@ between $-1$ and $1$ noninclusive.
 \end{question}
 \end{question}
 
-Our next theorem tells us what possible scenarios we could encounter
-when investigating convergence of power series:
-
-\begin{theorem}[Convergence of Power Series]\index{convergence of power series}\index{power series!convergence}
-  Consider the power series
-  \[
-  \sum_{n=0}^\infty a_n(x-c)^n.
-  \]
-  Exactly one of the following is true:
-\begin{enumerate}
-\item The series converges only at $x=c$.
-\item There is an $R>0$ such that the series converges for all $x$ in	
-  $(c-R,c+R)$ and diverges for all $x<c-R$ and $x>c+R$.
-\item The series converges for all $x$.
-\end{enumerate}
-\end{theorem}
-
 Because power series can define functions, we no longer exclusively
 talk about convergence at a point, instead we talk about the
 \textit{radius} and \textit{interval} of convergence.
 
 \begin{definition}
-  A power series $\sum_{n=0}^\infty a_n(x-c)^n$ is said
+  \hfil
   \begin{itemize}
     \item If a power series converges absolutely for all $x$, then its
       \dfn{radius of convergence} is said to be $\infty$ and the
@@ -157,7 +180,7 @@ talk about convergence at a point, instead we talk about the
       \dfn{radius of convergence} is said to be $R$ and the
       \dfn{interval of convergence} is one of the following:
       \[
-      (-R,R),\quad [-R,R),\quad (-R,R],\quad [-R,R].
+      (c-R,c+R),\quad [c-R,c+R),\quad (c-R,c+R],\quad [c-R,c+R].
       \]
   \end{itemize}
 \end{definition}
@@ -245,7 +268,7 @@ convergence at the end-points of the interval. Let's see an example:
       \sum_{n=1}^\infty \frac{(10-1)^n}{n \cdot 9^n} &= \sum_{n=1}^\infty \frac{(9)^n}{n \cdot 9^n}\\
       &= \sum_{n=1}^\infty \frac{1}{n}.
     \end{align*}
-    And, this is the harmonic series, which we know diverges. So our
+    This is the harmonic series, which we know diverges. So our
     power series diverges at $x= 10$. Hence the interval of
     convergence for $\sum_{n=1}^\infty \frac{(x-1)^n}{n \cdot 9^n}$ is
     $[-8,10)$.
@@ -258,7 +281,7 @@ point.
 \begin{example}
   Consider the power series:
   \[
-  \sum_{n=0}^\infty n!(x+7)^n = 1 + (x+7) + 2(x+7)^1 + 6(x+7)^3 + \cdots
+  \sum_{n=0}^\infty n!(x+7)^n = 1 + (x+7) + 2(x+7)^2 + 6(x+7)^3 + \cdots
   \]
   Determine the radius and interval of convergence.
   \begin{explanation}
@@ -309,11 +332,11 @@ algebraic manipulation.
   f(x) = \sum_{n=0}^\infty a_n(x-c)^n
   \]
   be a function defined by a power series, with radius of convergence $R$.
-  \begin{enumerate}
+  \begin{itemize}
   \item $f(x)$ is continuous and differentiable on $(c-R,c+R)$.
   \item	$f'(x) = \sum_{n=1}^\infty a_n\cdot n\cdot (x-c)^{n-1}$, with radius of convergence $R$.
   \item	$\int f(x) \d x = C+\sum_{n=0}^\infty a_n\frac{(x-c)^{n+1}}{n+1}$, with radius of convergence $R$.
-  \end{enumerate}
+  \end{itemize}
 \end{theorem}
 
 A few notes about the theorem above:
@@ -322,7 +345,7 @@ A few notes about the theorem above:
   change the radius of convergence. It does not state anything about
   the \textit{interval} of convergence. They are not always the same.
 \item Notice how the summation for $f'(x)$ starts with $n=1$. This is
-  because the constant term $a_0$ of $f(x)$ goes to 0.
+  because the constant term $a_0$ of $f(x)$ goes to $0$.
 \item Differentiation and integration are simply calculated
   term-by-term using the power rule.
 \end{itemize}

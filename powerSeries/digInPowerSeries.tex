@@ -32,10 +32,10 @@ Here are four basic power series (centered at zero) that every
 mathematician knows:
 
 \begin{align*}
-           e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\\
-       \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots\\
-       \cos(x) &= 1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots\\
- \frac{1}{1-x} &= 1+ x+ x^2 + x^3 + \cdots \qquad |x|< 1
+           e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots &|x|< \infty\\
+       \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots &|x|< \infty\\
+       \cos(x) &= 1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots &|x|< \infty\\
+ \frac{1}{1-x} &= 1+ x+ x^2 + x^3 + \cdots &|x|< 1
 \end{align*}
 
 Using power series we can ``read-off'' properties of functions. For instance:
@@ -76,10 +76,29 @@ our formula is true, then for any number $r$,
 \[
 \frac{1}{1-r} = 1+ r+ r^2 + r^3 + \cdots \qquad |r|< 1
 \]
-Ah! The expression on the right-hand side of the equation above is a
+and the expression on the right-hand side of the equation above is a
 \index{geometric series}geometric series! As we've learned, geometric
 series only converge when the common ratio (in this case $r$) is
-between $-1$ and $1$ noninclusive.
+between $-1$ and $1$ noninclusive. If we look at a graph of $y = \frac{1}{1-x}$ along with a graph of $y = 1+ x+ x^2 + x^3 + \cdots$ we see
+\begin{image}
+    \begin{tikzpicture}
+    \begin{axis}[
+        xmin=-3,xmax=3,ymin=-3,ymax=3,
+        axis lines=center,
+        width=6in,
+        height=3in,
+        xlabel=$x$, ylabel=$y$,
+        every axis y label/.style={at=(current axis.above origin),anchor=south},
+        every axis x label/.style={at=(current axis.right of origin),anchor=west},
+      ]        
+      \addplot [very thick, penColor, samples=100,smooth, domain=(-3:.8)] {1/(1-x)};
+      \addplot [very thick, penColor, samples=100,smooth, domain=(1.2:3)] {1/(1-x)};
+      \addplot [very thick, penColor2, samples=100,smooth, domain=(-1:.8)] {1/(1-x)};
+      \addplot[color=penColor2,fill=white,only marks,mark=*] coordinates{(-1,1/2)};  %% open hole
+      \node at (axis cs:1.5,2) {$1+ x+ x^2 + x^3 + \cdots$};
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
 
 \begin{question}
   True or False:
@@ -185,6 +204,27 @@ talk about convergence at a point, instead we talk about the
   \end{itemize}
 \end{definition}
 
+\begin{question}
+  Suppose you know that
+  \[
+  \sum_{n=0}^\infty a_n (x-3)^n
+  \]
+  converges when $x =7$ and diverges when $x = -1$. Must the series
+  converge at $x=4$?
+  \begin{prompt}
+    \begin{multipleChoice}
+      \choice[correct]{yes}
+      \choice{no}
+      \choice{there is not enough information}
+    \end{multipleChoice}
+  \end{prompt}
+  \begin{feedback}
+    Since we know that every power series converges either exactly at
+    a single point or on an interval, we see that this power series
+    \textbf{must} converge with radius of convergence $R=4$.
+  \end{feedback}
+\end{question}
+
 How do we check for radius of convergence? Two old friends can come to
 the rescue: The ratio and the root tests.
 
@@ -205,10 +245,10 @@ the rescue: The ratio and the root tests.
     \end{align*}
     Now, for any \textbf{fixed} value of $x$, we have that
     \[
-    \lim_{n\to\infty} \frac{|x|}{n} = 0,
+    \lim_{n\to\infty} \frac{|x|}{n} = \answer[given]{0},
     \]
     hence the radius of convergence for $\sum_{n=0}^\infty
-    \frac{x^n}{n!}$ is $R=\infty$, and the interval of covergence is $(-\infty, \infty)$.
+    \frac{x^n}{n!}$ is $R=\infty$, and the interval of convergence is $(-\infty, \infty)$.
   \end{explanation}
 \end{example}
 
@@ -231,7 +271,7 @@ convergence at the end-points of the interval. Let's see an example:
     \end{align*}
     Using logarithms and L'H\^opital's rule, we can show that
     \[
-    \lim_{n\to\infty} n^{-1/n} = 1.
+    \lim_{n\to\infty} n^{-1/n} = \answer[given]{1}.
     \]
     Hence
     \[
@@ -239,16 +279,16 @@ convergence at the end-points of the interval. Let's see an example:
     \]
     This limit is between $-1$ and $1$ when
     \begin{align*}
-    \frac{|x-1|}{9} &<1\\
-    |x-1| &< 9.
+    \frac{|x-1|}{9} &<\answer[given]{1}\\
+    |x-1| &< \answer[given]{9}.
     \end{align*}
     However,
     \[
-    |x-1| < 9 \qquad\text{means that}\qquad -9 < x-1 < 9
+    |x-1| < 9 \qquad\text{means that}\qquad \answer[given]{-9} < x-1 < \answer[given]{9}
     \]
     and so adding $1$ to all sides of the inequality, we need $x$ such that
     \[
-    -8 < x < 10.
+    \answer[given]{-8} < x < \answer[given]{10}.
     \]
     Since our power series is centered at $x=1$, the radius of
     convergence is $R=9$. However, the root test (and ratio test) tell
@@ -288,7 +328,7 @@ point.
     Here we'll use the ratio test, looking at the absolute value of
     the terms in the series:
     \[
-    \lim_{n\to\infty} \frac{(n+1)!|x+7|^{n+1}}{n!|x+7|^n}= \lim_{n\to\infty} (n+1)|x+7|
+    \lim_{n\to\infty} \frac{(n+1)!|x+7|^{n+1}}{n!|x+7|^n}= \lim_{n\to\infty} \answer[given]{(n+1)}|x+7|
     \]
     This limit diverges unless $x=-7$, the center of the power
     series. The the radius of convergence is $R=0$, and there is no
@@ -324,9 +364,106 @@ algebraic manipulation.
   \end{itemize}
 \end{theorem}
 
+In our first example we will derive Euler's famous formula
+\[
+e^{ix} = \cos(x) + i \sin(x),
+\]
+where $i$ is the number $i^2=-1$.
+
+\begin{example}
+  Use power series to show
+  \[
+  \cos(x) + i \sin(x) = e^{ix} 
+  \]
+  \begin{explanation}
+    We start by writing the relevant power series for cosine
+    \[
+    \cos(x) = 1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots
+    \]
+    and now we consider
+    \[
+    i \sin(x) = ix - \frac{ix^3}{3!} + \frac{ix^5}{5!} -\frac{i x^7}{7!} + \cdots.
+    \]
+    Adding these power series (and ordering the terms by degree) we find
+    \[
+    1+ ix -\frac{x^2}{2!} - \frac{ix^3}{3!} + \frac{x^4}{4!} + \frac{ix^5}{5!} -\frac{x^6}{6!} -\frac{i x^7}{7!} + \cdots.
+    \]
+    Since $i^0=\answer[given]{1}$,
+    $i^1= \answer[given]{i}$,
+    $i^2 = \answer[given]{-1}$,
+    $i^3 = \answer[given]{-i}$,
+    $i^4 = \answer[given]{1}$, and so on with a repeating pattern we may now write
+    \begin{align*}
+      1+ ix &+\frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \frac{(ix)^4}{4!} + \frac{(ix)^5}{5!} +\frac{(ix)^6}{6!} +\frac{(i x)^7}{7!} + \cdots\\
+      &= e^{ix}.
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+Euler's formula $e^{ix} = \cos(x) + i \sin(x)$ allows us to produce
+(by setting $x=\pi$) the amazing identity:
+\[
+e^{i \pi } + 1 = 0.
+\]
+This identity combines the fundamental constants, $0$, $1$, $i$,
+$\pi$ and $e$, along with the fundamental operations of addition,
+multiplication, and exponentiation!
+
+\begin{example}
+  Use power series to give evidence (by looking at the first $4$ terms
+  of a power series) for the double angle formula:
+  \[
+  2\sin(x) \cos(x) = \sin(2x)
+  \]
+  \begin{explanation}
+    Write with me:
+    \begin{align*}
+      \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots &|x|< \infty\\
+      \cos(x) &= 1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots &|x|< \infty
+    \end{align*}
+    Multiplying we find
+    \begin{image}
+      \begin{tikzpicture}
+        \node at (0,0) {$
+          \begin{aligned}
+            \sin(x) &\cos(x) \\
+            &= x + \left(\frac{-1}{3!} + \frac{-1}{2!}\right)x^3 + \left(\frac{1}{5!} +\frac{1}{3!\cdot 2!}+ \frac{1}{4!}\right)x^5
+            +\left(\frac{-1}{7!} +\frac{-1}{5!\cdot 2!}+\frac{-1}{3!\cdot 4!}+ \frac{-1}{6!}\right)x^7 +\cdots\\
+            &=x + \left(\frac{-1}{3!} + \frac{-3}{3!}\right)x^3 + \left(\frac{2!}{5!\cdot 2!} +\frac{5\cdot4}{5!\cdot 2!}+ \frac{5\cdot 2!}{5!\cdot 2!}\right)x^5
+            +\left(\frac{-3!}{7!\cdot3!} +\frac{-7\cdot 6\cdot 3}{7!\cdot 3!}+\frac{-7\cdot6\cdot5}{7!\cdot 3!}+ \frac{-7\cdot 3!}{7!\cdot 3!}\right)x^7 +\cdots\\
+            &= x + \left(\frac{-2^2}{3!}\right)x^3 + \left(\frac{2^4}{5!}\right)x^5+\left(\frac{-2^6}{7!}\right)x^7 +\cdots
+          \end{aligned}
+          $};
+      \end{tikzpicture}
+    \end{image}
+    So
+    \begin{align*}
+      2\sin(x)\cos(x) &= 2x + \left(\answer[given]{\frac{-2^3}{3!}}\right)x^3 + \left(\answer[given]{\frac{2^5}{5!}}\right)x^5+\left(\frac{-2^7}{7!}\right)x^7 +\cdots\\
+      &= (2x) -\frac{(2x)^3}{3!} + \frac{(2x)^5}{5!}-\frac{(2x)^7}{7!} +\cdots\\
+      &= \sin(2x).
+    \end{align*}
+  \end{explanation}
+\end{example}
 
 
-\begin{theorem}[Derivatives and Indefinite Integrals of Power Series Functions]\index{integration!of power series}\index{derivative!power series}\index{power series!derivatives and integrals}
+
+\begin{example}
+  Use the power series for $\frac{1}{1-x}$ to give a power series for $\frac{1}{1+x^2}$
+  \begin{explanation}
+    Write with me
+    \[
+    \frac{1}{1-x}= 1+ x+ x^2 + x^3 + \cdots\qquad|x|< 1
+    \]
+    Since $-x^2$ is continuous when $|x|<1$, we can compose this with $\frac{1}{1-x}$ to see
+    \begin{align*}
+    \frac{1}{1-(-x^2)} &=\frac{1}{1+x^2}\\
+    &= \answer[given]{1 - x^2 + x^4} - x^6 + \cdots &|x|< 1\\
+    &= \sum_{n=0}^\infty (-1)^n x^{2n} &|x|< 1
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+\begin{theorem}[Derivatives and Indefinite Integrals of Power Series]\index{integration!of power series}\index{derivative!power series}\index{power series!derivatives and integrals}
   Let
   \[
   f(x) = \sum_{n=0}^\infty a_n(x-c)^n
@@ -350,7 +487,38 @@ A few notes about the theorem above:
   term-by-term using the power rule.
 \end{itemize}
 
+Let's see an example.
 
+\begin{example}
+  Use the power series for
+  \[
+  \frac{1}{1+x^2} = 1 - x^2 + x^4 - x^6 + \cdots \qquad|x|< 1 
+  \]
+  to find a power series for $\arctan(x)$. Given the radius and interval of convergence.
+  \begin{explanation}
+    Since
+    \[
+    \int\frac{1}{1+x^2} \d x = \arctan(x)
+    \]
+    we can find the desired power series by integrating. Write with me
+    \[
+    \int \left(1 - x^2 + x^4 - x^6 + \cdots\right)\d x = \answer[given]{x - \frac{x^3}{3} + \frac{x^5}{5}} - \frac{x^7}{7} + \cdots +C
+    \]
+    since $\arctan(0) = 0$, $C=0$, and we have our desired power
+    series, which converges with radius of convergence $R=1$. However,
+    note the interval of convergence may be different, and it is in
+    this case. First note that our power series can be written in summation notation as
+    \[
+    \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{2n+1}
+    \]
+    If $x=1$ or $x=-1$ we can see that this sequence is
+    \[
+    \sum_{n=0}^\infty \frac{(-1)^n}{2n+1}\qquad\text{or}\qquad\sum_{n=0}^\infty \frac{(-1)^{n+1}}{2n+1}
+    \]
+    In both cases, the series converges by the alternating series
+    test. Hence the interval of convergence is $[\answer[given]{-1},\answer[given]{1}]$.
+  \end{explanation}
+\end{example}
 
 
 

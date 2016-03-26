@@ -1,0 +1,228 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Use Taylor series to approximate constants (like e and pi).}
+\outcome{Use Taylor series to compute limits.}
+\outcome{Use Taylor series to sum series.}
+
+\title[Dig-In:]{Numbers and Taylor Series}
+
+\begin{document}
+\begin{abstract}
+  Taylor series are a new computational tool
+\end{abstract}
+\maketitle
+
+\section{Using series to approximate special constants}
+
+You probably know that $\pi  \approx 3.14159$.  Have you ever wondered how this kind of approximation was obtained?  There are many ways to do it, but one exciting way is to use Taylor series!
+
+\begin{example}
+	Here is a plan for approximating $\pi$ using a series:
+		\begin{itemize}
+			\item Find a function which takes a nice number (like $0$, or $1$, or $\frac{1}{2}$) as an input and returns something involving $\pi$ (like $\pi$, or $\frac{\pi}{2}$, or $\pi^2$) as an output.
+			\item Make sure that this function has a Taylor series which we can compute easily.
+			\item Plug the nice number into the Taylor series:  we now have an algorithm for approximating $\pi$
+		\end{itemize} 
+		
+The most convenient functions which return multiples of $\pi$ are the inverse trig functions.  For instance, $\arcsin(1) = \frac{\pi}{2}$, and $\arctan(1) = \frac{\pi}{4}$.  
+
+If you recall, we found that Taylor series for $\arctan$ already, by using substitution of the geometric series $\frac{1}{1-u}$ to find the series of $\frac{1}{1+x^2}$, and then integrating this series to find the series for $\arctan(x)$:
+
+
+\[
+\arctan(x) = x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\dots
+\]
+
+And so 
+
+\[
+\frac{\pi}{4} = \arctan(1) = 1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\dots
+\]
+
+Thus
+
+\[
+\pi =  4-\frac{4}{3}+\frac{4}{5}-\frac{4}{7}+\dots
+\]
+
+Really cool!
+
+Say we wanted to get an approximation of  $\pi$ using this series which was accurate to within $\frac{1}{100}$.  How many terms would we need?
+
+Since this is an alternating series, we can use the alternating series estimation test.
+
+We need
+
+\[
+\frac{1}{2k+1} \leq \frac{1}{100}
+\]
+
+Which means we need
+
+\[
+k \geq 50
+\]
+
+So we would need to sum $50$ terms just to get the $3.14$ approximation! (Even then, you have to be careful not to accumulate too many rounding errors when performing the sum).
+
+Part of the reason this converges so slowly is that the series is not absolutely convergent.  Also $1$ is the right endpoint of the interval of convergence for $\arctan(x)$:  it just barely makes the cut between convergent and not convergent!
+
+There are more advanced series for $\pi$ which converge much more quickly, for example Ramanujan's formula
+
+\[
+\frac{1}{\pi} = \frac{2 \sqrt 2}{99^2} \sum_{k=0}^\infty \frac{(4k)!}{k!^4} \frac{26390k+1103}{396^{4k}}
+\]
+		
+\end{example}
+
+\begin{example}
+
+	You already know one way to compute the number $e$:  as the $\lim_{n \to \infty} \left( 1+\frac{1}{n}\right)^n$.
+	
+	Now we can also approximate $e$ using series as follows:
+		
+	Since 
+	
+	\[
+	e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dots
+	\]
+	
+	we have that
+	
+	\[
+	e = 1+1+\frac{1}{2!}+\frac{1}{3!}+\dots
+	\]
+\end{example}
+
+\section{Taylor series as a tool to evaluate limits}
+
+Taylor series can be used like l'H\^{o}pital's rule on steroids when evaluating limits.
+
+First lets see why Taylor's series subsumes l'H\^{o}pital's rule:
+
+Say $f(a) = g(a) = 0$, and we are interested in $\lim_{x \to a} \frac{f(x)}{g(x)}$.
+
+Then using Taylor series
+
+\begin{align*}
+	\lim_{x \to a} \frac{f(x)}{g(x)} &= \lim_{x \to a} \frac{f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+...}{g(a)+g'(a)(x-a)+\frac{g''(a)}{2!}(x-a)^2+...}\\
+		&=  \lim_{x \to a} \frac{0+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+...}{0+g'(a)(x-a)+\frac{g''(a)}{2!}(x-a)^2+...}\\
+		&=  \lim_{x \to a} \frac{f'(a)+\frac{f''(a)}{2!}(x-a)+\frac{f^{(3)}(a)}{3!}(x-a)^2+...}{g'(a)+\frac{g''(a)}{2!}(x-a)+\frac{g^{(3)}(a)}{3!}(x-a)^2+...}\\
+		&=\frac{f'(a)}{g'(a)}
+\end{align*}
+
+As long as $g'(a) \neq 0$.   This is exactly l'H\^{o}pital's rule!
+
+Let's use this in a l'H\^{o}pital's rule situation, without invoking l'H\^{o}pital's rule directly:
+
+\begin{example}
+	
+	\begin{align*}
+	\lim_{x \to 0} \frac{e^x - 1}{x} &= \lim_{x \to 0} \frac{(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dots) - 1}{x}\\
+		&= \lim_{x \to 0} \frac{x+\frac{x^2}{2!} +\frac{x^3}{3!}+\dots}{x}\\
+		&=\lim_{x \to 0} 1+\frac{x}{2!}+\frac{x^2}{3!}+\dots\\
+		&=\answer{1}
+	\end{align*}
+		
+\end{example}
+
+We can also use this approach to limit evaluation in cases where l'H\^{o}pital's rule would need to be applied multiple times:
+
+\begin{question}
+	Use Taylor series to evaluate the limit:
+	
+	\[
+	\lim_{x \to 0} \frac{\sin(x)-x}{x^3\cos(x)} = \answer{-\frac{1}{6}}
+	\]
+	
+	\begin{hint}
+		\begin{align*}
+			\lim_{x \to 0} \frac{\sin(x)-x}{x\cos(x)} &= \lim_{x \to 0} \frac{(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots)-x}{x^3(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\dots)}\\
+				&= \lim_{x \to \infty} \frac{-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots}{x^3 - \frac{x^5}{2!}+\frac{x^7}{4!}-\dots}\\
+				&=\lim_{x \to \infty} \frac{-\frac{1}{6}+\frac{x^2}{3!}-\dots}{1-\frac{x^2}{2!}+\frac{x^4}{4!}-\dots}\\
+				&=-\frac{1}{6}
+		\end{align*}
+	\end{hint}
+\end{question}
+
+
+It doesn't seem like Taylor series would be much help evaluating limits at infinity, since Taylor series are all about approximating a function close to some given point.  It turns out that we can still use Taylor series to study function behavior at infinity by transforming the function:  composing with $\frac{1}{u}$ ``moves infinity to zero'', and we can then use Maclaurin series to study the behavior.  Let's see that in action:
+
+\begin{example}
+	We want to evaluate
+	
+	\[
+	\lim_{x \to \infty} 2x^8\cos(\frac{1}{x^2}) - x^4-2x^8
+	\]
+	
+	Letting $t  =\frac{1}{x}$ we have
+	
+	\[
+	\lim_{t \to 0} \frac{2\cos(t^2) - t^4-2}{t^8}
+	\]
+	
+	You should be able to handle it from here using the Taylor series method:
+	
+	
+	\[
+	\lim_{t \to 0} \frac{2\cos(t^2) - t^4-2}{t^8} = \answer{\frac{1}{12}}
+	\]
+	
+	\begin{hint}
+		\begin{align*}
+		\lim_{t \to 0} \frac{2\cos(t^2) - t^4-2}{t^8} &= \lim_{t \to 0} \frac{2(1-\frac{t^4}{2!}+\frac{t^8}{4!}-\frac{t^12}{6!}+\dots) - t^4-2}{t^8}\\
+			&=  \lim_{t \to 0} \frac{\frac{2t^8}{4!}-\frac{2t^12}{12!}+\dots}{t^8}\\
+			&=\lim_{t \to 0} \frac{2}{4!}-\frac{2t^4}{6!} +\dots\\
+			&=\frac{2}{4!}\\
+			&=\frac{1}{12}
+		\end{align*}
+	\end{hint}
+	
+\end{example}
+
+\section{Evaluating series}
+
+Sometimes we get a series as an answer to some problem (For instance, in the next section we will find series solutions to differential equations), but we would really like a closed form solution.
+
+This is not always possible, but sometimes if we are insightful we can manipulate a given series into form where we can recognize it.
+
+\begin{example}
+	
+	What is a closed form expression for the following series?
+		
+	\[
+	f(x) = \sum_1^\infty nx^{n-1} = \answer{\frac{1}{(1-x^2)}}
+	\]
+	
+	\begin{hint}
+		What happens if you integrate?
+	\end{hint}
+	
+	\begin{hint}
+		\[
+		\int f(x) \d x = C+  \sum_1^\infty x^n
+		\]
+		
+		by integrating term by term, for some $C$.
+	\end{hint}
+	
+	\begin{hint}
+		Choosing $C = 1$, the RHS becomes the geometric series with starting value $1$ and ratio $x$, and so sums to $\frac{1}{1-x}$ 
+	\end{hint}
+	
+	\begin{hint}
+		Thus $f(x) = \frac{d}{dx} \frac{1}{1-x}$
+	\end{hint}
+	
+	\begin{hint}
+		So $f(x) = \frac{1}{(1-x^2)}$
+	\end{hint}
+	
+
+\end{example}
+
+
+
+\end{document}

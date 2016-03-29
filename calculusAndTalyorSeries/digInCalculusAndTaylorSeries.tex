@@ -1,0 +1,220 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Use Taylor series to read-off derivatives of a function.}
+\outcome{Use Taylor series to solve differential equations.}
+\outcome{Use Taylor series to compute integrals}
+
+\title[Dig-In:]{Calculus and Taylor series}
+
+\begin{document}
+\begin{abstract}
+  Power series interact nicely with other calculus concepts
+\end{abstract}
+\maketitle
+
+\section{Differentiating power series}
+
+The following theorem is beyond what we will cover in the course (although, if you are industrious, it is within your grasp.  See \href{https://gowers.wordpress.com/2014/02/22/differentiating-power-series/}{this blog post} if you are interested) 
+
+\begin{theorem}
+	If $f(x) = \sum_0^\infty c_n(x-a)^n$ is a power series with radius of convergence $R$, then $f'(x)$ is equal to  $\sum_1^\infty nc_n(x-a)^{n-1}$, and the radius of convergence of the new series is still $R$.  The new series is said to be obtained from the old series by ``differentiating the series term by term''.  The new series may lose (but not gain) convergence at the endpoints $a+R$ and $a-R$.
+\end{theorem}
+
+\begin{example}
+	Say we want to find the power series for $\frac{3}{(1-x)^2}$.  We already know that the power series for $\frac{1}{1-x}$ is
+	
+	\[
+	\frac{1}{1-x} = 1+x+x^2+x^3+\dots
+	\]
+	
+	So differentiating both sides we get
+	
+	\[
+	\answer{\frac{1}{(1-x)^2}} = 1+\answer{2}x+\answer{3}x^2+\dots
+	\]
+	
+	And thus
+	
+	\[
+	\frac{3}{(1-x)^2} = 3+\answer{6}x+\answer{9}x^2+\dots
+	\]
+	
+	Or, in more compact notation
+	
+	\[
+	\frac{3}{(1-x)^2} = \sum_1^\infty \answer{3n}x^{n-1}
+	\]
+	
+	We already know that the radius of convergence of $\frac{1}{1-x}$ is $1$, so we get that this new series also has radius of convergence $1$ by the theorem.
+\end{example}
+
+\begin{question}
+	If $\sum_0^\infty c_n$ converges, must $\sum_1^\infty nc_n(\frac{1}{2})^n$ also converge?
+	
+	\begin{multipleChoice}
+		\choice[correct]{Yes}
+		\choice{No}
+	\end{multipleChoice}
+	
+	\begin{hint}
+		We can think of $\sum_0^\infty c_n$ as $\sum_0^\infty c_n x^n$ evaluated at $x=1$.  Since this converges, the radius of convergence of the series is at least $1$.  Thus the radius of convergence of its derivative $\sum_1^\infty nc_n x^n$ is also at least $1$.  Thus $\sum_1^\infty nc_n(\frac{1}{2})^n$ converges.
+	\end{hint}
+\end{question}
+
+
+\section{Solving differential equations using power series}
+
+If we have a differential equation we can frequently use the ``method of undetermined coefficients'' to solve it using power series.
+
+\begin{example}
+Say we want to solve the differential equation
+
+\[
+y' = 2y-3
+\]
+
+subject to the initial condition that $y(0)=1$
+
+Assume that $y$ can be represented by a power series
+
+\[
+y = c_0+c_1x+c_2x^2+c_3x^3+\dots
+\]
+
+Then, differentiating both sides we have
+
+\[
+y' = c_1+2c_2x+3c_3x^2+\dots
+\]
+
+Using the differential equation, we know that
+
+\[
+2y-3 = c_1+2c_2x+3c_3x^2+\dots
+\]
+
+so
+
+\[
+2c_0-3+2c_1x+2c_2x^2+2c_3x^3+\dots = c_1+2c_2x+3c_3x^2+\dots
+\]
+
+
+
+This is equivalent to infinitely many simultaneous equations:
+
+\begin{align*}
+	2c_0-3 &= c_1\\
+	2c_1 &= 2c_2\\
+	2c_2 &= 3c_3\\
+	2c_3 &=4c_4\\
+	\vdots
+\end{align*}
+
+We know that $c_0 = 1$ since this is the initial condition. 
+This lets us find
+
+\begin{align*}
+c_0 = 1\\
+c_1 = \answer{-1}\\
+c_2=\answer{-1}\\
+c_3=\answer{-\frac{2}{3}}\\
+c_4=\answer{-\frac{1}{3}}\\
+\vdots
+\end{align*}
+
+In fact, since $2c_{n-1} = nc_n$, we can find $c_n = \frac{2}{n}c_{n-1}$, so $c_n = -\frac{2^{n-1}}{n!}$ for $n \geq 1$.
+
+Thus the solution is 
+
+\[
+y = 1+\sum_1^\infty -\frac{2^{n-1}}{n!} x^n
+\]
+
+This looks a lot like the series for $e^{2x}$, so we can try to manipulate this into a closed form solution.
+
+\[
+e^{2x} = \sum_0^\infty \frac{2^n}{n!} x^n
+\]
+
+so 
+
+\begin{align*}
+-\frac{1}{2} e^{2x} &= \sum_0^\infty -\frac{2^{n-1}}{n!} x^n\\
+-\frac{1}{2} e^{2x} &= -\frac{1}{2}+ \sum_1^\infty -\frac{2^{n-1}}{n!} x^n\\
+-\frac{1}{2} e^{2x} +\frac{3}{2}&= 1+ \sum_1^\infty -\frac{2^{n-1}}{n!} x^n\\
+y &= -\frac{1}{2} e^{2x} +\frac{3}{2}\\
+\end{align*}
+
+So we have found a closed form solution
+
+\[
+y = -\frac{1}{2} e^{2x} +\frac{3}{2}
+\]
+
+Make sure to check that this is really a solution to the differential equation!
+
+\end{example}
+
+\section{Integration}
+
+Just as we can differentiate term by term, we can also integrate term by term
+
+\begin{theorem}
+	If $f(x) = \sum_0^\infty c_n(x-a)^n$ is a power series with radius of convergence $R$, then the antiderivatives of $f(x)$ are given by $C + \sum_0^\infty \frac{c_n}{n+1}(x-a)^{n+1}$ where $C$ is an arbitrary constant, and the radius of convergence of the new series is still $R$.  The new series is said to be obtained from the old series by ``integrating the series term by term''.  The new series may gain (but not lose) convergence at the endpoints $a+R$ and $a-R$.
+\end{theorem}
+
+\begin{example}
+The antiderivative of $ f(x) =\frac{\sin(x)}{x}$ cannot be expressed as an elementary function.  However, its integral
+
+\[
+Si(x) = \int_0^x f(t) \d t
+\]
+
+is important in signal analysis.
+
+We can find a series expression for $Si(x)$ using term by term integration:
+
+\[
+\sin(x) = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots = \sum_0^\infty \frac{1}{(2n+1)!} x^{2n+1}
+\]
+
+So 
+
+\[
+\frac{\sin(x)}{x} =1-\frac{x^2}{3!}+\frac{x^5}{5!}-\dots = \sum_0^\infty \frac{1}{(2n+1)!} x^{2n}
+\]
+
+Thus
+
+\[
+\int \frac{\sin(x)}{x} \d x = C+x-\frac{x^3}{3 \cdot 3!}+\frac{x^5}{5 \cdot 5!}-\dots = \sum_0^\infty \frac{1}{(2n+1) \cdot (2n+1)!} x^{2n+1}
+\]
+
+$Si(x)$ is the antiderivative of $f(x)$ with $Si(0) = 0$, so  $C=0$, and 
+
+\[
+Si(x) = \sum_0^\infty \frac{1}{(2n+1) \cdot (2n+1)!} x^{2n+1}
+\]
+
+Say we wanted to approximate $Si(2)$ with an accuracy of $\frac{1}{10}$.  How many terms would we need?
+
+By the alternating series estimation test, we would need
+
+\[\frac{1}{(2n+1) \cdot (2n+1)!} 2^{2n+1} \leq  \frac{1}{10}\]
+
+We can experiment a bit to find that the least integer which makes this true is 
+
+\[
+ n= \answer{2}
+\]
+
+Thus $Si(2) \approx 2-\frac{8}{3 \cdot 3!} = 1.\bar{5}$ should be accurate to within $\frac{1}{10}$.  Wolfram alpha reports that $Si(2) \approx 1.60541 $, we this appears to be accurate!
+\end{example}
+
+
+
+
+\end{document}

@@ -2,9 +2,10 @@
 
 \input{../preamble.tex}
 
-\outcome{Use Taylor series to approximate constants.}
-\outcome{Use Taylor series to compute limits.}
-\outcome{Use Taylor series to sum series.}
+\outcome{Sketch a parametric curve.}
+\outcome{Eliminate a parameters of a parametric equation.}
+\outcome{Represent a graph with parametric equations.}
+\outcome{Find the derivative of a parametric curve.}
 
 \title[Dig-In:]{Parametric equations}
 
@@ -16,9 +17,36 @@ Some abstract
 
 \section{The idea of parametric equations}
 
+Think back to when you first learned how to graph a function. I'm
+pretty sure you used a so-called ``t-chart,'' and if $y = x^2$, I bet it
+looked something like this:
+\[
+\begin{array}{c|c}
+  x & y = x^2\\\hline
+  0 & 0 \\
+  1 & 1\\
+  -1 & 1\\
+  2 & 4\\
+  -2 & 4
+\end{array}
+\]
+With a parametric plot, both $x$ and $y$ are now functions of a third
+parameter, we'll call it $t$.
+
+%%
+%% probably a three column t-chart goes here
+%%
+
+If $x=t$, then there isn't much difference between a regular plot a
+the parametric plot.
+
+On the other hand, with parametric functions, we can plot a function
+that seems to fail the vertical line test!
+
+
 (One input, two outputs)
 
-\section{Famous parametric equations}
+\subsection{Famous parametric equations}
 
 circles
 
@@ -34,9 +62,19 @@ as $t$ runs from $0$ to $2\pi$.
 lines
 %% Unfortunately, we do vectors *after* parametric eqns.
 %% Perhaps we can forshadow the idea of a vector.
+\begin{align*}
+  \l(t) &= \mathbf{point} + t\cdot \mathbf{direction}\\
+  &= (a,b) + t \cdot(u,v)
+\end{align*}
+where the $\mathbf{direction}$ is imagined as starting at $(0,0)$ and going
+to the point $(u,v)$. Another way of writing this is
 \[
-\l(t) = \mathbf{point} + t\cdot \mathbf{direction}
+\l(t) = \left\{\begin{aligned}
+  x(t) &= a + t\cdot u\\
+  y(t) &= b + t\cdot v
+\end{aligned}\right.
 \]
+
 
 
 

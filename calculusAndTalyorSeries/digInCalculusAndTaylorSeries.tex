@@ -4,176 +4,180 @@
 
 \outcome{Use Taylor series to read-off derivatives of a function.}
 \outcome{Use Taylor series to solve differential equations.}
-\outcome{Use Taylor series to compute integrals}
+\outcome{Use Taylor series to compute integrals.}
 
 \title[Dig-In:]{Calculus and Taylor series}
 
 \begin{document}
 \begin{abstract}
-  Power series interact nicely with other calculus concepts
+  Power series interact nicely with other calculus concepts.
 \end{abstract}
 \maketitle
 
-\section{Differentiating power series}
+\section{Reading derivatives off of Taylor series}
 
-The following theorem is beyond what we will cover in the course (although, if you are industrious, it is within your grasp.  See \href{https://gowers.wordpress.com/2014/02/22/differentiating-power-series/}{this blog post} if you are interested) 
-
-\begin{theorem}
-	If $f(x) = \sum_0^\infty c_n(x-a)^n$ is a power series with radius of convergence $R$, then $f'(x)$ is equal to  $\sum_1^\infty nc_n(x-a)^{n-1}$, and the radius of convergence of the new series is still $R$.  The new series is said to be obtained from the old series by ``differentiating the series term by term''.  The new series may lose (but not gain) convergence at the endpoints $a+R$ and $a-R$.
-\end{theorem}
+Recall that if $f(x)$ has derivatives of all orders at $x=c$, then the
+Taylor series centered at $c$ for $f$ is
+\[
+\sum_{n=0}^\infty \frac{f^{(n)}(c)}{n!}(x-c)^n.
+\]
+On the other hand, suppose we give you a series, that we claim is the
+Taylor series for a function $f$. Given just the series, you can
+quickly evaluate $f(c)$, $f'(c)$, $f''(c)$, \dots, and so on. Let's
+see an example.
 
 \begin{example}
-	Say we want to find the power series for $\frac{3}{(1-x)^2}$.  We already know that the power series for $\frac{1}{1-x}$ is
-	
-	\[
-	\frac{1}{1-x} = 1+x+x^2+x^3+\dots
-	\]
-	
-	So differentiating both sides we get
-	
-	\[
-	\answer{\frac{1}{(1-x)^2}} = 1+\answer{2}x+\answer{3}x^2+\dots
-	\]
-	
-	And thus
-	
-	\[
-	\frac{3}{(1-x)^2} = 3+\answer{6}x+\answer{9}x^2+\dots
-	\]
-	
-	Or, in more compact notation
-	
-	\[
-	\frac{3}{(1-x)^2} = \sum_1^\infty \answer{3n}x^{n-1}
-	\]
-	
-	We already know that the radius of convergence of $\frac{1}{1-x}$ is $1$, so we get that this new series also has radius of convergence $1$ by the theorem.
+  The Taylor series for $f(x) = \arctan(x)$ is
+  \[
+  \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{2n+1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} +\cdots.
+  \]
+  Compute $f'(0)$, $f'''(0)$, $f^{(5)}(0)$, $f^{(7)}(0)$, and give a
+  general description $f^{(n)}(0)$.
+  \begin{explanation}
+    With the Taylor series in hand, we can simply look at the
+    coefficients and ``read-off'' the derivatives we need. Comparing this series
+    \[
+    x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} +\cdots
+    \]
+    to the general form of a Taylor (Maclaurin) series, we see
+    \begin{align*}
+    f'(0) &= \answer[given]{1}\\
+    f'''(0) &= \answer[given]{-2}\\
+    f^{(5)}(0) &= \answer[given]{4!}\\
+    f^{(7)}(0) &= -\answer[given]{-6!}
+    \end{align*}
+    In general, if $n$ is even,
+    \[
+    f^{(n)} = 0
+    \]
+    and if $n$ is odd,
+    \[
+    f^{(n)} = \pm(n-1)! 
+    \]
+    where the sign alternates, starting with $+$.
+  \end{explanation}
 \end{example}
 
 \begin{question}
-	If $\sum_0^\infty c_n$ converges, must $\sum_1^\infty nc_n(\frac{1}{2})^n$ also converge?
-	
-	\begin{multipleChoice}
-		\choice[correct]{Yes}
-		\choice{No}
-	\end{multipleChoice}
-	
-	\begin{hint}
-		We can think of $\sum_0^\infty c_n$ as $\sum_0^\infty c_n x^n$ evaluated at $x=1$.  Since this converges, the radius of convergence of the series is at least $1$.  Thus the radius of convergence of its derivative $\sum_1^\infty nc_n x^n$ is also at least $1$.  Thus $\sum_1^\infty nc_n(\frac{1}{2})^n$ converges.
-	\end{hint}
+  Let
+  \[
+  -1 + x - 2x^2 + 3x^3 - 5x^4 + 8x^5-13x^6+21x^7 -34x^8 + \cdots  
+  \]
+  be the Taylor series for some function. What are the values of the
+  function and the first eight derivatives when evaluated at zero?
+  \begin{hint}
+    You shouldn't be using any derivative rules, instead, you should
+    just ``read-off'' the derivatives from the series.
+  \end{hint}
+  \begin{prompt}
+    \begin{align*}
+      f(0) &= \answer{-1}\\
+      f'(0) &= \answer{1}\\
+      f''(0) &= \answer{-4}\\
+      f'''(0) &= \answer{18}\\
+      f^{(4)}(0) &= \answer{-120}\\
+      f^{(5)}(0) &= \answer{960}\\
+      f^{(6)}(0) &= \answer{-9360}\\
+      f^{(7)}(0) &= \answer{105840}\\
+      f^{(8)}(0) &= \answer{1370880}
+    \end{align*}
+  \end{prompt}
 \end{question}
+
+
 
 
 \section{Solving differential equations using power series}
 
-If we have a differential equation we can frequently use the ``method of undetermined coefficients'' to solve it using power series.
+If we have a differential equation we can frequently use Taylor series
+to obtain an approximate solution, which will be (hopefully) converge
+on some interval.
+
+In his study of optics, George Biddell Airy developed the so-called
+\textit{Airy function}, a function that solves the differential
+equation
+\[
+y'' = xy
+\]
+for initial conditions $y(0) = a_0, and y'(0) = a_1$.  As innocent as
+this differential equation seems, it is impossible to find a closed
+form solution! Nevertheless, Taylor series will rescue us.
 
 \begin{example}
-Say we want to solve the differential equation
-
-\[
-y' = 2y-3
-\]
-
-subject to the initial condition that $y(0)=1$
-
-Assume that $y$ can be represented by a power series
-
-\[
-y = c_0+c_1x+c_2x^2+c_3x^3+\dots
-\]
-
-Then, differentiating both sides we have
-
-\[
-y' = c_1+2c_2x+3c_3x^2+\dots
-\]
-
-Using the differential equation, we know that
-
-\[
-2y-3 = c_1+2c_2x+3c_3x^2+\dots
-\]
-
-so
-
-\[
-2c_0-3+2c_1x+2c_2x^2+2c_3x^3+\dots = c_1+2c_2x+3c_3x^2+\dots
-\]
-
-
-
-This is equivalent to infinitely many simultaneous equations:
-
-\begin{align*}
-	2c_0-3 &= c_1\\
-	2c_1 &= 2c_2\\
-	2c_2 &= 3c_3\\
-	2c_3 &=4c_4\\
-	\vdots
-\end{align*}
-
-We know that $c_0 = 1$ since this is the initial condition. 
-This lets us find
-
-\begin{align*}
-c_0 = 1\\
-c_1 = \answer{-1}\\
-c_2=\answer{-1}\\
-c_3=\answer{-\frac{2}{3}}\\
-c_4=\answer{-\frac{1}{3}}\\
-\vdots
-\end{align*}
-
-In fact, since $2c_{n-1} = nc_n$, we can find $c_n = \frac{2}{n}c_{n-1}$, so $c_n = -\frac{2^{n-1}}{n!}$ for $n \geq 1$.
-
-Thus the solution is 
-
-\[
-y = 1+\sum_1^\infty -\frac{2^{n-1}}{n!} x^n
-\]
-
-This looks a lot like the series for $e^{2x}$, so we can try to manipulate this into a closed form solution.
-
-\[
-e^{2x} = \sum_0^\infty \frac{2^n}{n!} x^n
-\]
-
-so 
-
-\begin{align*}
--\frac{1}{2} e^{2x} &= \sum_0^\infty -\frac{2^{n-1}}{n!} x^n\\
--\frac{1}{2} e^{2x} &= -\frac{1}{2}+ \sum_1^\infty -\frac{2^{n-1}}{n!} x^n\\
--\frac{1}{2} e^{2x} +\frac{3}{2}&= 1+ \sum_1^\infty -\frac{2^{n-1}}{n!} x^n\\
-y &= -\frac{1}{2} e^{2x} +\frac{3}{2}\\
-\end{align*}
-
-So we have found a closed form solution
-
-\[
-y = -\frac{1}{2} e^{2x} +\frac{3}{2}
-\]
-
-Make sure to check that this is really a solution to the differential equation!
-
+  Approximate a solution to the differential equation
+  \[
+  y'' = x\cdot y
+  \]
+  where $y(0) = 1$ and $y'(0) = -1$, using the first $6$ nonzero terms
+  of a Maclaurin series.
+  \begin{explanation}
+    Differential equations give us a recipie for computing
+    derivatives. We'll use this to produce a Maclaurin series
+    representing the solution of this differential equation.  Start by
+    writing down:
+    \begin{align*}
+    y(0) &= \answer[given]{1}\\
+    y'(0) = \answer[given]{-1}
+    \end{align*}
+    To compute higher derivatives, simpily differentiate the
+    differential equation:
+    \[
+    \begin{array}{lcl}
+      y'' = x\cdot y & \Rightarrow & y''(0) = \answer[given]{0}\\
+      y''' = y + x\cdot y' & \Rightarrow & y'''(0) = \answer[given]{1}\\
+      y^{(4)} = 2y' + x\cdot y'' & \Rightarrow & y^{(4)}(0) = \answer[given]{-2}\\
+      y^{(5)} = 3y'' + x\cdot y''' & \Rightarrow & y^{(5)}(0) =\answer[given]{0}\\
+      y^{(6)} = 4y''' + x\cdot y^{(4)} & \Rightarrow & y^{(6)}(0) =\answer[given]{4}\\
+      y^{(7)} = 5y^{(4)} + x\cdot y^{(5)} & \Rightarrow & y^{(7)}(0) =\answer[given]{-10}
+    \end{array}
+    \]
+    We can immediately write down the first $5$ terms of the Maclaurin series
+    \[
+    1 -x + \frac{x^3}{3!} -\frac{2x^4}{4!} + \frac{4x^6}{6!} -\frac{10x^7}{7!} +\cdots
+    \]
+  \end{explanation}
 \end{example}
 
 \section{Integration}
 
-Just as we can differentiate term by term, we can also integrate term by term
+Just as we can differentiate term by term, we can also integrate term
+by term. This allows us to approximate many functions where we cannot
+find a ``closed-form'' formula. Recall the following theorem:
 
-\begin{theorem}
-	If $f(x) = \sum_0^\infty c_n(x-a)^n$ is a power series with radius of convergence $R$, then the antiderivatives of $f(x)$ are given by $C + \sum_0^\infty \frac{c_n}{n+1}(x-a)^{n+1}$ where $C$ is an arbitrary constant, and the radius of convergence of the new series is still $R$.  The new series is said to be obtained from the old series by ``integrating the series term by term''.  The new series may gain (but not lose) convergence at the endpoints $a+R$ and $a-R$.
+\begin{theorem}[Derivatives and Indefinite Integrals of Power Series]\index{integration!of power series}\index{derivative!power series}\index{power series!derivatives and integrals}
+  Let
+  \[
+  f(x) = \sum_{n=0}^\infty a_n(x-c)^n
+  \]
+  be a function defined by a power series, with radius of convergence $R$.
+  \begin{itemize}
+  \item $f(x)$ is continuous and differentiable on $(c-R,c+R)$.
+  \item	$f'(x) = \sum_{n=1}^\infty a_n\cdot n\cdot (x-c)^{n-1}$, with radius of convergence $R$.
+  \item	$\int f(x) \d x = C+\sum_{n=0}^\infty a_n\frac{(x-c)^{n+1}}{n+1}$, with radius of convergence $R$.
+  \end{itemize}
 \end{theorem}
+%% https://gowers.wordpress.com/2014/02/22/differentiating-power-series/
+A few notes about the theorem above:
+\begin{itemize}
+\item The theorem states that differentiation and integration do not
+  change the radius of convergence. It does not state anything about
+  the \textit{interval} of convergence. They are not always the same.
+\item Notice how the summation for $f'(x)$ starts with $n=1$. This is
+  because the constant term $a_0$ of $f(x)$ goes to $0$.
+\item Differentiation and integration are simply calculated
+  term-by-term using the power rule.
+\end{itemize}
+
+We'll use this idea to investigate the function 
+\[
+\si(x) = \int_0^x \frac{\sin(t)}{t} \d t
+\]
+an important function in signal analysis.
 
 \begin{example}
-The antiderivative of $ f(x) =\frac{\sin(x)}{x}$ cannot be expressed as an elementary function.  However, its integral
-
-\[
-Si(x) = \int_0^x f(t) \d t
-\]
-
-is important in signal analysis.
+  Find a power series for $\si(x)$ centered at zero and give the
+  radius and interval of convergence.
+\end{example}
 
 We can find a series expression for $Si(x)$ using term by term integration:
 

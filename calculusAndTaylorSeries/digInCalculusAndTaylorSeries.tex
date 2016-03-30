@@ -14,7 +14,7 @@
 \end{abstract}
 \maketitle
 
-\section{Reading derivatives off of Taylor series}
+\section{Reading derivatives from Taylor series}
 
 Recall that if $f(x)$ has derivatives of all orders at $x=c$, then the
 Taylor series centered at $c$ for $f$ is
@@ -99,7 +99,7 @@ equation
 \[
 y'' = xy
 \]
-for initial conditions $y(0) = a_0, and y'(0) = a_1$.  As innocent as
+for initial conditions $y(0) = a_0$, and $y'(0) = a_1$.  As innocent as
 this differential equation seems, it is impossible to find a closed
 form solution! Nevertheless, Taylor series will rescue us.
 
@@ -111,15 +111,15 @@ form solution! Nevertheless, Taylor series will rescue us.
   where $y(0) = 1$ and $y'(0) = -1$, using the first $6$ nonzero terms
   of a Maclaurin series.
   \begin{explanation}
-    Differential equations give us a recipie for computing
+    Differential equations give us a recipe for computing
     derivatives. We'll use this to produce a Maclaurin series
     representing the solution of this differential equation.  Start by
     writing down:
     \begin{align*}
     y(0) &= \answer[given]{1}\\
-    y'(0) = \answer[given]{-1}
+    y'(0) &= \answer[given]{-1}
     \end{align*}
-    To compute higher derivatives, simpily differentiate the
+    To compute higher derivatives, simply differentiate the
     differential equation:
     \[
     \begin{array}{lcl}
@@ -177,47 +177,58 @@ an important function in signal analysis.
 \begin{example}
   Find a power series for $\si(x)$ centered at zero and give the
   radius and interval of convergence.
+\begin{explanation}
+  We can find a series expression for $\sin(x)/x$ using division, write with me
+  \[
+  \sin(x) = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots = \sum_{n=0}^\infty \frac{\answer[given]{(-1)^n x^{2n+1}}}{(2n+1)!} 
+  \]
+  So 
+  \[
+  \frac{\sin(x)}{x} =1-\frac{x^2}{3!}+\frac{x^4}{5!}-\dots = \sum_{n=0}^\infty \frac{\answer[given]{(-1)^n x^{2n}}}{(2n+1)!} 
+  \]
+  Now we integrate term-by-term to find $\si(x)$:
+  \begin{align*}
+  \int &\frac{\sin(x)}{x} \d x = C+x-\frac{x^3}{3 \cdot 3!}+\frac{x^5}{5 \cdot 5!}-\cdots \\
+  &= \sum_{n=0}^\infty \frac{\answer[given]{(-1)^nx^{2n+1}}}{\answer[given]{(2n+1)} \cdot (2n+1)!} 
+  \end{align*}
+  $\si(x)$ is the antiderivative of $f(x)$ with $\si(0) = 0$, so  $C=0$, and 
+  \[
+  \si(x) = \sum_{n=0}^\infty \frac{(-1)^nx^{2n+1}}{(2n+1) \cdot (2n+1)!}.
+  \]
+  To find the radius of convergence, use the ratio test. Write with me
+  \begin{align*}
+    \lim_{n\to\infty} &\frac{x^{2(n+1)+1}}{(2(n+1)+1) \cdot (2(n+1)+1)!} \cdot \frac{(2n+1) \cdot (2n+1)!}{x^{2n+1}}\\
+    &=\lim_{n\to\infty}\frac{x^{2n+3}}{(2n+3) \cdot (2n+3)!} \cdot \frac{(2n+1) \cdot (2n+1)!}{x^{2n+1}}\\
+    &=\lim_{n\to\infty}\frac{x^{2}\cdot (2n+1)}{(2n+3) \cdot (2n+3)\cdot(2n+2)}
+  \end{align*}
+  and for any fixed $x$ this limit is zero. Hence our series converges
+  on $(-\infty,\infty)$, with radius of convergence $R=\infty$.
+ \end{explanation}
 \end{example}
 
-We can find a series expression for $Si(x)$ using term by term integration:
 
-\[
-\sin(x) = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\dots = \sum_0^\infty \frac{1}{(2n+1)!} x^{2n+1}
-\]
-
-So 
-
-\[
-\frac{\sin(x)}{x} =1-\frac{x^2}{3!}+\frac{x^5}{5!}-\dots = \sum_0^\infty \frac{1}{(2n+1)!} x^{2n}
-\]
-
-Thus
-
-\[
-\int \frac{\sin(x)}{x} \d x = C+x-\frac{x^3}{3 \cdot 3!}+\frac{x^5}{5 \cdot 5!}-\dots = \sum_0^\infty \frac{1}{(2n+1) \cdot (2n+1)!} x^{2n+1}
-\]
-
-$Si(x)$ is the antiderivative of $f(x)$ with $Si(0) = 0$, so  $C=0$, and 
-
-\[
-Si(x) = \sum_0^\infty \frac{1}{(2n+1) \cdot (2n+1)!} x^{2n+1}
-\]
-
-Say we wanted to approximate $Si(2)$ with an accuracy of $\frac{1}{10}$.  How many terms would we need?
-
-By the alternating series estimation test, we would need
-
-\[\frac{1}{(2n+1) \cdot (2n+1)!} 2^{2n+1} \leq  \frac{1}{10}\]
-
-We can experiment a bit to find that the least integer which makes this true is 
-
-\[
- n= \answer{2}
-\]
-
-Thus $Si(2) \approx 2-\frac{8}{3 \cdot 3!} = 1.\bar{5}$ should be accurate to within $\frac{1}{10}$.  Wolfram alpha reports that $Si(2) \approx 1.60541 $, we this appears to be accurate!
+\begin{example}
+  If
+  \[
+  \si(x) = \sum_{n=0}^\infty \frac{(-1)^n x^{2n+1}}{(2n+1) \cdot (2n+1)!} 
+  \]
+  which $n$ is needed to approximate $\si(2)$ with an accuracy
+  of $\frac{1}{10}$?
+  \begin{explanation}
+    By the alternating series estimation test, we would need
+    \begin{align*}
+    \frac{2^{2(n+1)+1}}{(2(n+1)+1) \cdot (2(n+1)+1)!}  <  \frac{1}{10}\\
+    \frac{ 2^{2n+3}}{(2n+3) \cdot (2n+3)!} &< \frac{1}{10}
+    \end{align*}
+    We can experiment a bit to find that the least integer which makes this true is 
+    \[
+    n= \answer[given]{1}
+    \]
+    Thus $\si(2) \approx 2-\frac{8}{3 \cdot 3!} = 1.\bar{5}$ should be
+    accurate to within $\frac{1}{10}$.  Wolfram alpha reports that $Si(2)
+    \approx 1.60541 $, we this appears to be accurate!
+  \end{explanation}
 \end{example}
-
 
 
 

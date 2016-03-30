@@ -61,19 +61,21 @@ Really cool!
     series approximation theorem. In this case the theorem says that
     since
     \[
-    \sum_{k=0}^\infty a_k = \sum_{k=0}^\infty \frac{(-1)^k}{2k+1}
+    \sum_{k=0}^\infty a_k = \sum_{k=0}^\infty \frac{(-1)^k4}{2k+1}
     \]
     We need to find $k$ such that
     \begin{align*}
-      |a_k| &\le \frac{1}{100}\\
-      \answer[given]{\frac{1}{2k+1}} &\le \frac{1}{100}\\
-      \answer[given]{2k+1} &\ge 100\\
-      \answer[given]{2k} &\ge 99\\
-      \answer[given]{k} &\ge 99/2
+      |a_{k+1}| &<\frac{1}{100}\\
+      \answer[given]{\frac{4}{2(k+1)+1}} &< \frac{1}{100}\\
+      \answer[given]{\frac{2k+3}{4}} &> 100\\
+      \answer[given]{2k+3} &> 400\\
+      \answer[given]{2k} &> 397\\
+      \answer[given]{k} &> 397/2
     \end{align*}
-    Since $k$ is a whole number, we would need to sum $\answer[given]{50}$ terms just
-    to find $3.14$ as an approximation for $\pi$! Even then, you have
-    to be careful not to accumulate too many rounding errors when
+    Since $k$ is a whole number, we would need to sum
+    $\answer[given]{199}$ terms just to be assured that you've found
+    an approximation within $\frac{1}{100}$ of $\pi$! Even then, you
+    have to be careful not to accumulate too many rounding errors when
     performing the computations.
   \end{explanation}
 \end{example}

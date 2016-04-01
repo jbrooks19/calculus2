@@ -118,8 +118,8 @@ representing a circle solves this problem.
     This is the circle of radius $3$ centered at the point
     $(1,2)$. Here we set
     \begin{align*}
-      x(t) &= 1 + 3\cos(t)\\
-      y(t) &= 2 + 3\sin(t)
+      x(t) &= \answer[given]{1} + \answer[given]{3}\cos(t)\\
+      y(t) &= \answer[given]{2} + \answer[given]{3}\sin(t)
     \end{align*}
     as $t$ runs from $0$ to $2\pi$.  To see that our answer is
     correct, we can ``plug'' it back into the implicit equation
@@ -412,7 +412,7 @@ $a=5$ and $b=4$
 \end{tikzpicture}
 \end{image}
 These figures come up a lot in electrical engineering. Do yourself a
-favor and play around with Lissajous figures for differening values of
+favor and play around with Lissajous figures for differing values of
 $\delta$, $a$ and $b$.
 
 
@@ -447,16 +447,16 @@ it is really easy to convert this to a parametric function, just write
 
 On the other hand, if you are given a parametric function, to express
 $y$ as function of $x$ can be much more difficult. Here are the basic
-stragities to try:
+strategies to try:
 \begin{itemize}
 \item Solve for $t$.
 \item Solve for a function of $t$.
-\item Use a trigonometric idenitity.
+\item Use a trigonometric identity.
 \end{itemize}
 In each case the process that we are using is called
 \dfn{elimination of a parameter}.
 
-We'll give several examples of how one actually \textit{elimiates a
+We'll give several examples of how one actually \textit{eliminates a
   parameter}.
 
 In the first example, we'll solve for $t$.
@@ -472,12 +472,12 @@ In the first example, we'll solve for $t$.
     $t$ in this equation:
     \begin{align*}
       y &= 3t-1\\
-      y+1 &= 3t\\
-      \frac{y+1}{3} & = t.
+      y+1 &= \answer[given]{3t}\\
+      \frac{y+1}{3} & = \answer[given]{t}.
     \end{align*}
     Now plug this into $x(t) = -4 t^2$, and write
     \[
-    x = -4 \left(\frac{y+1}{3}\right)^2.
+    x = \answer[given]{-4 \left(\frac{y+1}{3}\right)^2}.
     \]
   \end{explanation}
 \end{example}
@@ -501,11 +501,11 @@ In our next example we'll solve for a function of $t$.
       Now we can rewrite $y(t)$ as
       \begin{align*}
         y(t) &= e^{3t}\\
-        y(t) &= \left(e^{t}\right)^3.
+        y(t) &= \left(e^{t}\right)^{\answer[given]{3}}.
       \end{align*}
       Now we see that
       \[
-      y = \left(\frac{x}{-5}\right)^3.
+      y = \answer[given]{\left(\frac{x}{-5}\right)^3}.
       \]
   \end{explanation}
 \end{example}
@@ -527,8 +527,8 @@ In our final example, we will use a trigonometric identity.
     So first isolate cosine and sine, and square the equations. With $x(t)$ we have
     \begin{align*}
       x &= 3 \cos(t) \\
-      \frac{x}{3} &= \cos(t)\\
-      \left(\frac{x}{3}\right)^2 &= \cos^2(t)
+      \answer[given]{\frac{x}{3}} &= \cos(t)\\
+      \answer[given]{\left(\frac{x}{3}\right)^2} &= \cos^2(t)
     \end{align*}
     and with $y(t)$ we have
     \begin{align*}
@@ -537,7 +537,7 @@ In our final example, we will use a trigonometric identity.
       \frac{y-1}{4} &= \sin(t)\\
       \left(\frac{y-1}{4}\right)^2 &= \sin^2(t).
     \end{align*}
-    Plugging this back into the pythagorean identity, we see:
+    Plugging this back into the Pythagorean identity, we see:
     \begin{align*}
       \cos^2(t) + \sin^2(t) &= 1\\
       \left(\frac{x}{3}\right)^2 + \left(\frac{y-1}{4}\right)^2 &= 1.

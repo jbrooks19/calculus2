@@ -15,12 +15,101 @@
 
 \section{Derivatives}
 
-Given a parametric function
+Let's get right to it. Given a parametric function $(x(t),y(t))$ and
+recalling that
+\begin{align*}
+  \d x &= x'(t) \d t\\
+  \d y &= y'(t) \d t,
+\end{align*}
+we can see how to compute the derivative of $y$ with respect to $x$
+using differentials:
 \[
-
+\frac{\d y}{\d x} = \frac{y'(t) \d t}{x'(t) \d t} = \frac{y'(t)}{x'(t)}
 \]
+provided that $x'(t) \ne 0$. Time for some examples. 
+
+\begin{example}
+  \example{ex_parcalc1}{Tangent and Normal Lines to Curves}{
+Let $x=5t^2-6t+4$ and $y=t^2+6t-1$, and let $C$ be the curve defined by these equations.
+\begin{enumerate}
+	\item Find the equations of the tangent and normal lines to $C$ at $t=3$.
+	\item	Find where $C$ has vertical and horizontal tangent lines.
+\end{enumerate}
+	}
+	{\begin{enumerate}
+		\item We start by computing $\fp(t) = 10t-6$ and $g'(t) =2t+6$. Thus $$\frac{dy}{dx} = \frac{2t+6}{10t-6}.$$
+		Make note of something that might seem unusual: $\frac{dy}{dx}$ is a function of $t$, not $x$. Just as points on the curve are found in terms of $t$, so are the slopes of the tangent lines.
+		
+		The point on $C$ at $t=3$ is $(31,26)$. The slope of the tangent line is $m=1/2$ and the slope of the normal line is $m=-2$. Thus,
+		\begin{itemize}
+			\item the equation of the tangent line is $\ds y=\frac12(x-31)+26$, and
+			\item	the equation of the normal line is $\ds y=-2(x-31)+26$.
+		\end{itemize}
+		This is illustrated in Figure \ref{fig:parcalc1}.
+		\mfigure{.5}{Graphing tangent and normal lines in Example \ref{ex_parcalc1}.}{fig:parcalc1}{figures/figparcalc1}
+		
+		\item		To find where $C$ has a horizontal tangent line, we set $\frac{dy}{dx}=0$ and solve for $t$. In this case, this amounts to setting $g'(t)=0$ and solving for $t$ (and making sure that $\fp(t)\neq 0$). 
+		$$g'(t)=0 \quad \Rightarrow \quad 2t+6=0 \quad \Rightarrow \quad t=-3.$$
+		The point on $C$ corresponding to $t=-3$ is $(67,-10)$; the tangent line at that point is horizontal (hence with equation $y=-10$).
+		
+		To find where $C$ has a vertical tangent line, we find where it has a horizontal normal line, and set $-\frac{\fp(t)}{g'(t)}=0$. This amounts to setting $\fp(t)=0$ and solving for $t$ (and making sure that $g'(t)\neq 0$). 
+		$$\fp(t)=0 \quad \Rightarrow \quad 10t-6=0 \quad \Rightarrow \quad t=0.6.$$
+		The point on $C$ corresponding to $t=0.6$ is $(2.2,2.96)$. The tangent line at that point is $x=2.2$.
+	
+		The points where the tangent lines are vertical and horizontal are indicated on the graph in Figure \ref{fig:parcalc1}.
+		\end{enumerate}
+		\vskip-\baselineskip
+	}\\
+\end{example}
+
+
+\begin{example}
+  	\example{ex_parcalc2}{Tangent and Normal Lines to a Circle}{
+	\begin{enumerate}
+		\item Find where the circle, defined by $x=\cos t$ and $y=\sin t$ on $[0,2\pi]$, has vertical and horizontal tangent lines. 
+		\item	 Find the equation of the normal line at $t=t_0$.
+		\end{enumerate}
+		}
+		{\begin{enumerate}
+			\item We compute the derivative following Key Idea \ref{idea:dydxpar}:
+			$$\frac{dy}{dx} = \frac{g'(t)}{\fp(t)} = -\frac{\cos t}{\sin t}.$$
+			The derivative is $0$ when $\cos t= 0$; that is, when $t=\pi/2,\ 3\pi/2$. These are the points $(0,1)$ and $(0,-1)$ on the circle.
+			
+			The normal line is horizontal (and hence, the tangent line is vertical) when $\sin t=0$; that is, when $t= 0,\ \pi,\ 2\pi$, corresponding to the points $(-1,0)$ and $(0,1)$ on the circle. These results should make intuitive sense.
+			\item		The slope of the normal line at $t=t_0$ is $\ds m=\frac{\sin t_0}{\cos t_0} = \tan t_0$. This normal line goes through the point $(\cos t_0,\sin t_0)$, giving the line \begin{align*}y &=\frac{\sin t_0}{\cos t_0}(x-\cos t_0) + \sin t_0\\	
+							&= (\tan t_0)x,
+\end{align*}
+as long as $\cos t_0\neq 0$. It is an important fact to recognize that the normal lines to a circle pass through its center, as illustrated in Figure \ref{fig:parcalc2}. Stated in another way, any line that passes through the center of a circle intersects the circle at right angles.
+\mfigure{.4}{Illustrating how a circle's normal lines pass through its center.}{fig:parcalc2}{figures/figparcalc2}
+		\end{enumerate}
+	\vskip-1.5\baselineskip
+		}\\
+\end{example}
+
+
+
+
 
 \section{Integrals}
+
+
+Assuming that the curve given by a parametric formula $(x(t),y(t))$
+represents $y$ as a function of $x$, we can integrate our parametric
+formula without too much additional trouble.
+Again, recall that
+\[
+\d x = x'(t) \d t
+\]
+So we may write
+\[
+\int_a^b y \d x = \int_\alpha^\beta y(t) \cdot x'(t) \d t
+\]
+where $x(\alpha) = a$ and $x(\beta) = b$.
+
+Time for some examples.
+
+
+
 
 
 \end{document}

@@ -150,7 +150,7 @@ precision when dealing with square-roots.
       f'(x) = \answer[given]{x^{-2/3}/3} & \Rightarrow & f'(64) = \answer[given]{1/48}\\
       f''(x) = \answer[given]{-2x^{-5/3}/9} &\Rightarrow &f''(64) = \answer[given]{-1/4608}\\
       f'''(x) = \answer[given]{10x^{-8/3}/27} &\Rightarrow &f'''(64) = \answer[given]{5/884736}\\
-      f^{(4)}(x) = \answer[given]{80 x^{-11/3}/81} &\Rightarrow &f^{(4)}(64) = \answer[given]{-5/21233664}
+      f^{(4)}(x) = \answer[given]{-80 x^{-11/3}/81} &\Rightarrow &f^{(4)}(64) = \answer[given]{-5/21233664}
     \end{array}
     \]
     So our Taylor series is
@@ -221,8 +221,8 @@ L'H\^{o}pital's rule would need to be applied multiple times.
     Just replace sine and cosine with their Maclaurin series:
     \begin{align*}
       \lim_{x \to 0} \frac{\sin(x)-x}{x\cos(x)} &= \lim_{x \to 0} \frac{(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots)-x}{x^3(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots)}\\
-      &= \lim_{x \to \infty} \frac{-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots}{x^3 - \frac{x^5}{2!}+\frac{x^7}{4!}-\cdots}\\
-      &=\lim_{x \to \infty} \frac{-\frac{1}{6}+\frac{x^2}{3!}-\cdots}{1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots}\\
+      &= \lim_{x \to 0} \frac{-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots}{x^3 - \frac{x^5}{2!}+\frac{x^7}{4!}-\cdots}\\
+      &=\lim_{x \to 0} \frac{-\frac{1}{6}+\frac{x^2}{3!}-\cdots}{1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots}\\
       &=\answer[given]{\frac{-1}{6}}
     \end{align*}
   \end{explanation}

@@ -1,0 +1,212 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Define Polar Coordinates}
+\outcome{Convert between polar and Cartesian coordinates.}
+\outcome{ Plot basic curves in polar coordinates.}
+\outcome{Use the "Cartesian to polar method" to plot polar graphs.}
+
+\title[Dig-In:]{Polar equations}
+
+\begin{document}
+\begin{abstract}
+	Polar coordinates are given by an angle and a radius
+\end{abstract}
+\maketitle
+
+So far, when we want to refer to a point in the plane, we have done so by setting up rectangular coordinates.  In other words, we pick two perpendicular lines as the axes, their intersection as the origin, and we specify every point in the plane as a pair $(x,y)$ where $x$ is the projection onto one axes and $y$ the projection onto the other.  This elegant system of relating geometry (points in a plane) to algebra ($x$ and $y$) was a huge idea, and made mathematics a lot easier to think about.
+
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=-4:4,xmin=-4,xmax=4,ymin=-4,ymax=4,
+            width=3in,
+            height=3in,
+            ticks=none,
+            yticklabels={},%$a_1 = 10$,$a_2=30$,$a_3=90$,$a_4=270$,$a_5=810$},
+            axis lines =middle, xlabel=$$, ylabel=$$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            axis on top,
+          ]
+          
+	\node at (axis cs:2.5, 1.5 ) [anchor=west] {$(x,y)$};
+	 \addplot[color=textColor,fill=textColor,only marks,mark=*] coordinates{(2.5,1.5)};  
+	 \addplot [textColor, dashed] plot coordinates {(2.5,0) (2.5,1.5) (0,1.5)};
+	 	\node at (axis cs:2.5, 0 ) [anchor=north] {$x$};
+\node at (axis cs:0, 1.5 ) [anchor=east] {$y$};
+            \end{axis}
+\end{tikzpicture}
+\end{image} 
+
+
+This is not the only way to specify points in the plane, however.  We could have just have easily specified points by saying how far away they are, and what direction they lie in.
+
+\begin{question}
+	What are the rectangular coordinates of the point indicated below?
+	
+	\[
+	x = \answer{\frac{3}{2}}
+	\]
+	
+	\[
+	y = \answer{\frac{3\sqrt{3}}{2}}
+	\]
+	
+	\begin{hint}
+		$x = 3 \sin(\frac{\pi}{3})$ and $y = 3\cos(\frac{\pi}{3})$
+	\end{hint}
+	\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=-4:4,xmin=-4,xmax=4,ymin=-4,ymax=4,
+            width=3in,
+            height=3in,
+            ticks=none,
+            yticklabels={},%$a_1 = 10$,$a_2=30$,$a_3=90$,$a_4=270$,$a_5=810$},
+            axis lines =middle, xlabel=$$, ylabel=$$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            axis on top,
+          ]
+          
+	\node at (axis cs:1.5, 2.598 ) [anchor=west] {$(x,y)$};
+	 \addplot[color=textColor,fill=textColor,only marks,mark=*] coordinates{(1.5,2.598)};  
+	 \addplot [textColor] plot coordinates {(0,0) (1.5,2.598)};
+ \draw[decoration={brace,mirror,raise=.2cm},decorate,thin] (axis cs:1.5, 2.598 )--(axis cs:0,0 );
+	\node at (axis cs:-0.1, 1.8 ) [anchor=west] {$3$};
+		\node at (axis cs:1.2, 1.2 ) [anchor=west] {$\frac{\pi}{3}$};
+
+	\draw[penColor,very thick,dashed] (axis cs:1.25, 0 ) arc (0:60:  0.375 in);
+            \end{axis}
+\end{tikzpicture}
+\end{image} 
+\end{question}
+
+You can see how we can specify each point in the plane with a distance from the origin ($r$) and an angle measured from the positive real axis ($\theta$).  So we can specify a point in the plane with an ordered pair $(r,\theta)$ of real numbers, where $r$ represents the signed distance to the origin, and $\theta$ represents the signed angle to the positive $x$-axis.  This pair is then called the \dfn{polar coordinates} for the point.  In this context the origin is sometimes called the \dfn{pole}, and the positive real axis is called the \dfn{polar axis}.
+
+\begin{question}
+	Select all the polar coordinates which represent the point $(2,2)$, which is written in cartesian coordinates.
+	
+	\begin{selectAll}
+		\choice{$(2,\frac{\pi}{4})$}
+		\choice[correct]{$(2\sqrt{2},\frac{\pi}{4})$}
+		\choice[correct]{$(-2\sqrt{2},\frac{5\pi}{4})$}
+		\choice{$(2,2)$}
+		\choice[correct]{$(2\sqrt{2},\frac{-7\pi}{4})$}
+	\end{selectAll}
+\end{question}
+
+
+\begin{question}
+	How many different polar coordinate representations are there for the point $(1,0)$?
+	
+	\begin{multipleChoice}
+		\choice{$0$}
+		\choice{$1$}
+		\choice{$4$}
+		\choice[correct]{Infinitely many}
+	\end{multipleChoice}
+\end{question}
+
+Just like $y=x^2$ lets us graph a parabola in rectangular coordinates, relationships between $r$ and $\theta$ give rise to graphs in polar coordinates
+
+\begin{question}
+	Match the graph to the polar curve which describes it.
+	
+	
+	\begin{align*}
+	r  = 3 &\longrightarrow \answer{B}\\
+	\theta = \frac{\pi}{4} \theta &\longrightarrow \answer{C}
+	r  = \theta &\longrightarrow \answer{A}\\
+	\end{align*}
+
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=-4:4,xmin=-4,xmax=4,ymin=-4,ymax=4,
+            width=3in,
+            height=3in,
+            ticks=none,
+            yticklabels={},%$a_1 = 10$,$a_2=30$,$a_3=90$,$a_4=270$,$a_5=810$},
+            axis lines =middle, xlabel=$$, ylabel=$$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            axis on top,
+          ]
+          
+                    	 \addplot[penColor,very thick,smooth, samples = 1000, domain=0:1500]({x*cos(x)/360},{x*sin(x)/360});
+			\node at (axis cs:3.5, 3.5 ) [anchor=west] {\Large{A}};
+          			
+	            \end{axis}
+\end{tikzpicture}
+\end{image} 	
+	
+	
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=-4:4,xmin=-4,xmax=4,ymin=-4,ymax=4,
+            width=3in,
+            height=3in,
+            ticks=none,
+            yticklabels={},%$a_1 = 10$,$a_2=30$,$a_3=90$,$a_4=270$,$a_5=810$},
+            axis lines =middle, xlabel=$$, ylabel=$$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            axis on top,
+          ]
+          
+          	 \addplot[penColor,very thick,smooth, domain=0:360]({3*cos(x)},{3*sin(x)});
+		 \draw[decoration={brace,raise=.2cm},decorate,thin] (axis cs: 2.11, 2.11 )--(axis cs:-0.01,-0.01 );
+		\node at (axis cs:1.4, 0.6 ) [anchor=west] {$3$};
+		\node at (axis cs:3.5, 3.5 ) [anchor=west] {\Large{B}};
+		
+	            \end{axis}
+\end{tikzpicture}
+\end{image} 
+
+
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=-4:4,xmin=-4,xmax=4,ymin=-4,ymax=4,
+            width=3in,
+            height=3in,
+            ticks=none,
+            yticklabels={},%$a_1 = 10$,$a_2=30$,$a_3=90$,$a_4=270$,$a_5=810$},
+            axis lines =middle, xlabel=$$, ylabel=$$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            clip=false,
+            axis on top,
+          ]
+          
+                    	 \addplot[penColor,very thick,smooth, domain=-4:4]({x},{x});
+			\node at (axis cs:1.4, 0.6 ) [penColor, anchor=west] {$y=x$};
+			\node at (axis cs:3.5, 3 ) [anchor=west] {\Large{C}};
+          			
+	            \end{axis}
+\end{tikzpicture}
+\end{image} 
+
+
+
+
+\begin{hint}
+	
+\end{hint}	
+
+\begin{hint}
+	Every point on the line $y=x$ has a constant angle of $\frac{\pi}{4}$ with polar axis.
+\end{hint}
+	
+	
+\end{question}
+\end{document}
+

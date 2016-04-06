@@ -76,13 +76,79 @@ provided that $x'(\theta)\ne 0$.
     \end{prompt}
   \end{explanation}
 \end{example}
+
+
+
+
+
+\begin{example}
+Find where the graph of $r(\theta) =1+2\sin(\theta)$ on $[0,2\pi]$ has
+horizontal and vertical tangent lines.
+\begin{explanation}
+  To find the horizontal tangent lines, we find where $\dd[y]{x}=0$.
+  Since
+  \[
+  \dd[y]{x} =\frac{\cos(\theta) + 4\sin(\theta)\cos(\theta)}{-\sin(\theta) + 2\cos^2(\theta)-2\sin^2(\theta)}
+  \]
+  we must find where the numerator is $0$. Since the numerator is equal to
+  \[
+  \cos(\theta)(1+ 4\sin(\theta))
+  \]
+  the numerator is zero when 
+  \begin{itemize}
+  \item $\cos(\theta)=0$ or
+  \item $1+4\sin(\theta)=0$.
+  \end{itemize}
+  On $[0,2\pi]$, $\cos(\theta)=0$ when
+  \begin{itemize}
+  \item $\theta=\pi/2$ or
+  \item $\theta= 3\pi/2$.
+  \end{itemize}
+  On the other hand, $1+ 4\sin(\theta)=0$ gives
+  \[
+  \theta=\arcsin(-1/4)
+  \]
+  However, the range of $\arcsin(\theta)$ is $[-\pi/2,\pi/2]$, and we
+  want the results in $[0,2\pi]$; we also recognize there are two
+  solutions, one in the 3$^\text{rd}$ quadrant and one in the
+  4$^\text{th}$. Using reference angles, we have our two solutions as
+  $\theta =3.39$ and $6.03$ radians. The four points we obtained where
+  the lima\c con has a horizontal tangent line are given in Figure
+  \ref{fig:polcalc1} with black-filled dots.
+
+  To find the vertical lines of tangency, we set the denominator of
+  $\frac{dy}{dx}=0$.
+  \begin{align*}
+    2(\cos^2\theta -\sin^2\theta)-\sin\theta &= 0 .
+    \intertext{Convert the $\cos^2\theta$ term to $1-\sin^2\theta$:}
+    2(1-\sin^2\theta-\sin^2\theta)-\sin\theta &= 0\\
+    4\sin^2\theta + \sin\theta -1 &= 0.
+  \end{align*}
+  Recognize this as a quadratic in the variable $\sin\theta$. Using the quadratic formula, we have
+  \begin{align*}
+    \sin\theta &= \frac{-1\pm\sqrt{33}}{8}.
+  \end{align*}
+  We solve $\sin\theta = \frac{-1+\sqrt{33}}8$ and $\sin\theta = \frac{-1-\sqrt{33}}8$:
+  \begin{align*}
+    \sin\theta &=\frac{-1+\sqrt{33}}8 & \sin\theta &= \frac{-1-\sqrt{33}}{8}\\
+    \theta &= \sin^{-1}\left(\frac{-1+\sqrt{33}}8\right) & \theta &= \sin^{-1}\left(\frac{-1-\sqrt{33}}8\right)\\
+    \theta &= 0.6399 & \theta &= -1.0030
+  \end{align*}
+  In each of the solutions above, we only get one of the possible two solutions as $\sin^{-1}x$ only returns solutions in $[-\pi/2,\pi/2]$, the 4$^\text{th}$ and $1^\text{st}$ quadrants. Again using reference angles, we have:
+  \[
+  \sin\theta = \frac{-1+\sqrt{33}}8 \quad \Rightarrow \quad \theta = 0.6399,\ 3.7815 \text{ radians}
+  \]
+  and 
+  \[
+  \sin\theta = \frac{-1-\sqrt{33}}8 \quad \Rightarrow \quad \theta = 4.1446,\ 5.2802 \text{ radians.}
+  \]
+  These points are also shown in Figure \ref{fig:polcalc1} with
+  white-filled dots.
+\end{explanation}
+\end{example}
+
 \end{document}
 
-
-
-%% \begin{example}
-%% 	\item		Find where the graph has vertical and horizontal tangent lines.
-%% \end{enumerate}
 %% }
 %% {\begin{enumerate}
 %% 	\item We start by computing $\frac{dy}{dx}$. With $\fp(\theta) = 2\cos\theta$, we have

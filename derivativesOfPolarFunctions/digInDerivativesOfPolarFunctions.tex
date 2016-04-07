@@ -20,13 +20,12 @@ polar functions.  We know that
   \d x &= x'(t) \d t\\
   \d y &= y'(t) \d t,
 \end{align*}
-we can see how to compute the derivative of $y$ with respect to $x$
-using differentials:
+and so we can compute the derivative of $y$ with respect to $x$ using
+differentials:
 \[
 \frac{\d y}{\d x} = \frac{y'(t) \d t}{x'(t) \d t} = \frac{y'(t)}{x'(t)}
 \]
-provided that $x'(t) \ne 0$.
-With polar functions we have
+provided that $x'(t) \ne 0$.  With polar functions we have
 \begin{align*}
   x(\theta) &= r(\theta) \cdot \cos(\theta)\\
   y(\theta) &= r(\theta) \cdot \sin(\theta),
@@ -82,8 +81,9 @@ provided that $x'(\theta)\ne 0$.
 
 
 \begin{example}
-Find where the graph of $r(\theta) =1+2\sin(\theta)$ on $[0,2\pi]$ has
-horizontal and vertical tangent lines.
+Find Cartesian coordinates for where the graph of $r(\theta)
+=1+2\sin(\theta)$ on $[0,2\pi]$ has horizontal and vertical tangent
+lines.
 \begin{explanation}
   To find the horizontal tangent lines, we find where $\dd[y]{x}=0$.
   Since
@@ -104,10 +104,28 @@ horizontal and vertical tangent lines.
   \item $\theta=\pi/2$ or
   \item $\theta= 3\pi/2$.
   \end{itemize}
-  On the other hand, $1+ 4\sin(\theta)=0$ gives
-  \[
-  \theta=\arcsin(-1/4)
-  \]
+  This cooresponds to the points
+  \begin{align*}
+    x(\pi/2) &= \left(1+2\sin(\pi/2)\right)\cdot\cos(\pi/2)\\
+    &= 0,\\
+    y(\pi/2) &= \left(1+2\sin(\pi/2)\right)\cdot\sin(\pi/2)\\
+    &= 3.
+  \end{align*}
+  and
+  \begin{align*}
+    x(3\pi/2) &= \left(1+2\sin(3\pi/2)\right)\cdot\cos(3\pi/2)\\
+    &= 0,\\
+    y(3\pi/2) &= \left(1+2\sin(3\pi/2)\right)\cdot\sin(3\pi/2)\\
+    &= 1.
+  \end{align*}
+  
+  On the other hand, the numerator is also zero when
+  \begin{align*}
+    1+ 4\sin(\theta)&=0\\
+    4\sin(\theta)&=-1\\
+    \sin(\theta)&=\frac{-1}{4}.
+  \end{align*}
+  
   However, the range of $\arcsin(\theta)$ is $[-\pi/2,\pi/2]$, and we
   want the results in $[0,2\pi]$; we also recognize there are two
   solutions, one in the 3$^\text{rd}$ quadrant and one in the

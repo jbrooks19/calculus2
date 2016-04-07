@@ -82,8 +82,7 @@ provided that $x'(\theta)\ne 0$.
 
 \begin{example}
 Find Cartesian coordinates for where the graph of $r(\theta)
-=1+2\sin(\theta)$ on $[0,2\pi]$ has horizontal and vertical tangent
-lines.
+=1+2\sin(\theta)$ on $[0,2\pi]$ has horizontal tangent lines.
 \begin{explanation}
   To find the horizontal tangent lines, we find where $\dd[y]{x}=0$.
   Since
@@ -109,21 +108,21 @@ lines.
     x(\pi/2) &= \left(1+2\sin(\pi/2)\right)\cdot\cos(\pi/2)\\
     &= 0,\\
     y(\pi/2) &= \left(1+2\sin(\pi/2)\right)\cdot\sin(\pi/2)\\
-    &= 3.
+    &= 3,
   \end{align*}
-  and
+  meaning $(x,y) = (0,3)$, and
   \begin{align*}
     x(3\pi/2) &= \left(1+2\sin(3\pi/2)\right)\cdot\cos(3\pi/2)\\
     &= 0,\\
     y(3\pi/2) &= \left(1+2\sin(3\pi/2)\right)\cdot\sin(3\pi/2)\\
-    &= 1.
+    &= 1,
   \end{align*}
+  meaning $(x,y) = (0,1)$.
   
   On the other hand, the numerator is also zero when
   \begin{align*}
-    1+ 4\sin(\theta)&=0\\
-    4\sin(\theta)&=-1\\
-    \sin(\theta)&=\frac{-1}{4}.
+    1+
+    4\sin(\theta)&=0\\ 4\sin(\theta)&=-1\\ \sin(\theta)&=\frac{-1}{4}.
   \end{align*}
   At this point we have a choice to make: We can either apply arcsine,
   and attempt to solve for $\theta$, or we can work with
@@ -146,30 +145,52 @@ lines.
         ]        
         \addplot [black!50!white, dashed, smooth, domain=(0:360)] ({cos(x)},{sin(x)}); %% unit circle
         
-        \addplot [ultra thick] plot coordinates {(0,0) (.97,-.25)}; %% 40 degrees
+        \addplot [ultra thick] plot coordinates {(0,0) (.97,-.25)}; 
+        \addplot [ultra thick] plot coordinates {(.97,0) (.97,-.25)}; 
+        \addplot [ultra thick] plot coordinates {(0,0) (.97,0)};
+
+        \addplot [ultra thick] plot coordinates {(0,0) (-.97,-.25)}; 
+        \addplot [ultra thick] plot coordinates {(-.97,0) (-.97,-.25)}; 
+        \addplot [ultra thick] plot coordinates {(0,0) (-.97,0)}; 
+
+        \node at (axis cs:-.5,-.2) {$1$};
+        \node at (axis cs:.5,-.2) {$1$};
+        \node[anchor=west] at (axis cs:1,-.11) {$\sin(\theta) = -1/4$};
+        \node[anchor=east] at (axis cs:-1,-.11) {$\sin(\theta) = -1/4$};
+        \node[anchor=south] at (axis cs:-.5,0) {$\cos(\theta) = -\sqrt{15}/4$};
+        \node[anchor=south] at (axis cs:.5,0) {$\cos(\theta) = \sqrt{15}/4$};
         
-        \addplot [ultra thick] plot coordinates {(.97,0) (.97,-.25)}; %% 40 degrees
-        \addplot [ultra thick] plot coordinates {(0,0) (.97,0)}; %% 40 degrees
-        
-        %\addplot [ultra thick,penColor3] plot coordinates {(1,0) (1,.839)}; %% 40 degrees          
-        
-        \addplot [textColor,smooth, domain=(0:40)] ({.15*cos(x)},{.15*sin(x)});
-        %\addplot [very thick,penColor] plot coordinates {(0,0) (.766,.643)}; %% sector
-        %\addplot [very thick,penColor] plot coordinates {(0,0) (1,0)}; %% sector
-        %\addplot [very thick, penColor, smooth, domain=(0:40)] ({cos(x)},{sin(x)}); %% sector
-        \node at (axis cs:.12,.07) [anchor=west] {$\theta$};
-        \node at (axis cs:.84,.322)[anchor=west] {$\frac{x}{\sqrt{1+x^2}}$};
-        \node at (axis cs:.383,0) [anchor=north] {$\frac{1}{\sqrt{1+x^2}}$};
-        \node at (axis cs:.38,.32) [anchor=south] {$1$};
       \end{axis}
     \end{tikzpicture}
   \end{image}
-   4$^\text{th}$. Using reference angles, we have our two solutions as
-  $\theta =3.39$ and $6.03$ radians. The four points we obtained where
-  the lima\c con has a horizontal tangent line are given in Figure
-  \ref{fig:polcalc1} with black-filled dots.
+  Hence the derivative is zero at
+  \begin{align*}
+    x(\theta) &= \left(1+2\sin(\theta)\right)\cdot\cos(\theta)\\
+    &= \left(1+2(-1/4)\right)\cdot \sqrt{15}/4\\
+    &= \sqrt{15}/8,\\
+    y(\theta) &= \left(1+2\sin(\theta)\right)\cdot\sin(\theta)\\
+    &= \left(1+2(-1/4)\right)\cdot (-1/4)\\
+    &= -1/8,
+  \end{align*}
+  meaning $(x,y) = (\sqrt{15}/8, -1/8)$, and
+   \begin{align*}
+    x(\theta) &= \left(1+2\sin(\theta)\right)\cdot\cos(\theta)\\
+    &= \left(1+2(-1/4)\right)\cdot (-\sqrt{15}/4)\\
+    &= -\sqrt{15}/8,\\
+    y(\theta) &= \left(1+2\sin(\theta)\right)\cdot\sin(\theta)\\
+    &= \left(1+2(-1/4)\right)\cdot (-1/4)\\
+    &= -1/8,
+  \end{align*}
+   meaning $(x,y) = (-\sqrt{15}/8, -1/8)$.
+\end{explanation}
+\end{example}
 
-  To find the vertical lines of tangency, we set the denominator of
+
+  \begin{example}
+Find Cartesian coordinates for where the graph of $r(\theta)
+=1+2\sin(\theta)$ on $[0,2\pi]$ has vertical tangent lines.
+\begin{explanation}
+    To find the vertical lines of tangency, we set the denominator of
   $\frac{dy}{dx}=0$.
   \begin{align*}
     2(\cos^2\theta -\sin^2\theta)-\sin\theta &= 0 .

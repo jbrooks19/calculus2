@@ -38,7 +38,7 @@ so
 provided that $x'(\theta)\ne 0$.
 
 \begin{example}
-  Consider the lima\c con $r(\theta) =1+2\sin(\theta)$ on $[0,2\pi]$
+  Consider the lima\c con $r(\theta) =1+2\sin(\theta)$ on $[0,2\pi]$:
   \begin{image}
      \begin{tikzpicture}
           \begin{polaraxis}[
@@ -71,7 +71,7 @@ provided that $x'(\theta)\ne 0$.
     y=(-2\sqrt{2}-1)\big(x-(1+\sqrt{2}/2)\big)+1+\sqrt{2}/2 \approx  -3.83 x+8.24.
     \]
     \begin{prompt}
-      \graph{r=1+2\sin(\theta), y=(-2\sqrt{2}-1)(x-(1+\sqrt{2}/2))+1+\sqrt{2}/2}
+      \graph{r=1+2\sin(\theta)}%, y=(-2\sqrt{2}-1)(x-(1+\sqrt{2}/2))+1+\sqrt{2}/2}
     \end{prompt}
   \end{explanation}
 \end{example}
@@ -82,18 +82,7 @@ provided that $x'(\theta)\ne 0$.
 
 \begin{example}
 Find Cartesian coordinates for where the graph of $r(\theta)
-=1+2\sin(\theta)$ on $[0,2\pi]$
-  \begin{image}
-     \begin{tikzpicture}
-          \begin{polaraxis}[
-              xtick={0,45,...,360},
-              xticklabels={$0$,$\frac{\pi}{4}$,$\frac{\pi}{2}$,$\frac{3\pi}{4}$,$\pi$,$\frac{5\pi}{4}$,$\frac{3\pi}{2}$,$\frac{7\pi}{4}$,$2\pi$},
-            ]
-            \addplot+[very thick, mark=none,penColor,domain=0:360,samples=100,smooth] {1+2*sin(x)};
-          \end{polaraxis}
-     \end{tikzpicture}
-  \end{image}
-has horizontal tangent lines.
+=1+2\sin(\theta)$ on $[0,2\pi]$ has horizontal tangent lines.
 \begin{explanation}
   To find the horizontal tangent lines, we find where $\dd[y]{x}=0$.
   Since
@@ -132,8 +121,7 @@ has horizontal tangent lines.
   
   On the other hand, the numerator is also zero when
   \begin{align*}
-    1+
-    4\sin(\theta)&=0\\ 4\sin(\theta)&=-1\\ \sin(\theta)&=\frac{-1}{4}.
+    1+4\sin(\theta)&=0\\ 4\sin(\theta)&=-1\\ \sin(\theta)&=\frac{-1}{4}.
   \end{align*}
   At this point we have a choice to make: We can either apply arcsine,
   and attempt to solve for $\theta$, or we can work with
@@ -284,18 +272,7 @@ at the pole is $\theta=\alpha$.
 
 \begin{example}
   Find the equations of the lines tangent to the graph of
-  $r(\theta)=1+2\sin(\theta)$
-  \begin{image}
-     \begin{tikzpicture}
-          \begin{polaraxis}[
-              xtick={0,45,...,360},
-              xticklabels={$0$,$\frac{\pi}{4}$,$\frac{\pi}{2}$,$\frac{3\pi}{4}$,$\pi$,$\frac{5\pi}{4}$,$\frac{3\pi}{2}$,$\frac{7\pi}{4}$,$2\pi$},
-            ]
-            \addplot+[very thick, mark=none,penColor,domain=0:360,samples=100,smooth] {1+2*sin(x)};
-          \end{polaraxis}
-     \end{tikzpicture}
-  \end{image}
-  at the pole.
+  $r(\theta)=1+2\sin(\theta)$ at the pole.
   \begin{explanation}
     We need to know when $r(\theta)=0$.
     \begin{align*}

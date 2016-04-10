@@ -225,7 +225,7 @@ A mystery -- compute $\int_0^{2\pi}$ of the polar curve above - twice the area w
 %% \vskip-\baselineskip
 %% }\\
 
-\section{Area between polar curves}
+\section{Areas between polar curves}
 
 Consider the shaded region shown in Figure \ref{fig:polarea3}. We can
 find the area of this region by computing the area bounded by
@@ -252,6 +252,52 @@ on $[\alpha,\beta]$, is
 A = \frac12\int_\alpha^\beta \big(r(\theta)^2-s(\theta)^2\big)\d \theta.
 \]
 \end{theorem}
+
+
+
+
+
+
+\begin{example}
+  Find the area of the region that lies within
+  \[
+  r(\theta) = 1
+  \]
+  but not within
+  \[
+  s(\theta) = 1-\sin(\theta)
+  \]
+\end{example}
+
+
+When computing regions between polar curves, one must be
+careful. Sometimes, one must compute the points of intersection of the
+two curves, and this can be difficult.
+\begin{example}
+  Find the points of intersection between the curves
+  \begin{align*}
+    r(\theta) &= 1+ \cos(\theta)\\
+    s(\theta) &= 1+ \sin(\theta).
+  \end{align*}
+  \begin{explanation}
+    To find the points of intersection of two polar curves, the best
+    thing to do is to look at a graph.
+
+
+    When you are unable to look at a graph, you can still use algebra
+    to try and find the points of intersection, but some may be
+    hidden.
+  \end{explanation}
+\end{example}
+
+
+\begin{example}
+  Find the area of the region that lies within both polar curves
+  \begin{align*}
+    r(\theta) &= 1+ \cos(\theta)\\
+    s(\theta) &= 1+ \sin(\theta).
+  \end{align*}
+\end{example}
 
 %% \enlargethispage{2\baselineskip}
 %% \example{ex_polcalc5}{Area between polar curves}{

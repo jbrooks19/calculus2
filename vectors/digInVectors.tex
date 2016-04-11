@@ -21,18 +21,27 @@
 \end{abstract}
 \maketitle
 
-So far, we have mostly studied functions which take one input and return one output.  \textbf{Multivariable Calculus} is the study of functions with multiple inputs and multiple outputs.  In these final sections, we set the stage for this study.  When we want to keep track of more than one number at a time, we use a \textbf{vector}.
+So far, we have mostly studied functions which take one input and
+return one output.  \textbf{Multivariable Calculus} is the study of
+functions with multiple inputs and multiple outputs.  In these final
+sections, we set the stage for this study.  When we want to keep track
+of more than one number at a time, we use a \textbf{vector}.
 
 \begin{definition}
-	A \dfn{vector} of length $n$ is an ordered list of $n$ real numbers.  The collection of all vectors of length $n$ is called $\mathbb{R}^n$ (pronounced ``Are enn'').  The $n$ in $\mathbb{R}^n$ is called the \dfn{dimension}.
+  A \dfn{vector} of length $n$ is an ordered list of $n$ real numbers.
+  The collection of all vectors of length $n$ is called $\mathbb{R}^n$
+  (pronounced ``Are enn'').  The $n$ in $\mathbb{R}^n$ is called the
+  \dfn{dimension}.
 \end{definition}
 
-We write vectors typographically as either boldfaced variables (like $\mathbf{v}$ or $\mathbf{w}$) or decorated with an arrow hat (like $\vec{v}$ or $\vec{w}$).  We also generally write vectors as vertical lists like this:
+We write vectors typographically as either boldfaced variables (like
+$\mathbf{v}$ or $\mathbf{w}$) or decorated with an arrow hat (like
+$\vec{v}$ or $\vec{w}$).  We also generally write vectors as vertical
+lists like this:
 
 \[
-\mathbf{v} = \begin{bmatrix} 3 \\ 4 \\1 \end{bmatrix}
+\mathbf{v} = \vecList{3;4;1}
 \]
-
 but we sometimes will write the same vector horizontally like this
 
 \[
@@ -40,15 +49,13 @@ but we sometimes will write the same vector horizontally like this
 \]
 
 \begin{question}
-	What is the dimension of the vector 
-	
-	\[
-	\begin{bmatrix} 3 \\ 4 \\1 \\ -4 \end{bmatrix}
-	\]
-	
-	\[
-	\textrm{Dimension} = \answer{4}
-	\]
+  What is the dimension of the vector 
+  \[
+  \begin{bmatrix} 3 \\ 4 \\1 \\ -4 \end{bmatrix}
+  \]
+  \[
+  \textrm{Dimension} = \answer{4}
+  \]
 \end{question}
 
 \section{Operations on vectors}
@@ -56,16 +63,15 @@ but we sometimes will write the same vector horizontally like this
 We can add vectors of the same dimension together by summing component by component:
 
 \begin{question}
-		\[
-	\begin{bmatrix} 1 \\ 2 \\3  \end{bmatrix}+ \begin{bmatrix} -1\\ 2 \\ 2  \end{bmatrix} = \begin{bmatrix} \answer{0} \\ \answer{4} \\ \answer{5}  \end{bmatrix}
-	\]
-	
-	\begin{hint}
-		The answer is  
-		\[
-		\begin{bmatrix} 0 \\ 4 \\ 5 \end{bmatrix}
-		\]
-	\end{hint}
+  \[
+  \begin{bmatrix} 1 \\ 2 \\3  \end{bmatrix}+ \begin{bmatrix} -1\\ 2 \\ 2  \end{bmatrix} = \begin{bmatrix} \answer{0} \\ \answer{4} \\ \answer{5}  \end{bmatrix}
+  \]
+  \begin{hint}
+    The answer is  
+    \[
+    \begin{bmatrix} 0 \\ 4 \\ 5 \end{bmatrix}
+    \]
+  \end{hint}
 \end{question}
 
 We can also multiply vectors by a constant, by multiplying each component by by the constant:

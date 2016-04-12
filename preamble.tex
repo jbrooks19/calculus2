@@ -100,17 +100,29 @@
 }
 
 
-%% Horiz Vectors with angle brackets
-\makeatletter
-\renewcommand{\vector}[2][ , ]{\left\langle%
-  \def\nextitem{\def\nextitem{#1}}%
-  \@for \el:=#2\do{\nextitem\el}\right\rangle%
-}
-\makeatother
+%%%%%%%%%%%%%
+%% Vectors
+%%%%%%%%%%%%%
+
+%% Simple horiz vectors
+\renewcommand{\vector}[1]{\left\langle #1\right\rangle}
+
+
+%% %% Complex Horiz Vectors with angle brackets
+%% \makeatletter
+%% \renewcommand{\vector}[2][ , ]{\left\langle%
+%%   \def\nextitem{\def\nextitem{#1}}%
+%%   \@for \el:=#2\do{\nextitem\el}\right\rangle%
+%% }
+%% \makeatother
 
 %% %% Vertical Vectors
 %% \def\vector#1{\begin{bmatrix}\vecListA#1,,\end{bmatrix}}
 %% \def\vecListA#1,{\if,#1,\else #1\cr \expandafter \vecListA \fi}
+
+%%%%%%%%%%%%%
+%% End of vectors
+%%%%%%%%%%%%%
 
 %\newcommand{\fullwidth}{}
 %\newcommand{\normalwidth}{}

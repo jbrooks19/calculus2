@@ -1,0 +1,357 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+
+\outcome{State the definition of a vector.}
+\outcome{Work with vectors in two or three dimensions. }
+\outcome{Multiply vectors by scalars.}
+\outcome{Add and subtract vectors.}
+\outcome{Calculate the magnitude of a vector.}
+\outcome{Find unit vectors.}
+\outcome{Use vectors in applied settings.}
+\outcome{Find the equations for planes.}
+\outcome{Give the equation for a sphere or ball.}
+
+\title[Dig-In:]{Vectors}
+
+\begin{document}
+\begin{abstract}
+  Vectors are lists of numbers
+\end{abstract}
+\maketitle
+
+So far, we have mostly studied functions which take one input and
+return one output.  \textbf{Multivariable Calculus} is the study of
+functions with multiple inputs and multiple outputs.  In these final
+sections, we set the stage for this study.  When we want to keep track
+of more than one number at a time, we use a \textbf{vector}.
+
+\begin{definition}
+  A \dfn{vector} of length $n$ is an ordered list of $n$ real numbers.
+  The collection of all vectors of length $n$ is called $\mathbb{R}^n$
+  (pronounced ``Are enn'').  The $n$ in $\mathbb{R}^n$ is called the
+  \dfn{dimension}.
+\end{definition}
+
+We write vectors typographically as either boldfaced variables (like
+$\mathbf{v}$ or $\mathbf{w}$) or decorated with an arrow hat (like
+$\vec{v}$ or $\vec{w}$).  We also generally write vectors as vertical
+lists like this:
+
+%\[
+%\mathbf{v} = \vecList{3;4;1}
+%\]
+but we sometimes will write the same vector horizontally like this
+
+\[
+\mathbf{v} = \langle 3, 4, 1 \rangle
+\]
+
+\begin{question}
+  What is the dimension of the vector 
+  \[
+  \begin{bmatrix} 3 \\ 4 \\1 \\ -4 \end{bmatrix}
+  \]
+  \[
+  \textrm{Dimension} = \answer{4}
+  \]
+\end{question}
+
+\section{Operations on vectors}
+
+We can add vectors of the same dimension together by summing component by component:
+
+\begin{question}
+  \[
+  \begin{bmatrix} 1 \\ 2 \\3  \end{bmatrix}+ \begin{bmatrix} -1\\ 2 \\ 2  \end{bmatrix} = \begin{bmatrix} \answer{0} \\ \answer{4} \\ \answer{5}  \end{bmatrix}
+  \]
+  \begin{hint}
+    The answer is  
+    \[
+    \begin{bmatrix} 0 \\ 4 \\ 5 \end{bmatrix}
+    \]
+  \end{hint}
+\end{question}
+
+We can also multiply vectors by a constant, by multiplying each component by by the constant:
+
+\begin{question}
+
+\[
+4\begin{bmatrix} 2 \\ 4 \\ 0  \\ 1 \end{bmatrix} = \begin{bmatrix} \answer{8}\\ \answer{16} \\ \answer{0}  \\ \answer{4} \end{bmatrix} 
+\]	
+
+\begin{hint}
+\[
+ \begin{bmatrix} 8 \\ 16 \\ 0  \\ 4 \end{bmatrix} 
+ \]
+\end{hint}
+\end{question}
+
+In this context, we call a number to which we multiply a vector a \dfn{scalar} for reasons that will become apparent in the next section.
+
+\section{The geometry of vectors}
+
+We can visualize vectors in dimension $1$, $2$, or $3$ as directed arrows.
+
+
+\begin{question}
+	Which vector is depicted by the following picture?
+	
+\begin{image}
+  \begin{tikzpicture}
+	\begin{axis}[
+            domain=(-1:6),
+            clip=false,
+            axis lines=center,
+            %ticks=none,
+            unit vector ratio*=1 1 1,
+            xlabel=$x$, ylabel=$y$,
+            ytick={-2,-1,...,7},
+	    %yticklabels={$0.5$,$1$,$1.5$,$2$},
+	    xtick={-2,-1,...,10},
+	    %xticklabels={$0.5$,$1$,$1.5$,$2$},
+	    grid = major,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          ]
+         % \addplot[very thick,penColor2!50!white,->,>=stealth'] plot coordinates {(2,1) (6,4)};
+          \addplot[very thick,penColor2,->,>=stealth'] plot coordinates {(0,0) (2,3)};
+          \addplot[color=penColor,fill=penColor] coordinates{(6,6)};  %% closed hole
+         % \addplot[color=penColor,dashed] ({2+4*x},{1+3*x});
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+	
+	\[
+	\begin{bmatrix} 2  \\ 3  \end{bmatrix}
+	\]
+\end{question}
+
+\begin{question}
+	What is the length of the vector 
+	\[
+		\begin{bmatrix} 2  \\ 3  \end{bmatrix}
+	\]
+	
+	\[
+	\textrm{Length}  = \answer{\sqrt{13}}
+	\]
+	
+	\begin{hint}
+		The length is $\sqrt{2^2+3^2} = \sqrt{13}$
+	\end{hint}
+\end{question}
+
+You were able to find the answer to the question above because you are used to working with $2$ and $3$ dimensional objects.  We make the following definition in $n$ dimensions.
+
+\begin{definition}
+	Let $\mathbf{v} = \langle v_1, v_2, v_3, \dots, v_n \rangle \in \mathbb{R}^n$ is an $n$ dimensional vector.  Then the \dfn{length} or \dfn{magnitude} of $\mathbf{v}$ is denoted by $|\mathbf{v}|$ and is defined by
+	
+	\[
+	|\mathbf{v}| = \sqrt{v_1^2+v_2^2+v_3^2+\dots+v_n^2}
+	\]
+\end{definition}
+
+We can understand the operations of scalar multiplication and vector addition from this graphical perspective as well:
+
+Let
+
+\[
+\mathbf{v} = \begin{bmatrix} 1  \\ 2  \end{bmatrix}
+\]
+
+Then 
+
+\[
+2\mathbf{v} =  \begin{bmatrix} 2  \\ 4  \end{bmatrix}
+\]
+
+If we graph both of these, we see that $2\mathbf{v}$ points in the same direction as $\mathbf{v}$, but is twice as long.  In other words it \textit{scales} the vector by a factor of $2$ (which explains why we call numbers ``scalars'' in this context). 
+
+
+\begin{image}
+  \begin{tikzpicture}
+	\begin{axis}[
+            domain=(-1:2),
+            clip=false,
+            axis lines=center,
+            %ticks=none,
+            unit vector ratio*=1 1 1,
+            xlabel=$x$, ylabel=$y$,
+            ytick={-2,-1,...,7},
+	    %yticklabels={$0.5$,$1$,$1.5$,$2$},
+	    xtick={-2,-1,...,10},
+	    %xticklabels={$0.5$,$1$,$1.5$,$2$},
+	    grid = major,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          ]
+          \addplot[very  thick,penColor,->,>=stealth'] plot coordinates {(0,0) (2,4)};
+          \addplot[ thick,penColor2,->,>=stealth'] plot coordinates {(0,0) (1,2)};
+          \addplot[color=penColor,fill=penColor] coordinates{(6,6)};  %% closed hole
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+
+
+\begin{observation}
+	If $c$ is a positive constant, and $\mathbf{v}$ is a vector, then vector $c\mathbf{v}$ points in the same direction as $\mathbf{v}$, but its length is scaled by a factor of $c$.  If $c$ is negative, then $c\mathbf{v}$ points in the opposite direction of $\mathbf{v}$, and its length is scaled by a factor of $|c|$.
+\end{observation}
+
+\begin{definition}
+	A \dfn{unit vector} is a vector of length $1$.
+\end{definition}
+
+\begin{question}
+	Find a unit vector $\mathbf{u}$ which points in the same direction as the vector $\mathbf{v} = \langle 2,1,3,7,1\rangle$ .
+	
+	\[
+	\begin{bmatrix}
+	\answer{2/8}\\
+	\answer{1/8}\\
+	\answer{3/8}\\
+	\answer{7/8}\\
+	\answer{1/8}
+	\end{bmatrix}
+	\]
+	
+	\begin{hint}
+		Scaling the vector $\mathbf{v}$ by the reciprocal of its length should result in a length $1$ vector which points in the same direction
+	\end{hint}
+	
+	\begin{hint}
+		$|\mathbf{v}| = \sqrt{2^2+1^2+3^2+7^2+1^2} = \sqrt{64} = 8$
+	\end{hint}
+	
+	\begin{hint}
+		Thus the vector $ \mathbf{u} = \langle \frac{2}{8},  \frac{1}{8},\frac{3}{8},\frac{7}{8},\frac{1}{8}\rangle$ points in the same direction of $\mathbf{v}$, but is of unit length.
+	\end{hint}
+\end{question}
+
+\begin{observation}
+	If $\mathbf{v}$ is a nonzero vector, then the unit vector which points in the same direction as $\mathbf{v}$ is $\frac{1}{|\mathbf{v}|} \mathbf{v}$
+\end{observation}
+
+Now let us investigate the geometry of addition of vectors:
+
+\[
+\mathbf{v} = \begin{bmatrix} 1  \\ 2  \end{bmatrix} \hphantom{fdsfd} \mathbf{w} = \begin{bmatrix} 3  \\ 1  \end{bmatrix}
+\]
+
+Then
+
+\[
+\mathbf{v}+\mathbf{w} = \begin{bmatrix} 4 \\ 3 \end{bmatrix}
+\]
+
+\begin{image}
+  \begin{tikzpicture}
+	\begin{axis}[
+            domain=(-1:2),
+            clip=false,
+            axis lines=center,
+            %ticks=none,
+            unit vector ratio*=1 1 1,
+            xlabel=$x$, ylabel=$y$,
+            ytick={-2,-1,...,7},
+	    %yticklabels={$0.5$,$1$,$1.5$,$2$},
+	    xtick={-2,-1,...,10},
+	    %xticklabels={$0.5$,$1$,$1.5$,$2$},
+	    grid = major,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          ]
+          \addplot[very  thick,penColor,->,>=stealth'] plot coordinates {(1,2) (4,3)};
+          \addplot[ thick,penColor2,->,>=stealth'] plot coordinates {(0,0) (1,2)};
+          \addplot[ thick,penColor3,->,>=stealth'] plot coordinates {(0,0) (4,3)};
+
+           \node at (axis cs:0, 1.2 ) [penColor2,anchor=west] {$\mathbf{v}$};
+            \node at (axis cs:2, 2.7 ) [penColor,anchor=west] {$\mathbf{w}$};
+            \node at (axis cs:1.9, 1.1 ) [penColor3,anchor=west] {$\mathbf{v}+\mathbf{w}$};
+
+          \addplot[color=penColor,fill=penColor] coordinates{(6,6)};  %% closed hole
+        \end{axis}
+\end{tikzpicture}
+\end{image}
+
+
+\begin{observation}
+	If we place the base of the vector $\mathbf{w}$ at the head of the vector $\mathbf{v}$, then the sum $\mathbf{v}+\mathbf{w}$ connects the base of $\mathbf{v}$ to the head of $\mathbf{w}$
+\end{observation}
+
+\section{Some three dimensional geometry}
+
+In three dimensions we have three coordinates axes, the $x$, $y$, and $z$ axis:
+
+\begin{image}
+\begin{tikzpicture}
+\begin{axis}[
+  view={35}{15},
+  axis lines=center,
+  width=15cm,height=15cm,
+  xtick={-10,-5,5,10},ytick={-10,-5,5,10},ztick={-10,-5,5,10},
+  minor tick={-12,-11,...,12},
+  xmin=-11,xmax=11,ymin=-11,ymax=11,zmin=-11,zmax=11,
+ % xlabel={$x$},ylabel={$y$},zlabel={$z$},
+]
+
+
+\node [above right] at (axis cs:10,0,0) {$x$};
+\node [above right] at (axis cs:0,10,0) {$y$};
+\node [above right] at (axis cs:0,0,10) {$z$};
+
+
+\end{axis}
+\end{tikzpicture}
+\end{image}
+
+Together, these form three coordinate planes (The $xy$-plane, the $xz$-plane, and the $yz$-plane).
+
+\begin{question}
+	The $yz$-plane corresponds to which of the following equations?
+	
+	\begin{multipleChoice}
+		\choice[correct]{$x=0$}
+		\choice{$y=0$}
+		\choice{$z=0$}
+	\end{multipleChoice}
+	
+	\begin{hint}
+		Every point on the $yz$ axis has $x=0$, so this is the answer.
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Which of the following most accurately describes the solution set of $y=2$ in $\mathbb{R}^3$?
+	
+	\begin{multipleChoice}
+		\choice{A plane parallel to the $xy$ plane}
+		\choice[correct]{A plane parallel to the $xz$ plane}
+		\choice{A plane parallel to the $yz$ plane}
+	\end{multipleChoice}
+
+\begin{hint}
+	$y=2$ consists of all those points where $y=2$, but $x$ and $z$ are allowed to be anything.  This corresponds to a plane which is parallel to the $xz$ plane ($y=0$).
+\end{hint}
+	
+\end{question}
+
+\begin{question}
+	The equation $(x-1)^2+y^2+(z+2)^2 = 4$ has a solution set in $\mathbb{R}^3$ which is a sphere.  What is the center and radius of this sphere?
+	
+\[
+\textrm{Radius} = \answer{2}
+\]
+
+\[
+\textrm{Center} = \left(\answer{1},\answer{0}, \answer{-2} \right)
+\]
+
+\begin{hint}
+	$(x-1)^2+y^2+(z+2)^2$ is the square of the distance from $(1,0,-2)$ to $(x,y,z)$.  If the square of the distance is $4$, then the distance is $2$.  Since the solution set of this equation is all points which are a distance of $2$ away from $(1,0,-2)$, then this is a sphere of radius $2$ centered at $(1,0,-2)$
+\end{hint}
+\end{question}
+
+\end{document}

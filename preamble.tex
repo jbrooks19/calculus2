@@ -66,6 +66,11 @@
 \DeclareMathOperator{\arccsc}{arccsc}
 \DeclareMathOperator{\si}{Si}
 
+\newcommand{\tightoverset}[2]{%
+  \mathop{#2}\limits^{\vbox to -.5ex{\kern-0.75ex\hbox{$#1$}\vss}}}
+\newcommand{\arrowvec}[1]{\tightoverset{\scriptsize\rightharpoonup}{#1}}
+\renewcommand{\vec}{\mathbf}
+
 
 \colorlet{textColor}{black} 
 \colorlet{background}{white}
@@ -95,15 +100,17 @@
 }
 
 
+%% Horiz Vectors with angle brackets
+\makeatletter
+\renewcommand{\vector}[2][ , ]{\left\langle%
+  \def\nextitem{\def\nextitem{#1}}%
+  \@for \el:=#2\do{\nextitem\el}\right\rangle%
+}
+\makeatother
 
-%%% % Horiz vec with angle brackets
-%% \def\vecList#1{\left\langle\vecListA#1;;\right\rangle}
-%% \def\vecListA#1;{\if;#1;\else #1 \expandafter \vecListA \fi}
-%% Look up build a matrix with , in the tex
-
-%% Vertical Vectors
-%% \def\vecList#1{\begin{bmatrix}\vecListA#1;;\end{bmatrix}}
-%% \def\vecListA#1;{\if;#1;\else #1\cr \expandafter \vecListA \fi}
+%% %% Vertical Vectors
+%% \def\vector#1{\begin{bmatrix}\vecListA#1,,\end{bmatrix}}
+%% \def\vecListA#1,{\if,#1,\else #1\cr \expandafter \vecListA \fi}
 
 %\newcommand{\fullwidth}{}
 %\newcommand{\normalwidth}{}

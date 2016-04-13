@@ -37,7 +37,7 @@
 \newcommand{\Z}{\mathbb Z}
 
 %\renewcommand{\d}{\,d\!}
-\renewcommand{\d}{\mathop{}\!d\!}
+\renewcommand{\d}{\mathop{}\!d}
 \newcommand{\dd}[2][]{\frac{\d #1}{\d #2}}
 \renewcommand{\l}{\ell}
 \newcommand{\ddx}{\frac{d}{\d x}}
@@ -65,6 +65,11 @@
 \DeclareMathOperator{\arcsec}{arcsec}
 \DeclareMathOperator{\arccsc}{arccsc}
 \DeclareMathOperator{\si}{Si}
+
+\newcommand{\tightoverset}[2]{%
+  \mathop{#2}\limits^{\vbox to -.5ex{\kern-0.75ex\hbox{$#1$}\vss}}}
+\newcommand{\arrowvec}[1]{\tightoverset{\scriptstyle\rightharpoonup}{#1}}
+\renewcommand{\vec}{\mathbf}
 
 
 \colorlet{textColor}{black} 
@@ -95,15 +100,29 @@
 }
 
 
+%%%%%%%%%%%%%
+%% Vectors
+%%%%%%%%%%%%%
 
-%%% % Horiz vec with angle brackets
-%% \def\vecList#1{\left\langle\vecListA#1;;\right\rangle}
-%% \def\vecListA#1;{\if;#1;\else #1 \expandafter \vecListA \fi}
-%% Look up build a matrix with , in the tex
+%% Simple horiz vectors
+\renewcommand{\vector}[1]{\left\langle #1\right\rangle}
 
-%% Vertical Vectors
-%% \def\vecList#1{\begin{bmatrix}\vecListA#1;;\end{bmatrix}}
-%% \def\vecListA#1;{\if;#1;\else #1\cr \expandafter \vecListA \fi}
+
+%% %% Complex Horiz Vectors with angle brackets
+%% \makeatletter
+%% \renewcommand{\vector}[2][ , ]{\left\langle%
+%%   \def\nextitem{\def\nextitem{#1}}%
+%%   \@for \el:=#2\do{\nextitem\el}\right\rangle%
+%% }
+%% \makeatother
+
+%% %% Vertical Vectors
+%% \def\vector#1{\begin{bmatrix}\vecListA#1,,\end{bmatrix}}
+%% \def\vecListA#1,{\if,#1,\else #1\cr \expandafter \vecListA \fi}
+
+%%%%%%%%%%%%%
+%% End of vectors
+%%%%%%%%%%%%%
 
 %\newcommand{\fullwidth}{}
 %\newcommand{\normalwidth}{}

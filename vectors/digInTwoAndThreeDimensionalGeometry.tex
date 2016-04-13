@@ -1,0 +1,115 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+
+\outcome{Find the equations for planes.}
+\outcome{Give the equation for a sphere or ball.}
+
+\title[Dig-In:]{Two and three dimensional geometry}
+
+\begin{document}
+\begin{abstract}
+  blug
+\end{abstract}
+\maketitle
+
+\subsection{Lines}
+
+Parametric formulas for lines that start at a point when $t=0$ and
+progress in a direction given by a vector can be described in
+\textit{any} dimension as
+\[
+\l(t) = \mathrm{point} + t\cdot \vec{vector}
+\]
+\begin{question}
+  Give a line that starts at the point $(1,2,3)$ give a parametric
+  formula such that that ....
+\end{question}
+
+If no vector is given, we can find it by subtracting.... 
+
+
+In three dimensions we have three coordinates axes, the $x$, $y$, and
+$z$ axis:
+
+\begin{image}
+\begin{tikzpicture}
+\begin{axis}[
+  view={35}{15},
+  axis lines=center,
+  width=15cm,height=15cm,
+  xtick={-10,-5,5,10},ytick={-10,-5,5,10},ztick={-10,-5,5,10},
+  minor tick={-12,-11,...,12},
+  xmin=-11,xmax=11,ymin=-11,ymax=11,zmin=-11,zmax=11,
+ % xlabel={$x$},ylabel={$y$},zlabel={$z$},
+]
+
+
+\node [above right] at (axis cs:10,0,0) {$x$};
+\node [above right] at (axis cs:0,10,0) {$y$};
+\node [above right] at (axis cs:0,0,10) {$z$};
+
+
+\end{axis}
+\end{tikzpicture}
+\end{image}
+
+Together, these form three coordinate planes (The $(x,y)$-plane, the
+$(x,z)$-plane, and the $(y,z)$-plane).
+
+\begin{question}
+	The $yz$-plane corresponds to which of the following equations?
+	
+	\begin{multipleChoice}
+		\choice[correct]{$x=0$}
+		\choice{$y=0$}
+		\choice{$z=0$}
+	\end{multipleChoice}
+	
+	\begin{hint}
+	  Every point on the $yz$ axis has $x=0$, so this is the answer.
+	\end{hint}
+\end{question}
+
+\begin{question}
+	Which of the following most accurately describes the solution
+        set of $y=2$ in $\R^3$?
+	
+	\begin{multipleChoice}
+		\choice{A plane parallel to the $xy$ plane}
+		\choice[correct]{A plane parallel to the $xz$ plane}
+		\choice{A plane parallel to the $yz$ plane}
+	\end{multipleChoice}
+
+\begin{hint}
+	$y=2$ consists of all those points where $y=2$, but $x$ and
+  $z$ are allowed to be anything.  This corresponds to a plane which
+  is parallel to the $xz$ plane ($y=0$).
+\end{hint}
+	
+\end{question}
+
+\begin{question}
+	The equation $(x-1)^2+y^2+(z+2)^2 = 4$ has a solution set in
+        $\R^3$ which is a sphere.  What is the center and
+        radius of this sphere?
+	
+\[
+\text{Radius} = \answer{2}
+\]
+
+\[
+\text{Center} = \left(\answer{1},\answer{0}, \answer{-2} \right)
+\]
+
+\begin{hint}
+	$(x-1)^2+y^2+(z+2)^2$ is the square of the distance from
+  $(1,0,-2)$ to $(x,y,z)$.  If the square of the distance is $4$, then
+  the distance is $2$.  Since the solution set of this equation is all
+  points which are a distance of $2$ away from $(1,0,-2)$, then this
+  is a sphere of radius $2$ centered at $(1,0,-2)$
+\end{hint}
+\end{question}
+
+\end{document}

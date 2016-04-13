@@ -1,0 +1,271 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+\definecolor{myblue}{rgb}{0,0,0.8}
+\definecolor{myred}{rgb}{0.8,0,0}
+
+
+\outcome{Define a cross product.}\outcome{Compute cross products.}\outcome{Use cross products in applied settings.}
+
+\title[Dig-In:]{Dot Product}
+
+\begin{document}
+\begin{abstract}
+  The cross product is a special way to multiply two vectors in $\mathbb{R}^3$
+\end{abstract}
+\maketitle
+
+There is no ``nice'' way to ``multiply'' two vectors and obtain another vector in general.
+
+However, in the special case of $\mathbb{R}^3$, there is an important multiplication operation called ``the cross product''.  
+
+The cross product is linked inextricably to the determinant, so we will first review the determinant before introducing this new operation.
+
+\section{Determinants}
+
+\begin{definition}
+	The determinant on $\mathbb{R}^3$ is a function $\textrm{Det}$ which takes three vectors $\vec{a},\vec{b},\vec{c} \in \mathbb{R}^3$ as input and returns a number as its output.
+	
+	It is given by the formula
+	
+	\[
+	\textrm{Det}\left(\begin{bmatrix} a_1 \\ a_2 \\a_3 \end{bmatrix}, \begin{bmatrix} b_1 \\ b_2 \\b_3 \end{bmatrix}, \begin{bmatrix} c_1 \\ c_2 \\c_3 \end{bmatrix} \right)  = a_1b_2c_3+b_1c_2a_3+c_1a_2b_3-a_3b_2c_1-b_3c_2a_1-c_3a_2b_1
+	\]
+	
+	\end{definition}
+	
+	Often, instead of writing the three vectors as distinct entries, we write them as columns in a matrix:
+	
+	\[
+	\textrm{Det}\left(\begin{bmatrix} a_1 \\ a_2 \\a_3 \end{bmatrix}, \begin{bmatrix} b_1 \\ b_2 \\b_3 \end{bmatrix}, \begin{bmatrix} c_1 \\ c_2 \\c_3 \end{bmatrix} \right) = 
+	\begin{vmatrix} 
+	a_1 & b_1 & c_1\\
+	a_2 & b_2 & c_2\\
+	a_3 & b_3 & c_3\\
+	\end{vmatrix}
+	\]
+	
+	
+	We can remember this formula by writing the first two columns of the matrix to the right of the matrix, and using the following pattern:
+	
+%Credit for the following image goes to http://tex.stackexchange.com/a/257063
+	\begin{image}
+\begin{tikzpicture}[
+strip/.style = {
+    draw=#1,%color
+    line width=1em, opacity=0.2,
+    shorten <=-2mm,shorten >=-2mm,
+                            },
+                    ]
+\matrix (mtrx)  [matrix of math nodes,
+                 column sep=1em,
+                 nodes={text height=1ex,text width=2ex}]
+{
+|[red]|+
+    & |[red]|+
+          & \color{red}+\color{blue}-
+                & |[blue]|-
+                      & |[blue]|-   \\[3.3mm,between origins]
+a_1 & b_1 & c_1 & a_1 & a_2         \\
+a_2 & b_2 & c_2 & a_2 & b_2         \\
+a_3 & b_3 & c_3 & a_3 & b_3         \\
+};
+\draw[thick] (mtrx-2-1.north) -| (mtrx-4-1.south west)
+                              -- (mtrx-4-1.south);
+\draw[thick] (mtrx-2-3.north) -| (mtrx-4-3.south east)
+                              -- (mtrx-4-3.south);
+\path[draw,strip=blue]
+    (mtrx-4-1.center) edge (mtrx-2-3.center)
+    (mtrx-4-2.center) edge (mtrx-2-4.center)
+    (mtrx-4-3.center)  --  (mtrx-2-5.center);
+\path[draw,strip=red]
+    (mtrx-2-1.center) edge (mtrx-4-3.center)
+    (mtrx-2-2.center) edge (mtrx-4-4.center)
+    (mtrx-2-3.center)  --  (mtrx-4-5.center);
+\end{tikzpicture}
+	\end{image}
+	
+	\begin{question}
+		\[
+	\begin{vmatrix} 
+	1 & 4 & 7\\
+	2 & 5 & 8\\
+	3 & 6 & 9\\
+	\end{vmatrix}
+	= \answer{0}
+		\]
+		
+		\begin{hint}
+			\begin{align*}
+			1(5)(9)+4(8)(3)+7(2)(6) - 3(5)(7) - 6(8)(1)-9(2)(4) &= 45+96+84-105-48-72\\
+			&=225-225\\
+			&=0
+			\end{align*}
+		\end{hint}
+	\end{question}
+	
+	\begin{question}
+		If $\textrm{Det}(\vec{a},\vec{b},\vec{c}) = 12$, what is $\textrm{Det}(\vec{b},\vec{a},\vec{c})$?
+		
+		\[
+		\textrm{Det}(\vec{b},\vec{a},\vec{c}) = \answer{-12}
+		\]
+		
+		\begin{hint}
+	\[\begin{vmatrix} 
+	b_1 & a_1 & c_1\\
+	b_2 & a_2 & c_2\\
+	b_3 & a_3 & c_3\\
+	\end{vmatrix}
+	=b_1a_2c_3+a_2c_3b_3+c_1b_2a_3-b_3a_2c_1-a_3c_3b_1-c_3b_2a_1
+	\]
+	
+	But this (make sure you check!) equal to $-\textrm{Det}(\vec{a},\vec{b},\vec{c})$.  Thus the answer is $-12$.
+		\end{hint}
+	\end{question}
+	
+	\begin{question}
+		\[
+		\textrm{Det}(\vec{a},\vec{a},\vec{b}) = \answer{0}
+		\]
+		
+		\begin{hint}
+			If you write out the definition, you will see that all the terms cancel, and you get $0$
+		\end{hint}
+	\end{question}
+	
+	\begin{question}
+		Assume $\textrm{Det}(\vec{a},\vec{b},\vec{c}) = 3$.  Then 
+		
+		\[
+		\textrm{Det}(5\vec{a},\vec{b},2\vec{c}) = \answer{30}
+		\]
+		
+		\begin{hint}
+			Since each term has an entry from $\vec{a},\vec{b}$ and $\vec{c}$, and each entry of each vector is getting multiplied by the same constant, we get an extra factor of $10$ in each term.  Thus the answer is $30$.
+		\end{hint}
+	\end{question}
+	
+	\begin{question}
+		Assume $\textrm{Det}(\vec{a},\vec{b},\vec{c}) = 3$ and $\textrm{Det}(\vec{a},\vec{b},\vec{d}) = 4$.
+		
+		\[
+		\textrm{Det}(\vec{a},\vec{b},\vec{c}+\vec{d}) = \answer{7}
+		\]
+		
+		\begin{hint}
+			Writing out the definition, and distributing, you will see that this is equal to the sum of the two original determinants.  So the answer is $7$.
+		\end{hint}
+	\end{question}
+	
+	The last few exercises strongly suggest the following theorem (which you have essentially already proven by doing the exercises above):
+	
+	\begin{theorem}
+		The determinant enjoys the following properties, and is in fact the \textbf{only} function enjoying such properties:
+		
+		\begin{itemize}
+			\item Alternating:  Switching any pair of entries in the determinant switches the sign.  For example $\textrm{Det}(\vec{a},\vec{b},\vec{c}) = -\textrm{Det}(\vec{c},\vec{b},\vec{a})$.
+			\item Factor out scalars:  Multiplying any entry by a constant scales the determinant by that constant.  For example
+			 $\textrm{Det}(k\vec{a},\vec{b},\vec{c}) = k\textrm{Det}(\vec{a},\vec{b},\vec{c}) $
+			 
+			 \item Respect addition:  For example $\textrm{Det}(\vec{a},\vec{b}+\vec{d},\vec{c}) = \textrm{Det}(\vec{a},\vec{b},\vec{c}) +\textrm{Det}(\vec{a},\vec{d},\vec{c}) $ 
+			 
+			 \item $\textrm{Det}(\vec{i},\vec{j},\vec{k}) = 1 $
+			 \end{itemize}
+			 
+	\end{theorem}
+	
+	We will not prove that the determinant is the only function with these properties, but that is an important point.  If you ever wondered where this crazy formula came from, this explains it.  If you want these $4$ nice looking properties, there is only one function which does it and it is this one.  You should be able to prove that yourself, using just the properties.  Just start with a general $\textrm{Det}(\vec{a},\vec{b},\vec{c}) $, and use the properties to reduce it to sums of determinants involving only $\vec{i},\vec{j}$ and $\vec{k}$.  The formula for the determinant will pop out.  
+	
+	It turns out that the determinant has the following geometric interpretation:
+	
+	\begin{theorem}
+		If $\vec{a},\vec{b},\vec{c} \in \mathbb{R}^3$, then they span a parallelepiped. The volume of this parallelepiped is $\left|\textrm{Det}(\vec{a},\vec{b},\vec{c})\right|$. If this parallelepiped is not degenerate (has nonzero volume), then the sign of $\textrm{Det}(\vec{a},\vec{b},\vec{c})$ tells you whether the trio of vectors is \dfn{positively oriented} or \dfn{negatively oriented} (this is the definition of positively and negatively oriented).
+	\end{theorem} 
+	
+	\begin{question}
+		Let $\vec{a} = \vector{1,1,1}$, $\vec{b} = \vector{1,0,1}$ and $\vec{c} = \vector{1,0,0}$.
+		
+		Is $(\vec{a},\vec{b},\vec{c})$ positively or negatively oriented?
+		
+		\begin{multipleChoice}
+			\choice{positively}
+			\choice{negatively}
+		\end{multipleChoice}
+		
+		What is the volume of the parallelepiped spanned by these three vectors?
+		
+		\[
+		\textrm{Volume} = \answer{1}
+		\]
+		
+		\begin{hint}
+			\begin{align*}
+				\begin{vmatrix}
+					1 & 1 & 1\\
+					1 & 0 & 0\\
+					1 & 1 & 0
+				\end{vmatrix} &=
+				1(0)(0)+1(0)(1)+1(1)(1)-1(0)(1)-1(1)(1)-0(1)(1)\\
+				&=1
+			\end{align*}
+			
+			Thus this trio is positively oriented, and its volume is $1$.
+		\end{hint}
+	\end{question}
+	
+	\begin{question}
+		Do the vectors $\vector{1,2,2}$, $\vector{3,4,1}$ and $\vector{5,8,5}$ all lie in the same plane?
+		
+		\begin{multipleChoice}
+			\choice{No}
+			\choice[correct]{Yes}
+		\end{multipleChoice}
+		
+		\begin{hint}
+			They will lie in the same plane iff the parallelepiped they span is degenerate, aka its volume is $0$.
+		\end{hint}
+		
+		\begin{hint}
+			So we just need to see whether the determinant of these three vectors is zero or not.
+		\end{hint}
+		
+		\begin{hint}
+			\begin{align*}
+				\begin{vmatrix}
+				1&3&5\\
+				2&4&8\\
+				2&1&5
+				\end{vmatrix} &= 1(4)(5)+3(8)(2)+5(2)(1)-2(4)(5)-1(8)(1)-5(2)(3)\\
+					&=20+48+10-40-8-30\\
+					&=78-78\\
+					&=0
+			\end{align*}
+			
+			Thus the vectors must all lie in the same plane.  In fact, we can see that $2\vector{1,2,2}+\vector{3,4,1}=\vector{5,8,5}$, which confirms this fact.
+		\end{hint}
+		
+ 	\end{question}
+	
+
+	
+	We will not explicitly prove this theorem here.  However, you should be able to convince yourself that the oriented volume function $\textrm{Vol}(\vec{a},\vec{b},\vec{c})$ satisfies all $4$ conditions of the determinant above.  Since there is only one function satisfying these properties, the volume function must be given by the determinant.
+	
+	Here is a nice geometric interpretation of orientation.
+	
+	\begin{theorem}
+	Consider the trio of vectors $(\vec{a},\vec{b},\vec{c})$.  Assume that they form a nondegenerate parallelepiped.  Then the vectors $\vec{a}$ and $\vec{b}$ define a plane.  There are two sides to this plane.  If you take your right hand, and curl your fingers from $\vec{a}$ to $\vec{b}$, your thumb will be pointing to one side of the plane.  If $\vec{c}$ is on this side, then the trio is positively oriented.  Otherwise it is negatively oriented.
+		\begin{center}
+		\includegraphics[width=3 in]{RHR.jpg}
+		
+		 All vectors on the same side of the plane that the thumb is pointing are positively oriented with respect to $(A,B)$
+		\end{center}
+	\end{theorem}
+	
+	
+	
+	
+	
+		
+
+\end{document}

@@ -5,9 +5,11 @@
 \definecolor{myred}{rgb}{0.8,0,0}
 
 
-\outcome{Define a cross product.}\outcome{Compute cross products.}\outcome{Use cross products in applied settings.}
+\outcome{Define a cross product.}
+\outcome{Compute cross products.}
+\outcome{Use cross products in applied settings.}
 
-\title[Dig-In:]{Dot Product}
+\title[Dig-In:]{Cross Product}
 
 \begin{document}
 \begin{abstract}
@@ -172,8 +174,23 @@ a_3 & b_3 & c_3 & a_3 & b_3         \\
 			 
 			 \item $\textrm{Det}(\vec{i},\vec{j},\vec{k}) = 1 $
 			 \end{itemize}
-			 
 	\end{theorem}
+	
+	\begin{observation}
+		By the alternating property, if the same vector appears more than once as an argument in a determinant, then the determinant must be zero.
+		
+		For example consider $\textrm{Det}(\vec{a},\vec{a},\vec{b})$. By the alternating property we must have
+		
+		\[
+		\textrm{Det}(\vec{a},\vec{a},\vec{b}) = -\textrm{Det}(\vec{a},\vec{a},\vec{b})
+		\]
+		
+		but this implies 
+		
+		\[
+		\textrm{Det}(\vec{a},\vec{a},\vec{b})=0
+		\]
+	\end{observation}
 	
 	We will not prove that the determinant is the only function with these properties, but that is an important point.  If you ever wondered where this crazy formula came from, this explains it.  If you want these $4$ nice looking properties, there is only one function which does it and it is this one.  You should be able to prove that yourself, using just the properties.  Just start with a general $\textrm{Det}(\vec{a},\vec{b},\vec{c}) $, and use the properties to reduce it to sums of determinants involving only $\vec{i},\vec{j}$ and $\vec{k}$.  The formula for the determinant will pop out.  
 	
@@ -189,7 +206,7 @@ a_3 & b_3 & c_3 & a_3 & b_3         \\
 		Is $(\vec{a},\vec{b},\vec{c})$ positively or negatively oriented?
 		
 		\begin{multipleChoice}
-			\choice{positively}
+			\choice[correct]{positively}
 			\choice{negatively}
 		\end{multipleChoice}
 		
@@ -262,10 +279,268 @@ a_3 & b_3 & c_3 & a_3 & b_3         \\
 		\end{center}
 	\end{theorem}
 	
-	
-	
-	
-	
-		
 
+\section{Cross Products}
+
+\begin{definition}
+	The cross product of two vectors is given by the formula
+	
+	\[
+		\vector{a_1,a_2,a_3} \times \vector{b_1,b_2,b_3} = \vector{a_2b_3-a_3b_2, -(a_1b_3-a_3b_1), a_1b_2-a_2b_1}
+	\]
+\end{definition}		
+
+\begin{question}
+	\[
+	\vector{2,3,1} \times \vector{1,1,1} = \vector{\answer{2},\answer{-1},\answer{-1}}
+	\]
+	
+	\begin{hint}
+		\begin{align*}
+			\vector{2,3,1} \times \vector{1,1,1} &= \vector{3(1)-1(1),-(2(1)-1(1)), 2(1)-3(1)}\\
+				&=\vector{2,-1,-1}
+		\end{align*}
+	\end{hint}
+\end{question}
+
+This formula is pretty horrible, and you may be wondering why anyone would ever care about such a thing.  The answer is that is has a very nice relationship to the determinate, and hence to volumes, areas, and orientations:
+
+\begin{theorem}[Triple product theorem]
+If $\vec{a},\vec{b},$ and $\vec{c}$ are vectors in $\mathbb{R}^3$, then 
+
+\[
+(\vec{a} \times \vec{b}) \cdot \vec{c} = \textrm{Det}(\vec{a},\vec{b},\vec{c}) 
+\]
+\end{theorem}
+
+\begin{proof}
+
+The proof is just a computation:
+
+\begin{align*}
+	(\vec{a} \times \vec{b}) \cdot \vec{c} &= \vector{a_2b_3-a_3b_2, -(a_1b_3-a_3b_1), a_1b_2-a_2b_1} \cdot \vector{c_1,c_2,c_3}\\
+	&=c_1a_2b_3-c_1a_3b_2+c_2a_3b_1-c_2a_1b_3+c_3a_1b_2-c_3a_2b_1\\
+	&=\textrm{Det}(\vec{a},\vec{b},\vec{c}) 
+\end{align*}
+\end{proof}
+
+This theorem will allow us to gain massive insight into the geometric nature of the cross product:
+
+\begin{theorem}
+	$\vec{a} \times \vec{b}$ is perpendicular to both $\vec{a}$ and $\vec{b}$.
+\end{theorem}
+
+\begin{proof}
+	We need to show that $(\vec{a} \times \vec{b}) \cdot \vec{a} = 0 $ and $\vec{a} \times \vec{b} \cdot \vec{b} = 0$.  Let's just do the first one:
+	
+	\[
+	(\vec{a} \times \vec{b}) \cdot \vec{a} = \textrm{Det}(\vec{a},\vec{b},\vec{a})
+	\]
+	
+	But this must be zero by the alternating property.
+	
+	The other case follows similarly.
+\end{proof}
+
+\begin{theorem}
+	The length of $\vec{a} \times \vec{b}$ is the area of the parallelogram spanned by $\vec{a}$ and $\vec{b}$.  Also the trio $(\vec{a},\vec{b},\vec{a} \times \vec{b})$ is positively oriented.
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+	|\vec{a} \times \vec{b}|^2  &=(\vec{a} \times \vec{b}) \cdot (\vec{a} \times \vec{b})\\
+		&=\textrm{Det}(\vec{a},\vec{b},\vec{a} \times \vec{b})
+	\end{align*}
+	
+	Note that this already shows that the trio is positively oriented, since the determinant $\textrm{Det}(\vec{a},\vec{b},\vec{a} \times \vec{b})$ is equal to the square of a length, which must be positive.
+	
+	Also note that $\textrm{Det}(\vec{a},\vec{b},\vec{a} \times \vec{b})$ represents the volume of the parallelepiped spanned by $\vec{a}$, $\vec{b}$, and $\vec{a} \times \vec{b}$.  Since we already know that $vec{a} \times \vec{b}$ is perpendicular to the plane spanned by $\vec{a}$ and $\vec{b}$, then just by geometry (base times height) we know that this volume is equal to $A |vec{a} \times \vec{b}|$, where $A$ is the area of the parallelogram spanned by $\vec{a}$ and $\vec{b}$.  Hence
+	
+	\[
+	|\vec{a} \times \vec{b}|^2 = A |\vec{a} \times \vec{b}|
+	\]
+	
+	From which the claim follows.
+\end{proof}
+
+\begin{question}
+	What is the area of the parallelogram spanned by $\vector{1,2,4}$ and $\vector{2,3,1}$?
+	
+	\[
+	\textrm{Area} = \answer{\sqrt{150}}
+	\]
+	
+	\begin{hint}
+		\[
+		\vector{1,2,4} \times \vector{2,3,1} = \vector{-10,7,-1}
+		\]
+	\end{hint}
+	
+	
+	\begin{hint}
+		\begin{align*}
+			\left| \vector{-10,7,-1} \right| &= \sqrt{ \vector{-10,7,-1} \cdot  \vector{-10,7,-1}}\\
+				&=\sqrt{100+49+1}\\
+				&=\sqrt{150}
+		\end{align*}
+		
+		Since the area of the parallelogram is the length of the cross product, we are done.
+	\end{hint}
+\end{question}
+
+Putting all of these ideas together we have:
+
+\begin{theorem}
+	$\vec{a} \times \vec{b}$ is the vector perpendicular to the plane spanned by $\vec{a}$ and $\vec{b}$ which points in the ``positive direction'', as given by the right hand rule, and whose length is the area of the parallelogram spanned by $\vec{a}$ and $\vec{b}$.  
+\end{theorem}
+
+\begin{observation}
+Since the height of this parallelogram is $|\vec{b}| \sin\theta$ and its length is $|\vec{a}|$ where $\theta$ is the angle between $\vec{a}$ and $\vec{b}$, we could also say that $|\vec{a} \times \vec{b}| = |\vec{a}||vec{b}| \sin\theta$
+\end{observation}
+
+\begin{question}
+	Using the geometric ideas above, compute the following cross products.  It may be helpful to use  your left hand to form a coordinate system (where your index finger is the positive $z$ axis, your thumb is the positive $x$ axis, and your middle finger is the positive $y$ axis), and use your right hand to determine orientation.
+	
+	\begin{align*}
+		\vector{1,0,0} \times \vector{0,1,0} = \vector{\answer{0},\answer{0},\answer{1}}\\
+		\vector{0,1,0} \times \vector{1,0,0} = \vector{\answer{0},\answer{0},\answer{-1}}\\
+		\vector{0,0,1} \times \vector{0,1,0} = \vector{\answer{-1},\answer{0},\answer{0}}\\
+		\vector{0,1,0} \times \vector{0,1,0} = \vector{\answer{0},\answer{0},\answer{0}}\\
+	\end{align*}
+\end{question}
+
+Below, we summarize some rules for working with cross products:
+
+\begin{theorem}
+
+Let $\vec{v},\vec{w},\vec{u} \in \mathbb{R}^3$.  Then
+
+	\begin{itemize}
+		\item $\vec{v} \times \vec{w}  = -\vec{w} \times \vec{v}$ (Anti-commutivity property )
+		\item $(\vec{v}+\vec{w}) \times \vec{u} = \vec{v} \times \vec{u}+\vec{w} \times \vec{u}$ (Right distributive property)
+		\item $\vec{u} \times (\vec{v} +\vec{w}) = \vec{u} \times \vec{v}+\vec{u}\times\vec{w}$ (Left distributive property)
+		\item $a\vec{v} \times b\vec{w} = ab \vec{v} \times \vec{w}$ (Respects scalar multiplication)
+		\item $\vec{v} \times \vec{v} = 0$
+		\item $\vec{i} \times \vec{j} = \vec{k}$
+		\item $\vec{i} \times \vec{k} = \vec{-j}$
+		\item $\vec{j} \times \vec{k} = \vec{i}$
+	\end{itemize}
+	
+	Moreover, these properties determine the cross product uniquely.
+\end{theorem}
+
+\begin{question}
+	Using only these rules, compute $(3\vec{i}+k) \times (2\vec{j}+\vec{i})$
+	\[
+	(3\vec{i}+\vec{k}) \times (2\vec{j}+\vec{i}) = \answer{-2}\vec{i}+\answer{1}\vec{j}+\answer{6}\vec{k}
+	\]
+	
+	\begin{hint}
+		\begin{align*}
+		(3\vec{i}+\vec{k}) \times (2\vec{j}+\vec{i}) &= (3\vec{i}+\vec{k}) \times 2\vec{j}+(3\vec{i}+\vec{k}) \times\vec{i}\\
+			&=3\vec{i} \times 2\vec{j}+\vec{k}\times 2\vec{j}+3\vec{i} \times \vec{i} +\vec{k} \times \vec{i}\\
+			&=6 \vec{i} \times \vec{j}+2 \vec{k} \times \vec{j}+3\vec{i} \times \vec{i} +\vec{k} \times \vec{i}\\
+			&=6 \vec{i} \times \vec{j}+-2 \vec{j} \times \vec{k}+3\vec{i} \times \vec{i} -\vec{i} \times \vec{k}\\
+			&=6 \vec{k}+-2 \vec{i}+3\vec{0} -(-\vec{j})\\
+			&=-2\vec{i}+1\vec{j}+6\vec{k}
+		\end{align*}
+	\end{hint}
+\end{question}
+
+
+
+\section{Applications}
+
+In addition to the geometric applications we have already seen (calculating the area of parallelograms), we can also use the cross product in some physical applications.
+
+\subsection{Torque}
+
+Imagine turning a wrench.  The wrench originates at a point $O$ and terminates at a point $P$.  Let $\vec{r} = \overrightarrow{OP}$.  You apply a force $\vec{F}$ to the end of the wrench.  If $\vec{F}$ points in the same direction as $\vec{r}$, the bolt will not twist at all, since you will just be pulling on the handle.  If $\vec{F}$ is perpendicular to the handle, then we expect quite a bit of twisting to occur.
+
+\begin{definition}
+	The torque $\vec{\tau}$ obtained by applying a force $\vec{F}$ to a lever arm with position vector $\vec{r}$ is given by
+	
+	\[
+	\vec{\tau} = \vec{r} \times \vec{F} 
+	\]
+\end{definition}
+
+\begin{question}
+	A pipe of length $3 \unit{m}$  has a force of magnitude $2 \unit{N}$ applied to it as shown below:
+	
+	\begin{image}
+  \begin{tikzpicture}
+	\begin{axis}[
+            xmin=-1,xmax=5,ymin=-1,ymax=3,
+            clip=false,
+            axis lines=center,
+            ticks=none,
+            unit vector ratio*=1 1 1,
+            xlabel=$x$, ylabel=$y$,
+            %ytick={-2,-1,...,7},
+	    %xtick={-2,-1,...,10},
+	   % grid = major,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          ]
+          \addplot[very thick,penColor,->] plot coordinates {(0,0) (1,2)};
+          \addplot[very thick,penColor2,->] plot coordinates {(1,2) (0.5,3)};
+          \addplot[very thick,penColor, dashed] plot coordinates {(1,2) (2,4)};
+          \node at (axis cs:1, 2.6) [textColor] {$\frac{\pi}{3}$};
+           \node at (axis cs:0.6, 0.7) [penColor] {$\vec{r}$};
+           \node at (axis cs:0.6, 2.4) [penColor2] {$\vec{F}$};
+        \end{axis}
+        
+\end{tikzpicture}
+
+\end{image}
+
+Assuming the $z$ -axis is coming towards you (out of the page), is the torque produced in the positive or negative $z$ direction?
+
+\begin{multipleChoice}
+	\choice[correct]{Positive}
+	\choice{Negative}
+\end{multipleChoice}
+
+\[
+|\vec{tau}| = \answer{3\sqrt{3}}
+\]
+
+\begin{hint}
+	Using the right hand rule, we see that the vector points in the positive $z$ direction.
+\end{hint}
+
+\begin{hint}
+The angle between the two vectors is $\frac{\pi}{3}$, so the area of the area of the parallelogram spanned by these vectors is $2(3)\sin(\frac{\pi}{3}) = 3\sqrt{3}$
+\end{hint}
+
+\end{question}
+
+\subsection{Magnetism} 
+
+When a charged particle moves through a magnetic field, it experiences a force.  If the charge is $q$, the velocity of the particle is $\vec{v}$, and the magnetic field is $\vec{B}$, then the force is given by
+
+\[
+\vec{F} = q\vec{v} \times \vec{B}
+\]
+
+\begin{question}
+	A particle with negative charge $-2$ enters a constant magnetic field given by $\vec{B} = \vec{i}+2\vec{j}$.  The velocity vector of the particle is  $\vec{v} = \vec{k}+\vec{i}$.  What is the force acting on the particle?
+	
+	\[
+	\vec{F} = \answer{4}\vec{i}+\answer{-2}\vec{j}+\answer{-2}\vec{k}
+	\]
+	
+	\begin{hint}
+		\begin{align*}
+			\vec{F} &= q\vec{v} \times \vec{B}\\
+				&= -2 ( \vec{k}+\vec{i}) \times (\vec{i}+2\vec{j})\\
+				&=-2( \vec{k} \times \vec{i}+2\vec{k} \times \vec{j}+\vec{i} \times \vec{i}+\vec{i} \times \vec{j})\\
+				&=-2(\vec{j}-2\vec{i}+\vec{0}+\vec{k})\\
+				&=4\vec{i}-2\vec{j}-2\vec{k}
+		\end{align*}
+	\end{hint}
+\end{question}
+
+	
 \end{document}

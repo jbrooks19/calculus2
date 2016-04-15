@@ -29,7 +29,7 @@ their inputs and output either individual numbers or ordered-pairs (as
 in the case of parametric and polar functions).  Now we set the stage
 for the study of functions that accept lists of numbers as inputs and
 lists of numbers as outputs. When we want to keep track of more than
-one number at a time, we use a \textit{vector}.
+one number at a time, we often use a \textit{vector}.
 
 \begin{definition}
   A \dfn{vector} is something with ``direction'' and ``magnitude.''
@@ -154,7 +154,7 @@ whose tail is at $(c,d)$ is $\vec{v}=\vector{a-c,b-d}$
 \end{question}
 
 
-\subsection{Direction and magnitude of vectors}
+\subsection{Computing the direction and magnitude of vectors}
 
 
 Since vectors are determined only by their direction and magnitude,
@@ -163,8 +163,8 @@ notation such as
 \vector{a,b,c}
 \]
 completely describes a vector, since we assume the tail is at the
-origin. We should point out that there is other common notation for
-vectors including:
+origin. We should point out that there is also other notation for
+vectors:
 \[
 \begin{bmatrix}
   a\\
@@ -464,30 +464,7 @@ called ``scalars.''
 \end{question}
 
 
-
-The idea of a scalar also allows us to define when vectors are
-\textit{parallel} to one another.
-
-\begin{definition}
-  Two nonzero vectors are said to be \dfn{parallel} if the vectors are
-  scalar multiples of each other.
-\end{definition}
-
-\begin{question}
-  True or False: Parallel vectors point the same direction.
-  \begin{prompt}
-    \begin{multipleChoice}
-      \choice{true}
-      \choice[correct]{false}
-    \end{multipleChoice}
-    \begin{hint}
-      What if the scalar multiple is negative?
-    \end{hint}
-  \end{prompt}
-\end{question}
-
-
-\subsection{Unit vectors}
+\section{Unit vectors}
 
 Vectors with magnitude $1$ are particularly important.
 
@@ -502,7 +479,8 @@ Vectors with magnitude $1$ are particularly important.
 
 
 \begin{question}
-  Find a unit vector $\vec{u}$ which points in the same direction as the vector $\vec{v} = \langle 2,1,3,7,1\rangle$ .
+  Find a unit vector $\vec{u}$ which points in the same direction as the vector $\vec{v} = \langle 2,1,3,7,1\rangle$.
+  \begin{prompt}
   \[
   \vector{
     \answer{2/8},
@@ -511,7 +489,7 @@ Vectors with magnitude $1$ are particularly important.
     \answer{7/8},
     \answer{1/8}}
   \]
-  
+  \end{prompt}
   \begin{hint}
     Scaling the vector $\vec{v}$ by the reciprocal of its magnitude should result in a magnitude $1$ vector which points in the same direction
   \end{hint}
@@ -519,8 +497,52 @@ Vectors with magnitude $1$ are particularly important.
     $|\vec{v}| = \sqrt{2^2+1^2+3^2+7^2+1^2} = \sqrt{64} = 8$
   \end{hint}
 \end{question}
-On the other hand, sometimes you want to specifiy a vector with an
-angle relative to a given line.
+
+Now consider any vector $\vec{v}$. We can now extract it's direction
+and magnitude in the following way:
+\[
+\vec{v} = \underbrace{|\vec{v}|}_{\text{magnitude}} \cdot \underbrace{\frac{\vec{v}}{|\vec{v}|}}_{\text{direction}}
+\]
+This equation illustrates the fact that a vector has both magnitude
+and direction, where we view a unit vector as supplying \textit{only}
+direction information. Identifying unit vectors with direction allows
+us to define \text{parallel vectors}
+\begin{definition}
+Unit vectors $\vec u_1$ and $\vec u_2$ are \dfn{parallel} if
+\[
+\vec{u}_1 = \pm \vec{u}_2.
+\]
+Nonzero vectors $\vec v_1$ and $\vec v_2$ are \dfn{parallel} if their
+respective unit vectors are parallel.
+\end{definition}
+It is equivalent to say that vectors $\vec v_1$ and $\vec v_2$ are
+parallel if there is a scalar $s\neq 0$ such that $\vec v_1 =
+s\cdot\vec v_2$. However, the zero vector, $\vec 0$ is directionless
+because $|\vec{0}|=0$. Hence there is no unit vector in the
+``direction'' of $\vec 0$. Different authors have different
+conventions regarding the zero vector, some say it is ``parallel to
+every vector.'' We prefer the given definition as it is grounded in
+the fact that \textbf{unit vectors provide direction information}.
+
+\begin{question}
+  True or False: Parallel vectors point the same direction.
+  \begin{prompt}
+    \begin{multipleChoice}
+      \choice{true}
+      \choice[correct]{false}
+    \end{multipleChoice}
+  \end{prompt}
+\end{question}
+
+
+
+
+On the other hand, sometimes you want to specify a vector with an
+angle relative to a given line. If one graphed all unit vectors in
+$\R^2$ with the tail at the origin, then the tips would all lie on the
+unit circle. Based on what we know from trigonometry, we can then say
+that the component form of all unit vectors in $\R^2$ is
+$\vector{\cos(\theta),\sin(\theta)}$ for some angle $\theta$.
 
 \begin{theorem}
   Unit vectors that make an angle of $\theta$ radians with the $x$-axis are given by
@@ -539,7 +561,154 @@ angle relative to a given line.
   \end{prompt}
 \end{question}
 
+\subsection{Famous unit vectors}
+
+There are three famous unit vectors: $\veci$, $\vecj$,
+$\veck$. Typically when working in two dimensions
+\[
+\veci=\vector{1,0}\qquad\text{and}\qquad\vecj=\vector{0,1}
+\]
+and in three dimensions
+\[
+\veci=\vector{1,0,0},\qquad \vecj=\vector{0,1,0}, \qquad\veck=\vector{0,0,1}
+\]
+Any two or three dimensional vector can be expressed in terms of these
+vectors.
+
+\begin{question}
+  Express $\vector{1,2,3}$ in terms of $\veci$, $\vecj$, $\veck$.
+  \begin{prompt}
+    \[
+    \vector{1,2,3} = \answer{1}\cdot \veci + \answer{2}\cdot\vecj + \answer{3}\cdot\veck
+    \]
+  \end{prompt}
+\end{question}
+
+
+
 \section{Some applied problems}
+
+Vectors are a great tool for applied mathematics.
+
+\begin{example}
+  Consider a weight of $50\unit{lb}$ hanging from two chains:
+  \begin{image}
+    \begin{tikzpicture}
+      \filldraw[thick,black,fill=gray!30] (-.5,0) -- (.5,0) -- (1,-1) -- (-1,-1)--cycle;
+      \draw (0,-.5) node {$50$lb};
+      
+      \draw [thick] (-1.5,1.5) -- (2,1.5);
+      \clip (-1.5,1.5) rectangle (2,-1.25);
+      \draw [thick,rotate=120] (0,0) -- (3,0);
+      \draw [thick,rotate=45] (0,0) -- (3,0);
+      \draw [dashed] (0,0) -- (0,2);
+      \draw [rotate=45,->] (.8,0) arc (0:45:.8);
+      \draw [rotate=67] (1,0) node {\scriptsize $45^\circ$};
+      \draw [rotate=90,->] (1,0) arc (0:30:1);
+      \draw [rotate=105] (1.2,0) node {\scriptsize $30^\circ$};
+    \end{tikzpicture}
+  \end{image}
+  One chain makes an angle of $30^\circ$ with the vertical, and the
+  other an angle of $45^\circ$. Find the force applied to each chain.
+  \begin{explanation}
+    Start by converting all angles to be measured from the horizontal:
+    \begin{image}
+      \begin{tikzpicture}
+      \filldraw[thick,black,fill=gray!30] (-.5,0) -- (.5,0) -- (1,-1) -- (-1,-1)--cycle;
+      \draw (0,-.5) node {$50$lb};
+      
+      \draw [thick] (-1.5,1.5) -- (2,1.5);
+      \clip (-1.5,1.5) rectangle (2,-1.25);
+      \draw [thick,rotate=120] (0,0) -- (3,0);
+      \draw [thick,rotate=45] (0,0) -- (3,0);
+      %\draw [dashed] (0,0) -- (0,2);
+      %\draw [rotate=45,->] (.8,0) arc (0:45:.8);
+      %\draw [rotate=67] (1,0) node {\scriptsize $45^\circ$};
+      %\draw [rotate=90,->] (1,0) arc (0:30:1);
+      %\draw [rotate=105] (1.2,0) node {\scriptsize $30^\circ$};
+      
+      \draw [dashed] (-1.5,0) -- (2,0);
+      \draw [->] (.6,0) arc (0:120:.6);
+      \draw [rotate=20] (.9,0) node {\scriptsize $120^\circ$};
+      \draw [->] (1.5,0) arc (0:45:1.5);
+      \draw [rotate=15] (1.8,0) node {\scriptsize $45^\circ$};
+      \end{tikzpicture}
+    \end{image}
+    We can view each chain as ``pulling'' the weight up, preventing it
+    from falling. We can represent the force from each chain with a
+    vector. Let $\vec F_1$ represent the force from the chain making
+    an angle of $120^\circ$ with the vertical, and let $\vec F_2$
+    represent the force from the other chain.
+    \begin{image}
+      \begin{tikzpicture}
+      \filldraw[thick,gray!40,fill=gray!20] (-.5,0) -- (.5,0) -- (1,-1) -- (-1,-1)--cycle;
+      \draw [very thick,->] (0,0) -- (0,-1.5);
+      %\clip (-2,1.5) rectangle (2,-1.25);
+      \draw [very thick,->,rotate=120] (0,0) -- (1.7,0);
+      \draw [very thick,->,rotate=45] (0,0) -- (2,0);
+      \draw [->] (.6,0) arc (0:120:.6);
+      \draw [dashed] (-1.5,0) -- (2,0);
+      \draw [rotate=20] (.9,0) node {\scriptsize $120^\circ$};
+      \draw [->] (1.5,0) arc (0:45:1.5);
+      \draw [rotate=15] (1.8,0) node {\scriptsize $45^\circ$};
+      \draw [rotate=120,left] (.85,0) node {\scriptsize $\vec{F}_1$};
+      \draw [rotate=45,left] (1.2,0) node {\scriptsize $\vec{F}_2$};
+      \draw [left] (0,-.5) node {\scriptsize $\vec{F} = \vector{0,-50}$};
+    \end{tikzpicture}
+  \end{image}
+    Thus
+    \[
+    \vec F_1 = m_1\vector{\cos(120^\circ),\sin(120^\circ)}
+    \]
+    \[
+    \vec F_2 = m_2\vector{\cos(45^\circ),\sin(45^\circ)}
+    \]
+    As the weight is not moving, we know the sum of the forces is
+    $\vec 0$:
+    \[
+    \vec F + \vec F_1 + \vec F_2 = \vec 0
+    \]
+    Writing our vectors vertically,
+    \[
+      \begin{bmatrix}
+        0\\
+        \answer[given]{-50}
+      \end{bmatrix}
+      +m_1
+      \begin{bmatrix}
+        \cos(\answer[given]{120}^\circ)\\
+        \sin(\answer[given]{120}^\circ)
+      \end{bmatrix}
+      + m_2
+      \begin{bmatrix}
+      \cos(\answer[given]{45}^\circ)\\
+      \sin(\answer[given]{45}^\circ)
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+        \answer[given]{0}\\
+        \answer[given]{0}
+      \end{bmatrix}
+    \]
+    The sum of the entries in the first component is 0, and the sum of
+    the entries in the second component is also 0. This leads us to
+    the following two equations:
+    \begin{align*}
+      m_1\cos(120^\circ) + m_2\cos(45^\circ) &=0 \\
+      m_1\sin(120^\circ) + m_2\sin(45^\circ) &=50
+    \end{align*}
+    We leave it to the reader to verify that the solution is
+    \[
+    m_1=\answer[given]{50(\sqrt{3}-1)} \qquad m_2=\answer[given]{\frac{50\sqrt{2}}{1+\sqrt{3}}}
+    \]
+  \end{explanation}
+\end{example}
+
+
+%% BADBAD
+%% TWO AIRPLANE PROBLEMS
+%% One where traveling East relative to ground
+%% One where traveling East relative to air
 
 
 \end{document}

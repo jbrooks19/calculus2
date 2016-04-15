@@ -10,58 +10,34 @@
 
 \begin{document}
 \begin{abstract}
-  blug
+  We talk about basic geometry in higher dimensions.
 \end{abstract}
 \maketitle
 
-\subsection{Lines}
-
-Parametric formulas for lines that start at a point when $t=0$ and
-progress in a direction given by a vector can be described in
-\textit{any} dimension as
-\[
-\l(t) = \mathrm{point} + t\cdot \vec{vector}
-\]
-\begin{question}
-  Give a line that starts at the point $(1,2,3)$ give a parametric
-  formula such that that ....
-\end{question}
-
-If no vector is given, we can find it by subtracting.... 
 
 
-In three dimensions we have three coordinates axes, the $x$, $y$, and
-$z$ axis:
-
+In three dimensions we have three coordinates axes, the $x$-axis,
+$y$-axis, and $z$-axis:
 \begin{image}
 \begin{tikzpicture}
-\begin{axis}[
-  view={35}{15},
-  axis lines=center,
-  width=15cm,height=15cm,
-  xtick={-10,-5,5,10},ytick={-10,-5,5,10},ztick={-10,-5,5,10},
-  minor tick={-12,-11,...,12},
-  xmin=-11,xmax=11,ymin=-11,ymax=11,zmin=-11,zmax=11,
- % xlabel={$x$},ylabel={$y$},zlabel={$z$},
-]
-
-
-\node [above right] at (axis cs:10,0,0) {$x$};
-\node [above right] at (axis cs:0,10,0) {$y$};
-\node [above right] at (axis cs:0,0,10) {$z$};
-
-
-\end{axis}
+  \draw[->] (0,0)--(1,0);
+  \draw[->] (0,0)--(0,1);
+  \draw[->] (0,0)--(-.4,-.7);
+  \node[right] at (1,0) {$x$};
+  \node[above] at (0,1) {$y$};
+  \node[below] at (-.4,-.7) {$z$};
+  
 \end{tikzpicture}
 \end{image}
-
-The axis point accoring to the \dfn{right-hand-rule}:
-
+The axes point according to the \dfn{right-hand-rule}, though you might
+need to ``spin'' your hand around:
 \begin{image}
   %% Based on: https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg
+  %% Which was based on: https://commons.wikimedia.org/wiki/File:Right_hand_cross_product.png
+  %% Which was based on: https://commons.wikimedia.org/wiki/File:LeftHandOutline.png
   \begin{tikzpicture}[y=0.80pt, x=0.80pt, yscale=-1.000000, xscale=1.000000, inner sep=0pt, outer sep=0pt]
-\path[draw=black,fill=blue!50!white,line width=2.400pt] (466.9820,303.7880) ..
-  controls (444.9820,300.7880) and (409.9820,280.7880) .. (404.9820,277.7880) ..
+    \path[draw=black,fill=blue!50!white,line width=2.400pt] (466.9820,303.7880) ..
+    controls (444.9820,300.7880) and (409.9820,280.7880) .. (404.9820,277.7880) ..
   controls (399.9820,274.7880) and (376.9820,249.7880) .. (364.9820,230.7880) ..
   controls (352.9820,211.7880) and (341.9820,188.7880) .. (337.9820,175.7880) ..
   controls (333.9820,162.7880) and (329.9820,149.7880) .. (328.9820,142.7880) ..
@@ -152,52 +128,81 @@ The axis point accoring to the \dfn{right-hand-rule}:
 \path[fill=black] (95.5850,348.0050) -- (118.0640,371.4130) --
   (69.0630,358.1970) -- (96.6050,315.5680) -- cycle;
 \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
-  (51.2201,166.8365) node[above right] (text4204) {$x$};
+  (51.2201,166.8365) node[above right] (text4204) {\scalebox{4}{$x$}};
 \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
-  (89.7117,303.4817) node[above right] (text4208) {$y$};
+  (89.7117,303.4817) node[above right] (text4208) {\scalebox{4}{$y$}};
 \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
-  (364.9268,59.0600) node[above right] (text4212) {$z$};
+  (364.9268,59.0600) node[above right] (text4212) {\scalebox{4}{$z$}};
 \end{tikzpicture}
 \end{image}
 
-
-
-
-Together, these form three coordinate planes (The $(x,y)$-plane, the
-$(x,z)$-plane, and the $(y,z)$-plane).
+We can clearly see the $(x,y)$-plane in our axes, but there are also
+two others: $(x,z)$-plane, and the $(y,z)$-plane.
 
 \begin{question}
-	The $yz$-plane corresponds to which of the following equations?
-	
+	The $(y,z)$-plane corresponds to which of the following
+        equations?
 	\begin{multipleChoice}
-		\choice[correct]{$x=0$}
-		\choice{$y=0$}
-		\choice{$z=0$}
+	  \choice[correct]{$x=0$}
+	  \choice{$y=0$}
+	  \choice{$z=0$}
 	\end{multipleChoice}
-	
 	\begin{hint}
-	  Every point on the $yz$ axis has $x=0$, so this is the answer.
+	  Every point on the $(y,z)$-axis has $x=0$, so this is the answer.
 	\end{hint}
 \end{question}
 
 \begin{question}
-	Which of the following most accurately describes the solution
-        set of $y=2$ in $\R^3$?
-	
-	\begin{multipleChoice}
-		\choice{A plane parallel to the $xy$ plane}
-		\choice[correct]{A plane parallel to the $xz$ plane}
-		\choice{A plane parallel to the $yz$ plane}
-	\end{multipleChoice}
-
-\begin{hint}
-	$y=2$ consists of all those points where $y=2$, but $x$ and
-  $z$ are allowed to be anything.  This corresponds to a plane which
-  is parallel to the $xz$ plane ($y=0$).
-\end{hint}
-	
+  Which of the following most accurately describes the solution
+  set of $y=2$ in $\R^3$?
+  \begin{multipleChoice}
+    \choice{a plane parallel to the $(x,y)$-plane}
+    \choice[correct]{a plane parallel to the $(x,z)$-plane}
+    \choice{a plane parallel to the $(y,z)$-plane}
+  \end{multipleChoice}
+  \begin{hint}
+    $y=2$ consists of all those points where $y=2$, but $x$ and
+    $z$ are allowed to be anything.  
+  \end{hint}
 \end{question}
 
+
+\subsection{Lines}
+
+Parametric formulas for lines that start at a point when $t=0$ and
+progress in a direction given by a vector can be described in
+\textit{any} dimension as
+\[
+\l(t) = \vec{point} + t\cdot\vec{vector}
+\]
+\begin{question}
+  Give a parametric formula $\l(t)$ for a line such that
+  \begin{itemize}
+  \item $\l(0)=(1,2,3)$,
+  \item $\l(1) = (-1,2,-3)$,
+  \item $\l(2) = (-5,2,-9)$.
+  \end{itemize}
+  \begin{hint}
+    What is the vector whose tip is at $(-1,2-3)$ and whose tail is at
+    $(1,2,3)$?
+    \begin{prompt}
+    \[
+    \vec{vector} = \vector{\answer{-2},\answer{0},\answer{-6}}
+    \]
+    \end{prompt}
+  \end{hint}
+  \begin{prompt}
+    \[
+    \l(t) = \vector{\answer{1},\answer{2},\answer{3}} + t\cdot \vector{\answer{-2},\answer{0},\answer{-6}}
+    \]
+  \end{prompt}
+\end{question}
+
+\subsection{Circles and spheres}
+
+Just as the equation of a circle is related to the Pythagorean
+theorem, the equation of a sphere is directly related to how the
+lengths of vectors are computed.
 
 \begin{theorem}
   The equation for a circle of radius $r$ centered at the point
@@ -216,7 +221,9 @@ $(x,z)$-plane, and the $(y,z)$-plane).
   r^2 = \sum_{i=1}^n(x-a_i)^2
   \]
   \begin{explanation}
-    Follows directly from the definition of the length of a vector. 
+    This follows directly from the definition of the length of a
+    vector, since a sphere is nothing more than the set of points that
+    are equidistant from a given point.
   \end{explanation}
 \end{theorem}
 
@@ -233,25 +240,24 @@ $(x,z)$-plane, and the $(y,z)$-plane).
 
 
 \begin{question}
-	The equation $(x-1)^2+y^2+(z+2)^2 = 4$ has a solution set in
-        $\R^3$ which is a sphere.  What is the center and
-        radius of this sphere?
-	
-\[
-\text{Radius} = \answer{2}
-\]
-
-\[
-\text{Center} = \left(\answer{1},\answer{0}, \answer{-2} \right)
-\]
-
-\begin{hint}
-	$(x-1)^2+y^2+(z+2)^2$ is the square of the distance from
-  $(1,0,-2)$ to $(x,y,z)$.  If the square of the distance is $4$, then
-  the distance is $2$.  Since the solution set of this equation is all
-  points which are a distance of $2$ away from $(1,0,-2)$, then this
-  is a sphere of radius $2$ centered at $(1,0,-2)$
-\end{hint}
+  The equation $(x-1)^2+y^2+(z+2)^2 = 4$ has a solution set in
+  $\R^3$ which is a sphere.  What is the center and
+  radius of this sphere?
+  \begin{prompt}
+  \[
+  \text{Radius} = \answer{2}
+  \]
+  \[
+  \text{Center} = \left(\answer{1},\answer{0}, \answer{-2} \right)
+  \]
+  \end{prompt}
+  \begin{hint}
+    $(x-1)^2+y^2+(z+2)^2$ is the square of the distance from
+    $(1,0,-2)$ to $(x,y,z)$.  If the square of the distance is $4$, then
+    the distance is $2$.  Since the solution set of this equation is all
+    points which are a distance of $2$ away from $(1,0,-2)$, then this
+    is a sphere of radius $2$ centered at $(1,0,-2)$
+  \end{hint}
 \end{question}
 
 \end{document}

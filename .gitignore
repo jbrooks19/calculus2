@@ -26,3 +26,4 @@
 *.nb
 *.ps
 *.jpg
+!RHR.jpg

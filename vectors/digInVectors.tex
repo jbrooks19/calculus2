@@ -711,4 +711,40 @@ Vectors are a great tool for applied mathematics.
 %% One where traveling East relative to air
 
 
+\section{The difference between a point and a vector}
+
+You may be wondering, ``What's the difference between a point and a
+vector?'' Here's the deal: A point specifies \textbf{location}
+alone. This location is denoted by a tuple:
+\[
+(p_1,p_2,\dots,p_n)
+\]
+On the other hand, a vector is also represented by a tuple
+\[
+\vec{v} = \vector{v_1,v_2,\dots,v_n}
+\]
+however, the \textbf{interpretation} of this tuple is quite different
+than that of a point. Here, the tuple represents the location of the
+``tip'' of the vector while the ``tail'' of the vector is at the
+origin. By thinking of this tuple, $\vector{v}$, as a vector, we have
+many arithmetic and algebraic properties that we discussed above. We
+summarize the arithmetic and algebraic properties of vectors below:
+
+\begin{theorem}[Properties of Vectors]
+The following are true for all scalars $s$ and $t$, and for all
+vectors $\vec u$, $\vec v$ and $\vec w$:\index{vectors!algebraic properties}
+\begin{description}
+\item[Commutative Property:] $\vec u+\vec v = \vec v+\vec u$
+\item[Associative Property:] $(\vec u+\vec v)+\vec w = \vec u+(\vec v+\vec w)$
+\item[Additive Identity:] $\vec v+\vec 0 = \vec v$
+\item[Compatibility with Scalars:] $(st)\vec v= s(t\vec v)$
+\item[Distributive Property:] $s(\vec u+\vec v) = s\vec u+s\vec v$
+\item[Distributive Property:] $(s+t)\vec v = s\vec v+t\vec v$
+\item[Scaling of Magnitude:] $|s\vec v| = |s|\cdot|\vec v|$
+\item[Definiteness:] $|u| = 0$ if and only if $\vec u = \vec 0$
+\end{description}
+\end{theorem}
+Note, you should not memorize these properties (yet!). Rather, you should be
+able to work with vectors, and use these properties when appropriate.
+
 \end{document}

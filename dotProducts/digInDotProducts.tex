@@ -487,23 +487,29 @@ properties, and it will be our formula for the dot product.
   \vector{b_1,b_2, \dots,b_n} = \sum_1^n b_j \vec{e}_j
   \]	 
     Then
+    \[
+    \begin{bmatrix}
+      a_1\\
+      a_2\\
+      \vdots\\
+      a_n
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+      b_1\\
+      b_2\\
+      \vdots\\
+      b_n
+    \end{bmatrix} = \left(\sum_{i=1}^n a_i \vec{e}_i\right) \cdot \left(\sum_{j=1}^n b_j \vec{e}_j\right).
+    \]
+    Now by the linearity properties of the dot product,
+    \[
+    =\sum_{i,j =1}^n a_ib_j \vec{e}_i \cdot \vec{e}_j
+    \]
+    since $\vec{e}_i \cdot \vec{e}_j = 1$ if $i=j$ and $0$ otherwise,
     \begin{align*}
-        \begin{bmatrix}
-    a_1\\
-    a_2\\
-    \vdots\\
-    a_n
-  \end{bmatrix}
-  \cdot
-  \begin{bmatrix}
-    b_1\\
-    b_2\\
-    \vdots\\
-    b_n
-  \end{bmatrix} &= \left(\sum_{i=1}^n a_i \vec{e}_i\right) \cdot \left(\sum_{j=1}^n b_j \vec{e}_j\right)\\
-      &=\sum_{i,j =1}^n a_ib_j \vec{e}_i \cdot \vec{e}_j & \text{by the linearity properties of the dot product}\\
-      &=\sum_{i=1}^n a_ib_i & \text{since $\vec{e}_i \cdot \vec{e}_j = 1$ if $i=j$ and $0$ otherwise}\\
-      &=a_1b_1 + a_2b_2 +\dots+a_nb_n.
+    &=\sum_{i=1}^n a_ib_i 
+    &=a_1b_1 + a_2b_2 +\dots+a_nb_n.
     \end{align*}
 \end{explanation}
 \end{theorem}

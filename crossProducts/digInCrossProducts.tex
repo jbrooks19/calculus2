@@ -25,6 +25,61 @@ operation.
 
 \section{Determinants}
 
+
+\begin{image}
+\begin{tikzpicture}
+
+  \draw[fill=fill1!50!white,draw=none]
+  (0, 0)         % starting point
+  -- ++(5,1)     % move along this vector
+  -- ++(2,3)     % then along this vector
+  -- ++(-5,-1)   % then back along that vector
+  -- cycle;      % and back to where you started
+
+  \draw[fill=fill3!60!white,draw=none] (0, 0) -- (7,0) -- (7,1) -- (5,1) -- cycle;
+  \draw[fill=fill3!60!white,draw=none] (0, 3) -- (2,3) -- (7,4) -- (0,4) -- cycle;
+
+  \draw[fill=fill4!60!white,draw=none] (0, 0) -- (2,3) -- (0,3) -- cycle;
+  \draw[fill=fill4!60!white,draw=none] (5, 1) -- (7,1) -- (7,4) -- cycle;
+  
+  \draw[->,ultra thick,penColor] (0,0) -- (5,1);
+  \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
+  \draw[->,ultra thick,dashed,penColor2] (5,1) -- (7,4);
+  \draw[->,ultra thick,dashed,penColor] (2,3) -- (7,4);
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (0,0)--(7,0);
+  \node[below] at (3.5,-.2) {$a$};
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (7,4)--(0,4);
+  \node[above] at (3.5,4.2) {$a$};
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (7,0)--(7,1);
+  \node[right] at (7.2,.5) {$b$};
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (0,4)--(0,3);
+  \node[left] at (-.2,3.5) {$b$};
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (7,1)--(7,4);
+  \node[right] at (7.2,2.5) {$d$};
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (0,3)--(0,0);
+  \node[left] at (-.2,1.5) {$d$};
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (0,3)--(0,0);
+  \node[left] at (-.2,1.5) {$d$};
+
+  \draw[decoration={brace,raise=.1cm},decorate,thin] (0,3)--(2,3);
+  \node[above] at (1,3.2) {$c$};
+
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (5,1)--(7,1);
+  \node[below] at (6,.8) {$c$};
+  
+  \node[above,penColor] at (2.5,.5) {$\vec{v}$}; %% <a,b>
+  \node[below right,penColor2] at (1,1.5) {$\vec{w}$}; %% <c,d>
+\end{tikzpicture}
+\end{image}
+
+
 \begin{definition}
   The determinant on $\R^3$ is a function $\det$ which takes three
   vectors $\vec{a},\vec{b},\vec{c} \in \R^3$ as input and returns a
@@ -593,5 +648,9 @@ When a charged particle moves through a magnetic field, it experiences a force. 
 	\end{hint}
 \end{question}
 
-	
+
+
+
+
+\url{http://www.jstor.org/discover/10.2307/2323537?uid=3739256&uid=2&uid=4&sid=21103780384137}
 \end{document}

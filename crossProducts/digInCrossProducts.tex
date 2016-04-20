@@ -24,12 +24,53 @@ The cross product is linked inextricably to the determinant, so we
 will first review the determinant before introducing this new
 operation.
 
+%http://www.jstor.org/stable/2299112
+
 \section{Determinants}
 
-
+\begin{definition}
+  Given a $2\times2$ matrix, the \dfn{determinant} is given by
+  \[
+  \det
+  \begin{bmatrix}
+    a & b\\
+    c & d
+  \end{bmatrix}
+  =
+  \begin{vmatrix}
+    a & b\\
+    c & d
+  \end{vmatrix}
+  = ad -bc.
+  \]
+\end{definition}
+Why would anyone ever be interested in this? Well to start, given nonzero vectors
+\[
+\vec{v} = \vector{a,b}\quad\text{and}\quad\vec{w}=\vector{c,d}
+\]
+we can form a parallogram:
 \begin{image}
 \begin{tikzpicture}
-
+  \draw[fill=fill1!50!white,draw=none]
+  (0, 0)         % starting point
+  -- ++(5,1)     % move along this vector
+  -- ++(2,3)     % then along this vector
+  -- ++(-5,-1)   % then back along that vector
+  -- cycle;      % and back to where you started
+  \draw[->,ultra thick,penColor] (0,0) -- (5,1);
+  \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
+  \draw[->,ultra thick,dashed,penColor2] (5,1) -- (7,4);
+  \draw[->,ultra thick,dashed,penColor] (2,3) -- (7,4);
+  \node[above,penColor] at (2.5,.5) {$\vec{v}$}; %% <a,b>
+  \node[below right,penColor2] at (1,1.5) {$\vec{w}$}; %% <c,d>
+\end{tikzpicture}
+\end{image}
+The determinant gives the (signed) area of this parallelogram, where
+the sign of the area is given by the sign of the angle between
+$\vec{v}$ and $\vec{w}$. To understand why this is true, make a
+rectangle around the parallelogram:
+\begin{image}
+\begin{tikzpicture}
   \draw[fill=fill1!50!white,draw=none]
   (0, 0)         % starting point
   -- ++(5,1)     % move along this vector
@@ -37,22 +78,25 @@ operation.
   -- ++(-5,-1)   % then back along that vector
   -- cycle;      % and back to where you started
 
-  \draw[fill=fill3!60!white,draw=none] (0, 0) -- (7,0) -- (7,1) -- (5,1) -- cycle;
-  \draw[fill=fill3!60!white,draw=none] (0, 3) -- (2,3) -- (7,4) -- (0,4) -- cycle;
+  \draw[fill=fill5,draw=none] (5, 0) -- (7,0) -- (7,1) -- (5,1) -- cycle;
+  \draw[fill=fill5,draw=none] (0, 3) -- (2,3) -- (2,4) -- (0,4) -- cycle;
 
-  \draw[fill=fill4!60!white,draw=none] (0, 0) -- (2,3) -- (0,3) -- cycle;
-  \draw[fill=fill4!60!white,draw=none] (5, 1) -- (7,1) -- (7,4) -- cycle;
+  \draw[fill=fill3,draw=none] (0, 0) -- (5,0) -- (5,1) -- cycle;
+  \draw[fill=fill3,draw=none] (2,3) -- (7,4) -- (2,4) -- cycle;
+
+  \draw[fill=fill4,draw=none] (0, 0) -- (2,3) -- (0,3) -- cycle;
+  \draw[fill=fill4,draw=none] (5, 1) -- (7,1) -- (7,4) -- cycle;
   
   \draw[->,ultra thick,penColor] (0,0) -- (5,1);
   \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
   \draw[->,ultra thick,dashed,penColor2] (5,1) -- (7,4);
   \draw[->,ultra thick,dashed,penColor] (2,3) -- (7,4);
 
-  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (0,0)--(7,0);
-  \node[below] at (3.5,-.2) {$a$};
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (0,0)--(5,0);
+  \node[below] at (2.5,-.2) {$a$};
 
-  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (7,4)--(0,4);
-  \node[above] at (3.5,4.2) {$a$};
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (7,4)--(2,4);
+  \node[above] at (4.5,4.2) {$a$};
 
   \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (7,0)--(7,1);
   \node[right] at (7.2,.5) {$b$};
@@ -69,17 +113,30 @@ operation.
   \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (0,3)--(0,0);
   \node[left] at (-.2,1.5) {$d$};
 
-  \draw[decoration={brace,raise=.1cm},decorate,thin] (0,3)--(2,3);
-  \node[above] at (1,3.2) {$c$};
+  \draw[decoration={brace,raise=.1cm},decorate,thin] (0,4)--(2,4);
+  \node[above] at (1,4.2) {$c$};
 
-  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (5,1)--(7,1);
-  \node[below] at (6,.8) {$c$};
+  \draw[decoration={brace,mirror,raise=.1cm},decorate,thin] (5,0)--(7,0);
+  \node[below] at (6,-.2) {$c$};
   
   \node[above,penColor] at (2.5,.5) {$\vec{v}$}; %% <a,b>
   \node[below right,penColor2] at (1,1.5) {$\vec{w}$}; %% <c,d>
 \end{tikzpicture}
 \end{image}
-
+Now we see that the area of the parallelogram is
+\[
+\text{Area of rectangle} - \text{Area of other region}
+\]
+and this is
+\begin{align*}
+  (a+c)(b+d) - \left(cd + ab -2bc \right)&= ab + ad + bc + cd - cd - ab-2bc\\
+  &=  ad - bc\\
+  &= \det
+  \begin{bmatrix}
+    a & b\\
+    c & d
+  \end{bmatrix}.
+\end{align*}
 
 \begin{definition}
   The determinant on $\R^3$ is a function $\det$ which takes three
@@ -106,36 +163,41 @@ matrix to the right of the matrix, and using the following pattern:
 %% Credit for the following image goes to
 %% http://tex.stackexchange.com/a/257063
 \begin{center}
-  \begin{tikzpicture}[
-      strip/.style = {
-        draw=#1,%color
-        line width=1em, opacity=0.2,
-        shorten <=-2mm,shorten >=-2mm,
-      },
-    ]
-    \matrix (mtrx)  [matrix of math nodes, ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
+  \begin{tikzpicture}
+    \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
             {
               |[red!50!white]|+
               \& |[red!50!white]|+
               \& \color{red!50!white}+\color{blue!50!white}-
               \& |[blue!50!white]|-
               \& |[blue!50!white]|-   \\[3.3mm,between origins]
-              a_1 \& b_1 \& c_1 \& a_1 \& a_2         \\
+              a_1 \& b_1 \& c_1 \& a_1 \& b_2         \\
               a_2 \& b_2 \& c_2 \& a_2 \& b_2         \\
               a_3 \& b_3 \& c_3 \& a_3 \& b_3         \\
             };
-            \draw[thick] (mtrx-2-1.north) -| (mtrx-4-1.south west)
+    \draw[thick] (mtrx-2-1.north) -| (mtrx-4-1.south west)
             -- (mtrx-4-1.south);
             \draw[thick] (mtrx-2-3.north) -| (mtrx-4-3.south east)
             -- (mtrx-4-3.south);
-            \path[draw,strip=blue!50!white]
+            \draw[ultra thick,red!20!white,->]
             (mtrx-4-1.center) edge (mtrx-2-3.center)
             (mtrx-4-2.center) edge (mtrx-2-4.center)
             (mtrx-4-3.center)  --  (mtrx-2-5.center);
-            \path[draw,strip=red!50!white]
+            \draw[draw,ultra thick,blue!20!white,->]
             (mtrx-2-1.center) edge (mtrx-4-3.center)
             (mtrx-2-2.center) edge (mtrx-4-4.center)
             (mtrx-2-3.center)  --  (mtrx-4-5.center);
+            \matrix (mtrx2)  [matrix of math nodes,ampersand replacement=\&,column sep=1em, nodes={text height=1ex,text width=2ex}]
+            {
+              |[red!50!white]|+
+              \& |[red!50!white]|+
+              \& \color{red!80!white}+\color{blue!20!white}-
+              \& |[blue!50!white]|-
+              \& |[blue!50!white]|-   \\[3.3mm,between origins]
+              a_1 \& b_1 \& c_1 \& a_1 \& b_2         \\
+              a_2 \& b_2 \& c_2 \& a_2 \& b_2         \\
+              a_3 \& b_3 \& c_3 \& a_3 \& b_3         \\
+            };
   \end{tikzpicture}
 \end{center}
 

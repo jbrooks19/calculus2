@@ -153,7 +153,7 @@ that passes through two points $\vec{p}$ and $\vec{q}$:
 
 
 \begin{question}
-   Compare and contrast the linear function $\vec{f}(t) =
+   Compare and contrast the curves $\vec{f}(t) =
    \vector{-3+t,5+2t,1+3t}$ and $\vec{g}(t)=\vector{-3+2t,5+4t,1+6t}$.
    \begin{multipleChoice}
      \choice{They parameterize different lines}
@@ -166,84 +166,116 @@ that passes through two points $\vec{p}$ and $\vec{q}$:
      \vector{-3,5,1}+t\vector{1,2,3}$ and
      $\vec{g}(t)=\vector{-3,5,1}+t\vector{2,4,6}$.
    \end{hint}
+   \begin{question}
+   Compare and contrast the curves $\vec{f}(t) =
+   \vector{-3+t,5+2t,1+3t}$ and $\vec{g}(t)=\vector{-3-t,5-2t,1-3t}$.
+   \begin{multipleChoice}
+     \choice{They parameterize different lines}
+     \choice[correct]{They parameterize the same line, but $\vec{f}(t)$ moves in the opposite direction compared with $\vec{g}(t)$}
+     \choice{They parameterize the same line, but $\vec{g}(t)$ moves ``twice as fast'' as $\vec{f}(t)$ }
+     \choice{These are the same function!}
+   \end{multipleChoice}
  \end{question}
-  
+\end{question}
+
 \begin{question}
-  If $f(t) = \vector{x(t),y(t),z(t)}$ is an affine function and passes
-  through the points $f(0) = \vector{1,2,3}$ and $f(1) =
-  \vector{2,2,2}$, then
+  If $\boldsymbol{\l}(t) = \vector{x(t),y(t),z(t)}$ is a line and
+  passes through the points $\boldsymbol{\l}(0) = \vector{1,2,3}$ and
+  $\boldsymbol{\l}(1) = \vector{2,2,2}$, then
   \begin{align*}
     x(t) &= \answer{1+t}\\
     y(t) &= \answer{2}\\
     z(t) &= \answer{3-t}
   \end{align*}
   \begin{hint}
-    Let $f(t) = \vec{P}+t\vec{v}$.  Then $f(0) = \vec{P} = \vector{1,2,3}$
-  \end{hint}
-  \begin{hint}
-    \begin{align*}
-      f(1) &= \vector{2,2,2}\\
-      \vector{1,2,3}+1\vec{v} &= \vector{2,2,2}\\
-      \vec{v} = \vector{1,0,-1}
-    \end{align*}
-  \end{hint}
-  \begin{hint}
-    Thus $f(t) = \vector{1,2,3}+t\vector{1,0,-1} = \vector{1+t,2,3-t}$
+    Let $\boldsymbol{\l}(t) = \vec{p}+t\vec{v}$.  Then $f(0) = \vec{p}$.
   \end{hint}
 \end{question}
 
-\begin{explanation}
-  We can use affine functions to parameterize any line in space, but
-  as we have already seen, sometimes you can find more than one affine
-  function which parameterizes a given line (some may ``move faster''
-  than others).
-  
-  Often, for a given line, we will already know that the line passes
-  through a point $P$, and points in a direction $\vec{v}$.  Then
-  finding an affine function parameterizing the line is easy: we can
-  just take $f(t) = \vec{P}+t\vec{v}$.
-  
-  If we know that a line passes through two points $P$ and $Q$, then
-  we know that it points in the direction $\vec{v} = \vec{Q} -
-  \vec{P}$, and passes through $P$.  So we can parameterize it as
-  $f(t) = \vec{P}+t(\vec{Q} - \vec{P})$.
-\end{explanation}
+We can use these ideas to parameterize any line in space, but as we
+have already seen, sometimes you can find more than one expression
+that parameterizes a given line: Some may ``move faster'' than
+others, or in the opposite direction, or even at uneaven rates!
+
+Often, for a given line, we will already know that the line passes
+through a point $\vec{p}$, and points in a direction $\vec{v}$.  Then
+finding an affine function parameterizing the line is easy: we can
+just take
+\[
+\boldsymbol{\l}(t) = \vec{p}+t\vec{v}.
+\]
+If we know that a line passes through two points (that we'll notate
+with vectors) $\vec{P}$ and $\vec{q}$, then we know that it points in
+the direction $\vec{v} = \vec{q} - \vec{p}$, and passes through
+$\vec{P}$.  So we can parameterize it as
+\[
+\boldsymbol{\l}(t) = \vec{p}+t(\vec{q} - \vec{p}).
+\]
 
 \begin{question}
-  Using the idea above, find an affine function parameterizing the
-  line passing through $\vec{P} = \vector{0,2,4}$ and $\vec{Q} =
+  Using the ideas above, find an expression parameterizing the line
+  passing through $\vec{p} = \vector{0,2,4}$ and $\vec{q} =
   \vector{1,1,1}$.
   \[
   f(t) = \vector{\answer{t},\answer{2-t},\answer{4-3t}}
   \]
   \begin{hint}
-    The line passes through $\vec{P}$ and points in the direction
-    $\vec{Q} - \vec{P} = \vector{1,1,1} - \vector{0,2,4} =
-    \vector{1,-1,-3}$.
-  \end{hint}
-  \begin{hint}
-    Thus the line is parameterized by 
+    The line passes through $\vec{p}$ and points in the direction
     \[
-    f(t) = \vector{0,2,4}+t\vector{1,-1,-3}
+    \vec{q} - \vec{p} = \vector{1,1,1} - \vector{0,2,4}
     \]
   \end{hint}
 \end{question}
 
-
+Sometimes lines lie on suprising surfaces:
 
 \begin{question}
-  Consider the surface $x^2+y^2=z^2+1$
+  Consider the surface determinded by all $x$, $y$ and $z$ such that:
+  \[
+  x^2+y^2=z^2+1
+  \]
+  This surface looks something like:
   \begin{image}
-    dsjflkasdjflkdsjklf
+    \begin{tikzpicture}
+      \begin{axis}[
+          xmin=-4, xmax=4,
+          clip=false,
+          width=4in,
+          height=2in,
+          axis lines =none,
+        ]
+        \draw[penColor,very thick,fill=fillp] (axis cs:0,2.8) ellipse (290 and 50);
+        \draw[penColor,very thick,] (axis cs: -1,0) arc (180:360:100 and 30);
+        \draw[penColor,very thick,] (axis cs: -2.9,-2.7) arc (180:360:290 and 50);
+       
+        \addplot [penColor,very thick,domain=-2.9:-1,smooth,samples=100] {sqrt(x^2-1)};%(sqrt(1+u^2) cos(v), sqrt(1+u^2) sin(v), u)
+        \addplot [penColor,very thick,domain=1:2.9,smooth,samples=100] {sqrt(x^2-1)};    % v in 0 2pi % u is whatevs
+        \addplot [penColor,very thick,domain=1:2.9,smooth,samples=100] {-sqrt(x^2-1)};
+        \addplot [penColor,very thick,domain=-2.9:-1,smooth,samples=100] {-sqrt(x^2-1)};
+
+          \draw[->] (axis cs: -3,0)--(axis cs: 3,0);
+          \draw[->] (axis cs: 0,-3.5)--(axis cs: 0,3.5);
+          \draw[->] (axis cs: 1.2,2.1)--(axis cs: -1.2,-2.1);
+          \node[right] at (axis cs: 3,0) {$x$};
+          \node[above] at (axis cs: 0,3.5) {$y$};
+          \node[below] at (axis cs: -1.2,-2.1) {$z$};
+      \end{axis}
+    \end{tikzpicture}
   \end{image}
   Which of the following lines lie on the surface $x^2+y^2=z^2+1$?
-  %(sqrt(1+u^2) cos(v), sqrt(1+u^2) sin(v), u)
-  % v in 0 2pi
-  % u is whatevs
-
-  % l(t) = (cos v,sin v, 0) + t(sin v,-cos v,1)
-  % m(t) = (cos v,sin v, 0) + t(-sin v,cos v,1)
-  
+  \begin{selectAll}% l(t) = (cos v,sin v, 0) + t(sin v,-cos v,1)% m(t) = (cos v,sin v, 0) + t(-sin v,cos v,1)
+    \choice{$\vector{1,0,0} + t\vector{-5,0,5}$}
+    \choice[correct]{$\vector{1,0,0} + t\vector{0,-3,3}$}
+    \choice[correct]{$\vector{0,1,0} + t\vector{-7,0,-7}$}
+    \choice{$\vector{0,1,0} + t\vector{-4,4,0}$}
+    \choice[correct]{$\vector{1/2,\sqrt{3}/2,0} + t\vector{-\sqrt{3},1,2}$}
+    \choice{$\vector{1/2,\sqrt{3}/2,0} + t\vector{-1,\sqrt{3},2}$}
+  \end{selectAll}
+  \begin{hint}
+    Separate each line into its component functions: $x$, $y$, and
+    $z$, and see if the equation defining the surface is valid for all
+    $t$.
+  \end{hint}
 \end{question}
 
 

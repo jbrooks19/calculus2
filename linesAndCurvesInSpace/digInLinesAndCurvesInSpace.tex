@@ -1,0 +1,214 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Write equations representing lines in space.}\outcome{Answer questions about lines and curves in space.}\outcome{Compute limits of vectored valued functions.}\outcome{Determine continuity of vector valued functions.}
+
+\title[Dig-In:]{Lines and Curves in Space}
+
+\begin{document}
+\begin{abstract}
+  Vector valued functions are parametrized curves
+\end{abstract}
+\maketitle
+
+\section{Vector valued functions}
+
+A function $f: \R \to \R^3$ can be thought of as associating to each time $t$ a vector $\vector{x(t),y(t),z(t)}$.  Placing the tail of the vector at the origin, its head will sweep out a curve which is parameterized by $t$.
+
+\begin{example}
+	Consider the function $f(t) = \vector{\cos(t),\sin(t),t}$.  The projection of the point $f(t)$ into the $xy$ plane moves around the unit circle in the positive direction.  The projection onto the $z$ axis moves at a constant rate in the positive direction.  So we expect that $f$ parameterizes
+	
+	\begin{multipleChoice}
+		\choice{a straight line}
+		\choice{a circle}
+		\choice[correct]{a spiral}
+	\end{multipleChoice}
+	
+	\begin{feedback}
+		Here is the graph of $f$:
+		
+		%BADBAD picture
+	\end{feedback}
+
+\end{example}
+
+How are such functions useful?
+
+Here is a list of examples of what a function  $f: \R \to \R^3$ could represent, to get your imagination going:
+
+	\begin{itemize}
+		\item The $3$ dimensional position of a rocket in space as a function of time. 
+		\item The average size of $3$ different species of bacteria as a function of the amount of chlorine in the water.
+		\item The performance of $3$ different stocks a function of time.
+		\item The trunk width, height, and canopy radius of a tree as a function of time.
+		\item The average temperature, humidity, and air pressure at a given latitude as a function of that latitude.
+	\end{itemize}
+	
+Basically any time you can see that three different quantities all depend on one other quantity, these sorts of vector valued functions are going to be useful models.  Of course, if you have more relevant inputs, or outputs, you may need a function $\R^n \to \R^m$, but we will restrict our attention to $\R \to \R^3$ for the time being.
+
+\section{Lines in $\R^3$}
+
+The simplest kind of vector valued function  $\R \to \R^3$ is a \dfn{linear} function.
+
+\begin{definition}
+	A \dfn{linear} function from $\R \to \R^3$ is a function of the form
+	
+	\[
+	f(t) = t\vec{v}
+	\] 
+	
+	where $\vec{v} \in \R^3$ is a given vector.
+ \end{definition} 
+ 
+ \begin{question}
+ 	If $f$ is a linear function, and $f(2) = \vector{2,4,6}$, what is $f(3)$?
+	
+\[	
+	f(3) = \vector{\answer{3},\answer{6},\answer{9}}
+\]
+ \end{question}
+ 
+ \begin{question}
+ 	Assume $f:\R \to \R^3$ is a linear function.  Then 
+	
+	\[
+	f(0) = \vector{\answer{0},\answer{0},\answer{0}}
+	\]
+ \end{question}
+ 
+ Linear functions are called ``linear'' because they parameterize lines through the origin.  
+ 
+ %BADBAD picture
+ 
+ \begin{question}
+	Compare and contrast the linear function $f(t) = (1,2,3)$ and $g(t)=(2,4,6)$
+	
+	\begin{multipleChoice}
+		\choice{They parameterize different lines}
+		\choice{They parameterize the same line, but $f(t)$ moves ``twice as fast'' as $g(t)$ }
+		\choice[correct]{They parameterize the same line, but $g(t)$ moves ``twice as fast'' as $f(t)$ }
+		\choice{These are the same function!}
+	\end{multipleChoice}
+	
+ \end{question}
+ 
+What if we want to parameterize the lines going through a different point $P$, instead of lines going through the origin?
+
+All we have to do is translate!
+
+\begin{definition}
+	An \dfn{affine} function $f:\R \to \R^3$ is a function of the form
+	
+	\[
+		f(t) = \vec{P}+t\vec{v}
+	\]
+	
+	where $\vec{P}$ and $\vec{v}$ are vectors in $\R^3$
+\end{definition}
+
+An affine function parameterizes a line passing through the point $\vec{P}$, pointing in the direction $\vec{v}$
+
+\begin{question}
+	If $f(t) = \vector{x(t),y(t),z(t)}$ is an affine function and passes through the points $f(0) = \vector{1,2,3}$ and $f(1) = \vector{2,2,2}$, then
+	
+	\begin{align*}
+		x(t) &= \answer{1+t}\\
+		y(t) &= \answer{2}\\
+		z(t) &= \answer{3-t}
+	\end{align*}
+	
+	\begin{hint}
+		Let $f(t) = \vec{P}+t\vec{v}$.  Then $f(0) = \vec{P} = \vector{1,2,3}$
+	\end{hint}
+	
+	\begin{hint}
+		\begin{align*}
+			f(1) &= \vector{2,2,2}\\
+			\vector{1,2,3}+1\vec{v} &= \vector{2,2,2}\\
+			\vec{v} = \vector{1,0,-1}
+		\end{align*}
+	\end{hint}
+	
+	\begin{hint}
+		Thus $f(t) = \vector{1,2,3}+t\vector{1,0,-1} = \vector{1+t,2,3-t}$
+	\end{hint}
+\end{question}
+
+\begin{explanation}
+	We can use affine functions to parameterize any line in space, but as we have already seen, sometimes you can find more than one affine function which parameterizes a given line (some may ``move faster'' than others).
+	
+	Often, for a given line, we will already know that the line passes through a point $P$, and points in a direction $\vec{v}$.  Then finding an affine function parameterizing the line is easy:  we can just take $f(t) = \vec{P}+t\vec{v}$.
+	
+	If we know that a line passes through two points $P$ and $Q$, then we know that it points in the direction $\vec{v} = \vec{Q} - \vec{P}$, and passes through $P$.  So we can parameterize it as $f(t) = \vec{P}+t(\vec{Q} - \vec{P})$.
+\end{explanation}
+	
+\begin{question}
+	Using the idea above, find an affine function parameterizing the line passing through $\vec{P} = \vector{0,2,4}$ and $\vec{Q} = \vector{1,1,1}$.
+	
+	\[
+	f(t) = \vector{\answer{t},\answer{2-t},\answer{4-3t}}
+	\]
+	
+	\begin{hint}
+		The line passes through $\vec{P}$ and points in the direction $\vec{Q} - \vec{P} = \vector{1,1,1} - \vector{0,2,4} = \vector{1,-1,-3}$.
+	\end{hint}
+	
+	\begin{hint}
+		Thus the line is parameterized by 
+		
+		\[
+		f(t) = \vector{0,2,4}+t\vector{1,-1,-3}
+		\]
+	\end{hint}
+\end{question}
+
+\section{Limits of vector valued functions}
+
+\begin{definition}
+	Let $f:\R \to \R^3$ be a vector valued function.  Then we say that the limit of $f$ as $t$ approaches $a$ is $\vec{L}$ if 
+	
+	\[
+	\lim_{t \to a} \left| f(t) - \vec{L}\right| = 0
+	\]
+	
+	In this case we write
+	
+	\[
+	\lim_{t \to a} f(t) = \vec{L}
+	\]
+\end{definition}
+
+We can evaluate limits by just taking the limit of each component separately.
+
+\begin{question}
+	Let $f(t) = \vector{\sin(t),\cos(t),\frac{\sin(t)}{t}}$.  
+	
+	\[
+	\lim_{t \to 0} f(t) = \vector{\answer{0},\answer{1},\answer{1}}
+	\]
+	
+	\begin{hint}
+		Taking the limit of each component separately, we have $\vector{0,1,1}$.
+	\end{hint}
+\end{question}
+
+
+This also lets us define the concept of continuity of vector valued functions: 
+
+\begin{defintion}
+ $f$ is continuous at $t= a$ iff
+ 
+ \[
+ \lim_{t \to a} f(t)  = f(a)
+ \]
+ \end{definition}
+
+
+Because of the component-wise nature of limits, we can see that a function $f$ is continuous iff each of its component functions $x(t)$, $y(t)$, $z(t)$ is also continuous.
+
+
+
+
+
+\end{document}

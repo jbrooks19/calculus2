@@ -9,11 +9,11 @@
 
 \begin{document}
 \begin{abstract}
-  Vector valued functions are parametrized curves.
+  Vector-valued functions are parametrized curves.
 \end{abstract}
 \maketitle
 
-\section{Vector valued functions}
+\section{Vector-valued functions}
 
 A function $\vec{f}: \R \to \R^3$ can be thought of as associating to
 each time $t$ a vector $\vector{x(t),y(t),z(t)}$.  Placing the tail of
@@ -84,11 +84,11 @@ parameterized by $t$:
   \end{feedback}
 \end{example}
 
-This is an example of a \textit{vector valued function}.
+This is an example of a \textit{vector-valued function}.
 \begin{definition}
-  A \dfn{vector valued function} maps real numbers to vectors in $\R^n$.
+  A \dfn{vector-valued function} maps real numbers to vectors in $\R^n$.
 \end{definition}
-Vector valued functions simply map numbers to lists of numbers, that we interpret as vectors:
+Vector-valued functions simply map numbers to lists of numbers, that we interpret as vectors:
 \begin{image}
   \begin{tikzpicture}
     \node at (0,0) {$\vec{f}(t) = \underbrace{\vector{x(t),y(t),z(t)}}_{\text{vector}}$};
@@ -101,7 +101,7 @@ Vector valued functions simply map numbers to lists of numbers, that we interpre
 
 
 
-\subsection{How are vector valued functions useful?}
+\subsection{How are vector-valued functions useful?}
 
 Here is a list of examples of what a
 function $f: \R \to \R^3$ could represent, to get your imagination
@@ -116,7 +116,7 @@ going:
 \end{itemize}
 
 Basically any time you can see that three different quantities all
-depend on one other quantity, these sorts of vector valued functions
+depend on one other quantity, these sorts of vector-valued functions
 are going to be useful models.  Of course, if you have more relevant
 inputs, or outputs, you may need a function $\R^m \to \R^n$, but we
 will restrict our attention to $\R \to \R^3$ for the time being.
@@ -125,7 +125,7 @@ will restrict our attention to $\R \to \R^3$ for the time being.
 
 \section{Lines in space}
 
-It is easy to create a vector valued function that produces a line
+It is easy to create a vector-valued function that produces a line
 that passes through two points $\vec{p}$ and $\vec{q}$:
 \[
 \boldsymbol{\l}(t) = \vec{p} + t(\vec{q}-\vec{p}).
@@ -295,14 +295,14 @@ Sometimes lines lie on surprising surfaces:
 
 \section{Curves}
 
-Though their formulation may be more complex, a vector valued function
+Though their formulation may be more complex, a vector-valued function
 that produces a curve is no different from that which produces a line
 (a line is a special type of curve!). Though there are some cases we should discuss.
 
 \subsection{Circles and ellipses}
 
 Given two orthogonal unit vectors, $\vec{u}$ and $\vec{v}$, and any
-other vector $\vec{p}$, the vector valued function
+other vector $\vec{p}$, the vector-valued function
 \[
 \vec{f}(t) = \vec{p}+r\cdot \cos(t)\cdot \vec{u} + r \cdot \sin(t)\cdot\vec{v}
 \]

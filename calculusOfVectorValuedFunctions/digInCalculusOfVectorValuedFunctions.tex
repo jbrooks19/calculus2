@@ -18,38 +18,47 @@
 \end{abstract}
 \maketitle
 
-\section{Component-wise}
 
+Since we are currently thinking about vector valued functions that
+only have a single input, we can work \dfn{component-wise}. This
+means that when working with vector valued functions, we simply treat
+each component as a regular, single variable function. Let's see what
+we mean.
 
 \section{Limits of vector valued functions}
 
 \begin{definition}
-  Let $\vec{f}:\R \to \R^3$ be a vector valued function.  Then we say
-  that the limit of $f$ as $t$ approaches $a$ is $\vec{L}$ if
+  Let $\vec{f}:\R \to \R^3$ be a vector valued function
   \[
-  \lim_{t \to a} \left| f(t) - \vec{L}\right| = 0
+  \vec{f}(t) = \vector{x(t),y(t),z(t)}
   \]
-  In this case we write
+  then the vector-valued \dfn{limit} as $t$ goes to $a$ is given by 
   \[
-  \lim_{t \to a} f(t) = \vec{L}.
+  \lim_{t \to a} \vec{f}(t) = \vector{\lim_{t \to a}x(t),\lim_{t \to a}y(t),\lim_{t \to a}z(t)}.
   \]
+  This limit exists if and only if each of the limits of the
+  components exist.
 \end{definition}
 
-We can evaluate limits by just taking the limit of each component
+We evaluate limits by just taking the limit of each component
 separately.
 
 \begin{question}
-  Let $f(t) = \vector{\sin(t),\cos(t),\frac{\sin(t)}{t}}$.  
+  Let $\vec{f}(t) = \vector{\sin(t),\cos(t),\frac{\sin(t)}{t}}$.
+  Compute:
   \[
-  \lim_{t \to 0} f(t) = \vector{\answer{0},\answer{1},\answer{1}}
+  \lim_{t \to 0} \vec{f}(t)
+  \begin{prompt}
+    =\vector{\answer{0},\answer{1},\answer{1}}
+  \end{prompt}
   \]
   \begin{hint}
-    Taking the limit of each component separately, we have $\vector{0,1,1}$.
+    Take the limit of each component separately.
   \end{hint}
 \end{question}
 
-
-This also lets us define the concept of continuity of vector valued functions: 
+Now that we have the notion of limits, we may also define the concept
+of continuity of vector valued functions:
 
 \begin{definition}
   A vector valued function $\vec{f}$ is \dfn{continuous} at $t= a$ if
@@ -62,10 +71,17 @@ Because of the component-wise nature of limits, we can see that a
 function $\vec{f}$ is continuous if and only if each of its component
 functions $x(t)$, $y(t)$, $z(t)$ is also continuous at $t=a$.
 
+\begin{question}
 
 Find $a,b,c$ that make a function continuous. 
 
+\end{question}
 
+
+\section{Derivatives}
+
+
+\section{Integrals}
 
 
 \end{document}

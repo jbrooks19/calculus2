@@ -108,7 +108,7 @@ function $f: \R \to \R^3$ could represent, to get your imagination
 going:
 
 \begin{itemize}
-\item The $3$ dimensional position of a rocket in space as a function of time. 
+\item The $3$-dimensional position of a rocket in space as a function of time. 
 \item The average size of $3$ different species of bacteria as a function of the amount of chlorine in the water.
 \item The performance of $3$ different stocks a function of time.
 \item The trunk width, height, and canopy radius of a tree as a function of time.
@@ -132,20 +132,24 @@ that passes through two points $\vec{p}$ and $\vec{q}$:
 \]
 \begin{question}
   What is the value of $\boldsymbol{\l}(0)$?
+  \begin{prompt}
   \begin{multipleChoice}
     \choice{$\boldsymbol{\l}(0)$ is unknowable}
     \choice[correct]{$\boldsymbol{\l}(0)=\vec{p}$}
     \choice{$\boldsymbol{\l}(0)=\vec{q}$}
     \choice{$\boldsymbol{\l}(0)=\vec{q}-\vec{p}$}
   \end{multipleChoice}
+  \end{prompt}
   \begin{question}
     What is the value of $\boldsymbol{\l}(1)$?
+    \begin{prompt}
     \begin{multipleChoice}
       \choice{$\boldsymbol{\l}(1)$ is unknowable}
       \choice{$\boldsymbol{\l}(1)=\vec{p}$}
       \choice[correct]{$\boldsymbol{\l}(1)=\vec{q}$}
       \choice{$\boldsymbol{\l}(1)=\vec{q}-\vec{p}$}
     \end{multipleChoice}
+    \end{prompt}
   \end{question}
 \end{question}
 
@@ -153,12 +157,14 @@ that passes through two points $\vec{p}$ and $\vec{q}$:
 \begin{question}
    Compare and contrast the curves $\vec{f}(t) =
    \vector{-3+t,5+2t,1+3t}$ and $\vec{g}(t)=\vector{-3+2t,5+4t,1+6t}$.
-   \begin{multipleChoice}
+   \begin{prompt}
+     \begin{multipleChoice}
      \choice{They parameterize different lines}
      \choice{They parameterize the same line, but $\vec{f}(t)$ moves ``twice as fast'' as $\vec{g}(t)$ }
      \choice[correct]{They parameterize the same line, but $\vec{g}(t)$ moves ``twice as fast'' as $\vec{f}(t)$ }
      \choice{These are the same function!}
-   \end{multipleChoice}
+     \end{multipleChoice}
+   \end{prompt}
    \begin{hint}
      We can rewrite $\vec{f}$ and $\vec{g}$ as $\vec{f}(t) =
      \vector{-3,5,1}+t\vector{1,2,3}$ and
@@ -167,24 +173,29 @@ that passes through two points $\vec{p}$ and $\vec{q}$:
    \begin{question}
    Compare and contrast the curves $\vec{f}(t) =
    \vector{-3+t,5+2t,1+3t}$ and $\vec{g}(t)=\vector{-3-t,5-2t,1-3t}$.
-   \begin{multipleChoice}
-     \choice{They parameterize different lines}
-     \choice[correct]{They parameterize the same line, but $\vec{f}(t)$ moves in the opposite direction compared with $\vec{g}(t)$}
-     \choice{They parameterize the same line, but $\vec{g}(t)$ moves ``twice as fast'' as $\vec{f}(t)$ }
-     \choice{These are the same function!}
-   \end{multipleChoice}
- \end{question}
+   \begin{prompt}
+     \begin{multipleChoice}
+       \choice{They parameterize different lines}
+       \choice[correct]{They parameterize the same line, but $\vec{f}(t)$ moves in the opposite direction compared with $\vec{g}(t)$}
+       \choice{They parameterize the same line, but $\vec{g}(t)$ moves ``twice as fast'' as $\vec{f}(t)$ }
+       \choice{These are the same function!}
+     \end{multipleChoice}
+   \end{prompt}
+   \end{question}
 \end{question}
 
 \begin{question}
-  If $\boldsymbol{\l}(t) = \vector{x(t),y(t),z(t)}$ is a line and
+  Let $\boldsymbol{\l}(t) = \vector{x(t),y(t),z(t)}$ be a line that
   passes through the points $\boldsymbol{\l}(0) = \vector{1,2,3}$ and
-  $\boldsymbol{\l}(1) = \vector{2,2,2}$, then
+  $\boldsymbol{\l}(1) = \vector{2,2,2}$. What are the components of
+  $\boldsymbol{\l}(t)$?
+  \begin{prompt}
   \begin{align*}
     x(t) &= \answer{1+t}\\
     y(t) &= \answer{2}\\
     z(t) &= \answer{3-t}
   \end{align*}
+  \end{prompt}
   \begin{hint}
     Let $\boldsymbol{\l}(t) = \vec{p}+t\vec{v}$.  Then $f(0) = \vec{p}$.
   \end{hint}
@@ -213,9 +224,11 @@ tip of $\vec{p}$.  So we can parameterize it as
   Using the ideas above, find an expression parameterizing the line
   passing through $\vec{p} = \vector{0,2,4}$ and $\vec{q} =
   \vector{1,1,1}$.
+  \begin{prompt}
   \[
   \boldsymbol{\l}(t) = \vector{\answer{t},\answer{2-t},\answer{4-3t}}
   \]
+  \end{prompt}
   \begin{hint}
     The line passes through $\vec{p}$ and points in the direction
     \[
@@ -291,13 +304,13 @@ that produces a curve is no different from that which produces a line
 Given two orthogonal unit vectors, $\vec{u}$ and $\vec{v}$, and any
 other vector $\vec{p}$, the vector valued function
 \[
-\vec{f}(t) = \vec{p}+r\cdot \cos(t)\cdot \vec{u} + r \cdot \sin(t)+\vec{v}
+\vec{f}(t) = \vec{p}+r\cdot \cos(t)\cdot \vec{u} + r \cdot \sin(t)\cdot\vec{v}
 \]
 gives a circle of radius $r$, centered at the tip of $\vec{p}$, lying
 in the plane containing $\vec{u}$ and $\vec{v}$. Moreover, to produce
 an ellipse, we write:
 \[
-\vec{g}(t) = \vec{p}+a\cdot \cos(t)\cdot \vec{u} + b \cdot \sin(t)+\vec{v}
+\vec{g}(t) = \vec{p}+a\cdot \cos(t)\cdot \vec{u} + b \cdot \sin(t)\cdot\vec{v}
 \]
 
 \begin{question}

@@ -14,16 +14,15 @@
 
 \begin{document}
 \begin{abstract}
-  With one input, we work component-wise.
+  With one input, and vector outputs, we work component-wise.
 \end{abstract}
 \maketitle
 
 
 Since we are currently thinking about vector-valued functions that
-only have a single input, we can work \dfn{component-wise}. This
-means that when working with vector-valued functions, we simply treat
-each component as a regular, single variable function. Let's see what
-we mean.
+only have a single input, we can work \dfn{component-wise}. This means
+we simply treat each component of a vector-valued function as a
+regular, single-variable function. Let's see this in action.
 
 \section{Limits of vector-valued functions}
 
@@ -143,7 +142,7 @@ interval $I$ containing $c$, where $\vec{f}'(c)\neq \vec{0}$.
   \]
 \item The \dfn{unit tangent vector} of $\vec{f}$ is given by
   \[
-  \frac{\vec{f}'(t)}{|\vec{f}'(t)|} = \frac{\vec{f}'(t)}{\sqrt{\vec{f}'(t)\cdot \vec{f}'(t)}}
+  \frac{\vec{f}'(t)}{|\vec{f}'(t)|} = \frac{\vec{f}'(t)}{\sqrt{\vec{f}'(t)\cdot \vec{f}'(t)}}.
   \]
 \end{itemize}
 \end{definition}
@@ -172,7 +171,7 @@ interval $I$. $\vec f(t)$ is \dfn{smooth} on $I$ if
 \end{definition}
 
 \begin{question}
-  Is the vector-valued function $\vec{f}(t) = \vec{t^2,t^2}$ smooth on
+  Is the vector-valued function $\vec{f}(t) = \vector{t^2,t^2}$ smooth on
   $\R$?
   \begin{multipleChoice}
     \choice{yes}
@@ -192,7 +191,7 @@ Finally, we should point out that if a vector-valued function has constant lengt
 \begin{theorem}
   Let $\vec f(t)$ be a differentiable vector-valued function on an open interval $I$ of constant length. That is,
   \[
-  |\vec f(t)| = c \quad\Rightleftarrow\quad \vec f(t)\cdot \vec f(t) = c^2
+  |\vec f(t)| = c \quad\Leftrightarrow\quad \vec f(t)\cdot \vec f(t) = c^2
   \]
   for all $t$ in $I$. Then
   \[
@@ -212,11 +211,11 @@ means that the curve looks locally like a circle.
 Indefinite and definite integrals of vector-valued functions are also evaluated component-wise.
 
 \begin{theorem}
-  Let $\vec{f}:\R \to \R^3$ be a vector-valued function
+  Let $\vec{f}:\R \to \R^3$ be a continuous vector-valued function
   \[
   \vec{f}(t) = \vector{x(t),y(t),z(t)},
   \]
-  then the vector-valued \dfn{derivative} is given by
+  then the vector-valued \dfn{integral} is given by
   \[
   \int \vec{f}(t) \d t= \vector{\int x(t) \d t,\int y(t)\d t,\int z(t)\d t}.
   \]
@@ -235,19 +234,19 @@ Indefinite and definite integrals of vector-valued functions are also evaluated 
 We can also solve initial value problems, check out our next example:
 
 \begin{example}
-  Let $\vec{f}'(t) = \vector{2, \cos t, 12t}$. Find $\vec f(t)$ where:
+  Let $\vec{f}''(t) = \vector{2, \cos(t), 12t}$. Find $\vec f(t)$ where:
   \begin{itemize}
   \item $\vec f(0) = \vector{-7,-1,2}$ and
   \item $\vec{f}'(0) = \vector{5,3,0}.$
   \end{itemize}
   \begin{explanation}
-    Knowing $\vec{f}'(t) = \vector{2,\cos t, 12t}$, we find
+    Knowing $\vec{f}''(t) = \vector{2,\cos(t), 12t}$, we find
     $\vec{f}'(t)$ by evaluating the indefinite integral.
     \begin{align*}
-      \int \vec{f}'(t)\d t &= \vector{\int 2\d t, \int \cos(t)\d t , \int 12t\d t} \\
-      &= \vector{2t+C_1, \sin t+ C_2, 6t^2 + C_3} \\
-      &= \vector{2t,\sin t,6t^2} + \vector{C_1,C_2,C_3} \\
-      &= \vector{2t,\sin t,6t^2} + \vec{C}.
+      \int \vec{f}''(t)\d t &= \vector{\int \answer[given]{2}\d t, \int \answer[given]{\cos(t)}\d t , \int \answer[given]{12t}\d t} \\
+      &= \vector{\answer[given]{2t}+C_1, \answer[given]{\sin(t)}+ C_2, \answer[given]{6t^2} + C_3} \\
+      &= \vector{2t,\sin(t),6t^2} + \vector{C_1,C_2,C_3} \\
+      &= \vector{2t,\sin(t),6t^2} + \vec{C}.
     \end{align*}
     Note how each indefinite integral creates its own constant which
     we collect as one constant vector $\vec C$. Knowing
@@ -256,28 +255,31 @@ We can also solve initial value problems, check out our next example:
     \]
     allows us to solve for $\vec C$:
     \begin{align*}
-      \vec{f}'(t) & = \vector{2t,\sin t,6t^2} + \vec C\\
-      \vec{f}'(0) &= \vector{0,0,0} + \vec C\\
+      \vec{f}'(t) & = \vector{2t,\sin(t),6t^2} + \vec C\\
+      \vec{f}'(0) &= \vector{\answer[given]{0},\answer[given]{0},\answer[given]{0}} + \vec C\\
       \vector{5,3,0} &= \vec C.
-    \end{align*}
-    So $\vec{f}'(t) = \vec{2t,\sin t,6t^2} + \vector{5,3,0} =
-    \vector{2t+5, \sin t + 3, 6t^2}$. To find $\vec f(t)$, we
-    integrate once more.
-    \begin{align*}
-      \int \vec{f}'(t)\d t &= \vector{\int 2t+5\d t, \int \sin t + 3\d t, \int 6t^2\d t }\\
-      &= \vector{t^2+5t, -\cos t + 3t, 2t^3} + \vec C
-    \end{align*}
-    With $\vec f(0) = \vector{-7,-1,2}$, we solve for $\vec C$:
-    \begin{align*}
-      \vec f(t) &= \vector{t^2+5t, -\cos t + 3t, 2t^3} + \vec C\\
-      \vec f(0) &= \vector{0,-1,0} + \vec C\\
-      \vector{-7,-1,2} &= \vector{0,-1,0} + \vec C\\
-      \vector{-7,0,2} &= \vec C.
     \end{align*}
     So
     \begin{align*}
-      \vec f(t) &= \vector{t^2+5t, -\cos t + 3t, 2t^3} + \vector{-7,0,2}\\
-      &= \vector{t^2+5t-7,-\cos t+3t,2t^3+2}.
+      \vec{f}'(t) &= \vector{2t,\sin(t),6t^2} + \vector{\answer[given]{5},\answer[given]{3},\answer[given]{0}}\\
+      &=\vector{2t+5, \sin(t) + 3, 6t^2}.
+    \end{align*}
+    To find $\vec f(t)$, we integrate once more.
+    \begin{align*}
+      \int \vec{f}'(t)\d t &= \vector{\int\answer[given]{2t+5}\d t, \int \answer[given]{\sin(t) + 3}\d t, \int \answer[given]{6t^2}\d t }\\
+      &= \vector{\answer[given]{t^2+5t}, \answer[given]{-\cos(t) + 3t}, \answer[given]{2t^3}} + \vec C
+    \end{align*}
+    With $\vec f(0) = \vector{-7,-1,2}$, we solve for $\vec C$:
+    \begin{align*}
+      \vec f(t) &= \vector{\answer[given]{t^2+5t}, \answer[given]{-\cos(t) + 3t}, \answer[given]{2t^3}} + \vec C\\
+      \vec f(0) &= \vector{\answer[given]{0},\answer[given]{-1},\answer[given]{0}} + \vec C\\
+      \vector{-7,-1,2} &= \vector{0,-1,0} + \vec C\\
+      \vector{\answer[given]{-7},\answer[given]{0},\answer[given]{2}} &= \vec C.
+    \end{align*}
+    So
+    \begin{align*}
+      \vec f(t) &= \vector{t^2+5t, -\cos(t) + 3t, 2t^3} + \vector{-7,0,2}\\
+      &= \vector{\answer[given]{t^2+5t-7},\answer[given]{-\cos(t)+3t},\answer[given]{2t^3+2}}.
     \end{align*}
   \end{explanation}
 \end{example}

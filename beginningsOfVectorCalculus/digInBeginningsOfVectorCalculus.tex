@@ -1,0 +1,71 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcome{Compute limits of vectored valued functions.}
+\outcome{Determine continuity of vector valued functions.}
+\outcome{Compute the derivative of a vector valued function.}
+\outcome{Compute the tangent vector of a vector valued function.}
+\outcome{Find the unit tangent vector of a vector valued function.}
+\outcome{Compute integrals of vector valued functions.}
+
+
+\title[Dig-In:]{Beginnings of vector calculus}
+
+\begin{document}
+\begin{abstract}
+  With one input, we work component-wise.
+\end{abstract}
+\maketitle
+
+\section{Component-wise}
+
+
+\section{Limits of vector valued functions}
+
+\begin{definition}
+  Let $\vec{f}:\R \to \R^3$ be a vector valued function.  Then we say
+  that the limit of $f$ as $t$ approaches $a$ is $\vec{L}$ if
+  \[
+  \lim_{t \to a} \left| f(t) - \vec{L}\right| = 0
+  \]
+  In this case we write
+  \[
+  \lim_{t \to a} f(t) = \vec{L}.
+  \]
+\end{definition}
+
+We can evaluate limits by just taking the limit of each component
+separately.
+
+\begin{question}
+  Let $f(t) = \vector{\sin(t),\cos(t),\frac{\sin(t)}{t}}$.  
+  \[
+  \lim_{t \to 0} f(t) = \vector{\answer{0},\answer{1},\answer{1}}
+  \]
+  \begin{hint}
+    Taking the limit of each component separately, we have $\vector{0,1,1}$.
+  \end{hint}
+\end{question}
+
+
+This also lets us define the concept of continuity of vector valued functions: 
+
+\begin{definition}
+  A vector valued function $\vec{f}$ is \dfn{continuous} at $t= a$ if
+  and only if
+  \[
+  \lim_{t \to a} \vec{f}(t)  = \vec{f}(a)
+  \]
+\end{definition}
+Because of the component-wise nature of limits, we can see that a
+function $\vec{f}$ is continuous if and only if each of its component
+functions $x(t)$, $y(t)$, $z(t)$ is also continuous at $t=a$.
+
+
+Find $a,b,c$ that make a function continuous. 
+
+
+
+
+\end{document}

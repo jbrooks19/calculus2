@@ -47,7 +47,7 @@ called the \textit{dot product}.
     \vdots\\
     a_n
   \end{bmatrix}
-  \cdot
+  \dotp
   \begin{bmatrix}
     b_1\\
     b_2\\
@@ -61,12 +61,12 @@ called the \textit{dot product}.
 
 The first thing you should notice about the the dot product is that
 \[
-\mathbf{vector}\cdot \mathbf{vector} = \mathbf{number}.
+\mathbf{vector}\dotp \mathbf{vector} = \mathbf{number}.
 \]
 \begin{question}
   Compute:
   \[
-  \vector{1,2,3}\cdot\vector{4,5,6}
+  \vector{1,2,3}\dotp\vector{4,5,6}
   \begin{prompt}
     = \answer{32}
   \end{prompt}
@@ -74,7 +74,7 @@ The first thing you should notice about the the dot product is that
   \begin{question}
   Compute:
   \[
-  \vector{1,1,-1}\cdot\vector{1,1,2}
+  \vector{1,1,-1}\dotp\vector{1,1,2}
   \begin{prompt}
     = \answer{0}
   \end{prompt}
@@ -86,13 +86,13 @@ The first thing you should notice about the the dot product is that
   Let $\vec{u},\vec{v},\vec{w}$ be in $\R^3$. Which of the following
   expressions make sense?
   \begin{selectAll}
-    \choice[correct]{$(\vec{w} \cdot \vec{u} ) \vec{u}$}
-    \choice[correct]{$5(\vec{u} +\vec{w}) \cdot {\vec{u}}$}
+    \choice[correct]{$(\vec{w} \dotp \vec{u} ) \vec{u}$}
+    \choice[correct]{$5(\vec{u} +\vec{w}) \dotp {\vec{u}}$}
     \choice{$\vec{w} / \vec{u}$}
-    \choice[correct]{$\vector{2,3} \cdot \vector{4,2} + 7$}
-    \choice[correct]{$\vec{w} / ( \vec{u} \cdot \vec{u})$}
-    \choice{$\vector{1,3} \cdot \vector{-1,2,5}$}
-    \choice{$\vec{u}\cdot \vec{v}+\vec{w}$}
+    \choice[correct]{$\vector{2,3} \dotp \vector{4,2} + 7$}
+    \choice[correct]{$\vec{w} / ( \vec{u} \dotp \vec{u})$}
+    \choice{$\vector{1,3} \dotp \vector{-1,2,5}$}
+    \choice{$\vec{u}\dotp \vec{v}+\vec{w}$}
   \end{selectAll}
 \end{question}
 
@@ -102,7 +102,7 @@ an appetizer, we give the next theorem:
 \begin{theorem}
   The magnitude of a vector $\vec{v}$ is given by
   \[
-  |\vec{v}|=\sqrt{\vec{v}\cdot\vec{v}}
+  |\vec{v}|=\sqrt{\vec{v}\dotp\vec{v}}
   \]
   \begin{explanation}
     We already know that if $\vec{v} = \vector{v_1,v_2,\dots,v_n}$,
@@ -112,11 +112,11 @@ an appetizer, we give the next theorem:
     \]
     but
     \[
-    \vec{v} \cdot \vec{v} = v_1^2+v_2^2+v_3^2+\dots+v_n^2,
+    \vec{v} \dotp \vec{v} = v_1^2+v_2^2+v_3^2+\dots+v_n^2,
     \]
     so
     \[
-    |\vec{v}|=\sqrt{\vec{v}\cdot\vec{v}}.
+    |\vec{v}|=\sqrt{\vec{v}\dotp\vec{v}}.
     \]
   \end{explanation}
 \end{theorem}
@@ -179,22 +179,22 @@ have
 \begin{theorem}[Geometric Interpretation of the Dot Product]\index{dot product}
   For any two vectors $\vec{v}$ and $\vec{w}$,
   \[
-  \vec{v} \cdot \vec{w} = |\vec{v}||\vec{w}|\cos(\theta)
+  \vec{v} \dotp \vec{w} = |\vec{v}||\vec{w}|\cos(\theta)
   \]
   where $0\le \theta\le\pi$ is the angle between $\vec{v}$ and
   $\vec{w}$.
   \begin{explanation}
     First note that
     \[
-    |\vec{v} - \vec{w}|^2 =  (\vec{v} - \vec{w})\cdot(\vec{v} - \vec{w})
+    |\vec{v} - \vec{w}|^2 =  (\vec{v} - \vec{w})\dotp(\vec{v} - \vec{w})
     \]
     Now use the law of cosines to write
     \begin{align*}
       |\vec{v} - \vec{w}|^2&=|\vec{v}|^2+|\vec{w}|^2-2|\vec{w}||\vec{v}|\cos(\theta)\\
-      (\vec{v} - \vec{w})\cdot(\vec{v} - \vec{w}) &=|\vec{v}|^2+|\vec{w}|^2-2|\vec{w}||\vec{v}|\cos(\theta)\\
-      \vec{v}\cdot\vec{v} -2\vec{v}\cdot\vec{w}+\vec{w}\cdot\vec{w}&=|\vec{v}|^2+|\vec{w}|^2-2|\vec{w}||\vec{v}|\cos(\theta)\\
-      |\vec{v}|^2+|\vec{w}|^2 -2\vec{v}\cdot\vec{w} &=|\vec{v}|^2+|\vec{w}|^2-2|\vec{w}||\vec{v}|\cos(\theta)\\
-      \vec{w} \cdot \vec{v} &= |\vec{w}||\vec{v}|\cos(\theta).
+      (\vec{v} - \vec{w})\dotp(\vec{v} - \vec{w}) &=|\vec{v}|^2+|\vec{w}|^2-2|\vec{w}||\vec{v}|\cos(\theta)\\
+      \vec{v}\dotp\vec{v} -2\vec{v}\dotp\vec{w}+\vec{w}\dotp\vec{w}&=|\vec{v}|^2+|\vec{w}|^2-2|\vec{w}||\vec{v}|\cos(\theta)\\
+      |\vec{v}|^2+|\vec{w}|^2 -2\vec{v}\dotp\vec{w} &=|\vec{v}|^2+|\vec{w}|^2-2|\vec{w}||\vec{v}|\cos(\theta)\\
+      \vec{w} \dotp \vec{v} &= |\vec{w}||\vec{v}|\cos(\theta).
     \end{align*}
   \end{explanation}
 \end{theorem}
@@ -205,7 +205,7 @@ This tells us something interesting about the dot product:
   If $\vec{v}$ and $\vec{w}$ are two nonzero vectors, and $\theta$ is
   the angle between them,
   \[
-  \vec{v}\cdot \vec{w} = 0 \text{ if and only if } \theta=
+  \vec{v}\dotp \vec{w} = 0 \text{ if and only if } \theta=
   \frac{\pi}{2}.
   \]
 \end{theorem}
@@ -219,11 +219,11 @@ We have a special buzz-word for when the angle between two vectors is $\pi/2$:
 
 Moreover, if the dot product is not zero, using the formula
 \[
-\vec{v} \cdot \vec{w} = |\vec{v}||\vec{w}|\cos(\theta)
+\vec{v} \dotp \vec{w} = |\vec{v}||\vec{w}|\cos(\theta)
 \]
 allows us to compute the angle between these vectors via
 \[
-\theta = \arccos\left(\frac{\vec{v} \cdot \vec{w} }{|\vec{v}||\vec{w}|}\right).
+\theta = \arccos\left(\frac{\vec{v} \dotp \vec{w} }{|\vec{v}||\vec{w}|}\right).
 \]
 
 \begin{question}
@@ -310,7 +310,7 @@ product:
 \begin{theorem}
   Given two vectors, $\vec{v}$ and $\vec{w}$,
   \[
-  \proj_\vec{w}(\vec{v}) =\left(\frac{\vec{v} \cdot \vec{w}}{\vec{w}\cdot \vec{w}}\right) \vec{w}=\left(\frac{\vec{v} \cdot \vec{w}}{|\vec{w}|^2}\right) \vec{w}.
+  \proj_\vec{w}(\vec{v}) =\left(\frac{\vec{v} \dotp \vec{w}}{\vec{w}\dotp \vec{w}}\right) \vec{w}=\left(\frac{\vec{v} \dotp \vec{w}}{|\vec{w}|^2}\right) \vec{w}.
   \]
   %% \begin{explanation}
   %%   From the definition, we know that 
@@ -319,13 +319,13 @@ product:
   %%   \]
   %%   for some real number $c$.  We also know that
   %%   \[
-  %%   (c\vec{w} - \vec{v})\cdot \vec{w} = 0
+  %%   (c\vec{w} - \vec{v})\dotp \vec{w} = 0
   %%   \]
   %%   Thus
   %%   \begin{align*}
-  %%     (c\vec{w} - \vec{v})\cdot \vec{w} &= 0\\
-  %%     c(\vec{w} \cdot \vec{w}) - \vec{v} \cdot \vec{w} &=0\\
-  %%     c = \frac{\vec{v} \cdot \vec{w}}{|\vec{w}|^2}
+  %%     (c\vec{w} - \vec{v})\dotp \vec{w} &= 0\\
+  %%     c(\vec{w} \dotp \vec{w}) - \vec{v} \dotp \vec{w} &=0\\
+  %%     c = \frac{\vec{v} \dotp \vec{w}}{|\vec{w}|^2}
   %%   \end{align*}
   %% \end{explanation}
 \end{theorem}
@@ -333,9 +333,9 @@ product:
 \begin{question}
   Consider the formula:
   \[
-  \proj_\vec{w}(\vec{v}) =\left(\frac{\vec{v} \cdot \vec{w}}{|\vec{w}|^2}\right) \vec{w}
+  \proj_\vec{w}(\vec{v}) =\left(\frac{\vec{v} \dotp \vec{w}}{|\vec{w}|^2}\right) \vec{w}
   \]
-  Is $\vec{v}\cdot \vec{w}$ a number or a vector?
+  Is $\vec{v}\dotp \vec{w}$ a number or a vector?
   \begin{prompt}
   \begin{multipleChoice}
     \choice[correct]{number}
@@ -410,7 +410,7 @@ another, you use the dot product:
 \begin{theorem}
   Given two vectors, $\vec{v}$ and $\vec{w}$,
   \[
-  \scal_\vec{w}(\vec{v}) =\frac{\vec{v} \cdot \vec{w}}{|\vec{w}|}.
+  \scal_\vec{w}(\vec{v}) =\frac{\vec{v} \dotp \vec{w}}{|\vec{w}|}.
   \]
 \end{theorem}
 
@@ -479,7 +479,7 @@ Now we give an example of where this decomposition is useful.
     To find the force of gravity in the direction of the ramp, we
     compute $\proj_\vec{g}(\vec r)$:
     \begin{align*}
-      \proj_\vec{g}(\vec{r}) &= \left(\frac{\vec{g}\cdot\vec{r}}{\vec{r}\cdot\vec{r}}\right)\vec r\\
+      \proj_\vec{g}(\vec{r}) &= \left(\frac{\vec{g}\dotp\vec{r}}{\vec{r}\dotp\vec{r}}\right)\vec r\\
       &=  \answer[given]{\frac{-250}{425}}\vector{20,5}\\
       &= \vector{\answer[given]{\frac{-200}{17}},\answer[given]{\frac{-50}{17}}}.
     \end{align*}
@@ -518,17 +518,17 @@ product below:
   The following are true for all scalars $s$ and vectors
   $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $\R^n$:
   \begin{description}
-  \item[Commutativity:] $\vec{v} \cdot \vec{w} = \vec{w} \cdot
+  \item[Commutativity:] $\vec{v} \dotp \vec{w} = \vec{w} \dotp
     \vec{v}$.
-  \item[Linear in first argument:] $(\vec{u}+\vec{v})\cdot \vec{w} = \vec{u}\cdot \vec{w} +
-    \vec{v}\cdot \vec{w}$ and $(s\vec{v})\cdot \vec{w} = s(\vec{v}
-    \cdot \vec{w})$.
-  \item[Linear in second argument:] $\vec{u} \cdot (\vec{v}+\vec{w}) = \vec{u}\cdot \vec{v}+
-    \vec{u}\cdot \vec{w}$ and $\vec{v} \cdot (s\vec{w}) = s(\vec{v}
-    \cdot \vec{w})$.
-  \item[Relation to magnitude:] $\vec{v} \cdot \vec{v} = |\vec{v}|^2$.
+  \item[Linear in first argument:] $(\vec{u}+\vec{v})\dotp \vec{w} = \vec{u}\dotp \vec{w} +
+    \vec{v}\dotp \vec{w}$ and $(s\vec{v})\dotp \vec{w} = s(\vec{v}
+    \dotp \vec{w})$.
+  \item[Linear in second argument:] $\vec{u} \dotp (\vec{v}+\vec{w}) = \vec{u}\dotp \vec{v}+
+    \vec{u}\dotp \vec{w}$ and $\vec{v} \dotp (s\vec{w}) = s(\vec{v}
+    \dotp \vec{w})$.
+  \item[Relation to magnitude:] $\vec{v} \dotp \vec{v} = |\vec{v}|^2$.
   \item[Relation to orthogonality:] If $\vec{v}$ is orthogonal to
-    $\vec{w}$ then $\vec{v} \cdot \vec{w} = 0$.
+    $\vec{w}$ then $\vec{v} \dotp \vec{w} = 0$.
   \end{description}
 \end{theorem}
 
@@ -549,7 +549,7 @@ properties, and it will be our formula for the dot product.
     \vdots\\
     a_n
   \end{bmatrix}
-  \cdot
+  \dotp
   \begin{bmatrix}
     b_1\\
     b_2\\
@@ -581,19 +581,19 @@ properties, and it will be our formula for the dot product.
       \vdots\\
       a_n
     \end{bmatrix}
-    \cdot
+    \dotp
     \begin{bmatrix}
       b_1\\
       b_2\\
       \vdots\\
       b_n
-    \end{bmatrix} = \left(\sum_{i=1}^n a_i \vec{e}_i\right) \cdot \left(\sum_{j=1}^n b_j \vec{e}_j\right).
+    \end{bmatrix} = \left(\sum_{i=1}^n a_i \vec{e}_i\right) \dotp \left(\sum_{j=1}^n b_j \vec{e}_j\right).
     \]
     Now by the linearity properties of the dot product,
     \[
-    =\sum_{i,j =1}^n a_ib_j(\vec{e}_i \cdot \vec{e}_j)
+    =\sum_{i,j =1}^n a_ib_j(\vec{e}_i \dotp \vec{e}_j)
     \]
-    since $\vec{e}_i \cdot \vec{e}_j = 1$ if $i=j$ (because they are
+    since $\vec{e}_i \dotp \vec{e}_j = 1$ if $i=j$ (because they are
     parallel in this case) and $0$ otherwise (because then they are
     orthogonal),
     \begin{align*}

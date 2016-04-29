@@ -128,26 +128,26 @@ will restrict our attention to $\R \to \R^3$ for the time being.
 It is easy to create a vector-valued function that produces a line
 that passes through two points $\vec{p}$ and $\vec{q}$:
 \[
-\boldsymbol{\l}(t) = \vec{p} + t(\vec{q}-\vec{p}).
+\vecl(t) = \vec{p} + t(\vec{q}-\vec{p}).
 \]
 \begin{question}
-  What is the value of $\boldsymbol{\l}(0)$?
+  What is the value of $\vecl(0)$?
   \begin{prompt}
   \begin{multipleChoice}
-    \choice{$\boldsymbol{\l}(0)$ is unknowable}
-    \choice[correct]{$\boldsymbol{\l}(0)=\vec{p}$}
-    \choice{$\boldsymbol{\l}(0)=\vec{q}$}
-    \choice{$\boldsymbol{\l}(0)=\vec{q}-\vec{p}$}
+    \choice{$\vecl(0)$ is unknowable}
+    \choice[correct]{$\vecl(0)=\vec{p}$}
+    \choice{$\vecl(0)=\vec{q}$}
+    \choice{$\vecl(0)=\vec{q}-\vec{p}$}
   \end{multipleChoice}
   \end{prompt}
   \begin{question}
-    What is the value of $\boldsymbol{\l}(1)$?
+    What is the value of $\vecl(1)$?
     \begin{prompt}
     \begin{multipleChoice}
-      \choice{$\boldsymbol{\l}(1)$ is unknowable}
-      \choice{$\boldsymbol{\l}(1)=\vec{p}$}
-      \choice[correct]{$\boldsymbol{\l}(1)=\vec{q}$}
-      \choice{$\boldsymbol{\l}(1)=\vec{q}-\vec{p}$}
+      \choice{$\vecl(1)$ is unknowable}
+      \choice{$\vecl(1)=\vec{p}$}
+      \choice[correct]{$\vecl(1)=\vec{q}$}
+      \choice{$\vecl(1)=\vec{q}-\vec{p}$}
     \end{multipleChoice}
     \end{prompt}
   \end{question}
@@ -185,10 +185,10 @@ that passes through two points $\vec{p}$ and $\vec{q}$:
 \end{question}
 
 \begin{question}
-  Let $\boldsymbol{\l}(t) = \vector{x(t),y(t),z(t)}$ be a line that
-  passes through the points $\boldsymbol{\l}(0) = \vector{1,2,3}$ and
-  $\boldsymbol{\l}(1) = \vector{2,2,2}$. What are the components of
-  $\boldsymbol{\l}(t)$?
+  Let $\vecl(t) = \vector{x(t),y(t),z(t)}$ be a line that
+  passes through the points $\vecl(0) = \vector{1,2,3}$ and
+  $\vecl(1) = \vector{2,2,2}$. What are the components of
+  $\vecl(t)$?
   \begin{prompt}
   \begin{align*}
     x(t) &= \answer{1+t}\\
@@ -197,7 +197,7 @@ that passes through two points $\vec{p}$ and $\vec{q}$:
   \end{align*}
   \end{prompt}
   \begin{hint}
-    Let $\boldsymbol{\l}(t) = \vec{p}+t\vec{v}$.  Then $f(0) = \vec{p}$.
+    Let $\vecl(t) = \vec{p}+t\vec{v}$.  Then $f(0) = \vec{p}$.
   \end{hint}
 \end{question}
 
@@ -210,14 +210,14 @@ Often, for a given line, we will already know that the line passes
 through the tip of $\vec{p}$, and points in a direction $\vec{v}$.
 Then we write
 \[
-\boldsymbol{\l}(t) = \vec{p}+t\vec{v}.
+\vecl(t) = \vec{p}+t\vec{v}.
 \]
 If we know that a line passes through two points (that we'll notate
 with vectors) $\vec{p}$ and $\vec{q}$, then we know that it points in
 the direction $\vec{v} = \vec{q} - \vec{p}$, and passes through the
 tip of $\vec{p}$.  So we can parameterize it as
 \[
-\boldsymbol{\l}(t) = \vec{p}+t(\vec{q} - \vec{p}).
+\vecl(t) = \vec{p}+t(\vec{q} - \vec{p}).
 \]
 
 \begin{question}
@@ -226,7 +226,7 @@ tip of $\vec{p}$.  So we can parameterize it as
   \vector{1,1,1}$.
   \begin{prompt}
   \[
-  \boldsymbol{\l}(t) = \vector{\answer{t},\answer{2-t},\answer{4-3t}}
+  \vecl(t) = \vector{\answer{t},\answer{2-t},\answer{4-3t}}
   \]
   \end{prompt}
   \begin{hint}
@@ -237,8 +237,9 @@ tip of $\vec{p}$.  So we can parameterize it as
   \end{hint}
 \end{question}
 
-\subsection{Lines embedded in surfaces}
 
+
+\subsection{Lines embedded in surfaces}
 
 Sometimes lines lie on surprising surfaces:
 
@@ -290,6 +291,34 @@ Sometimes lines lie on surprising surfaces:
     $t$.
   \end{hint}
 \end{question}
+
+
+\subsection{Distance between a point and a line}
+
+Given a point $\vec{p}$, notated as the tip of a vector with its tail
+at the origin, and a line
+\[
+\vecl(t) = \vec{q} + t\vec{v}
+\]
+we often want to know the distance between $\vec{p}$ and $\vecl$.
+\begin{image}
+  BADBAD
+\end{image}
+This distance is the length of the shortest path from $\vec{p}$ to the
+line $\l$. How do we find this distance? Well, we could:
+\begin{enumerate}
+  \item Recalling that the magnitude of a vector $|\vec{w}|
+    =\sqrt{\vec{w}\dotp\vec{w}}$ we could attempt to minimize this
+    function
+    \[
+    \mathrm{distance}(t)^2= \l(t) \cdot \vec{p}
+    \]
+    using the derivative. The square-root of the minimum value will be
+    the distance.
+  \item We could project the vector $\vec{p}-\vec{q}$ along $\vec{v}$
+\end{enumerate}
+BADBAD
+
 
 
 

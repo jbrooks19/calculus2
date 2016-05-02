@@ -15,22 +15,21 @@ If an infinite sum converges, then its terms must tend to zero.
 
 
 As one contemplates the behavior of series, a few facts become clear:
-\begin{enumerate}
-\item In order to add an infinite list of nonzero numbers and get a
-  finite result, ``most'' of those numbers must be ``very near'' $0$.
-\item If a series diverges, it means that the sum of an infinite list
-  of numbers is not finite (it may approach $\pm \infty$ or it may
-  oscillate), and:
-  \begin{enumerate}
-  \item The series will still diverge if the first term is removed.
-  \item The series will still diverge if the first $10$ terms are
-    removed.
-  \item The series will still diverge if the first $1,000,000$ terms
-    are removed.
-  \item The series will still diverge if any finite number of terms
-    from anywhere in the series are removed.
-  \end{enumerate}
-\end{enumerate}
+In order to add an infinite list of nonzero numbers and get a finite
+result, ``most'' of those numbers must be ``very near'' $0$.
+
+If a series diverges, it means that the sum of an infinite list of
+numbers is not finite (it may approach $\pm \infty$ or it may
+oscillate), and:
+\begin{itemize}
+\item The series will still diverge if the first term is removed.
+\item The series will still diverge if the first $10$ terms are
+  removed.
+\item The series will still diverge if the first $1000000$ terms
+  are removed.
+\item The series will still diverge if \textbf{any finite number} of terms
+  from anywhere in the series are removed.
+\end{itemize}
 
 These concepts are very important and lie at the heart of the next two
 theorems.
@@ -83,7 +82,7 @@ Which of the following statements are true?  Mark all that apply.
 	\choice[correct]{$\sum_{k=3}^\infty \frac{1}{\ln{ k }}$}
 	\choice{$\sum_{k=0}^\infty \sin(k)$}
 	\choice[correct]{$\sum_{k=0}^\infty \frac{\sin(k)}{k^2}$}
-	%\choice[correct]{$\sum_{k=5}^\infty \frac{k+7}{k+6} - \frac{\sin(k)}{k}$}
+	\choice{$\sum_{k=5}^\infty \frac{k+7}{k+6}$}
 	\choice{$\sum_{k=0}^\infty \frac{2k}{k - 5}$}
 \end{selectAll}
 \end{question}
@@ -131,10 +130,10 @@ Which of the following statements are true?  Mark all that apply.
   \begin{selectAll}
     \choice[correct]{$\sum^{\infty}_{k=1} a_k = L$}
     \choice[correct]{$\lim_{n \to \infty} a_n = 0$}
-    \choice[correct]{$\seq{S_n}$ must be monotonic.}
-    \choice[correct]{$\seq{S_n}$ must be bounded.}
-    \choice{$\sum^{\infty}_{n=1} (a_n-L) = 0$.}
-    \choice[correct]{$\sum^{\infty}_{n=1} S_n$ must diverge.}
+    \choice[correct]{$\seq{S_n}$ must be monotonic}
+    \choice[correct]{$\seq{S_n}$ must be bounded}
+    \choice{$\sum^{\infty}_{n=1} (a_n-L) = 0$}
+    \choice[correct]{$\sum^{\infty}_{n=1} S_n$ must diverge}
     \choice{The divergence test applied to $\sum^{\infty}_{k= 1} a_k$ would
       guarantee that $\sum^{\infty}_{k=1} a_k$ converges.}
   \end{selectAll}

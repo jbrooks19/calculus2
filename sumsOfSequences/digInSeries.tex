@@ -55,7 +55,7 @@ We can sum other geometric series to finite values as well. Consider
 \]
 A very clever method of summing this sequence is as follows, consider
 an equilateral triangle with area $1$:
-\begin{image}
+\begin{image}[1in]
   \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
     \tkzDefPoint(0,1){A1} 
     \tkzDefPoint(-.58,0){A2}
@@ -65,7 +65,7 @@ an equilateral triangle with area $1$:
 \end{image}
 We can break this triangle into $4$ congruent triangles, each of area
 $1/4$:
-\begin{image}
+\begin{image}[1in]
   \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
     \tkzDefPoint(0,1){A1} 
     \tkzDefPoint(-.58,0){A2}
@@ -80,7 +80,7 @@ $1/4$:
 \end{image}
 We can break the upper triangle into $4$ more congruent triangles, each
 with area $(1/4)^2$:
-\begin{image}
+\begin{image}[1in]
   \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
     \tkzDefPoint(0,1){A1} 
     \tkzDefPoint(-.58,0){A2}
@@ -99,7 +99,7 @@ with area $(1/4)^2$:
   \end{tikzpicture}
 \end{image}
 Repeating this process, we find:
-\begin{image}
+\begin{image}[1in]
   \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
     \tkzDefPoint(0,1){A1} 
     \tkzDefPoint(-.58,0){A2}
@@ -406,7 +406,7 @@ series to find fractions equal to given decimals.
     \begin{align*}
       1000N - N &= \\
       N(1000-1) &= 9418.221\\
-      N &= \frac{9418.221}{999}
+      N &= \frac{9418.221}{999}.
     \end{align*}
     Hence our fraction will be
     \[
@@ -414,8 +414,7 @@ series to find fractions equal to given decimals.
     \]
   \end{explanation}
 \end{example}
-
-
+    
 
 \section{Telescoping series}
 \index{series!telescoping}\index{telescoping series}
@@ -518,9 +517,11 @@ S_4 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)+\ln\lef
 \end{align*}
 At first, this does not seem helpful, but recall the logarithmic rule:
 $\ln(x)+\ln(y) = \ln (x\cdot y).$ Applying this to $S_4$ gives:
-\[
-S_4 = \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)+\ln\left(\frac54\right) = \ln\left(\frac21\cdot\frac32\cdot\frac43\cdot\frac54\right) = \ln\left(5\right).
-\]
+\begin{align*}
+S_4 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)+\ln\left(\frac54\right) \\
+&= \ln\left(\frac21\cdot\frac32\cdot\frac43\cdot\frac54\right)\\
+&= \ln\left(5\right).
+\end{align*}
 We can conclude that
 \[
 (S_n) =\ln (n+1).

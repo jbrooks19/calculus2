@@ -414,11 +414,11 @@ two curves, and this can be difficult.
             ytick={.5,1,...,2},
             yticklabels={},axis on top
           ]
-          %\addplot+[draw=none, fill=fill1,mark=none,domain=45:225,samples=100,smooth] {1+cos(x)}\closedcycle;
-          %\addplot+[draw=none, fill=fill2,mark=none,domain=-135:45,samples=100,smooth] {1+sin(x)}\closedcycle;
+          %\addplot[fill=fill1,draw=none,very thick, mark=none,domain=45:135,samples=100,smooth] {1+cos(x)}\closedcycle;
           
-          \addplot+[draw=penColor,very thick, mark=none,domain=0:360,samples=100,smooth] {1+cos(x)};
-          \addplot+[draw=penColor2,very thick, mark=none,domain=0:360,samples=100,smooth] {1+sin(x)};
+          \addplot[draw=penColor,very thick, mark=none,domain=0:360,samples=100,smooth] {1+cos(x)};
+          
+          \addplot[draw=penColor2,very thick, mark=none,domain=0:360,samples=100,smooth] {1+sin(x)};
         \end{polaraxis}
       \end{tikzpicture}
     \end{image}

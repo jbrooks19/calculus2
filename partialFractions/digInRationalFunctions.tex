@@ -507,7 +507,7 @@ less than the degree of $q$. What if this is not the case? Use
   \]
   \begin{explanation}
     We start by using long-division to reduce the numerator:
-    \begin{center}%%BADBAD
+    \begin{image}[2in]
       \begin{tikzpicture}[]
         \node at (0,0) {
           $x^2-0x-1\,\begin{array}[b]{@{}r@{}r} 
@@ -515,13 +515,13 @@ less than the degree of $q$. What if this is not the case? Use
           \cline{1-1}
           \Bigg)\begin{array}[t]{@{}l@{}} x^3+0x^2+0x+1\\ 
             x^3+0x^2-x \\ 
-            \divrule{0}{8}  ~~~~~~~x+1
+            \divrule{0}{8}  ~~~~~~~~~x+1
           \end{array}
           \end{array}
           $
         };
       \end{tikzpicture}
-    \end{center}
+    \end{image}
     Now our integral becomes
     \[
     \int \frac{x^3+1}{x^2-1}\d x = \int x+ \frac{x+1}{x^2-1}\d x

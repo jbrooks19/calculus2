@@ -88,7 +88,7 @@ its \dfn{linear density} is a measure of its mass per unit length.
   will $4 \unit{m}$ of this wire be?
   \begin{prompt}
   \[
-  \text{Mass} = \answer{20} \unit{g}
+  \mathrm{Mass} = \answer{20} \unit{g}
   \]
   \end{prompt}
   \begin{hint}
@@ -104,7 +104,7 @@ is usually represented by the Greek letter, \textit{rho}, $\rho$:
 \]
 In this case, mass of a one-dimensional object is measured by
 \[
-\text{Mass} = \int_{a}^{b} \rho(x) \d x
+\mathrm{Mass} = \int_{a}^{b} \rho(x) \d x
 \]
 where $a$ is the starting position and $b$ is the ending position.
 
@@ -114,7 +114,7 @@ where $a$ is the starting position and $b$ is the ending position.
   one end of the rod, then what is total mass of the rod?
   \begin{prompt}
     \[
-    \text{Mass} = \answer{130} \unit{g}
+    \mathrm{Mass} = \answer{130} \unit{g}
     \]
   \end{prompt}
   \begin{hint}
@@ -125,7 +125,7 @@ where $a$ is the starting position and $b$ is the ending position.
   \end{hint}
   \begin{hint}
     \begin{align*}
-      \text{Mass} &= \int_0^5 1+3x^2 \d x\\
+      \mathrm{Mass} &= \int_0^5 1+3x^2 \d x\\
       &=\eval{\answer{x+x^3}}_0^5\\
       &=130
     \end{align*}
@@ -247,6 +247,15 @@ Let's see an example of each type of situation:
 \subsection{Accumulating large forces over infinitesimal distances}
 
 
+The basic set-up for these integrals is as follows:
+  \begin{image}
+  \begin{tikzpicture}[scale=2,every node/.style={transform shape}]
+    \node at (0,0) {
+      $\mathrm{Work} = \int_a^b \underbrace{\mathrm{(force)}\d x}_{\d W}$
+    };
+  \end{tikzpicture}
+\end{image}
+Let's try some examples:
 \begin{example}
   How much work is performed pulling a $60\unit{m}$ climbing rope up a
   cliff face, where the rope has a mass of $66\unit{g}/\unit{m}$?
@@ -365,7 +374,7 @@ We can also do ``spring'' problems, for this we need \textit{Hooke's
     We need to accumulate these ``large forces over infinitesimal
     distances'' from $x=0$ to $x=5$.
     \begin{align*}
-      \text{Work} &= \int_0^5 4x \d x\\
+      \mathrm{Work} &= \int_0^5 4x \d x\\
       &= \eval{\answer[given]{2x^2}}_0^5\\
       &=50
     \end{align*}
@@ -374,7 +383,7 @@ We can also do ``spring'' problems, for this we need \textit{Hooke's
     inches to feet to obtain $\frac{50}{12}$ foot-pounds.
   \end{hint}
     \[
-    \text{Work} = \answer[given]{\frac{50}{12}} \unit{ft}\cdot\unit{lb}.
+    \mathrm{Work} = \answer[given]{\frac{50}{12}} \unit{ft}\cdot\unit{lb}.
     \]
   \end{explanation}
 \end{example}
@@ -387,7 +396,23 @@ We can also do ``spring'' problems, for this we need \textit{Hooke's
 
 \subsection{Accumulating infinitesimal forces over large distances}
 
-
+The basic set-up for these integrals is as follows:
+  \begin{image}
+  \begin{tikzpicture}[scale=2,every node/.style={transform shape}]
+    \node at (0,0) {
+      $\mathrm{Work} = \int_a^b \underbrace{
+        \mathrm{(distance)}
+        \underbrace{
+          \mathrm{(acceleration)}
+          \underbrace{
+            \mathrm{(density)}
+            \underbrace{
+              \mathrm{(area)}\d x}_{\d V}}_{\d M}}_{\d F}}_{\d W}$
+    };
+  \end{tikzpicture}
+\end{image}
+  Let's try some examples:
+  
 \begin{example}
   A cylindrical storage tank with a radius of $10 \unit{ft}$ and a
   height of $30\unit{ft}$ is filled with water, which weighs
@@ -448,7 +473,7 @@ We can also do ``spring'' problems, for this we need \textit{Hooke's
           \]
           Thus the total work done by pumping all of the water to the top is
           \begin{align*}
-	    \text{Work} &= \int_0^{30} 6240 \pi (35-y) \d y\\
+	    \mathrm{Work} &= \int_0^{30} 6240 \pi (35-y) \d y\\
 	    &= 6240 \pi \eval{\answer[given]{35y-\frac{1}{2}y^2}}_0^{30}\\
 	    &=  3744000 \pi \unit{ft}\cdot\unit{lbs}.
           \end{align*}

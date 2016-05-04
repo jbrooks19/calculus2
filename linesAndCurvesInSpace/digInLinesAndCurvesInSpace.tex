@@ -89,7 +89,7 @@ This is an example of a \textit{vector-valued function}.
   A \dfn{vector-valued function} maps real numbers to vectors in $\R^n$.
 \end{definition}
 Vector-valued functions simply map numbers to lists of numbers, that we interpret as vectors:
-\begin{image}
+\begin{image}[2in]
   \begin{tikzpicture}
     \node at (0,0) {$\vec{f}(t) = \underbrace{\vector{x(t),y(t),z(t)}}_{\text{vector}}$};
     \draw[ultra thick,->,gray] (.5,1) -- (0,.5);
@@ -260,6 +260,8 @@ Sometimes lines lie on surprising surfaces:
         ]
         \draw[penColor,very thick,fill=fillp] (axis cs:0,2.8) ellipse (290 and 50);
         \draw[penColor,very thick,] (axis cs: -1,0) arc (180:360:100 and 30);
+        \draw[penColor!50!white,very thick,] (axis cs: -1,0) arc (180:0:100 and 30);
+        \draw[penColor!50!white,very thick,] (axis cs: -2.9,-2.7) arc (180:0:290 and 50);
         \draw[penColor,very thick,] (axis cs: -2.9,-2.7) arc (180:360:290 and 50);
        
         \addplot [penColor,very thick,domain=-2.9:-1,smooth,samples=100] {sqrt(x^2-1)};%(sqrt(1+u^2) cos(v), sqrt(1+u^2) sin(v), u)
@@ -302,22 +304,103 @@ at the origin, and a line
 \]
 we often want to know the distance between $\vec{p}$ and $\vecl$.
 \begin{image}
-  BADBAD
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmin=0,xmax=6,ymin=0,ymax=3,
+        axis lines=none,
+        unit vector ratio*=1 1 1,
+      ]
+      \addplot[dashed] plot coordinates {(4,1) (3.59,2.65)};
+      \addplot[] plot coordinates {(3.39,2.6) (3.44,2.4) (3.64,2.45)};
+      \addplot[very thick,penColor!50!white] {x/4+7/4};
+      \addplot[very thick,penColor,->] plot coordinates {(1,2) (3,2.5)};
+      \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(1,2)};  %% closed hole
+      \addplot[color=penColor2,fill=penColor2,only marks,mark=*] coordinates{(4,1)};  %% closed hole
+
+      \node[above] at (axis cs:2,2.25) [penColor] {$\vec{v}$};
+      \node[above] at (axis cs:1,2) [penColor] {$\vec{q}$};
+      \node[below] at (axis cs:4,1) [penColor2] {$\vec{p}$};
+      \node[above] at (axis cs:.4,1.84) [penColor] {$\vecl$};
+    \end{axis}
+  \end{tikzpicture}
 \end{image}
 This distance is the length of the shortest path from $\vec{p}$ to the
-line $\l$. How do we find this distance? Well, we could:
+line $\vecl$. How do we find this distance? Well:
 \begin{enumerate}
   \item Recalling that the magnitude of a vector $|\vec{w}|
-    =\sqrt{\vec{w}\dotp\vec{w}}$ we could attempt to minimize this
+    =\sqrt{\vec{w}\dotp\vec{w}}$ we could attempt to minimize the
     function
     \[
-    \mathrm{distance}(t)^2= \l(t) \cdot \vec{p}
+    \mathrm{distance}(t)^2= \vecl(t) \dotp \vec{p}
     \]
     using the derivative. The square-root of the minimum value will be
     the distance.
-  \item We could project the vector $\vec{p}-\vec{q}$ along $\vec{v}$
+  \item We could compute the distance between
+    $\proj_{\vec{v}}(\vec{p}-\vec{q})$ and $\vec{p}$. This is:
+    \[
+    \sqrt{\proj_{\vec{v}}(\vec{p}-\vec{q})\dotp \vec{p}}
+    \]
 \end{enumerate}
-BADBAD
+However, perhaps the quickest method for determining the distance
+between a point and a line is by using the cross product. Since the
+cross product is only defined in dimension $3$ for this course, we
+need $3$-dimensional vectors. If we consider the vector
+$\vec{p}-\vec{q}$, we see by the definition of sine
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmin=0,xmax=6,ymin=0,ymax=3,
+        axis lines=none,
+        unit vector ratio*=1 1 1,
+      ]
+      \addplot[dashed] plot coordinates {(4,1) (3.59,2.65)};
+      \addplot[decoration={brace,mirror,raise=.1cm},decorate,thin] plot coordinates {(4,1) (3.59,2.65)};
+      \addplot[] plot coordinates {(3.39,2.6) (3.44,2.4) (3.64,2.45)};
+      \draw[] (axis cs: 1.3,1.9) arc (-18.5:14:.4cm);
+              
+      
+      \addplot[very thick,penColor!50!white] {x/4+7/4};
+      \addplot[very thick,penColor,->] plot coordinates {(1,2) (3,2.5)};
+      \addplot[very thick,penColor2,->] plot coordinates {(1,2) (4,1)};
+
+      \node[above] at (axis cs:2,2.25) [penColor] {$\vec{v}$};
+      \node[below] at (axis cs:2.5,1.5) [penColor2] {$\vec{p}-\vec{q}$};
+      \node[right] at (axis cs:1.4,2) {$\theta$};
+      \node[right] at (axis cs:4,1.83) {$|\vec{p}-\vec{q}|\sin(\theta)$};
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
+that the distance we are looking for is given by
+\[
+|\vec{p}-\vec{q}|\sin(\theta).
+\]
+However,
+\[
+|\vec{p}-\vec{q}||\vec{v}|\sin(\theta) = |(\vec{p}-\vec{q})\cross \vec{v}|
+\]
+so we see that
+\[
+\mathrm{distance} = |\vec{p}-\vec{q}|\sin(\theta) = \frac{|(\vec{p}-\vec{q})\cross \vec{v}|}{|\vec{v}|}.
+\]
+
+\begin{question}
+  What is the distance between the point $(3,1)$ and the line that
+  passes through the points $(1,1)$ and $(3,2)$?
+   \begin{hint}
+    If you wish to use the cross product, make these points
+    $3$-dimensional by adding a $z$-component of $0$ to each point.
+  \end{hint}
+  \begin{hint}
+    In this case $\vecl(t) = \vector{1,1,0} + t
+    (\vector{3,2,0}-\vector{1,1,0})$.
+  \end{hint}
+  \begin{prompt}
+    \[
+    \mathrm{distance} = \answer{2/\sqrt{5}}
+    \]
+  \end{prompt}
+\end{question}
+
 
 
 

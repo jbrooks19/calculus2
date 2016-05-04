@@ -78,14 +78,14 @@ rectangle around the parallelogram:
   -- ++(-5,-1)   % then back along that vector
   -- cycle;      % and back to where you started
 
-  \draw[fill=fill5,draw=none] (5, 0) -- (7,0) -- (7,1) -- (5,1) -- cycle;
-  \draw[fill=fill5,draw=none] (0, 3) -- (2,3) -- (2,4) -- (0,4) -- cycle;
+  \draw[fill=fill5] (5, 0) -- (7,0) -- (7,1) -- (5,1) -- cycle;
+  \draw[fill=fill5] (0, 3) -- (2,3) -- (2,4) -- (0,4) -- cycle;
 
-  \draw[fill=fill3,draw=none] (0, 0) -- (5,0) -- (5,1) -- cycle;
-  \draw[fill=fill3,draw=none] (2,3) -- (7,4) -- (2,4) -- cycle;
+  \draw[fill=fill3] (0, 0) -- (5,0) -- (5,1) -- cycle;
+  \draw[fill=fill3] (2,3) -- (7,4) -- (2,4) -- cycle;
 
-  \draw[fill=fill4,draw=none] (0, 0) -- (2,3) -- (0,3) -- cycle;
-  \draw[fill=fill4,draw=none] (5, 1) -- (7,1) -- (7,4) -- cycle;
+  \draw[fill=fill4] (0, 0) -- (2,3) -- (0,3) -- cycle;
+  \draw[fill=fill4] (5, 1) -- (7,1) -- (7,4) -- cycle;
   
   \draw[->,ultra thick,penColor] (0,0) -- (5,1);
   \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
@@ -484,7 +484,7 @@ the direction of $\vec{b}$ and the middle finger in the direction of
 $\vec{a}$, your thumb will now point in the opposite direction,
 allowing you to ``visualize'' the anticommutative property of the
 cross product.
-\begin{image}
+\begin{image}[2in]
   %% Based on: https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg
   %% Which was based on: https://commons.wikimedia.org/wiki/File:Right_hand_cross_product.png
   %% Which was based on: https://commons.wikimedia.org/wiki/File:LeftHandOutline.png
@@ -702,7 +702,7 @@ product and geometry:
   spanned by $\vec{a}$ and $\vec{b}$.
   \begin{explanation}
     It is a fact from geometry that the area of a parallelogram
-    \begin{image}
+    \begin{image}[2in]
       \begin{tikzpicture}
 	\draw (0,0) -- node [below,pos=.5]  {$b$} (2,0) -- (3,1.5) -- (1,1.5) -- (0,0);
 	\draw [dashed] (1,1.5) -- (1,0) node [pos=.5,right] {$h$};
@@ -716,16 +716,18 @@ product and geometry:
     where $b$ is the length of the base and $h$ is the height of the
     parallelogram. Two vectors $\vec{a}$ and $\vec{b}$ define a
     parallelogram when drawn from the same initial point,
-    \begin{image}
+    \begin{image}[2in]
       \begin{tikzpicture}[thick,scale=1.25,>=stealth]
-	\draw [->, ultra thick,penColor2](0,0) -- (2,0);
+        \draw (.8,0) -- (.8,.2) -- (1,.2);
+        \draw (.25,0) arc (0:56:.25);
+
+        \draw [->, ultra thick,penColor2](0,0) -- (2,0);
         \draw [->, ultra thick,dashed,penColor2] (1,1.5) -- (3,1.5);
 	\draw (.3,.175) node {\scriptsize $\theta$};
 	\draw [->, ultra thick,penColor](0,0) -- (1,1.5);
         \draw [->, ultra thick,penColor,dashed](2,0) -- (3,1.5);
 	\draw [dashed] (1,1.5) -- (1,0) node [pos=.5,right] {\scriptsize$h$};
-	\draw (.8,0) -- (.8,.2) -- (1,.2);
-        \node[left,penColor] at (.5,.75) {$\vec a$};
+	\node[left,penColor] at (.5,.75) {$\vec a$};
         \node[below,penColor2] at (1,0) {$\vec b$};
       \end{tikzpicture}
     \end{image}
@@ -816,10 +818,11 @@ occur.
           every axis y label/.style={at=(current axis.above origin),anchor=south},
           every axis x label/.style={at=(current axis.right of origin),anchor=west},
         ]
+        \draw (axis cs:1.13,2.27) arc (63.5:116.5:.3cm);
         \addplot[very thick,penColor,->] plot coordinates {(0,0) (1,2)};
         \addplot[very thick,penColor2,->] plot coordinates {(1,2) (0.5,3)};
         \addplot[very thick,penColor, dashed] plot coordinates {(1,2) (2,4)};
-        \node at (axis cs:1, 2.6) [textColor] {$\frac{\pi}{3}$};
+        \node at (axis cs:1, 2.6) [textColor] {\scriptsize$\frac{\pi}{3}$};
         \node at (axis cs:0.6, 0.7) [penColor] {$\vec{r}$};
         \node at (axis cs:0.6, 2.4) [penColor2] {$\vec{F}$};
       \end{axis}

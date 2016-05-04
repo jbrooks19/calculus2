@@ -85,7 +85,7 @@ parameterized by $t$:
 \end{example}
 
 This is an example of a \textit{vector-valued function}.
-\begin{definition}
+\begin{definition}\index{vector!valued function}
   A \dfn{vector-valued function} maps real numbers to vectors in $\R^n$.
 \end{definition}
 Vector-valued functions simply map numbers to lists of numbers, that we interpret as vectors:
@@ -336,9 +336,9 @@ line $\vecl$. How do we find this distance? Well:
     using the derivative. The square-root of the minimum value will be
     the distance.
   \item We could compute the distance between
-    $\proj_{\vec{v}}(\vec{p}-\vec{q})$ and $\vec{p}$. This is:
+    $\proj_{\vec{v}}(\vec{p}-\vec{q})$ and $\vec{p}-\vec{q}$. This is:
     \[
-    \sqrt{\proj_{\vec{v}}(\vec{p}-\vec{q})\dotp \vec{p}}
+    \sqrt{\proj_{\vec{v}}(\vec{p}-\vec{q})\dotp (\vec{p}-\vec{q})}
     \]
 \end{enumerate}
 However, perhaps the quickest method for determining the distance

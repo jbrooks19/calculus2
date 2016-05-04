@@ -1,0 +1,57 @@
+Taylor Series
+
+Mean value theorem. (Connection)
+
+Says that we can infact do this....
+
+Fxn  = poly at point
+Fxn' has same derivative.
+
+build it up by saying fxn
+
+
+The more terms the better approx we get, we see a similar result with
+euler's method and riemann sums.
+
+The approx is exact, as long as the sum converges.
+
+
+## When do taylor series make sense?
+
+How do we known when the infinite series makes sense?
+
+We can use radius of conv
+
+(in the complex plane?)
+
+
+## Make more taylor series
+
+We have to be able to take derivartives....
+
+Use taylor series to produce taylor series
+
+
+Common functions.
+e^x, sin(x), cos(x), 1/(1-x)
+
+add taylor series (sum of taylor series is taylor series of sum)
+
+mult taylor series
+
+compose taylor series. (BIG ONE)
+
+Integrating
+Diff
+
+Thm (radius of conv is not changed by int/diff)
+
+Euler's formula.
+
+
+
+
+
+
+
+

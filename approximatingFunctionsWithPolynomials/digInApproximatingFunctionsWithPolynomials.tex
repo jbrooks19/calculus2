@@ -67,25 +67,27 @@ Cutting straight to the point, the approximating polynomials we'll
 discuss are called \textit{Taylor polynomials} and \textit{Maclaurin
   polynomials}.
 
-\begin{definition}[Taylor/Maclaurin Polynomial]
+\begin{definition}
   Let $f$ be a function whose first $n$ derivatives exist at $x=c$.
   \begin{itemize}
   \item The \dfn{Taylor polynomial} of degree $n$ of $f$ at $x=c$ is
-    \begin{image}
-      \begin{tikzpicture}
-        \node at (0,0) {$p_n(x) = f(c) + f'(c)(x-c) + \frac{f''(c)}{2!}(x-c)^2+\frac{f'''(c)}{3!}(x-c)^3+\cdots +\frac{f^{(n)}(c)}{n!}(x-c)^n.
-          $};
-      \end{tikzpicture}
-    \end{image}
+    \begin{align*}
+      p_n(x) = f(c) &+ f'(c)(x-c) \\
+      &+ \frac{f''(c)}{2!}(x-c)^2 \\
+      &+\frac{f'''(c)}{3!}(x-c)^3 \\
+      &\ \vdots \\
+      &+\frac{f^{(n)}(c)}{n!}(x-c)^n.
+    \end{align*}
   \item A special case of the Taylor polynomial is the Maclaurin
     polynomial, where $c=0$. That is, the \dfn{Maclaurin polynomial}
     of degree $n$ of $f$ is
-    \begin{image}
-      \begin{tikzpicture}
-        \node at (0,0) {$p_n(x) = f(0) + f'(0)x +\frac{f''(0)}{2!}x^2+\frac{f'''(0)}{3!}x^3+\cdots+\frac{f^{(n)}(0)}{n!}x^n.
-          $};
-      \end{tikzpicture}
-    \end{image}
+    \begin{align*}
+      p_n(x) = f(0) &+ f'(0)x \\
+      &+\frac{f''(0)}{2!}x^2\\
+      &+\frac{f'''(0)}{3!}x^3\\
+      &\ \vdots\\
+      &+\frac{f^{(n)}(0)}{n!}x^n.
+    \end{align*}
   \end{itemize}
   We say these polynomials have a \dfn{center} of $x=c$, and so
   Maclaurin polynomials are Taylor polynomials centered at

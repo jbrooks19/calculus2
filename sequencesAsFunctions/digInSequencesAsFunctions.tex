@@ -4,7 +4,7 @@
 
 \outcome{Recognize sequences as functions.}
 \outcome{Graph sequences.}
-\outcome{Know terminology for sequences.}
+\outcome{Use terminology for sequences.}
 \outcome{Compute limits of sequences.}
 \outcome{Understand growth rates of basic sequences.}
 \outcome{Apply the monotone convergence theorem.}
@@ -18,9 +18,9 @@
 \end{abstract}
 \maketitle
 
-Let's summarize the preceding discussion in the following definition.
+Let's summarize the preceding section in the following formal definition.
 \begin{definition}
-  A \dfn{sequence} $(a_n)$ is, formally speaking, a real-valued
+  A \dfn{sequence} $(a_n)$ is a real-valued
   function with domain
   \[
   \{ n \in \Z : n \ge N \},\quad \text{for some integer $N$}
@@ -29,7 +29,7 @@ Let's summarize the preceding discussion in the following definition.
   of \dfn{integers}.\index{Z@$\Z$}
 \end{definition}
 
-Stated more humbly, a sequence assigns a real number to the integers
+Stated more humbly, a sequence assigns a real number to each of the integers
 starting with an index $N$.
 
 When thought of as a function, the ``outputs'' of a sequence are the
@@ -41,7 +41,7 @@ plural of index is either indices or indexes, depending on who you
 ask.  The first index $N$ is called the \dfn{initial index}.
 
 \begin{question}
-  What explicit formula (as a function) corresponds to the sequence
+  What function corresponds to the sequence given by the explicit formula
   $a_n = -n/2+3$ for $n=1,2,3,\dots$?
   \begin{prompt}
     \[
@@ -51,7 +51,7 @@ ask.  The first index $N$ is called the \dfn{initial index}.
 \end{question}
 
 \begin{question}
-  What explicit formula (as a function) corresponds to the sequence
+  What function corresponds to the sequence given by the explicit formula
   $a_n = 6\left(\frac{2}{5}\right)^{n+2}$ for $n=1,2,3,\dots$?
   \begin{prompt}
     \[
@@ -66,7 +66,7 @@ sequences!
 
 \section{Plotting sequences}
 
-Here we plot sequences as points. Later, we will see another
+First, we plot sequences as points. Later, we will see another
 interpretation.
 
 \subsection{Plots of arithmetic sequences}
@@ -164,7 +164,7 @@ Here we see a graph:
 
 
 \begin{question}
-  What type of curve do arithmetic sequences correspond to?
+  To what type of curve do arithmetic sequences correspond?
   \begin{multipleChoice}
     \choice[correct]{lines}
     \choice{parabolas}
@@ -273,8 +273,8 @@ Let's see a graph:
 
 
 \begin{question}
-  When the common ratio between successive elements is positive, what
-  type of curves do geometric sequence correspond to?
+  When the common ratio between successive elements of a geometric sequence is positive, what
+  type of curves do geometric sequences correspond to?
   \begin{multipleChoice}
     \choice{lines}
     \choice{parabolas}
@@ -338,8 +338,8 @@ The sign of this sequence alternates!
 
 \subsection{Monotonicity}
 
-We'd like some terminology with which to describe features we might
-notice about sequences.  Here is some of that terminology.
+We'd like some terminology to describe features we might
+notice about sequences.  Here is some of that terminology, focused on the relationships between the terms of a sequence.
 
 \begin{definition}
   A sequence is called
@@ -423,8 +423,8 @@ Let's see some examples:
 \begin{example}
   Describe the growth of $a_n = \frac{n+1}{n}$ for $n=1,2,3,\dots$.
   \begin{explanation}
-    To do this, check out the difference between two sequential terms,
-    write with me:
+    To do this, check out the difference between two sequential terms.
+    Write with me.
     \begin{align*}
     a_{n+1} - a_n &= \answer[given]{\frac{(n+1)+1}{n+1}} - \frac{n+1}{n}\\
     &=\frac{n(n+2) - (n+1)(\answer[given]{n+1})}{n+1}\\
@@ -432,7 +432,7 @@ Let's see some examples:
     &=\frac{\answer[given]{-1}}{n+1}.
     \end{align*}
     Since $\frac{-1}{n+1}$ is always
-    \wordChoice{\choice{positive}\choice[correct]{negative}\choice{zero}},
+    \wordChoice{\choice{positive}\choice[correct]{negative}\choice{zero}} for the values of $n$ we are considering,
     we see that $(a_n)$ is
     \wordChoice{\choice{increasing}\choice{nondecreasing}\choice[correct]{decreasing}\choice{nonincreasing}}, and hence is \wordChoice{\choice[correct]{monotonic}\choice{not monotonic}}.
   \end{explanation}
@@ -489,7 +489,7 @@ a different story.
 
 In short, given a sequence, it is helpful to be able to say something
 qualitative about it; we may want to address the question such as
-``what happens after a while?''  Earlier you've studied a similar
+``what happens after a while?''  Earlier, you've studied a similar
 question about
 \[
 \lim_{x\to\infty} f(x)
@@ -502,11 +502,16 @@ specify, perhaps implicitly, that the variable is an integer.
 \begin{definition}\index{limit of a sequence}
 \label{definition:limit-of-a-sequence}
 Suppose that $\left(a_n\right)$ is a sequence.  To say that
-$\lim_{n\to \infty}a_n=L$ is to say:
+$\lim_{n\to \infty}a_n=L$ is to say
 \begin{quote}
   that for every $\epsilon>0$, there is an $N > 0$, so that whenever
   $n>N$, we have $|a_n-L|<\epsilon$.
 \end{quote}
+
+Intuitively, if the limit as $n$ goes to infinity of a sequence is $L$, we know 
+that as we consider larger and larger values of $n$, the terms of the sequence 
+must get ``closer and closer`` to $L$.
+
 If $\lim_{n\to\infty}a_n=L$ we say that the sequence
 \dfn{converges}\index{convergent sequence}\index{sequence!convergent}.
 If there is no finite value $L$ so that $\lim_{n\to\infty}a_n = L$,
@@ -529,7 +534,7 @@ the sequence \dfn{diverges}\index{divergent
     We must achieve any desired degree of closeness, so we will make a statement which is true for any positive real number $\epsilon$.
   \end{hint}
   \begin{hint}
-    In other words, the definition will begin ``For every positive real number $\epsilon > 0$\ldots''
+    In other words, the definition will begin ``For every positive real number $\epsilon > 0$\ldots''.
   \end{hint}
   \begin{hint}
     We now must make precise the idea of ``eventually'' close.
@@ -544,7 +549,7 @@ the sequence \dfn{diverges}\index{divergent
     The ``sufficiently large'' value of $n$ is any value which is at least as large as $N$.
   \end{hint}
   \begin{hint}
-    So we will only consider those $n$ for which $n \ge N$.
+    So, we will only consider those $n$ for which $n \ge N$.
   \end{hint}
     \begin{hint}
       Thus the definition goes ``For every positive real number $\epsilon > 0$, there exists an $N \in \mathbb{N}$ so that whenever $n \ge N$\ldots''
@@ -573,7 +578,7 @@ the sequence \dfn{diverges}\index{divergent
 
   The definition of limit can be written as if it were poetry with
   line breaks and all.  Like the best of poems, it deserves to be
-  memorized, performed, internalized.  Humanity struggled for millenia
+  memorized, performed, and internalized.  Humanity struggled for millennia
   to find the wisdom contained in this definition.
 \end{question}
 
@@ -587,12 +592,12 @@ the sequence \dfn{diverges}\index{divergent
 %\youtube{https://www.youtube.com/watch?v=0UCRZAsIkXM}
 
 One way to compute the limit of a sequence is to compute the limit of
-a function.
+the related function.
 \begin{theorem}
   Let $f(x)$ be a real-valued function.  If $a_n = f(n)$ defines a
   sequence and if
   \[
-  \lim_{x\to\infty}f(x)=L
+  \lim_{x\to\infty}f(x)=L,
   \]
   then $\lim_{n\to\infty} a_n=L$ as well.
 \end{theorem}
@@ -608,10 +613,10 @@ for some number $L$.
 \end{warning}
 
 To show the converse is not true, it is enough to provide a single
-example where it fails.  Here's a counterexample:
+example where it fails.  Here is such a counterexample.
 
 \begin{example}
-  Let $(a_n)$ given by the rule $a_n = f(n)=\sin(n\pi)$. Show that
+  Let $(a_n)$ be given by the rule $a_n = f(n)=\sin(n\pi)$. Show that
   \[
   \lim_{n\to\infty} a_n \ne \lim_{x\to \infty}f(x).
   \]
@@ -628,11 +633,11 @@ sequence, we have
 \]
 But $\lim_{x\to\infty}f(x)$, when $x$ is real, does not exist: as $x$
 gets bigger and bigger, the values $\sin(x\pi)$ do not get closer and
-closer to a single value, but instead oscillate between $-1$ and $1$.
+closer to a single value, but instead oscillates between $-1$ and $1$.
   \end{explanation}
 \end{example}
 
-Here's some general advice. If you want to know $\lim_{n\to\infty}
+Here is some general advice. If you want to know $\lim_{n\to\infty}
 a_n$, you might first think of a function $f(x)$ where $a_n = f(n)$,
 and then attempt to compute $\lim_{x\to\infty}f(x)$.  If the limit of
 the function exists, then it is equal to the limit of the sequence.
@@ -719,7 +724,7 @@ some examples!
   \begin{explanation}
     To start, from previous work we know that $a_n$ is
     \wordChoice{\choice[correct]{monotonic}\choice{not monotonic}}.
-    Moreover, all of the elements $a_n = (n+1)/n$ are less than $1$,
+    Moreover, all of the elements $a_n = (n+1)/n$ are less than $2$,
     and greater than zero. Hence by the bounded-monotone convergence
     theorem, $\lim_{n\to\infty} a_n$ converges to a finite value.
   \end{explanation}
@@ -773,8 +778,8 @@ Show that the sequence $(a_n)$ given by $a_n = n^{1/n}$ converges.
 
 \subsection{The squeeze theorem}
 
-Remember how we used to compute some limits of complex functions by
-exchanging them for simpler functions. The \textit{Squeeze Theorem}
+Previously, when considering limits, one of our techniques was to replace 
+complicated functions by simpler functions. The \textit{Squeeze Theorem}
 tells us one situation where this is possible.
 
 \begin{theorem}[Squeeze Theorem]\index{Squeeze Theorem}
@@ -834,8 +839,8 @@ sequences:
 
 \section{Growth rates}
 
-When dealing with functions of real-numbers, derivatives tell us the
-instantaneous growth rate of a function. Since sequences are essential
+When dealing with functions of real numbers, derivatives tell us the
+instantaneous growth rate of a function. Since sequences are essentially
 discrete, derivatives cannot really be used. Nevertheless, the idea of
 a growth rate is still very important.
 
@@ -875,7 +880,9 @@ much faster than $(a_n)$.
     \[
     (\ln^{9}(n))\ll (n)
     \]
-    we see that $\lim_{n\to\infty}a_n =\answer[given]{0}$.
+    we see that $\lim_{n\to\infty}a_n =\answer[given]{0}$.  In short, the 
+    denominator ``wins out'' over the numerator, so the terms of the 
+    sequence get closer to zero.
   \end{explanation}
 \end{example}
 

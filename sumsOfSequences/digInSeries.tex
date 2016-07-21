@@ -2,6 +2,7 @@
 
 \input{../preamble.tex}
 
+\outcome{Define a series.}
 \outcome{Recognize a geometric series.}
 \outcome{Recognize a telescoping series.}
 \outcome{Compute the sum of a geometric series.}
@@ -16,7 +17,7 @@ A series is summation of a sequence.
 \maketitle
 
 
-Let's jump right in:
+Let's jump right in.
 
 
 \begin{definition}
@@ -24,10 +25,10 @@ Let's jump right in:
 \end{definition}
 
 
-Let's start this off with a question (a little unfair I know!)
+Let's start our investigation on this topic with a question (a little unfair, I know!).
 
 \begin{question}
-  Can you sum an infinite number of terms to a finite value?
+  Can the sum of an infinite number of terms be a finite value?
   \begin{prompt}
     \begin{multipleChoice}
       \choice{no}
@@ -35,13 +36,13 @@ Let's start this off with a question (a little unfair I know!)
     \end{multipleChoice}
   \end{prompt}
 \end{question}
-As we will see the answer is ``sometimes.''  Believe it or not, you
+As we will see, the answer is ``sometimes.''  Believe it or not, you
 have been working with infinite sums of numbers (also called
 \textit{series}) for a long time. Consider the number
 \[
-\frac{1}{3} = 0.3333333333\dots
+\frac{1}{3} = 0.3333333333\dots .
 \]
-this is the infinite sum of the geometric sequence
+This is the infinite sum of the geometric sequence
 $(a_n)_{n=1}^\infty$ where $a_n = \frac{3}{10^{n}}$, as
 \begin{align*}
   \sum_{n=1}^\infty 3\cdot \frac{1}{10^{n}} &= 0.3 + 0.03+0.003+ 0.0003+ 0.00003+ \cdots\\
@@ -53,7 +54,7 @@ We can sum other geometric series to finite values as well. Consider
 \sum_{n=1}^\infty \left(\frac{1}{4}\right)^n =
 \frac{1}{4} + \left(\frac{1}{4}\right)^2 + \left(\frac{1}{4}\right)^3 + \left(\frac{1}{4}\right)^4 + \cdots 
 \]
-A very clever method of summing this sequence is as follows, consider
+A very clever method of summing this sequence is as follows. Consider
 an equilateral triangle with area $1$:
 \begin{image}[1in]
   \begin{tikzpicture}[scale=3,rounded corners=.5pt]      
@@ -138,13 +139,13 @@ where the area of the shaded triangles is our geometric series:
 \]
 The area is clearly finite (it is between $0$ and $1$!). What is the
 shaded area? Well, if you look at any ``row'' of the triangle, we've
-shaded in exactly $1/3$rd of the row. Hence we've shaded in $1/3$ of
+shaded in exactly one third of the row. Hence we've shaded in one third of
 the entire area, so we see
 \[
 \frac{1}{3}=\frac{1}{4} + \left(\frac{1}{4}\right)^2 + \left(\frac{1}{4}\right)^3 + \left(\frac{1}{4}\right)^4 + \cdots 
 \]
-While this is a very cool argument, it doesn't generalize well. Let me
-show you an argument that will apply to more settings:
+While this is a very cool argument, it doesn't generalize well. Let's consider
+ an argument that will apply to more settings.
 
 \begin{example}
   Explain why
@@ -152,11 +153,11 @@ show you an argument that will apply to more settings:
   \frac{1}{3}=\frac{1}{4} + \left(\frac{1}{4}\right)^2 + \left(\frac{1}{4}\right)^3 + \left(\frac{1}{4}\right)^4 + \cdots 
   \]
   \begin{explanation}
-    Here is the idea, ``name'' your sum $S$
+    Here is the idea: first, ``name'' your sum $S$.
     \[
     S = \frac{1}{4} + \left(\frac{1}{4}\right)^2 + \left(\frac{1}{4}\right)^3 + \left(\frac{1}{4}\right)^4 + \cdots 
     \]
-    Now multiply $S$ by $\frac{1}{4}$ and write this suggestively under $S$
+    Now, multiply $S$ by $\frac{1}{4}$ and write this suggestively under $S$.
     \begin{align*}
       S &= \frac{1}{4} + \left(\frac{1}{4}\right)^2 + \left(\frac{1}{4}\right)^3 + \left(\frac{1}{4}\right)^4 + \cdots\\
      \left(\frac{1}{4}\right)S &=   \left(\frac{1}{4}\right)^2 + \left(\frac{1}{4}\right)^3 + \left(\frac{1}{4}\right)^4 + \left(\frac{1}{4}\right)^5+ \cdots
@@ -174,24 +175,33 @@ show you an argument that will apply to more settings:
 This is a good method for understanding infinite sums of geometric
 sequences (assuming you know the sequence sums to a finite value).
 
-To really make this precise, we need some definitions. 
+To make this precise, we need some definitions. 
 \begin{definition}
-Let $(a_n)$ be a sequence.
+Let $(a_k)$ be a sequence.
 \begin{enumerate}
 \item The sum $\sum_{k=1}^\infty a_k$ is an \dfn{infinite series} (or,
   simply \dfn{series}).
-\item Let $S_n = \sum_{i=1}^n a_i$; the sequence $(S_n)$ is the
-  sequence of $n$th \dfn{partial sums} of $(a_n)$.
+\item Let $S_n = \sum_{k=1}^n a_k$; the sequence $(S_n)$ is the
+  sequence of $n$th \dfn{partial sums} of $(a_k)$.
 \item If $\lim_{n\to\infty} S_n = L$, we say the series
-  $\sum_{n=1}^\infty a_n$ \dfn{converges} to $L$, and we write
-  $\sum_{n=1}^\infty a_n = L$.
+  $\sum_{k=1}^\infty a_k$ \dfn{converges} to $L$, and we write
+  $\sum_{k=1}^\infty a_k = L$.
 \item If $\lim_{n\to\infty} S_n$ diverges, the series
   $\sum_{k=1}^\infty a_k$ \dfn{diverges}.
 \end{enumerate}
 \end{definition}
 
+Look back at the definition again. Previously, we've been using 
+notation like $(a_n)$ to define our sequences.  Suddenly, we've switched 
+the index to a $k$ instead of an $n$ in some places. This notation is to 
+help you keep in mind the differences between the two at work, here: $(a_k)$ and $(S_n)$.  The first 
+sequence gives us the terms of our series; we are not usually concerned 
+about its limit.  We do want to consider the limit of the sequence of 
+partial sums $(S_n)$, since this will give us the sum of the series.
+
 \begin{question}
-  Can you state what we showed above using our new terminology?
+  Using our new terminology, what is the behavior of the series we 
+  considered above?
   \begin{prompt}
     The series $\sum_{n=1}^\infty \left(\frac{1}{4}\right)^n$
     \wordChoice{\choice[correct]{converges}\choice{diverges}}, and
@@ -202,6 +212,11 @@ Let $(a_n)$ be a sequence.
 
 \section{Geometric series}
 
+\begin{definition}
+  A \dfn{geometric series} is a series of the form $\sum_{k=0}^\infty ar^k$
+  for some real numbers $a \ne 0$ and $r$.
+\end{definition}
+
 We started this section with two different geometric series that sum
 to the same value. One reason geometric series are important is that
 they have nice convergence properties.
@@ -210,7 +225,7 @@ they have nice convergence properties.
   Consider the geometric series $\sum_{k=0}^\infty r^k$. Compute the
   value of the $n$th partial sum.
   \begin{explanation}
-    Let's try to get a handle of what is going on by writing out the partial sums:
+    Let's try to get a feel for what is going on by writing out the first few partial sums.
     \begin{align*}
       S_1 &= r^0 \\
       S_2 &= r^0 + r^1\\
@@ -239,7 +254,7 @@ geometric series $a_n = r^n$ is
 \[
 S_n = \sum_{k=0}^{n-1} r^k= \frac{1 - r^n}{1-r}.
 \]
-Using this fact, we can prove a theorem:
+Using this fact, we can prove a theorem.
 \begin{theorem}\index{series!geometric}\index{geometric series}\index{geometric series!convergence}\index{geometric series!divergence}
   A geometric series
   \[
@@ -262,13 +277,13 @@ Using this fact, we can prove a theorem:
     so write with me:
     \begin{align*}
       \sum_{k= 0}^\infty r^k &= \lim_{n\to\infty}S_n \\
-      &= \lim_{n\to\infty}\frac{1 - r^n}{1-r}
+      &= \lim_{n\to\infty}\frac{1 - r^n}{1-r}.
     \end{align*}
-    if $-1<r<1$, then we have
+    If $-1<r<1$, then we have
     \[
-    \lim_{n\to\infty}\frac{1 - r^n}{1-r} = \frac{1}{1-r}
+    \lim_{n\to\infty}\frac{1 - r^n}{1-r} = \frac{1}{1-r},
     \]
-    otherwise the sequence diverges.
+    and otherwise the sequence diverges.
   \end{explanation}
 \end{theorem}
 
@@ -284,7 +299,7 @@ This concurs with our introductory example; while there we got a sum
 of $1/3$, we skipped the first term of $1$.
 
 \begin{warning}
-  You must pay close attention to how the series is indexed,
+  You must pay close attention to how the series is indexed, since
   \[
   \sum_{k=0}^n r^k \ne \sum_{k=1}^n r^k.
   \]
@@ -307,7 +322,7 @@ of $1/3$, we skipped the first term of $1$.
   \end{hint}
 \end{question}
 
-Let's use our new tools to compute some geometric series.
+Let's use our new tools to find the sums of some geometric series.
 
 \begin{example}
 If the series 
@@ -318,12 +333,12 @@ converges, find its sum.
 \begin{explanation}
 Since the common ratio between the terms of this series is
 $\answer[given]{3/4}$, we see that this series
-\wordChoice{\choice[correct]{converges}\choice{diverges}}. Write with me
+\wordChoice{\choice[correct]{converges}\choice{diverges}}. Write with me.
 \begin{align*}
   S &= \left(\frac{3}{4}\right)^{-2} + \left(\frac{3}{4}\right)^{-1} + \left(\frac{3}{4}\right)^{0} + \cdots\\
   \left(\frac{3}{4}\right) S &= \left(\frac{3}{4}\right)^{-1} + \left(\frac{3}{4}\right)^{0} + \left(\frac{3}{4}\right)^{1} + \cdots
 \end{align*}
-subtracting these two lines we find
+Subtracting these two lines we find
 \begin{align*}
   S -  \left(\frac{3}{4}\right) S  &= \left(\frac{3}{4}\right)^{-2}\\
   S\left(1-\frac{3}{4}\right) &= \left(\frac{3}{4}\right)^{-2}\\
@@ -344,12 +359,12 @@ converges, find its sum.
 \begin{explanation}
   Since the common ratio between the terms of this series is
 $\answer[given]{-1/2}$, we see that this series
-\wordChoice{\choice[correct]{converges}\choice{diverges}}. Write with me
+\wordChoice{\choice[correct]{converges}\choice{diverges}}. Write with me.
 \begin{align*}
   S &= \left(\frac{-1}{2}\right)^{8} + \left(\frac{-1}{2}\right)^{9} + \left(\frac{-1}{2}\right)^{10} + \cdots\\
   \left(\frac{-1}{2}\right) S &= \left(\frac{-1}{2}\right)^{9} + \left(\frac{-1}{2}\right)^{10} + \left(\frac{-1}{2}\right)^{11} + \cdots
 \end{align*}
-subtracting these two lines we find
+Subtracting these two lines we find
 \begin{align*}
   S -  \left(\frac{-1}{2}\right) S  &= \left(\frac{-1}{2}\right)^{8}\\
   S\left(1-\frac{-1}{2}\right) &= \left(\frac{-1}{2}\right)^{8}\\
@@ -408,7 +423,8 @@ series to find fractions equal to given decimals.
       N(1000-1) &= 9418.221\\
       N &= \frac{9418.221}{999}.
     \end{align*}
-    Hence our fraction will be
+    Multiplying the numerator and denominator of this fraction by $1000$, 
+     our fraction will be
     \[
     \frac{9418221}{999000}.
     \]
@@ -420,7 +436,7 @@ series to find fractions equal to given decimals.
 \index{series!telescoping}\index{telescoping series}
 
 Telescoping series are infinite sums that ``collapse'' to more
-manageable expressions.  Let's see an example
+manageable expressions.  Let's see an example.
 
 \begin{example}
   Evaluate the sum
@@ -428,7 +444,7 @@ manageable expressions.  Let's see an example
   \sum_{k=1}^\infty\left(\frac{1}{k}-\frac{1}{k+1}\right).
   \]
   \begin{explanation}
-It will help to write down some of the first few partial sums of this
+It will help to write down the first few partial sums of this
 series.
 \begin{image}
 \begin{tikzpicture}
@@ -455,7 +471,7 @@ terms, but rather just two:
 \[
 S_n = 1 - 1/(n+1).
 \]
-The example above gives us a moral: When possible seek a way to write
+The example above gives us a moral: when possible, seek a way to write
 an explicit formula for the $n$th partial sum $S_n$. This makes
 evaluating the limit $\lim_{n\to\infty} S_n$ much more
 approachable. We do so in the next example.
@@ -471,7 +487,7 @@ We can use partial fractions to write
   \[
   \frac2{n^2+2n} = \frac1n-\frac1{n+2}.
   \]  
-  Expressing the terms of $(S_n)$ is now more instructive:
+  Expressing the terms of $(S_n)$ is now more instructive.
   \begin{image}
     \begin{tikzpicture}
       \node at (0,0) {
@@ -515,8 +531,8 @@ S_2 &= \ln\left(2\right)+\ln\left(\frac32\right) \\
 S_3 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right) \\
 S_4 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)+\ln\left(\frac54\right) 
 \end{align*}
-At first, this does not seem helpful, but recall the logarithmic rule:
-$\ln(x)+\ln(y) = \ln (x\cdot y).$ Applying this to $S_4$ gives:
+At first, this does not seem helpful, but recall the logarithmic rule
+$\ln(x)+\ln(y) = \ln (x\cdot y)$. Applying this rule to $S_4$ gives:
 \begin{align*}
 S_4 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)+\ln\left(\frac54\right) \\
 &= \ln\left(\frac21\cdot\frac32\cdot\frac43\cdot\frac54\right)\\
@@ -554,6 +570,9 @@ before, we apply ``old'' mathematics to this new topic.
 \end{enumerate} 
 \end{theorem}
 
+Notice, of course, that we're working with convergent series in this 
+theorem.  The results don't necessarily hold if $\sum_{n=1}^\infty a_n$ 
+or $\sum_{n=1}^\infty b_n$ are divergent!
 
 
 

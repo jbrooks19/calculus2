@@ -14,9 +14,10 @@ If an infinite sum converges, then its terms must tend to zero.
 \maketitle
 
 
-As one contemplates the behavior of series, a few facts become clear:
+As one contemplates the behavior of series, a few facts become clear.
 In order to add an infinite list of nonzero numbers and get a finite
-result, ``most'' of those numbers must be ``very near'' $0$.
+result, ``most'' of those numbers must be ``very near'' $0$.  Think of 
+this in the opposite direction: what happens if you try to sum $\sum_{n=1}^\infty 2$?
 
 If a series diverges, it means that the sum of an infinite list of
 numbers is not finite (it may approach $\pm \infty$ or it may
@@ -31,7 +32,7 @@ oscillate), and:
   from anywhere in the series are removed.
 \end{itemize}
 
-These concepts are very important and lie at the heart of the next two
+These concepts are very important and lie at the heart of the next
 theorems.
 
 \begin{theorem}[Divergence test]
@@ -55,8 +56,8 @@ they do not, the series will not converge.
 \end{warning}
 
 The standard example of a sequence whose terms go to zero, and yet does
-not converge, is the Harmonic series, the Harmonic sequence,
-$(1/n)$, converges to $0$; the Harmonic Series,
+not converge, is the harmonic series. The Harmonic sequence,
+$(1/n)$, converges to $0$ while the Harmonic Series,
 \[
 \sum_{n=1}^\infty\frac{1}{n}\qquad\text{diverges.}
 \]
@@ -86,6 +87,10 @@ Which of the following statements are true?  Mark all that apply.
 	\choice{$\sum_{k=0}^\infty \frac{2k}{k - 5}$}
 \end{selectAll}
 \end{question}
+
+Restating this point again (because it is very important): passing the divergence test 
+means that a series has a chance to converge.  The divergence test cannot tell us 
+whether a series converges.
 
 
 \section{Some questions}
@@ -124,7 +129,7 @@ Which of the following statements are true?  Mark all that apply.
 
 
 \begin{question}
-  Suppose that $\seq{a_n}_{n \geq 1}$ and $a_n > 0$ for all $n \geq 1$.
+  Suppose that $\seq{a_n}_{n \geq 1}$ is a sequence with $a_n > 0$ for all $n \geq 1$.
   Let $S_n = \sum^n_{k=1} a_k$ and suppose $\lim_{n \to \infty} S_n =
   L$. Select all statements that must be true:
   \begin{selectAll}
@@ -139,6 +144,7 @@ Which of the following statements are true?  Mark all that apply.
   \end{selectAll}
 \end{question}
 
+It's a great idea at this point to stop and compare the previous two questions.
 
 
 

@@ -14,11 +14,11 @@ Infinite sums can be studied using improper integrals.
 \maketitle
 
 We have seen that we can graph a sequence as a collection of points in
-the plane.  For instance, conside the \dfn{harmonic sequence}, this is the sequence where $a_n = 1/n$:
+the plane.  For instance, consider the \dfn{harmonic sequence}, or the sequence where $a_n = 1/n$:
 \[
-1, \, \frac{1}{2}, \, \frac{1}{3}, \, \frac{1}{4}, \, \frac{1}{5}, \,\dots  
+1, \, \frac{1}{2}, \, \frac{1}{3}, \, \frac{1}{4}, \, \frac{1}{5}, \,\dots . 
 \]
-If we plot the harmonic sequence it looks like this:
+If we plot the harmonic sequence, it looks like this.
 \begin{image}
 \begin{tikzpicture}
 	\begin{axis}[
@@ -47,7 +47,8 @@ Is there a nice way to visualize the sum
 \[
 \sum_{k=1}^\infty \frac{1}{k}?
 \]
-One way to visualize the sum is to make rectangles!
+One way to visualize the sum is to make rectangles whose areas are equal to the terms 
+of the sequence.
 \begin{image}
 \begin{tikzpicture}
 	\begin{axis}[
@@ -82,12 +83,14 @@ One way to visualize the sum is to make rectangles!
         \end{axis}
 \end{tikzpicture}
 \end{image}
-The area above is \textbf{exactly} equal to the sum:
+The entire area above is \textbf{exactly} equal to the sum:
 \[
 \sum_{k=1}^\infty\frac{1}{k}
 \]
-This lets us visually compare the sum of an infinite series to the
-value of an improper integral.  For instance, if we add a plot of
+The previous image should remind you of a Riemann Sum, and for good reason. 
+This technique lets us visually compare the sum of an infinite series to the
+value of an improper integral, as long as we imagine that we can draw infinitely 
+many such rectangles.  For instance, if we add a plot of
 $1/x$ to our picture above
 \begin{image}
 \begin{tikzpicture}
@@ -127,7 +130,7 @@ we see that
 \[
 \int_1^\infty \frac{1}{x} \d x < \sum_{k=1}^\infty\frac{1}{k}.
 \]
-This leads us to an interesting observation:
+This leads us to an interesting observation.
 \begin{quote}
   Let $f$ be continuous, positive, and decreasing on $[1,\infty)$ with
     $a_k = f(k)$.  If $\int_1^\infty f(x) \d x$ diverges, so does
@@ -137,31 +140,31 @@ This leads us to an interesting observation:
 That's a pretty good observation, but we can do better. Consider the
 sequence $a_n = 1/n^2$:
 \[
-1, \, \frac{1}{4}, \, \frac{1}{9}, \, \frac{1}{16}, \, \frac{1}{25}, \,\dots  
+1, \, \frac{1}{4}, \, \frac{1}{9}, \, \frac{1}{16}, \, \frac{1}{25}, \,\dots  .
 \]
-Think about it If
+Think about it. If
 \[
 \sum_{k=1}^\infty a_k
 \]
 diverges, then so does
 \[
-\sum_{k=1}^\infty a_{k+1}
+\sum_{k=1}^\infty a_{k+1}.
 \]
-since is simply the first sum missing $a_1$ and no single number can
-be responsible for this sum diverging to infinity. This fact can be summed up int he following theorem:
+Why?  The second sum is simply the first sum missing $a_1$ and no single number can
+be responsible for this sum diverging to infinity. This fact can be summed up in the following theorem:
 
 \begin{theorem}[Infinite Nature of Series]
-The convergence or divergence remains unchanged by the addition or
+The convergence or divergence of a series remains unchanged by the addition or
 subtraction of any finite number of terms. That is:
-\begin{enumerate}
-\item A divergent series will remain divergent with the addition or
+\begin{itemize}
+\item a divergent series will remain divergent with the addition or
   subtraction of any finite number of terms.
-\item A convergent series will remain convergent with the addition or
+\item a convergent series will remain convergent with the addition or
   subtraction of any finite number of terms. (Of course, the
   \emph{sum} will likely change.)
-\end{enumerate}
+\end{itemize}
 \end{theorem}
-Back to the task at hand, let's graph $a_{k+1}$ with rectangles:
+Back to the task at hand! Let's graph $a_{k+1}$ using our rectangle technique.
 \begin{image}
 \begin{tikzpicture}
 	\begin{axis}[
@@ -196,11 +199,11 @@ Back to the task at hand, let's graph $a_{k+1}$ with rectangles:
         \end{axis}
 \end{tikzpicture}
 \end{image}
-The area above is \textbf{exactly} equal to the sum:
+The shaded area above is \textbf{exactly} equal to the sum
 \[
-\sum_{k=1}^\infty\frac{1}{(k+1)^2}
+\sum_{k=1}^\infty\frac{1}{(k+1)^2}.
 \]
-This lets us visually compare the sum of an infinite series to the
+We again visually compare the sum of an infinite series to the
 value of an improper integral.  For instance, if we add a plot of
 $1/x^2$ to our picture above
 \begin{image}
@@ -239,26 +242,31 @@ $1/x^2$ to our picture above
 \end{image}
 we see that
 \[
-\sum_{k=1}^\infty\frac{1}{k}.
+\sum_{k=1}^\infty\frac{1}{k^2}.
 <
-\int_1^\infty \frac{1}{x} \d x
+\int_1^\infty \frac{1}{x^2} \d x.
 \]
-This leads us to another interesting observation:
+This conclusion leads us to another interesting observation.
 \begin{quote}
   Let $f$ be continuous, positive, and decreasing on $[1,\infty)$ with
     $a_k = f(k)$.  If $\sum_{k=1}^\infty a_k$ diverges, so does
     $\int_1^\infty f(x) \d x$.
 \end{quote}
-This leads us to the \textit{integral test}:
+Together, these observations give us the \textit{integral test}:
 \begin{theorem}[Integral Test]
-  Let $f$ be continuous, positive, and decreasing on $[1,\infty)$.
-    with $a_k = f(k)$ Then either
+  Let $f$ be continuous, positive, and decreasing on $[1,\infty)$
+    with $a_k = f(k)$ for all $k > N$ for some index $N$. Then, either
     \[
     \sum_{k=1}^\infty a_k\text{ and }\int_1^\infty f(x) \d x
     \]
-    \textbf{both converge, or they both diverge}.  It is impossible
+    \textbf{both converge, or both diverge}.  It is impossible
     for one of them to diverge, and the other to converge.
 \end{theorem}
+
+Notice we've also included the observation that a finite number of terms 
+cannot affect the convergence or divergence of a series.  In particular, 
+our function $f$ can be different from our sequence for a 
+finite number of terms.  
 
 \begin{question}
   Does the harmonic series $\sum_{k=1}^\infty \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3}+ \dots$ converge or diverge?
@@ -281,7 +289,8 @@ This leads us to the \textit{integral test}:
 \end{question}
 
 Our last example is a ``theorem'' in some textbooks. We think it is
-just an application of the integral test.
+just an application of the integral test.  However, you'll want to be able 
+to apply this result to other examples!
 
 \begin{example}[$p$-test]\index{p-test@$p$-test}
   Explain why the sum of the ``$p$-series''
@@ -290,10 +299,13 @@ just an application of the integral test.
   \]
   converges if and only if
   \[
-  p \geq 1.
+  p > 1.
   \]
   \begin{explanation}
-    By the integral test,
+    First, recall that we have already dealt with the case that $p = 1$, since 
+    this case is exactly the harmonic series.  We have used the integral test 
+    to show that the harmonic series diverges.
+    Now, assume that $p \ne 1$.  By the integral test,
     \[
     \sum_1^\infty \frac{1}{n^p}
     \]
@@ -316,7 +328,7 @@ just an application of the integral test.
 \section{Estimating Series Using Improper Integrals}
 
 Another cool application of this graphical viewpoint on series
-involves estimating series.
+involves estimating the sum of a series.
 
 We cannot yet compute $\sum_{k=1}^\infty \frac{1}{k^2}$ exactly, and
 we will not learn how to do so in this course. 
@@ -328,6 +340,8 @@ where we can be sure that
 \[
 \sum_{k=1}^\infty \frac{1}{k^2}-\sum_{k=1}^N \frac{1}{k^2} < \frac{1}{100}.
 \]
+Again, we're looking for a number $N$ so that the difference between the actual 
+(but unknown) sum of the series and the $N$-th partial sum is less than $\frac{1}{100}$. 
 Now,
 \[
 \sum_{k=1}^\infty \frac{1}{k^2}- \sum_{k=1}^N \frac{1}{k^2} = \sum_{N+1}^\infty \frac{1}{k^2}.
@@ -336,7 +350,9 @@ Set $R_N$ to be
 \[
 R_N = \sum_{N+1}^\infty \frac{1}{k^2}.
 \]
-We can see from the graph where the red rectangles correspond to $R_N$
+This $R_N$ is often called the ``remainder'' or ``tail'' of the series, because it is what is 
+left over after we remove the $N$-th partial sum.  Consider the following graph, where the  
+rectangles correspond to the terms of $R_N$.
 \begin{image}
 \begin{tikzpicture}
 	\begin{axis}[
@@ -369,7 +385,7 @@ We can see from the graph where the red rectangles correspond to $R_N$
         \end{axis}
 \end{tikzpicture}
 \end{image}
-shifting these rectangles over one unit, we see
+Shifting these rectangles over one unit, we have the following.
 \begin{image}
 \begin{tikzpicture}
 	\begin{axis}[
@@ -404,11 +420,12 @@ shifting these rectangles over one unit, we see
         \end{axis}
 \end{tikzpicture}
 \end{image}
-and so we say
+Now we know
 \[
-R_N < \int_N^\infty \frac{1}{x^2} \d x 
+R_N < \int_N^\infty \frac{1}{x^2} \d x .
 \]
-So if we can find a whole number $N$ for which
+In other words, the remainder of the series must be less than the given integral.  
+So, if we can find a whole number $N$ for which
 \[
 \int_N^\infty \frac{1}{x^2} \d x < \frac{1}{100},
 \]
@@ -417,21 +434,21 @@ to within $\frac{1}{100}$.
 
 
 \begin{example}
-  What is the least natural number $N$ that will bring 
+  What is the least natural number $N$ for 
   \[
   \sum_{k=1}^N \frac{1}{k^2}
   \]
-  such that
+  so that
   \[
   \sum_{k=1}^\infty \frac{1}{k^2} - \sum_{k=1}^N \frac{1}{k^2} <
-  \frac{1}{100}
+  \frac{1}{100} ?
   \]
   \begin{explanation}
     From our work above, we see that we need to find $N$ such that
     \[
-    \int_N^\infty \frac{1}{x^2} \d x < \answer[given]{\frac{1}{100}}
+    \int_N^\infty \frac{1}{x^2} \d x < \answer[given]{\frac{1}{100}}.
     \]
-    write with me,
+    Write with me.
     \begin{align*}
       \int_N^\infty \frac{1}{x^2} \d x &< \frac{1}{100}\\
       \lim_{b \to \infty} \int_N^b \frac{1}{x^2} \d x &< \frac{1}{100}\\
@@ -447,13 +464,14 @@ to within $\frac{1}{100}$.
 This shows that if we sum $101$ terms of the series $\sum_{k=1}^\infty
 \frac{1}{k^2}$, we will get within $\frac{1}{100}$ of the true answer.
 
-It turns out this series actually converges to $\frac{\pi^2}{6}$
-(finding this uses advanced concepts like Fourier Analysis).  Using a
+  Using a
 computer to sum the first $101$ terms we get
 \[
-\sum_{k=1}^{101} \frac{1}{k^2} \approx 1.6350,
+\sum_{k=1}^{101} \frac{1}{k^2} \approx 1.6350.
 \]
-while $\frac{\pi^2}{6} \approx 1.6449$.  Their difference is just
+Using advanced concepts like Fourier Analysis, it turns out this series 
+actually converges to $\frac{\pi^2}{6}$, and we know that $\frac{\pi^2}{6} \approx 1.6449$.  
+The difference between our calculated value and the actual value is just
 barely less than $\frac{1}{100}$.
 
 \end{document}

@@ -37,7 +37,7 @@ argument, we have to begin by computing the area of a `lamp shade' or
   A \dfn{frustum} of a cone is a section of a cone bounded by two
   planes, where both planes are perpendicular to the height of the
   cone.
-  \begin{image}
+  \begin{image}[1in]
     \begin{tikzpicture}
       \draw[penColor,very thick,] (-1,0) arc (180:360:1cm and 0.5cm);
       \draw[penColor,very thick,] (-1,0) arc (180:0:1cm and 0.5cm);
@@ -57,7 +57,7 @@ the area of a frustum:
 
 \begin{theorem}
   The surface area of the frustum; meaning the lateral sides, not the top nor the bottom;
-  \begin{image}
+  \begin{image}[1in]
     \begin{tikzpicture}
       \draw[penColor,very thick,] (-1,0) arc (180:360:1cm and 0.5cm);
       \draw[penColor,very thick,] (-1,0) arc (180:0:1cm and 0.5cm);
@@ -85,7 +85,7 @@ the area of a frustum:
   \begin{explanation}
     We can think of a frustum as approximated by an arrangement of $n$
     congruent trapezoids:
-    \begin{image}
+    \begin{image}[1in]
       \begin{tikzpicture}
         
       \draw [penColor,very thick,domain=0:360, samples=11] 
@@ -108,21 +108,7 @@ the area of a frustum:
     \item $b_{n}$ denote the length of the bottom of each trapezoid,
     \end{itemize}
     then using basic geometry, we can show that each of the trapezoids
-    %% \begin{image}
-    %%   \begin{tikzpicture}
-    %%     \draw[penColor,very thick] (0,0) -- (1,2) -- (3,2) -- (4,0) -- (0,0);
-    %%     \draw[penColor,very thick,dashed] (3,0) -- (3,2);
-              
-    %%     \node [below] at (2,0) {$b$};
-    %%     \node [above] at (2,2) {$t$};
-    %%     \node [left] at (3,1) {$h$};
-    %%   \end{tikzpicture}
-    %% \end{image}
-    %% is given by
-    %% \[
-    %% A = h \cdot \frac{b+t}{2}.
-    %% \]
-    \begin{image}
+    \begin{image}[1in]
       \begin{tikzpicture}
         
         \draw [gray,domain=0:360, samples=11] 
@@ -226,7 +212,7 @@ the area of a frustum:
 Now we are ready to compute the area of a surface of revolution.
 
 \section{The area of a surface of revolution}
-\index{area!surface of revolution}
+\index{area of a surface of revolution}
 
 Let's consider a function $f$ with a continuous derivative, and the
 surface of revolution formed by this curve by rotating around the

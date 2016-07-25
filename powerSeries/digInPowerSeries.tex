@@ -28,6 +28,25 @@ be a series (an infinite sum) we call it a \textit{power series}.
   \dfn{center}.
 \end{definition}
 
+\begin{question}
+  Which of the following are power series functions?
+  \begin{selectAll}
+    \choice[correct]{$f(x) = 0$}
+    \choice[correct]{$f(x) = -9$}
+    \choice[correct]{$f(x) = 3x+1$}
+    \choice{$f(x) = x^{1/2}-x +8$}
+    \choice{$f(x) = -4x^{-3}+5x^{-1}+7-18x^2$}
+    \choice{$f(x) = x^{-3}+x^{-2}+x^{-1}+1+x+x^2+x^3 +\cdots$}
+    \choice{$f(x) = \frac{x^2 - 3x + 2}{x-2}$}
+    \choice[correct]{$f(x) = x^7-32x^6-\pi x^3+45/84$}
+    \choice[correct]{$f(x) = x^{10} + x^{20} + x^{30} + \cdots$}    
+  \end{selectAll}
+  \begin{hint}
+    Every polynomial is a power series.
+  \end{hint}
+\end{question}
+
+
 Here are four basic power series (centered at zero) that every
 mathematician knows:
 
@@ -436,9 +455,9 @@ multiplication, and exponentiation!
           $};
       \end{tikzpicture}
     \end{image}
-    So
+    So $2\sin(x)\cos(x)$
     \begin{align*}
-      2\sin(x)\cos(x) &= 2x + \left(\answer[given]{\frac{-2^3}{3!}}\right)x^3 + \left(\answer[given]{\frac{2^5}{5!}}\right)x^5+\left(\frac{-2^7}{7!}\right)x^7 +\cdots\\
+      &= 2x + \left(\answer[given]{\frac{-2^3}{3!}}\right)x^3 + \left(\answer[given]{\frac{2^5}{5!}}\right)x^5+\left(\frac{-2^7}{7!}\right)x^7 +\cdots\\
       &= (2x) -\frac{(2x)^3}{3!} + \frac{(2x)^5}{5!}-\frac{(2x)^7}{7!} +\cdots\\
       &= \sin(2x).
     \end{align*}
@@ -463,7 +482,7 @@ multiplication, and exponentiation!
   \end{explanation}
 \end{example}
 
-\begin{theorem}[Derivatives and Indefinite Integrals of Power Series]\index{integration!of power series}\index{derivative!power series}\index{power series!derivatives and integrals}
+\begin{theorem}[Derivatives and Indefinite Integrals of Power Series]\index{power series!derivatives and integrals}
   Let
   \[
   f(x) = \sum_{n=0}^\infty a_n(x-c)^n

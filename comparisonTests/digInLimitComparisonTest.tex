@@ -17,19 +17,19 @@ sequence of inequalities is difficult.  The \textit{limit comparison test}
 eliminates this part of the method.
 
 \begin{theorem}[The Limit Comparison Test]\index{limit comparison test}
-  Let $\sum^\infty a_k$ and $\sum^\infty b_k$ be series with positive
-  terms with
+  Let $\sum_{k=0}^\infty a_k$ and $\sum_{k=0}^\infty b_k$ be series with positive
+  terms and let
   \[
   \lim_{k \to \infty} \frac{a_k}{b_k} = L.
   \]
   \begin{itemize}
   \item If $0<L<\infty$ then either both series converge, or they both diverge.
-  \item If $L=0$ and $\sum^\infty b_k$ converges, then $\sum^\infty a_k$ converges.
-  \item If $L=\infty$ and $\sum^\infty b_k$ diverges, then $\sum^\infty a_k$ diverges.
+  \item If $L=0$ and $\sum b_k$ converges, then $\sum a_k$ converges.
+  \item If $L=\infty$ and $\sum b_k$ diverges, then $\sum a_k$ diverges.
   \end{itemize}
 \end{theorem}
 
-This should make sense.
+This theorem should make intuitive sense.
 \begin{itemize}
 \item If $0<L<\infty$ then we have $a_k \approx L \cdot b_k$ for large
   $k$, so the behavior of the respective series should be the same.
@@ -40,10 +40,10 @@ This should make sense.
 \end{itemize}
 
 The way we actually use this in practice still involves some
-creativity: We have to decide on a ``similar'' series which we know
-the convergence properties of.  However, unlike the Comparison test,
+creativity: we have to decide on a ``similar'' series for which we know
+the convergence properties.  However, unlike the comparison test,
 we can just mechanically take a limit of the ratio of our guess with
-our original series, instead of having to ``get your hands dirty''
+our original series, instead of having to ``get our hands dirty''
 with inequalities.
 
 \begin{example}
@@ -55,13 +55,13 @@ with inequalities.
     than the $p$-series with $p=2$. In the notation of the theorem,
     let
     \[
-    a_k = \frac{\ln(k)}{k^3}
+    a_k = \frac{\ln(k)}{k^3}.
     \]
-    we will use the limit comparison test with the series
+    We will use the limit comparison test with the series
     \[
-    \sum_{k=1}^\infty \frac{1}{k^2}
+    \sum_{k=1}^\infty \frac{1}{k^2},
     \]
-    so
+    so that
     \[
     b_k = \frac{1}{k^2}.
     \]
@@ -70,20 +70,21 @@ with inequalities.
     \lim_{k \to \infty} \frac{a_k}{b_k} &= \lim_{k \to \infty} \frac{\ln(k)}{k} \\
     &= 0
     \end{align*}
-    Since $\sum^\infty b_k$ is convergent by the
-    $p$-series test with $p=2$, then the Limit Comparison
+    Since $\sum_{k=1}^\infty b_k$ is convergent by the
+    $p$-series test with $p=2$, then the limit comparison
     test applies, and $\sum_{k=1}^\infty \frac{\ln(k)}{k^3}$
     must also converge.
   \end{explanation}
 \end{example}
 
 If the limit comparison test is easier to use than the comparison
-test, so why do we even have the comparison test?  The reason is that,
-sometimes the comparison test is more powerful.  The next example
-illustrates this.
+test, why do we even have the comparison test?  Sometimes, 
+the comparison test is actually more powerful.  The next example
+illustrates this idea.
 
 \begin{question}
-  Consider $\sum_{k=1}^\infty \frac{1+\sin(k)}{2^k}$.  What happens when you try to use a comparison with $\sum_{k=1}^\infty \frac{1}{2^k}$?
+  Consider $\sum_{k=1}^\infty \frac{1+\sin(k)}{2^k}$.  What happens 
+  when you try to use each of the comparison tests with $\sum_{k=1}^\infty \frac{1}{2^k}$?
   \begin{selectAll}
     \choice{The limit comparison test shows that the original series is convergent.}
     \choice{The limit comparison test shows that the original series is divergent.}
@@ -107,6 +108,11 @@ illustrates this.
     Thus the original series converges via the comparison test.
   \end{hint}
 \end{question}
+
+Let's pause another moment to consider the task of choosing a test to use 
+when analyzing a series for convergence or divergence.  Take a few minutes 
+to make a list of all the tests we know so far, and the best situations in which 
+to use each of them.
 
 
 \end{document}

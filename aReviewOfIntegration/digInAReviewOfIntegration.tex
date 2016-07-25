@@ -268,11 +268,11 @@ integrated by using substitution and trigonometric identities. These
 can sometimes be tedious, but the technique is straightforward. The
 basic idea in each case is to somehow take advantage of a
 trigonometric identity, usually the Pythagorean identity, or a
-half-angle formula:
-\begin{description}\index{Pythagorean identity}\index{half-angle formula}
+power-reduction formula:
+\begin{description}\index{Pythagorean identity}\index{power-reduction!formula}
 \item[Pythagorean Identity] $\cos^2(x) + \sin^2(x) = 1$
-\item[Half-Angle Formula] $\sin^2(x) = \frac{1-\cos(2x)}{2}$
-\item[Half-Angle Formula] $\cos^2(x)= \frac{1+\cos(2x)}{2}$
+\item[Cosine Power-Reduction] $\cos^2(x)= \frac{1+\cos(2x)}{2}$\index{cosine power-reduction}
+\item[Sine Power-Reduction] $\sin^2(x) = \frac{1-\cos(2x)}{2}$\index{sine power-reduction}
 \end{description}
 
 We'll work some examples to demonstrate how to use these formulas.
@@ -321,7 +321,7 @@ Let's see one more example with trigonometric functions:
       \int \frac{\sin(x) + \cos^2(x)}{\csc(x)} \d x &= \int \frac{\sin(x) + \cos^2(x)}{\frac{1}{\sin(x)}} \d x\\
       &= \int \sin^2(x) + \sin(x)\cos^2(x) \d x
     \end{align*}
-    if we use our half-angle formula above, we find
+    if we use our power-reduction formula above, we find
     \[
     \int \answer[given]{\frac{1-\cos(2x)}{2}}+ \sin(x)\cos^2(x) \d x
     \]

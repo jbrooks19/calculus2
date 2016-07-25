@@ -100,7 +100,7 @@ We also compute derivatives component-wise:
 \end{definition}
 
 \begin{question}
-  Let $\vec{f}(t) = \vector{\arctan{t},7^t, \sec(t^2)}$.
+  Let $\vec{f}(t) = \vector{\arctan(t),7^t, \sec(t^2)}$.
   Compute:
   \[
   \dd{t} \vec{f}(t)
@@ -119,8 +119,8 @@ We also have some (additional) derivative rules:
   \item $\dd{t} \left(\vec{f}(t) + \vec{g}(t) \right) = \vec{f}'(t) + \vec{g}'(t)$
   \item $\dd{t} c\vec{f}(t) = c\vec{f}'(t)$
   \item $\dd{t} s(t)\vec{f}(t) = s'(t)\vec{f}(t) + s(t)\vec{f}'(t)$
-  \item $\dd{t} \left(\vec{f}(t)\cdot \vec{g}(t)\right) = \vec{f}'(t)\cdot \vec{g}(t) + \vec{f}(t)\cdot\vec{g}'(t)$
-  \item $\dd{t} \left(\vec{f}(t)\times \vec{g}(t)\right) = \vec{f}'(t)\times \vec{g}(t) + \vec{f}(t)\times\vec{g}'(t)$
+  \item $\dd{t} \left(\vec{f}(t)\dotp \vec{g}(t)\right) = \vec{f}'(t)\dotp \vec{g}(t) + \vec{f}(t)\dotp\vec{g}'(t)$
+  \item $\dd{t} \left(\vec{f}(t)\cross \vec{g}(t)\right) = \vec{f}'(t)\cross \vec{g}(t) + \vec{f}(t)\cross\vec{g}'(t)$
   \item $\dd{t} \vec{f}(s(t)) = \vec{f}'(s(t))\cdot s'(t)$
   \end{itemize}
 \end{theorem}
@@ -142,7 +142,7 @@ interval $I$ containing $c$, where $\vec{f}'(c)\neq \vec{0}$.
   \]
 \item The \dfn{unit tangent vector} of $\vec{f}$ is given by
   \[
-  \frac{\vec{f}'(t)}{|\vec{f}'(t)|} = \frac{\vec{f}'(t)}{\sqrt{\vec{f}'(t)\cdot \vec{f}'(t)}}.
+  \frac{\vec{f}'(t)}{|\vec{f}'(t)|} = \frac{\vec{f}'(t)}{\sqrt{\vec{f}'(t)\dotp \vec{f}'(t)}}.
   \]
 \end{itemize}
 \end{definition}
@@ -191,11 +191,11 @@ Finally, we should point out that if a vector-valued function has constant lengt
 \begin{theorem}
   Let $\vec f(t)$ be a differentiable vector-valued function on an open interval $I$ of constant length. That is,
   \[
-  |\vec f(t)| = c \quad\Leftrightarrow\quad \vec f(t)\cdot \vec f(t) = c^2
+  |\vec f(t)| = c \quad\Leftrightarrow\quad \vec f(t)\dotp \vec f(t) = c^2
   \]
   for all $t$ in $I$. Then
   \[
-  \vec f(t)\cdot\vec{f}'(t) = 0
+  \vec f(t)\dotp\vec{f}'(t) = 0
   \]
   for all $t$ in $I$.
 \end{theorem}

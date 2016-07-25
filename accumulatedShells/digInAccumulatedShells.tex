@@ -160,12 +160,10 @@ get a thin ``shell'' or hollow-tube:
     
     \draw[penColor,very thick,fill=fillp] (axis cs:0,2.5) ellipse (150 and 20);
     \draw[penColor,very thick,fill=white] (axis cs:0,2.5) ellipse (120 and 10);
-
-
+    
    \draw[penColor, very thick,dashed, fill=fillp!50!white] (axis cs:0,0.25) ellipse (150 and 20);
    \draw[penColor, very thick, dashed,fill=white] (axis cs:0,0.25) ellipse (120 and 10);
-
-
+   
      \addplot [penColor,very thick,domain=-3:0] {-x+1};
    \addplot [penColor2,very thick,domain=-3:0] {(-x-1)^2};
    
@@ -183,6 +181,7 @@ get a thin ``shell'' or hollow-tube:
     \addplot [very thick, penColor4] plot coordinates {(-1.5,2.5) (-1.5,.25)};
     \addplot [very thick, penColor4, dashed] plot coordinates {(1.2,2.5) (1.2,.25)};
     \addplot [very thick, penColor4, dashed] plot coordinates {(-1.2,2.5) (-1.2,.25)};
+    \draw[very thick, penColor]   (axis cs: -1.5,.25) arc(180:360:150 and 20);
   \end{axis}
 \end{tikzpicture}
 %% \caption{A plot of $f(x) = x+1$ and $g(x) = (x-1)^2$ with the
@@ -326,6 +325,7 @@ Let's start by actually doing our motivating example above.
     \addplot [very thick, penColor4] plot coordinates {(-1.5,2.5) (-1.5,.25)};
     \addplot [very thick, penColor4, dashed] plot coordinates {(1.2,2.5) (1.2,.25)};
     \addplot [very thick, penColor4, dashed] plot coordinates {(-1.2,2.5) (-1.2,.25)};
+    \draw[very thick, penColor]   (axis cs: -1.5,.25) arc(180:360:150 and 20);
   \end{axis}
 \end{tikzpicture}
 %% \caption{A plot of $f(x) = x+1$ and $g(x) = (x-1)^2$ with the
@@ -412,7 +412,7 @@ shells. Let's see a picture:
 
     \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:.85,.65)--(axis cs:.85,.45);
     \node at (axis cs:.92,.55) {$\d y$};
-
+    \draw[very thick, penColor]   (axis cs: .36,.6) arc(90:270:7 and 60);
   \end{axis}
 \end{tikzpicture}
 \end{image}
@@ -519,7 +519,7 @@ Let's see a picture:
 
     \draw[decoration={brace,raise=.1cm},decorate,thin] (axis cs:.85,.65)--(axis cs:.85,.45);
     \node at (axis cs:.92,.55) {$\d y$};
-
+    \draw[very thick, penColor]   (axis cs: .36,.6) arc(90:270:7 and 160);
   \end{axis}
 \end{tikzpicture}
 \end{image}

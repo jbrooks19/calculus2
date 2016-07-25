@@ -43,7 +43,7 @@ via geometry. Check out a graph of $y= \sqrt{1-x^2}$:
 \end{image}
 
 \begin{question}
-  Using the graph above (and basic facts from geometry)
+  Using the graph above and basic facts from geometry, compute:
   \[
   \int_{-1}^1 \sqrt{1-x^2} \d x = \answer{\pi/2}
   \]
@@ -88,20 +88,21 @@ geometry to compute.
     \answer[given]{1-\sin^2(\theta)}$.  If we let
     \begin{align*}
       x &=\sin(\theta),\\
-      \d x &= \cos(\theta) \d\theta.
+      \d x &= \cos(\theta) \d\theta,
     \end{align*}
-    We are almost ready to substitute. We must also change our limits
-    of integration. Write with me
+    with $-\pi/2\le \theta\le \pi/2$ (the range of arcsine), we are
+    almost ready to substitute. We must also change our limits of
+    integration. Write with me
     \begin{align*}
-      x &= 1\\
-      \sin(\theta) &= 1\\
-      \theta &= \answer[given]{\pi/2}
+      x &= 1,\\
+      \sin(\theta) &= 1,\\
+      \theta &= \answer[given]{\pi/2},
     \end{align*}
     and
     \begin{align*}
-      x &= -1\\
-      \sin(\theta) &= -1\\
-      \theta &= \answer[given]{-\pi/2}
+      x &= -1,\\
+      \sin(\theta) &= -1,\\
+      \theta &= \answer[given]{-\pi/2}.
     \end{align*}
     Now we may transform our integral via
     \begin{image}
@@ -155,9 +156,10 @@ do this.
     \answer[given]{1-\sin^2(\theta)}$.  If we let
     \begin{align*}
       x &=\sin(\theta),\\
-      \d x &= \cos(\theta) \d\theta.
+      \d x &= \cos(\theta) \d\theta,
     \end{align*}
-    Now we may transform our integral via
+    where $-\pi/2\le\theta\le \pi/2$.  Now we may transform our
+    integral via
     \begin{image}
       \begin{tikzpicture}[scale=1,every node/.style={transform shape}]
         \draw [->, line width=10, penColor!10!background] (-1.2,0)--(.3,0);

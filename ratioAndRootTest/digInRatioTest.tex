@@ -29,7 +29,7 @@ the ratio of consecutive terms:
 \[
 \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \answer[given]{\frac{1}{2}}
 \]
-When $N$ is very large,
+When we choose a very large whole number $N$,
 \[
 a_{k+1} \approx a_k\cdot \frac{1}{2}
 \]
@@ -68,8 +68,8 @@ The above exploration motivates the following theorem.  The proof of
 this theorem is slightly beyond the scope of the course.
 
 \begin{theorem}[The Ratio Test]\index{ratio test}
-  Let $\sum^\infty a_k$ be an infinite series with positive terms.  If $r =
-  \lim_{k \to \infty} \frac{a_{k+1}}{a_k}$ exists, then
+  Let $\sum_{k=0}^\infty a_k$ be an infinite series with positive terms.  If $r =
+  \lim_{k \to \infty} \frac{a_{k+1}}{a_k}$ exists, then we can conclude the following.
   \begin{itemize}
   \item If $0 \leq r < 1$, then the series converges.
   \item If $r>1$, then the series diverges.
@@ -77,7 +77,7 @@ this theorem is slightly beyond the scope of the course.
   \end{itemize}
 \end{theorem}
 
-Note that this makes sense if you just use the heuristic that
+Note that this is easy to remember if you just use the following heuristic.
 \begin{quote}
   If the ratio test gives a limit of $r$, then the series is like a
   geometric series of ratio $r$.
@@ -101,11 +101,11 @@ the case $r=1$.
   \]
   Discuss the convergence of this series.
   \begin{explanation}
-    We will attempt to use the ratio test. Setting $a_k = \frac{2^k}{k!}$, write with me
+    We will attempt to use the ratio test. Setting $a_k = \frac{2^k}{k!}$. Write with me.
     \[
     \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \answer[given]{0}
     \]
-    so the ratio test
+    So, the ratio test
 	 \wordChoice{
 	   \choice[correct]{says the series is convergent}
 	   \choice{says the series is divergent}
@@ -134,16 +134,16 @@ the case $r=1$.
   Discuss the convergence of this series.
   \begin{explanation}
     We will attempt to use the ratio test. Setting $a_k =
-    \frac{1}{k}$, write with me
+    \frac{1}{k}$. Write with me.
     \[
     \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \answer[given]{1}
     \]
-    so the ratio test
+    So, the ratio test
 	 \wordChoice{
 	   \choice{says the series is convergent}
 	   \choice{says the series is divergent}
-	   \choice{gives no information in this case, but we know the series is convergent through some other method}
-	   \choice[correct]{gives no information in this case, but we know the series is divergent through some other method}}.
+	   \choice{gives no information in this case, but we know the series is convergent using the integral test}
+	   \choice[correct]{gives no information in this case, but we know the series is divergent using the integral test}}.
 	 \begin{hint}
            \begin{align*}
 	     \lim_{k \to \infty} \frac{a_{k+1}}{a_k} &= \lim_{k \to \infty} \frac{k+1}{k}\\
@@ -163,11 +163,11 @@ the case $r=1$.
   Discuss the convergence of this series.
   \begin{explanation}
     We will attempt to use the ratio test. Setting $a_k =
-    \frac{5^{1+k}}{k 2^{2k+1}}$, write with me
+    \frac{5^{1+k}}{k 2^{2k+1}}$.  Write with me.
     \[
     \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \answer[given]{\frac{5}{4}}
     \]
-    so the ratio test
+    So, the ratio test
     \wordChoice{
       \choice{says the series is convergent}
       \choice[correct]{says the series is divergent}
@@ -194,11 +194,11 @@ the case $r=1$.
   Discuss the convergence of this series.
   \begin{explanation}
     We will attempt to use the ratio test. Setting $a_k =
-    \frac{1}{k^2}$, write with me
+    \frac{1}{k^2}$. Write with me.
     \[ 
     \lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \answer[given]{1}	
     \]
-    so the ratio test
+    So, the ratio test
     \wordChoice{
       \choice{says the series is convergent}
       \choice{says the series is divergent}

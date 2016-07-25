@@ -37,15 +37,15 @@ and state that we are working in \textit{polar coordinates}.
     y = r\cdot \sin(\theta)
   \end{align*}
   meaning:
-  \begin{image}
-\begin{tikzpicture}
+  \begin{image}[2in]
+    \begin{tikzpicture}
 	\draw[thick,->] (0,0) node [below] {$O$} -- (3,0) node [below] {horizontal axis} ;
 	\filldraw (0,0) circle (1.5pt);
 	\filldraw [rotate=55] (2,0) circle (1.5pt);
 	\draw [thick,rotate=55] (0,0)-- node [rotate=55,pos=.5,above] {$r$} (2,0) node [above] {$P=(r,\theta)$};
 	\draw [->] (.75,0) arc(0:55:.75); 
 	\draw [rotate=27.5] (1,0) node {$\theta$};
-\end{tikzpicture}
+    \end{tikzpicture}
   \end{image}
   Coordinates of this type are called \dfn{polar coordinates}.
 \end{definition}
@@ -78,21 +78,15 @@ A =(1,\pi/4)\quad B=(1.5,\pi)\quad C = (2,-\pi/3)\quad D = (-1,\pi/4)
   It helps to use a ``polar grid'' to plot these points:
   \begin{image}
     \begin{tikzpicture}
-      \draw [thin,gray] (-3.1,0) -- (0,0);
-      \foreach \x in {1,2,3}
-	       {\draw[thin,gray] (0,0) circle (\x cm);
-	         \draw (\x,0) node [below right] {$\x$};
-	       }
-	       \foreach \x in {30,45,60,90,120,135,150}
-	                {\draw [rotate=\x,thin,gray] (-3.1,0) -- (3.1,0);
-	                }
-	                %% \filldraw [rotate=55] (2,0) circle (1.5pt);
-	                %% \draw [thick,rotate=55] (0,0)-- node [rotate=55,pos=.5,above] {$r$} (2,0) node [above] {$P=P(r,\theta)$};
-	                %% \draw [->] (.75,0) arc(0:55:.75); 
-	                %% \draw [rotate=27.5] (1,0) node {$\theta$};
-                        \draw[->,>=stealth] (-3.5,0)  -- (3.5,0) ;
-                        \draw[->,>=stealth] (0,-3.5)  -- (0,3.5) ;
-    \end{tikzpicture}					
+      \begin{polaraxis}[
+          xmin=0,xmax=360, ymin=0,ymax=3,
+          xtick={0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330,360},
+          xticklabels={$0$,$\frac{\pi}{6}$,$\frac{\pi}{4}$,$\frac{\pi}{3}$,$\frac{\pi}{2}$,$\frac{2\pi}{3}$,$\frac{3\pi}{4}$,$\frac{5\pi}{6}$,$\pi$,$\frac{7\pi}{6}$,$\frac{5\pi}{4}$,$\frac{4\pi}{3}$,$\frac{3\pi}{2}$,$\frac{5\pi}{3}$,$\frac{7\pi}{4}$,$\frac{11\pi}{6}$,$2\pi$},
+          ytick={.5,1,...,2.5},%yticklabels={},
+        ]
+        %\addplot+[draw=none, mark=none,penColor,domain=0:360,samples=100,smooth] {1};
+      \end{polaraxis}
+    \end{tikzpicture}
   \end{image}
   To place the point $A$, go out $1$ unit along the horizontal axis
   (putting you on the inner circle shown on the grid), then rotate
@@ -113,25 +107,18 @@ A =(1,\pi/4)\quad B=(1.5,\pi)\quad C = (2,-\pi/3)\quad D = (-1,\pi/4)
   \begin{hint}
     \begin{image}
       \begin{tikzpicture}
-        \draw [thin,gray] (-3.1,0) -- (0,0);
-        \foreach \x in {1,2,3}
-	         {\draw[thin,gray] (0,0) circle (\x cm);
-	           \draw (\x,0) node [below right] {$\x$};
-	         }
-	         \foreach \x in {30,45,60,90,120,135,150}
-	                  {\draw [rotate=\x,thin,gray] (-3.1,0) -- (3.1,0);
-	                  }
-	                  %% \filldraw [rotate=55] (2,0) circle (1.5pt);
-	                  %% \draw [thick,rotate=55] (0,0)-- node [rotate=55,pos=.5,above] {$r$} (2,0) node [above] {$P=P(r,\theta)$};
-	                  %% \draw [->] (.75,0) arc(0:55:.75); 
-	                  %% \draw [rotate=27.5] (1,0) node {$\theta$};
-                          \filldraw [rotate=45] (1,0) circle (1.5pt) node [above right] {$A$};
-                          \filldraw [rotate=180] (1.5,0) circle (1.5pt) node [above] {$B$};
-                          \filldraw [rotate=-60] (2,0) circle (1.5pt) node [below right] {$C$};
-                          \filldraw [rotate=45] (-1,0) circle (1.5pt) node [below] {$D$};
-                          \draw[->,>=stealth] (-3.5,0)  -- (3.5,0) ;
-                          \draw[->,>=stealth] (0,-3.5)  -- (0,3.5) ;
-      \end{tikzpicture}					
+        \begin{polaraxis}[
+            xmin=0,xmax=360, ymin=0,ymax=3,
+            xtick={0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330,360},
+            xticklabels={$0$,$\frac{\pi}{6}$,$\frac{\pi}{4}$,$\frac{\pi}{3}$,$\frac{\pi}{2}$,$\frac{2\pi}{3}$,$\frac{3\pi}{4}$,$\frac{5\pi}{6}$,$\pi$,$\frac{7\pi}{6}$,$\frac{5\pi}{4}$,$\frac{4\pi}{3}$,$\frac{3\pi}{2}$,$\frac{5\pi}{3}$,$\frac{7\pi}{4}$,$\frac{11\pi}{6}$,$2\pi$},
+            ytick={.5,1,...,2.5},%yticklabels={},
+          ]
+          \filldraw [rotate=45] (100,0) circle (1.5pt) node [above right] {$A$};
+          \filldraw [rotate=180] (150,0) circle (1.5pt) node [above] {$B$};
+          \filldraw [rotate=-60] (200,0) circle (1.5pt) node [below right] {$C$};
+          \filldraw [rotate=45] (-100,0) circle (1.5pt) node [below] {$D$};
+        \end{polaraxis}
+      \end{tikzpicture}
     \end{image}
   \end{hint}
 \end{explanation}

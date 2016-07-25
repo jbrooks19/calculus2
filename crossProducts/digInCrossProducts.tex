@@ -78,14 +78,14 @@ rectangle around the parallelogram:
   -- ++(-5,-1)   % then back along that vector
   -- cycle;      % and back to where you started
 
-  \draw[fill=fill5,draw=none] (5, 0) -- (7,0) -- (7,1) -- (5,1) -- cycle;
-  \draw[fill=fill5,draw=none] (0, 3) -- (2,3) -- (2,4) -- (0,4) -- cycle;
+  \draw[fill=fill5] (5, 0) -- (7,0) -- (7,1) -- (5,1) -- cycle;
+  \draw[fill=fill5] (0, 3) -- (2,3) -- (2,4) -- (0,4) -- cycle;
 
-  \draw[fill=fill3,draw=none] (0, 0) -- (5,0) -- (5,1) -- cycle;
-  \draw[fill=fill3,draw=none] (2,3) -- (7,4) -- (2,4) -- cycle;
+  \draw[fill=fill3] (0, 0) -- (5,0) -- (5,1) -- cycle;
+  \draw[fill=fill3] (2,3) -- (7,4) -- (2,4) -- cycle;
 
-  \draw[fill=fill4,draw=none] (0, 0) -- (2,3) -- (0,3) -- cycle;
-  \draw[fill=fill4,draw=none] (5, 1) -- (7,1) -- (7,4) -- cycle;
+  \draw[fill=fill4] (0, 0) -- (2,3) -- (0,3) -- cycle;
+  \draw[fill=fill4] (5, 1) -- (7,1) -- (7,4) -- cycle;
   
   \draw[->,ultra thick,penColor] (0,0) -- (5,1);
   \draw[->,ultra thick,penColor2] (0,0) -- (2,3);
@@ -140,7 +140,7 @@ and this is
 
 Typically when one computes the determinant of a $2\times 2$ matrix,
 we think of the terms as follows:
-\begin{image}
+\begin{image}[1in]
   \begin{tikzpicture}
     \matrix (mtrx)  [matrix of math nodes,ampersand replacement=\&,%column sep=.1em,
       nodes={text height=1ex,text width=2ex}]
@@ -186,7 +186,7 @@ we think of the terms as follows:
 We can remember this formula by writing the first two columns of the
 matrix to the right of the matrix, and using either of the two
 following patterns:
-
+\begin{image}
 \begin{tikzpicture}
 \node at (0,0) {$\det
 \begin{bmatrix}
@@ -235,7 +235,7 @@ following patterns:
       c_1 & c_2 & \bullet
     \end{bmatrix}$}};
 \end{tikzpicture}
-
+\end{image}
 
 Or:
 
@@ -313,12 +313,12 @@ Or:
 
 
 
-\section{Cross Products}
+\section{Cross products}
 
 \begin{definition}
   The \dfn{cross product} of two vectors is given by: 
   \[
-  \vector{a_1,a_2,a_3} \times \vector{b_1,b_2,b_3} = \det
+  \vector{a_1,a_2,a_3} \cross \vector{b_1,b_2,b_3} = \det
   \begin{bmatrix}
     \veci & \vecj & \veck\\
     a_1 & a_2 & a_3\\
@@ -328,7 +328,7 @@ Or:
 \end{definition}
 The first thing you should notice about the the cross product is that
 \[
-\mathbf{vector}\times \mathbf{vector} = \mathbf{vector}.
+\mathbf{vector}\cross \mathbf{vector} = \mathbf{vector}.
 \]
   When computing the cross product, the pattern:
 
@@ -390,7 +390,7 @@ simplification.
 \begin{question}
   Compute:
   \[
-  \vector{2,3,1} \times \vector{1,1,1}
+  \vector{2,3,1} \cross \vector{1,1,1}
   \begin{prompt}
     = \vector{\answer{2},\answer{-1},\answer{-1}}
   \end{prompt}
@@ -398,7 +398,7 @@ simplification.
   \begin{question}
   Compute:
   \[
-  \vector{1,1,1}\times\vector{2,3,1} 
+  \vector{1,1,1}\cross\vector{2,3,1} 
   \begin{prompt}
     = \vector{\answer{-2},\answer{1},\answer{1}}
   \end{prompt}
@@ -412,17 +412,17 @@ anticommutative:
 \begin{theorem}[The Cross Product is Anticommutative]
   Given two vectors $\vec{a}$ and $\vec{b}$ in $\R^3$
   \[
-  \vec{a} \times\vec{b} = -\vec{b}\times\vec{a}
+  \vec{a} \cross\vec{b} = -\vec{b}\cross\vec{a}
   \]
 \end{theorem}
 The anticommutative property of the cross product demonstrates that
-$\vec{a}\times\vec{b}$ and $\vec{b}\times\vec{a}$ differ only by a
+$\vec{a}\cross\vec{b}$ and $\vec{b}\cross\vec{a}$ differ only by a
 sign. These vectors have the same magnitude but point in the opposite
 direction. Now let's examine the cross product on famous unit vectors.
 \begin{question}
   Compute:
   \[
-  \veci \times \vecj
+  \veci \cross \vecj
   \begin{prompt}
     = \vector{\answer{0},\answer{0},\answer{1}}
   \end{prompt}
@@ -430,7 +430,7 @@ direction. Now let's examine the cross product on famous unit vectors.
   \begin{question}
   Compute:
   \[
-  \vecj\times\veck 
+  \vecj\cross\veck 
   \begin{prompt}
     = \vector{\answer{1},\answer{0},\answer{0}}
   \end{prompt}
@@ -438,7 +438,7 @@ direction. Now let's examine the cross product on famous unit vectors.
   \begin{question}
   Compute:
   \[
-  \veck\times\veci 
+  \veck\cross\veci 
   \begin{prompt}
     = \vector{\answer{0},\answer{1},\answer{0}}
   \end{prompt}
@@ -448,7 +448,7 @@ direction. Now let's examine the cross product on famous unit vectors.
 \end{question}
 
 One way to remember the relation between the cross product and the unit vectors $\veci$, $\vecj$, and $\veck$ is to use the diagram below:
-\begin{image}
+\begin{image}[1in]
 \begin{tikzpicture}
   \draw[ultra thick,->] (.94,-.34) arc (-20:80:1cm);
   \draw[ultra thick,->] (-.17,.98) arc (100:200:1cm);
@@ -465,26 +465,26 @@ next theorem (which could be verified through brute force
 computations).
 
 \begin{theorem}
-  The vector $\vec{a}\times\vec{b}$ is orthogonal to both $\vec{a}$
+  The vector $\vec{a}\cross\vec{b}$ is orthogonal to both $\vec{a}$
   and $\vec{b}$.
 \end{theorem}
 
 When seeking a vector perpendicular to both $\vec a$ and $\vec b$, we
 essentially have two directions to choose from, one in the direction
-of $\vec{a}\times\vec{b}$ and one in the direction of
-$\vec{b}\times\vec{a}$.  The direction of the cross product is given
+of $\vec{a}\cross\vec{b}$ and one in the direction of
+$\vec{b}\cross\vec{a}$.  The direction of the cross product is given
 by the \textit{right hand rule}.  Given $\vec{a}$ and $\vec{b}$ in
 $\R^3$ with the same initial point, point the index finger of your
 right hand in the direction of $\vec{a}$ and let your middle finger
 point in the direction of $\vec{b}$ (much as we did when establishing
 the right hand rule for the 3-dimensional coordinate system). Your
 thumb will naturally extend in the direction of
-$\vec{a}\times\vec{b}$.  If you switch, and point the index finder in
+$\vec{a}\cross\vec{b}$.  If you switch, and point the index finder in
 the direction of $\vec{b}$ and the middle finger in the direction of
 $\vec{a}$, your thumb will now point in the opposite direction,
 allowing you to ``visualize'' the anticommutative property of the
 cross product.
-\begin{image}
+\begin{image}[2in]
   %% Based on: https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg
   %% Which was based on: https://commons.wikimedia.org/wiki/File:Right_hand_cross_product.png
   %% Which was based on: https://commons.wikimedia.org/wiki/File:LeftHandOutline.png
@@ -585,7 +585,7 @@ cross product.
 \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
   (89.7117,303.4817) node[above right] (text4208) {\scalebox{4}{$\vec{b}$}};
 \path[fill=black,line join=miter,line cap=butt,line width=0.800pt]
-  (364.9268,59.0600) node[above right] (text4212) {\scalebox{4}{$\vec{a}\times\vec{b}$}};
+  (364.9268,59.0600) node[above right] (text4212) {\scalebox{4}{$\vec{a}\cross\vec{b}$}};
 \end{tikzpicture}
 \end{image}
 
@@ -600,7 +600,7 @@ cross product.
       \node[below right,penColor2] at (1,1.5) {$\vec{b}$}; %% <c,d>
     \end{tikzpicture}
   \end{image}
-  Does $\vec{a}\times\vec{b}$ point toward you or away from you?
+  Does $\vec{a}\cross\vec{b}$ point toward you or away from you?
   \begin{prompt}
     \begin{multipleChoice}
     \choice[correct]{toward me}
@@ -621,7 +621,7 @@ an identity:
 \begin{theorem}[Lagrange's Idenitity]\index{Lagrange's identity}
   Given two vectors $\vec{a}$ and $\vec{b}$,
   \[
-  |\vec{a}\times\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2.
+  |\vec{a}\cross\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2.
   \]
   \begin{explanation}
     Set $\vec{a}=\vector{a_1,a_2,a_3}$ and
@@ -637,14 +637,14 @@ an identity:
 \begin{theorem}[Geometric Interpretation of the Cross Product]\index{cross product}
   For any two vectors $\vec{a}$ and $\vec{b}$,
   \[
-  |\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin(\theta)
+  |\vec{a} \cross \vec{b}| = |\vec{a}||\vec{b}|\sin(\theta)
   \]
   where $0\le \theta\le\pi$ is the angle between $\vec{a}$ and
   $\vec{b}$.
   \begin{explanation}
     By Lagrange's identity, we have that
     \[
-    |\vec{a}\times\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2.
+    |\vec{a}\cross\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2.
     \]
     However, we also know that
     \[
@@ -652,12 +652,12 @@ an identity:
     \]
     and so, write with me:
     \begin{align*}
-      |\vec{a}\times\vec{b}|^2 &= |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2\\
+      |\vec{a}\cross\vec{b}|^2 &= |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2\\
       &= |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}|^2 |\vec{b}|^2\cos^2(\theta)\\
       &= |\vec{a}|^2 |\vec{b}|^2(1 - \cos^2(\theta))\\
       &= |\vec{a}|^2 |\vec{b}|^2\sin^2(\theta).
     \end{align*}
-    Hence $|\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin(\theta)$.
+    Hence $|\vec{a} \cross \vec{b}| = |\vec{a}||\vec{b}|\sin(\theta)$.
   \end{explanation}
 \end{theorem}
 
@@ -698,11 +698,11 @@ product and geometry:
 \end{axis}
 \end{tikzpicture}
   \end{image}
-  $|\vec{a}\times\vec{b}|$ computes the area of the parallelogram
+  $|\vec{a}\cross\vec{b}|$ computes the area of the parallelogram
   spanned by $\vec{a}$ and $\vec{b}$.
   \begin{explanation}
     It is a fact from geometry that the area of a parallelogram
-    \begin{image}
+    \begin{image}[2in]
       \begin{tikzpicture}
 	\draw (0,0) -- node [below,pos=.5]  {$b$} (2,0) -- (3,1.5) -- (1,1.5) -- (0,0);
 	\draw [dashed] (1,1.5) -- (1,0) node [pos=.5,right] {$h$};
@@ -716,23 +716,25 @@ product and geometry:
     where $b$ is the length of the base and $h$ is the height of the
     parallelogram. Two vectors $\vec{a}$ and $\vec{b}$ define a
     parallelogram when drawn from the same initial point,
-    \begin{image}
+    \begin{image}[2in]
       \begin{tikzpicture}[thick,scale=1.25,>=stealth]
-	\draw [->, ultra thick,penColor2](0,0) -- (2,0);
+        \draw (.8,0) -- (.8,.2) -- (1,.2);
+        \draw (.25,0) arc (0:56:.25);
+
+        \draw [->, ultra thick,penColor2](0,0) -- (2,0);
         \draw [->, ultra thick,dashed,penColor2] (1,1.5) -- (3,1.5);
 	\draw (.3,.175) node {\scriptsize $\theta$};
 	\draw [->, ultra thick,penColor](0,0) -- (1,1.5);
         \draw [->, ultra thick,penColor,dashed](2,0) -- (3,1.5);
 	\draw [dashed] (1,1.5) -- (1,0) node [pos=.5,right] {\scriptsize$h$};
-	\draw (.8,0) -- (.8,.2) -- (1,.2);
-        \node[left,penColor] at (.5,.75) {$\vec a$};
+	\node[left,penColor] at (.5,.75) {$\vec a$};
         \node[below,penColor2] at (1,0) {$\vec b$};
       \end{tikzpicture}
     \end{image}
     Trigonometry tells us that $h = |\vec{a}| \sin(\theta)$, hence the
     area of the parallelogram is
     \[
-    A = |\vec{a}||\vec{b}|\sin(\theta) = |\vec{a}\times\vec{b}|,
+    A = |\vec{a}||\vec{b}|\sin(\theta) = |\vec{a}\cross\vec{b}|,
     \]
   \end{explanation}
 \end{theorem}
@@ -762,7 +764,7 @@ product and geometry:
   If $\vec{a}$ and $\vec{b}$ are two nonzero vectors, and $\theta$ is
   the angle between them,
   \[
-  \vec{a}\times \vec{b} = 0 \text{ if and only if $\theta=
+  \vec{a}\cross \vec{b} = 0 \text{ if and only if $\theta=
   0$ or $\theta=\pi$}.
   \]
 \end{theorem}
@@ -794,7 +796,7 @@ occur.
   The torque $\vec{t}$ obtained by applying a force $\vec{F}$ to a
   lever arm with position vector $\vec{r}$ is given by
   \[
-  \vec{t} = \vec{r} \times \vec{F} 
+  \vec{t} = \vec{r} \cross \vec{F} 
   \]
 \end{definition}
 
@@ -816,10 +818,11 @@ occur.
           every axis y label/.style={at=(current axis.above origin),anchor=south},
           every axis x label/.style={at=(current axis.right of origin),anchor=west},
         ]
+        \draw (axis cs:1.13,2.27) arc (63.5:116.5:.3cm);
         \addplot[very thick,penColor,->] plot coordinates {(0,0) (1,2)};
         \addplot[very thick,penColor2,->] plot coordinates {(1,2) (0.5,3)};
         \addplot[very thick,penColor, dashed] plot coordinates {(1,2) (2,4)};
-        \node at (axis cs:1, 2.6) [textColor] {$\frac{\pi}{3}$};
+        \node at (axis cs:1, 2.6) [textColor] {\scriptsize$\frac{\pi}{3}$};
         \node at (axis cs:0.6, 0.7) [penColor] {$\vec{r}$};
         \node at (axis cs:0.6, 2.4) [penColor2] {$\vec{F}$};
       \end{axis}
@@ -847,7 +850,7 @@ a force.  If the charge is $q$, the velocity of the particle is
 $\vec{v}$, and the magnetic field is $\vec{B}$, then the force is
 given by
 \[
-\vec{F} = q\vec{v} \times \vec{B}
+\vec{F} = q\vec{v} \cross \vec{B}
 \]
 
 \begin{question}
@@ -871,12 +874,12 @@ Below, we summarize some rules for working with cross products:
 \begin{theorem}  The following are true for all scalars $s$ and $t$,  and vectors
   $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $\R^3$:
   \begin{description}
-  \item[Anticommutativty:] $\vec{v} \times \vec{w}  = -\vec{w} \times \vec{v}$.
-  \item[Right-distributive:] $(\vec{v}+\vec{w}) \times \vec{u} = \vec{v} \times \vec{u}+\vec{w} \times \vec{u}$.
-  \item[Left-distributive:] $\vec{u} \times (\vec{v} +\vec{w}) = \vec{u} \times \vec{v}+\vec{u}\times\vec{w}$.
-  \item[Respects scalar multiplication:] $s\vec{v} \times t\vec{w} = st \vec{v} \times \vec{w}$.
-  \item[Relation to parallel vectors:] $\vec{v} \times \vec{v} = \vec{0}$
-  \item[Orientation:] $\veci \times \vecj = \veck$, $\vecj \times \veck = \veci$, and $\veck \times \veci = \vecj$. 
+  \item[Anticommutativty:] $\vec{v} \cross \vec{w}  = -\vec{w} \cross \vec{v}$.
+  \item[Left-distributive:] $\vec{u} \cross (\vec{v} +\vec{w}) = \vec{u} \cross \vec{v}+\vec{u}\cross\vec{w}$.
+  \item[Right-distributive:] $(\vec{v}+\vec{w}) \cross \vec{u} = \vec{v} \cross \vec{u}+\vec{w} \cross \vec{u}$.
+  \item[Respects scalar multiplication:] $s\vec{v} \cross t\vec{w} = st \vec{v} \cross \vec{w}$.
+  \item[Relation to parallel vectors:] $\vec{v} \cross \vec{v} = \vec{0}$
+  \item[Orientation:] $\veci \cross \vecj = \veck$, $\vecj \cross \veck = \veci$, and $\veck \cross \veci = \vecj$. 
   \end{description}
   Moreover, these properties determine the cross product uniquely.
 \end{theorem}

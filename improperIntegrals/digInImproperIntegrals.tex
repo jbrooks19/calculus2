@@ -53,7 +53,7 @@ conditions do not hold. Such integrals are called \textbf{improper
     \choice[correct]{$\int_0^1 \ln(x) \d x$}
     \choice{$\int_0^1 x\ln(x) \d x$}
     \choice[correct]{$\int_{-\infty}^{\infty} \sin(x) \d x$}
-    \choice[correct]{$\int_{\frac{3\pi}{2}}^{\frac{3\pi}{2}} \tan(x) \d x$}
+    \choice[correct]{$\int_{\frac{-\pi}{2}}^{\frac{\pi}{2}} \tan(x) \d x$}
   \end{selectAll}
 \end{question}
 
@@ -381,29 +381,33 @@ something which is ``effectively'' infinite in some way (really, really
 large).
 
 \begin{example}
-  Given two objects of mass $A$ and $B$ in kilograms, the force of
-  gravity acting between them at a distance of $x$ meters is
+  How much work is required to move an $A\unit{kg}$ object from the
+  surface of the Earth out to a distance where the gravitation force
+  between the object and the Earth can be disregarded?
+
+  As a gesture of friendship, we will tell you the following facts:
+  The force of gravity between two objects of mass $A$ and $B$ in
+  kilograms at a distance of $x$ meters is given by
   \[
-  F(x) = G\cdot \frac{AB}{x^2},
+  F(x) = G\cdot \frac{A\cdot B}{x^2},
   \]
-  where $G$ is the gravitational constant.  About much work is done by
-  moving these objects from a distance of $1 \unit{m}$ to a distance
-  far enough away that the force of gravity acting on them can be
-  disregarded?
+  where $G$ is the gravitational constant. 
   \begin{explanation}
-    This problem Here we are accumulating large forces over
-    infinitesimal distances. Hence
+    To start, we will work in terms of $A$, $B$, and $G$. In this
+    problem we are accumulating large forces over infinitesimal
+    distances. Hence
     \begin{align*}
       \d W &= F \d x\\
-      &= \answer[given]{G\cdot \frac{AB}{x^2}} \d x
+      &= \answer[given]{G\cdot \frac{A\cdot B}{x^2}} \d x
     \end{align*}
-    We can approximate ``really, really far away'' with ``infinitely far away''. Write with me,
+    We can approximate ``really, really far away'' with ``infinitely
+    far away''. Write with me,
     \begin{align*}
-      \textrm{Work} &= \int_1^\infty F \d x\\
-      &= \int_1^\infty G\frac{AB}{x^2} \d x\\
-      &= GAB \lim_{\answer[given]{b} \to \infty} \eval{\answer[given]{-\frac{1}{x}}}_1^b\\
-      &=GAB \lim_{b \to \infty} \left(\answer[given]{1 - \frac{1}{b}}\right)\\
-      &=\answer[given]{GAB}.
+      \mathrm{Work} &= \int_1^\infty F \d x\\
+      &= \int_1^\infty G\frac{A\cdot B}{x^2} \d x\\
+      &= G\cdot A\cdot B \lim_{\answer[given]{b} \to \infty} \eval{\answer[given]{-\frac{1}{x}}}_1^b\\
+      &=G\cdot A\cdot B \lim_{b \to \infty} \left(\answer[given]{1 - \frac{1}{b}}\right)\\
+      &=\answer[given]{G\cdot A\cdot B}.
     \end{align*}
   \end{explanation}
 \end{example}

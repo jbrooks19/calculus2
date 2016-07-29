@@ -19,7 +19,8 @@ All of the series convergence tests we have used require that the
 underlying sequence $\seq{a_n}$ be a positive sequence. We can
 actually relax this and state that there must be an $N>0$ such that
 $a_n>0$ for all $n>N$; that is, $\seq{a_n}$ is positive for all but a
-finite number of values of $n$. In this section we explore series
+finite number of values of $n$.  We've also stated this by saying that 
+the tail of the sequence must have positive terms. In this section we explore series
 whose summation includes negative terms.
 
 
@@ -36,20 +37,23 @@ a series of either the form
 \]
 \end{definition}
 
-Recall the terms of harmonic series come from the harmonic sequence
+In essence, the signs of the terms of $\seq{a_n}$ alternate between 
+positive and negative.
+
+Recall that the terms of the harmonic series come from the harmonic sequence
 $\seq{a_n} = \seq{1/n}$. An important alternating series is the
 \dfn{alternating harmonic series}:
 \[
 \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} = 1-\frac12+\frac13-\frac14+\frac15-\frac16+\cdots
 \]
 
-Geometric series can also be alternating series when $r<0$. For
+Geometric series are also alternating series when $r<0$. For
 instance, if $r=-1/2$, the geometric series is
 \[
 \sum_{n=0}^\infty \left(\frac{-1}{2}\right)^n = 1-\frac12+\frac14-\frac18+\frac1{16}-\frac1{32}+\cdots
 \]
 
-We know that geometric series converge when $|r|<1$ and gives the sum:
+We know that geometric series converge when $|r|<1$ and have the sum:
 \[
 \sum_{n=0}^\infty r^n = \frac1{1-r}.
 \]
@@ -87,7 +91,7 @@ converge.
 %% of $S_n$ converge to the same common limit $L$, the sum of the series.
 
 \begin{question}
-  Does the alternating series test apply to this series
+  Does the alternating series test apply to the series
   \[
   \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} ?
   \]
@@ -109,7 +113,7 @@ converge.
     \end{feedback}
   \end{prompt}
   \begin{question}
-    Does the alternating series test apply to this series
+    Does the alternating series test apply to the series
     \[
     \sum_{n=1}^\infty \frac{(-1)^n\ln n}{n}?
     \]
@@ -127,7 +131,7 @@ converge.
         the sequence is increasing for at least the first $3$ terms.
       
         However, we do not ``give-up'' and immediately conclude that we
-        cannot apply the Alternating Series Test. Rather, consider the
+        cannot apply the alternating series test. Rather, consider the
         long term behavior of $\seq{a_n}$. Treating $a_n=a(n)$ as a
         continuous function of $n$ defined on $(1,\infty)$, we can take
         its derivative:
@@ -147,7 +151,7 @@ converge.
       \end{feedback}
     \end{prompt}
     \begin{question}
-      Does the alternating series test apply to this series
+      Does the alternating series test apply to the series
       \[
       \sum_{n=1}^\infty (-1)^{n+1}\frac{|\sin n|}{n^2}?
       \]
@@ -186,8 +190,8 @@ us a powerful tool when approximating the sum of a convergent series.
 
 \begin{theorem}[Alternating Series Approximation]\index{alternating approximation theorem}
 Let $\seq{a_n}$ be a sequence that satisfies the hypotheses of the
-alternating series test, and let $S_n$ be the $n$th partial sums and
-sum and let
+alternating series test, let $S_n$ be the $n$th partial
+sum, and let
 \[
 L = \sum_{n=1}^\infty (-1)^{n}a_n\qquad\text{or}\qquad L=\sum_{n=1}^\infty (-1)^{n+1}a_n.
 \]
@@ -200,12 +204,33 @@ In this case, $R_n=L-S_n$ is called the $n$th \dfn{remainder} of the
 series.
 \end{theorem}
 
-Let's see an example:
+Here is the basic idea behind this theorem.  Say we have an alternating sequence, 
+$\seq{a_n}$.  Let's assume the first term is positive, so the second is negative, and 
+so on.  We add the first two numbers and get some number $S_2$.  Now $S_2$ is 
+smaller than $S_1 = a_1$, because we subtracted something from $a_1$.  Next, we 
+add on the third term, $a_3$, to get the partial sum $S_3$.  This $S_3$ is bigger than 
+$S_2$, because the sequence is alternating, but is smaller than $S_1$, because the
+sequence is decreasing.
+
+If we know the series converges to some $L$, we can see that we must be bouncing 
+back and forth around $L$ as we add and subtract terms.  At one point, 
+$S_n$ is larger than $L$, and then subtracting off the next term makes the partial sum 
+smaller than $L$.  In other words, the 
+true limit $L$ must be between $S_n$ and $S_{n+1}$.  Imagine plotting $\seq{a_n}$, 
+$\seq{S_n}$, and $L$ on a number line.  (Or, try it yourself with the alternating harmonic 
+series!)  can be no further from $S_n$ than whatever the next term in the sequence 
+is.  How do we get from $S_n$ to $S_{n+1}$?  By adding (or subtracting) $a_{n+1}$, which 
+takes us back ``across'' $L$ again.  In other words, the distance between $L$ and $S_n$ can 
+be no more than $a_{n+1}$.
+
+See if you can use these same ideas to prove the alternating series test!
+
+Let's see an example of approximating an alternating series.
 
 \begin{example}
 Approximate the sum of the alternating harmonic series with an error less than $10^{-2}$.
 \begin{explanation}
-  Look at the $(n+1)$th term:
+  Look at the $(n+1)$th term.
 	\begin{align*}
 	\frac{1}{n+1} &< 10^{-2}\\
 	n+1&> 100\\
@@ -217,10 +242,10 @@ Approximate the sum of the alternating harmonic series with an error less than $
         \]
         We will see later that the true value of this series is $\ln(2)$. Comparing
         \begin{align*}
-          \ln(2) &= 0.69314718\dots\\
+          \ln(2) &= 0.69314718\dots \qquad \text{and}\\
           S_{99} &= 0.69849462\dots
         \end{align*}
-        and hence we have our desired accuracy.
+         we have our desired accuracy.
 \end{explanation}
 \end{example}
 
@@ -242,8 +267,8 @@ diverges, yet the alternating harmonic series,
 \[
 \sum_{n=1}^\infty (-1)^{n+1}\frac1n,
 \]
-converges. The notion that alternating the signs of the terms in a
-series can make a series converge leads us to the following
+converges. The notion that simply alternating the signs of the terms in a
+series can change a series from divergent to convergent leads us to the following
 definitions.
 
 \begin{definition}\index{absolutley convergent}\index{conditionally convergent}\hfil
@@ -254,15 +279,15 @@ definitions.
 \end{definition}
 
 Note, in the definition above, $\sum_{n=1}^\infty a_n$ is not
-necessarily an alternating series; it just may have some negative
+necessarily an alternating series; it may just have some negative
 terms.
 
 \begin{question}
-  Does the following series
+  Does the series
   \[
   \sum_{n=1}^\infty (-1)^n\frac{n+3}{n^2+2n+5}
   \]
-  converges absolutely, conditionally, or diverge?
+  converge absolutely, converge conditionally, or diverge?
   \begin{prompt}
     \begin{multipleChoice}
       \choice[correct]{The series converges conditionally.}
@@ -285,11 +310,11 @@ terms.
     \end{feedback}
   \end{prompt}
   \begin{question}
-    Does the following series
+    Does the series
     \[
     \sum_{n=1}^\infty (-1)^n\frac{n^2+2n+5}{2^n}
     \]
-    converges absolutely, conditionally, or diverge?
+    converge absolutely, converge conditionally, or diverge?
     \begin{prompt}
       \begin{multipleChoice}
         \choice{The series converges conditionally.}
@@ -309,11 +334,11 @@ terms.
       \end{feedback}
     \end{prompt}
     \begin{question}
-      Does the following series
+      Does the series
       \[
       \sum_{n=3}^\infty (-1)^n\frac{3n-3}{5n-10}
       \]
-      converges absolutely, conditionally, or diverge?
+      converge absolutely, converge conditionally, or diverge?
       \begin{prompt}
         \begin{multipleChoice}
           \choice{The series converges conditionally.}
@@ -345,7 +370,7 @@ terms.
 \end{question}
 
 Knowing that a series converges absolutely allows us to make two
-important statements, given in the following theorem. The first is
+important statements. The first, given in the following theorem, is
 that absolute convergence is ``stronger'' than regular
 convergence. That is, just because
 \[
@@ -367,7 +392,7 @@ given also converges.
 
 The second statement relates to \dfn{rearrangements} of series. When
 dealing with a finite set of numbers, the sum of the numbers does not
-depend on the order which they are added. (So $1+2+3 = 3+1+2$.) One
+depend on the order in which they are added. (So $1+2+3 = 3+1+2$.) One
 may be surprised to find out that when dealing with an infinite set of
 numbers, the same statement does not always hold true: some infinite
 lists of numbers may be rearranged in different orders to achieve
@@ -384,8 +409,8 @@ sum.
   \]
 \end{theorem}
 
-The theorem states that rearranging the terms of an absolutely
-convergent series does not affect its sum. This implies that perhaps
+This theorem states that rearranging the terms of an absolutely
+convergent series does not affect its sum. Making such a statement implies that perhaps
 the sum of a conditionally convergent series can change based on the
 arrangement of terms. Indeed, it can. The \textit{Riemann
   rearrangement theorem} (named after Bernhard Riemann) states that
@@ -414,15 +439,15 @@ By rearranging the terms of the series, we have arrived at a different
 sum!
 \begin{quote}
   One could \textit{try} to argue that the alternating harmonic series
-  does not actually converge to $\ln 2$, because rearranging the terms
-  of the series \textit{shouldn't} change the sum. However, the
-  Alternating Series Test proves this series converges to $L$, for
-  some number $L$, and if the rearrangement does not change the sum,
-  then $L = L/2$, implying $L=0$. But the alternating series
+  does not actually converge to $\ln 2$, and here is an example of such 
+  an argument. According to the
+  alternating series test, we know that this series converges to some number $L$. 
+   If, as our intuition tells us should be true, the rearrangement does not change the sum,
+  then we have just seen that $L = L/2$.  The only possibility for $L$ is then $L=0$. But the alternating series
   approximation theorem quickly shows that $L>0$. The only conclusion
-  is that the rearrangement \textit{did} change the sum.
+  is that the rearrangement \textit{did}, contrary to our intuition, change the sum.
 \end{quote}
-The fact that conditionally convergence series can be rearranged to
+The fact that conditionally convergent series can be rearranged to
 equal any number is really an incredible result.
 
 

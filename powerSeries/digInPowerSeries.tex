@@ -46,20 +46,17 @@ be a series (an infinite sum) we call it a \textit{power series}.
   \end{hint}
 \end{question}
 
-
 Here are four basic power series (centered at zero) that every
-mathematician knows.  Next to each of the series, we list an interval 
-which will correspond to the domain of the series. 
-
+mathematician knows.  
 \begin{align*}
            e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots &|x|< \infty\\
        \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} -\frac{x^7}{7!} + \cdots &|x|< \infty\\
        \cos(x) &= 1-\frac{x^2}{2!} + \frac{x^4}{4!} -\frac{x^6}{6!} + \cdots &|x|< \infty\\
  \frac{1}{1-x} &= 1+ x+ x^2 + x^3 + \cdots &|x|< 1
 \end{align*}
-
-Using power series we can ``read-off'' properties of functions. Here are some 
-examples.
+Next to each of the series, we list an interval which will correspond
+to the domain of the series.  Using power series we can ``read-off''
+properties of functions. Here are some examples.
 \begin{itemize}
 \item We can easily see that $e^0 =1$, $\sin(0)=0$, and $\cos(0) =1$.
 \item Since every power of $x$ in the power series for sine is odd, we
@@ -397,9 +394,7 @@ algebraic manipulation.
 	f(x)g(x) &= \left(\sum_{n=0}^\infty a_nx^n\right)\left(\sum_{n=0}^\infty b_nx^n\right)\\
 	      &= \sum_{n=0}^\infty\big(a_0b_n+a_1b_{n-1}+\dots + a_nb_0\big)x^n
 		\end{aligned}$ for $|x|<R$.%\hfill
-	
 	\item $f\big(h(x)\big) = \sum_{n=0}^\infty a_n\big(h(x)\big)^n$ \quad for $|h(x)|<R$.
-
   \end{itemize}
 \end{theorem}
 

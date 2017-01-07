@@ -1,13 +1,10 @@
-%\documentclass[10pt,twocolumn,twoside,handout,wordchoicegiven]{xourse}
-\documentclass[10pt,twocolumn,twoside,wordchoicegiven]{xourse}
+\documentclass[10pt,twocolumn,twoside,handout,wordchoicegiven]{xourse}
+%\documentclass[10pt,twocolumn,twoside,wordchoicegiven]{xourse}
 %\usepackage[fontsize=9pt]{scrextend}
 
 \input{../preamble.tex}
 
-\iftikzexport
-\else
-\usepackage{lulu2}
-\fi
+\pdfOnly{\usepackage{lulu2}}
 
 
 \title{Calculus 2}
@@ -17,11 +14,11 @@
 
 \setcounter{tocdepth}{2}
 
-\begin{prompt}
+\begin{onlineOnly}
 %% How to use
 \chapterstyle
 \activity{../howToUseXimera/digInHowToUseXimera.tex}
-\end{prompt}
+\end{onlineOnly}
 
 
 
@@ -252,9 +249,9 @@
 \activity{../introductionToPolarCoordinates/titlePage.tex}
 \sectionstyle
 \activity{../introductionToPolarCoordinates/digInIntroductionToPolarCoordinates.tex}
-\begin{prompt}
+\begin{onlineOnly}
 \activity{../introductionToPolarCoordinates/digInGalleryOfPolarCurves.tex}
-\end{prompt}
+\end{onlineOnly}
 
 %% Derivatives of polar functions
 \chapterstyle
@@ -304,6 +301,6 @@
 \activity{../calculusAndVectorValuedFunctions/digInCalculusAndVectorValuedFunctions.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iftikzexport\else\printindex\fi
+\pdfOnly{\printindex}
 
 \end{document}

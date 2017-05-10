@@ -36,8 +36,8 @@
   \begin{tikzpicture}[opacity =.7]
     \begin{axis}[
         xmin=-.2,
-        xmax=1.2,
-        ymin=-.4,
+        xmax=1.7,%1.2,
+        ymin=-.2,
         ymax=2.4,
         width=2.5in,
         height=2.5in,
@@ -50,7 +50,7 @@
       ]
       \addplot [samples = 100,draw=none, domain=0:.93,smooth,pattern=north west lines, pattern color=white!65!black] {x^3/sqrt(1-x^2)}\closedcycle;
       \addplot [samples = 100,ultra thick, domain=0:.93,smooth,draw=white!65!black] {x^3/sqrt(1-x^2)};
-      \node[white] at (axis cs: .5,-1) {\scalebox{1.2}{$\displaystyle\int_0^1 \frac{x^3}{\sqrt{1-x^2}}\d x$}};
+      \node[white] at (axis cs: .85,-.5) {\scalebox{1.2}{$\displaystyle\int_0^1 \frac{x^3}{\sqrt{1-x^2}}\d x$}};
     \end{axis}
   \end{tikzpicture}
   \hspace*{.6in}
@@ -59,8 +59,8 @@
         xmin=-.2,
         xmax=1.7,
         ymin=-.2,
-        ymax=1.2,
-        width=3in,
+        ymax=2.4,%1.2,
+        width=2.5in,
         height=2.5in,
         clip=false,
         axis lines=middle, %xlabel=$x$, ylabel=$y$,
@@ -71,15 +71,15 @@
       ]
     \addplot [domain=0:pi/2,smooth,draw=none,pattern=north west lines, pattern color=white!65!black] {sin(deg(x))^3}\closedcycle;
     \addplot [domain=0:pi/2,smooth,ultra thick, draw=white!65!black] {sin(deg(x))^3};
-    \node[white] at (axis cs: .75,-.5) {\scalebox{1.2}{$\displaystyle\int_0^{\pi/2} \sin^3(\theta)\d \theta$}};
+    \node[white] at (axis cs: .85,-.5) {\scalebox{1.2}{$\displaystyle\int_0^{\pi/2} \sin^3(\theta)\d \theta$}};
     \end{axis}
   \end{tikzpicture}\hspace*{.6in}
   \begin{tikzpicture}[opacity =.7]
   \begin{axis}[
         xmin=-.2,
-        xmax=1.2,
+        xmax=1.7,
         ymin=-.2,
-        ymax=1.2,
+        ymax=2.4,
         width=2.5in,
         height=2.5in,
         clip=false,
@@ -91,7 +91,7 @@
       ]
     \addplot [domain=0:1,smooth,draw=none,pattern=north west lines, pattern color=white!65!black] {1-x^2}\closedcycle;
     \addplot [domain=0:1,ultra thick,smooth,draw=white!65!black] {1-x^2};
-    \node[white] at (axis cs: .5,-.5) {\scalebox{1.2}{$\displaystyle\int_0^{1} \left(g^2-1\right)\d g$}};
+    \node[white] at (axis cs: .85,-.5) {\scalebox{1.2}{$\displaystyle\int_0^{1} \left(g^2-1\right)\d g$}};
 
     \end{axis}
   \end{tikzpicture}\hspace*{.6in}
